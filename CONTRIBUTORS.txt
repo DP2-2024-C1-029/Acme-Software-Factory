@@ -8,4 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-- Rafael Corchuelo (corchu@us.es)
+- Ismael Gata Dorado (ismgatdor@alum.us.es)
+- Jose Maria Portela Huerta (josporhue@alum.us.es)
+- Jaime Varas Cáceres (jaivarcac@alum.us.es)
+- Juan Jose Gómez Borrallo (juagombor@alum.us.es)
+- David Godoy Fernández (davgodfer@alum.us.es)

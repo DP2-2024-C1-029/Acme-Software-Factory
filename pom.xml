@@ -21,8 +21,12 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	
-	<artifactId>Hello-World</artifactId>
+	<name>Acme Software Factory</name>
+	<description>This is a project WIS</description>
 	
+	<groupId>Acme</groupId>
+	<artifactId>Acme-Software-Factory-24.1.0</artifactId>
+	<version>24.1.0</version>
 	<packaging>war</packaging>
 	
 	<parent>
