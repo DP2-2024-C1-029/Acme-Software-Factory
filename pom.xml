@@ -24,9 +24,8 @@
 	<name>Acme Software Factory</name>
 	<description>This is a project WIS</description>
 	
-	<groupId>Acme</groupId>
-	<artifactId>Acme-Software-Factory-24.1.0</artifactId>
-	<version>24.1.0</version>
+
+	<artifactId>Acme-Software-Factory</artifactId>
 	<packaging>war</packaging>
 	
 	<parent>
