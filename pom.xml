@@ -21,11 +21,11 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	
-	<name>Acme Software Factory</name>
-	<description>This is a project WIS</description>
+	<name>Acme-SF-D01</name>
+	<description>This is Acme Software Factory project </description>
 	
 
-	<artifactId>Acme-Software-Factory</artifactId>
+	<artifactId>Acme-SF-D01</artifactId>
 	<packaging>war</packaging>
 	
 	<parent>
