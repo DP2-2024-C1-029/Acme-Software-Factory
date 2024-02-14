@@ -24,8 +24,9 @@
 	<name>Acme-SF-D01</name>
 	<description>This is Acme Software Factory project </description>
 	
-
+	<groupId>Acme</groupId>
 	<artifactId>Acme-SF-D01</artifactId>
+	<version>24.1.0</version>
 	<packaging>war</packaging>
 	
 	<parent>
