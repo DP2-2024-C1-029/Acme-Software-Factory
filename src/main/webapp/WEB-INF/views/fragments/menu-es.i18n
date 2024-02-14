@@ -18,7 +18,9 @@ master.menu.sign-out = Salir
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
-master.menu.anonymous.favourite-link = YouTube
+master.menu.anonymous.favourite-link = Enlace favorito
+master.menu.anonymous.ismgator = 28839629K: Gata Dorado, Ismael
+master.menu.anonymous.davgodfer = 20094441P: Godoy Fernández, David
 
 # master.menu.administrator ###################################################
 
