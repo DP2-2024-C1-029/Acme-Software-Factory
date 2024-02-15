@@ -1,0 +1,9 @@
+# messages-de.i18n ###############################################################
+
+authenticated.consumer.form.title = Verbraucherformular
+
+authenticated.consumer.form.label.company = Unternehmen
+authenticated.consumer.form.label.sector = Sektor
+
+authenticated.consumer.form.button.create = Registrieren
+authenticated.consumer.form.button.update = Aktualisieren

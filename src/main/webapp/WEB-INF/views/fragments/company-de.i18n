@@ -1,0 +1,9 @@
+# company-de.i18n #################################################################
+
+master.company.title = Das Unternehmen
+master.company.text = \
+    Acme Software Factory, Inc. entwickelt von Studenten der Universität Sevilla
+master.company.name = Acme, Inc.
+master.company.address = Avenida Reina Mercedes
+master.company.phone = +34 666666666
+master.company.email = acmesoftwarefactory@acme.com

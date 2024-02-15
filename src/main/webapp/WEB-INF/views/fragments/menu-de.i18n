@@ -1,0 +1,44 @@
+# master.menu #################################################################
+
+master.menu.home = Startseite
+master.menu.sign-up = Registrieren
+master.menu.sign-in = Anmelden
+master.menu.sign-out = Abmelden
+
+# master.menu.anonymous #######################################################
+
+master.menu.anonymous = Anonym
+master.menu.anonymous.favourite-link = Lieblingslink
+master.menu.anonymous.josporhue = 32074667V: Portela Huerta, José María
+master.menu.anonymous.ismgator = 28839629K: Gata Dorado, Ismael
+master.menu.anonymous.davgodfer = 20094441P: Godoy Fernández, David
+master.menu.anonymous.favourite-juagombor: 49105638V: Gómez Borrallo, Juan José
+master.menu.anonymous.jaivarcac = 80228784T: Varas Cáceres, Jaime
+
+# master.menu.administrator ###################################################
+
+master.menu.administrator = Administrator
+master.menu.administrator.dashboard = Leistungsübersicht
+master.menu.administrator.user-accounts = Benutzerkonten
+master.menu.administrator.populate-initial = Datenbank initialisieren
+master.menu.administrator.populate-sample = Datenbank mit Beispielen befüllen
+master.menu.administrator.shut-down = System herunterfahren
+
+# master.menu.provider ########################################################
+
+master.menu.provider = Anbieter
+master.menu.provider.favourite-link = Lieblingslink
+
+# master.menu.consumer ##########################################################
+
+master.menu.consumer = Verbraucher
+master.menu.consumer.favourite-link = Lieblingslink
+
+# master.menu.user-account ####################################################
+
+master.menu.user-account = Konto
+master.menu.user-account.general-data = Allgemeine Daten
+master.menu.user-account.provider = Anbieterdaten
+master.menu.user-account.become-provider = Werde Anbieter
+master.menu.user-account.consumer = Verbraucherdaten
+master.menu.user-account.become-consumer = Werde Verbraucher
