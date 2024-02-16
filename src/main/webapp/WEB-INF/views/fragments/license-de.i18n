@@ -1,0 +1,5 @@
+# master.license ##############################################################
+
+master.license.title = Lizenz
+master.license.text = \
+    Sie können dieses System kostenlos nutzen, solange Sie die geltenden Gesetze sorgfältig beachten. Bitte beachten Sie, dass wir keine Informationen über Sie mit anderen Unternehmen teilen. Wir speichern die folgenden Elemente auf Ihrem Computer: "JSESSIONID", um Ihre Arbeitssitzung zu identifizieren, "remember", um Sie automatisch zu authentifizieren, "language", um Ihre Spracheinstellungen zu speichern, "XSRF-TOKEN", um CSRF-Angriffe zu behandeln, und "returnStack", um zu wissen, wohin zurückgekehrt werden soll, wenn Sie einige Schaltflächen drücken.

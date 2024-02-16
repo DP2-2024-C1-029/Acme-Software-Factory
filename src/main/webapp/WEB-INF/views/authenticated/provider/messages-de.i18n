@@ -1,0 +1,9 @@
+# messages-de.i18n ###############################################################
+
+authenticated.provider.form.title = Anbieterformular
+
+authenticated.provider.form.label.company = Unternehmen:
+authenticated.provider.form.label.sector = Sektor:
+
+authenticated.provider.form.button.create = Registrieren
+authenticated.provider.form.button.update = Aktualisieren
