@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.objectives;
 
 public enum ObjectivePriority {
 	LOW, MEDIUM, HIGH;

@@ -1,14 +1,16 @@
 
-package acme.entities;
+package acme.entities.objectives;
 
 import java.sql.Date;
+import java.time.Duration;
+import java.time.temporal.Temporal;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
-import javax.persistence.Inheritance;
-import javax.validation.constraints.Future;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -20,7 +22,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Inheritance
 public class Objective extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
@@ -45,13 +46,19 @@ public class Objective extends AbstractEntity {
 
 	private boolean				isCritical;
 
-	@Future
-	private Date				duration;
+	private Date				endMoment;
 
 	@URL
 	private String				optionalLink;
 
 	// Derived attributes -----------------------------------------------------
+
+
+	@PositiveOrZero
+	@Transient
+	public Duration duration() {
+		return Duration.between((Temporal) this.instantiationMoment, (Temporal) this.endMoment);
+	}
 
 	// Relationships ----------------------------------------------------------
 }
