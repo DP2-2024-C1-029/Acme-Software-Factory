@@ -1,0 +1,12 @@
+# messages-en.i18n
+
+validation.risk.reference.pattern = Reference must follow the pattern R-XXX
+validation.risk.reference.notblank = Reference cannot be blank
+validation.risk.date = Identification date must be in the past
+validation.risk.impact = Impact must be a positive real number
+validation.risk.probability.notnull = Probability cannot be null
+validation.risk.description.notblank = Description cannot be blank
+validation.risk.description.max = Description must be shorter than 101 characters
+
+validation.job.reference	= The reference must have letters, digits, underscores, and hyphens only
+default.placeholder.phone	= Use international format +99 (999) 999999
