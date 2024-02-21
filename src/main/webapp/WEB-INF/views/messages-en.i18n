@@ -8,5 +8,11 @@ validation.risk.probability.notnull = Probability cannot be null
 validation.risk.description.notblank = Description cannot be blank
 validation.risk.description.max = Description must be shorter than 101 characters
 
+validation.codeaudit.code.pattern = Code must follow the pattern ABC-XXX
+validation.codeaudit.code.notblank = Code cannot be blank
+validation.codeaudit.date = Execution date must be in the past
+validation.codeaudit.correctiveActions.notblank = Corrective actions cannot be blank
+validation.codeaudit.correctiveActions.max = Corrective actions must be shorter than 101 characters
+
 validation.job.reference	= The reference must have letters, digits, underscores, and hyphens only
 default.placeholder.phone	= Use international format +99 (999) 999999

@@ -33,18 +33,18 @@ public class Risk extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	//	a reference (pattern “R-[0-9]{3}”), not blank, unique) OK
+	//	a reference (pattern “R-[0-9]{3}”), not blank, unique)
 	@Column(unique = true)
 	@NotBlank(message = "{validation.risk.reference.notblank}")
 	@Pattern(regexp = "R-\\d{3}", message = "{validation.risk.reference.pattern}")
 	private String				reference;
 
-	//	an identification date (in the past), 
+	//	an identification date (in the past)
 	@Past(message = "{validation.risk.date}")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				identificationDate;
 
-	//	an impact (positive real number), 
+	//	an impact (positive real number)
 	@Positive(message = "{validation.risk.impact}")
 	private double				impact;
 
@@ -53,19 +53,19 @@ public class Risk extends AbstractEntity {
 	@Range(min = 0, max = 1)
 	private double				probability;
 
-	//	a description (not blank, shorter than 101 characters), 
+	//	a description (not blank, shorter than 101 characters)
 	@NotBlank(message = "{validation.risk.description.notblank}")
 	@Length(max = 100, message = "{validation.risk.description.max}")
 	private String				description;
 
-	//	an optional link with further information.
+	//	an optional link with further information
 	@URL
 	private String				optionalLink;
 
 	// Derived attributes -----------------------------------------------------
 
 
-	//	a value (result of the multiplication of impact and probability), 
+	//	a value (result of the multiplication of impact and probability)
 	@Transient
 	public Double value() {
 		return this.impact * this.probability;
