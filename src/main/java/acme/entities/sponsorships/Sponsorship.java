@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.time.Duration;
 
 import javax.persistence.Column;
-import javax.persistence.Inheritance;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -23,7 +22,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Inheritance
 public class Sponsorship {
 
 	// Serialisation identifier -----------------------------------------------
