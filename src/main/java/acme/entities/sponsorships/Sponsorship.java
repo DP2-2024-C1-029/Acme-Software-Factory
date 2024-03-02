@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.time.Duration;
 
 import javax.persistence.Column;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -17,6 +18,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.datatypes.Money;
+import acme.entities.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -75,4 +77,8 @@ public class Sponsorship {
 	}
 
 	// Relationships ----------------------------------------------------------
+
+
+	@ManyToOne
+	private Project project;
 }
