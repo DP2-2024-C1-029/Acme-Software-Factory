@@ -3,14 +3,13 @@ package acme.entities.objectives;
 
 import java.sql.Date;
 import java.time.Duration;
-import java.time.temporal.Temporal;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -19,7 +18,6 @@ import acme.client.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
 public class Objective extends AbstractEntity {
@@ -31,33 +29,44 @@ public class Objective extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Past
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				instantiationMoment;
 
+	@NotNull
 	@NotBlank
 	@Length(max = 75)
 	private String				title;
 
+	@NotNull
 	@NotBlank
 	@Length(max = 100)
 	private String				description;
 
-	@Enumerated
+	@NotNull
 	private ObjectivePriority	priority;
 
 	private boolean				isCritical;
 
-	private Date				endMoment;
+	// Methods for the duration
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				initialExecutionPeriod;
+
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endingExecutionPeriod;
 
 	@URL
+	@NotNull	// It can have "" string.
 	private String				optionalLink;
 
 	// Derived attributes -----------------------------------------------------
 
 
-	@PositiveOrZero
 	@Transient
-	public Duration duration() {
-		return Duration.between((Temporal) this.instantiationMoment, (Temporal) this.endMoment);
+	private Duration duration() {
+		return Duration.between((java.time.temporal.Temporal) this.initialExecutionPeriod, (java.time.temporal.Temporal) this.endingExecutionPeriod);
 	}
 
 	// Relationships ----------------------------------------------------------
