@@ -1,25 +1,24 @@
 
-package acme.entities;
+package acme.entities.userstories;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Inheritance
 @Getter
 @Setter
-public class Project extends AbstractEntity {
+public class UserStory extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -28,29 +27,37 @@ public class Project extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@NotBlank
-	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}", message = "El formato debe ser 3 letras mayúsculas seguidas de un guión y 4 dígitos")
-	private String				code;
-
-	@NotBlank
 	@Length(max = 75)
 	private String				title;
 
 	@NotBlank
 	@Length(max = 100)
-	@Column(name = "abstract")
-	private String				abstractText;
+	private String				description;
 
-	private boolean				indication;
+	@Positive
+	private Double				estimatedCost;
 
-	@PositiveOrZero
-	private Double				cost;
+	@Positive
+	private int					hour;
 
-	@URL
-	private String				link;
+	@NotBlank
+	@Length(max = 100)
+	private String				acceptanceCriteria;
+
+	@NotNull
+	private Priority			priority;
+
+	private String				optionalLink;
+
+	private boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
+
+	@NotNull
+	@Valid
+	@ManyToOne
+	private Manager				manager;
 
 }

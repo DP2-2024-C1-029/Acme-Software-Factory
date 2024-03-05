@@ -1,0 +1,5 @@
+key,code,instantiationMoment,heading,description,department,emailAddress,optionalLink
+claim-01,"C-0001",2022/02/15 00:00,"heading 1","description 1","department 1", "claim-01@gmail.com","http://www.optionalLink.com"
+claim-02,"C-0002",2022/02/15 00:00,"heading 2","description 2","department 2", "claim-02@gmail.com","http://www.optionalLink.com"
+claim-03,"C-0003",2022/02/15 00:00,"heading 3","description 3","department 3", "claim-03@gmail.com","http://www.optionalLink.com"
+claim-04,"C-0004",2022/02/15 00:00,"heading 4","description 4","department 4", "claim-04@gmail.com","http://www.optionalLink.com"
