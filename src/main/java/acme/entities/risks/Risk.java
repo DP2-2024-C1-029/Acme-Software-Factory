@@ -10,7 +10,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
@@ -49,7 +48,6 @@ public class Risk extends AbstractEntity {
 	private double				impact;
 
 	//	a probability, 
-	@NotNull
 	@Range(min = 0, max = 1)
 	private double				probability;
 
@@ -60,6 +58,7 @@ public class Risk extends AbstractEntity {
 
 	//	an optional link with further information
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	// Derived attributes -----------------------------------------------------

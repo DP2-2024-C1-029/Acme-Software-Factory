@@ -1,11 +1,11 @@
 key,reference,identificationDate,impact,probability,description,link
-risk-01,"R-123","2020/12/11 19:00",53,0.5,"Weak backend validation","https://www.risk.com"
-risk-02,"R-456","2021/05/20 14:30",68,1,"Insufficient data encryption","https://www.risk.com"
-risk-03,"R-789","2022/01/03 10:00",0,0.4,"Inadequate access controls","https://www.risk.com"
-risk-04,"R-012","2013/02/17 08:15",75,0.8,"77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF",
-risk-05,"R-345","2004/09/30 14:00",60.0,0,"Poorly managed third-party integrations",
-risk-06,"R-678","205/11/22 19:30",50,0.5,"Lack of intrusion detection",
-risk-07,"R-901","206/04/08 12:45",70,0.7,"Insecure authentication methods",
-risk-08,"R-234","2021/07/14 17:15",5,0.6,"Unpatched security vulnerabilities",
-risk-09,"R-567","2018/10/19 21:30",1.4,0.9,"Weak password policies","https://www.risk.com/home"
-risk-10,"R-890","2019/12/05 07:15",40.2,0.4,"The quick brown fox jumps over the lazy dog, making a swift escape through the dense forest under me",
+risk-01,R-123,2020/12/11 19:00,53,0.5,Weak backend validation,https://www.risk.com
+risk-02,R-456,2021/05/20 14:30,68,1,Insufficient data encryption,https://www.risk.com
+risk-03,R-789,2022/01/03 10:00,0,0.4,Inadequate access controls,https://www.risk.com
+risk-04,R-012,2013/02/17 08:15,75,0.8,77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF,
+risk-05,R-345,2004/09/30 14:00,60.0,0,Poorly managed third-party integrations,
+risk-06,R-678,2005/11/22 19:30,50,0.5,Lack of intrusion detection,
+risk-07,R-901,2016/04/08 12:45,70,0.7,Insecure authentication methods,
+risk-08,R-234,2021/07/14 17:15,5,0.6,Unpatched security vulnerabilities,
+risk-09,R-567,2018/10/19 21:30,1.4,0.9,Weak password policies,https://www.risk.com/home
+risk-10,R-553,2019/12/05 07:15,40.2,0.4,"The quick brown fox jumps over the lazy dog, making a swift escape through the dense forest under me",
