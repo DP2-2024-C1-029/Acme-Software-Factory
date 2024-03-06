@@ -1,0 +1,4 @@
+key,code,startTime,endTime,location,instructor,contactEmail,furtherInformationLink
+trainingSession-01,TS-ABC-123,2020/03/12 10:00,2020/03/20 10:00,"Location A","John Doe",john@example.com,https://example.com/trainingA
+trainingSession-02,TS-XYZ-456,2021/04/10 10:00,2021/04/17 10:00,"Location B","Jane Smith",jane@example.com,https://example.com/trainingB
+trainingSession-03,TS-DEF-789,2022/05/05 10:00,2022/05/12 10:00,"Location C","Michael Johnson",michael@example.com,https://example.com/trainingC

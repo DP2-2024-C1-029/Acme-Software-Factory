@@ -1,0 +1,3 @@
+key,key:userAccount,degree,specialisation,listOfSkills,email,furtherInformationLink
+developer-01,user-account-developer-01,"ingeniero de software","backend,databases","python",dev1@dev1.com,"http://www.github.com"
+developer-02,user-account-developer-02,"informatico","frontend","html",dev2@dev2.com,null
