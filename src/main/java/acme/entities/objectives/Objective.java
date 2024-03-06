@@ -2,11 +2,9 @@
 package acme.entities.objectives;
 
 import java.sql.Date;
-import java.time.Duration;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -62,12 +60,6 @@ public class Objective extends AbstractEntity {
 	private String				optionalLink;
 
 	// Derived attributes -----------------------------------------------------
-
-
-	@Transient
-	private Duration duration() {
-		return Duration.between((java.time.temporal.Temporal) this.initialExecutionPeriod, (java.time.temporal.Temporal) this.endingExecutionPeriod);
-	}
 
 	// Relationships ----------------------------------------------------------
 }
