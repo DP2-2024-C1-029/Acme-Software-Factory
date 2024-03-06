@@ -46,7 +46,7 @@ public class Notice extends AbstractEntity {
 	private String				message;
 
 	@Email
-	private String				emailAddress;
+	private String				email;
 
 	@URL
 	private String				link;
@@ -54,7 +54,8 @@ public class Notice extends AbstractEntity {
 
 	// Additional method 
 	@Transient
-	public void setAuthorFromPrincipal(final String username, final String fullName) {
-		//TODO
+	public void setAuthorFormatter(final String username, final String name, final String surname) {
+		String newAuthor = username + " - " + surname + ", " + name;
+		this.setAuthor(newAuthor);
 	}
 }

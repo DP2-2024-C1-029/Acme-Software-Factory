@@ -1,4 +1,4 @@
-key,creationMoment,details,code,difficultyLevel,updateMoment,furtherInformationLink,estimatedTotalTime
+key,creationMoment,details,code,difficultyLevel,updateMoment,link,estimatedTotalTime
 trainingModule-01,2022/01/15 10:00,"Detalles de la tarea A","ABC-123",BASIC,2022/01/29 10:00,https://example.com/taskA,60
 trainingModule-02,2021/03/05 10:00,"Detalles de la tarea B","XYZ-456",INTERMEDIATE,2021/03/10 10:00,https://example.com/taskB,120
 trainingModule-03,2020/02/10 10:00,"Detalles de la tarea C","DEF-789",ADVANCED,2020/02/15 10:00,https://example.com/taskC,180
