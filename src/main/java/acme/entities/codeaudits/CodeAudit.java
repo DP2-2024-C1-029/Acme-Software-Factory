@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -38,40 +37,39 @@ public class CodeAudit extends AbstractEntity {
 	//		an execution date (in the past), 
 	//		a type (“Static”, “Dynamic”),
 	//		a list of proposed corrective actions (not blank, shorter than 101 characters), 
-	//		a mark (computed as the mode of the marks in the corresponding auditing records; ties must be broken arbitrarily if necessary) 
+	//		a mark (computed as the mode of the marks in the corresponding auditing records; ties must be broken towards the smallest mark)
 	//		an optional link with further information.
 
 	// a code (pattern “[A-Z]{1,3}-[0-9]{3}”, not blank, unique)
 	@Column(unique = true)
-	@NotBlank(message = "{validation.codeaudit.code.notblank}")
-	@Pattern(regexp = "[A-Z]{1,3}-\\d{3}", message = "{validation.codeaudit.reference.pattern}")
+	@NotBlank
+	@Pattern(regexp = "[A-Z]{1,3}-\\d{3}")
 	private String				code;
 
 	// an execution date (in the past)
-	@Past(message = "{validation.codeaudit.date}")
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				executionDate;
 
 	// a type (“Static”, “Dynamic”)
-	@Enumerated
 	@NotNull
-	private AuditType			status;
+	private AuditType			type;
 
 	// a list of proposed corrective actions (not blank, shorter than 101 characters)
-	@NotBlank(message = "{validation.codeaudit.description.notblank}")
-	@Length(max = 100, message = "{validation.codeaudit.description.max}")
+	@NotBlank
+	@Length(max = 100)
 	private String				correctiveActions;
 
 	// an optional link with further information.
 	@URL
-	private String				optionalLink;
+	private String				link;
 
 	// Derived attributes -----------------------------------------------------
 
 
-	// a mark (computed as the mode of the marks in the corresponding auditing records; ties must be broken arbitrarily if necessary) 
+	// a mark (computed as the mode of the marks in the corresponding auditing records; ties must be broken towards the smallest mark) 
 	@Transient
-	public Double value() {
+	public Double mark() {
 		return 0.;
 	}
 }
