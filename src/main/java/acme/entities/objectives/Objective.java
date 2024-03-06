@@ -3,6 +3,7 @@ package acme.entities.objectives;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -18,6 +19,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Entity
 public class Objective extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
@@ -31,12 +33,10 @@ public class Objective extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				instantiationMoment;
 
-	@NotNull
 	@NotBlank
 	@Length(max = 75)
 	private String				title;
 
-	@NotNull
 	@NotBlank
 	@Length(max = 100)
 	private String				description;
@@ -56,8 +56,8 @@ public class Objective extends AbstractEntity {
 	private Date				endingExecutionPeriod;
 
 	@URL
-	@NotNull	// It can have "" string.
-	private String				optionalLink;
+	@Length(max = 255)
+	private String				link;
 
 	// Derived attributes -----------------------------------------------------
 
