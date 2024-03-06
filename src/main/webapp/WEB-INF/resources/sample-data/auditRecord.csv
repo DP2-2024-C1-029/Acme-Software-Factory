@@ -1,2 +1,21 @@
 key,code,endPeriod,mark,link,key:codeAudit
-auditRecord-01,"AU-1234-123","2010/12/11 19:00","A",https://www.record.com,codeAudit-01
+auditRecord-01,"AU-1234-123","2010/12/11 19:00","A","https://www.record.com",codeAudit-01
+auditRecord-02,"AU-5678-456","2011/05/20 14:00","B","https://www.record.com",codeAudit-01
+auditRecord-03,"AU-9012-789","2012/08/03 09:30","C","https://www.record.com",codeAudit-02
+auditRecord-04,"AU-3456-012","2013/02/17 07:45","A",,codeAudit-04
+auditRecord-05,"AU-7890-345","2014/09/30 13:30","B","https://www.record.com",codeAudit-05
+auditRecord-06,"AU-1234-678","2015/11/22 18:00","C",,codeAudit-06
+auditRecord-07,"AU-5678-901","2016/04/08 11:15","A_PLUS","https://www.record.com",codeAudit-07
+auditRecord-08,"AU-9012-234","2017/07/14 16:30","B",,codeAudit-08
+auditRecord-09,"AU-3456-567","2018/10/19 20:45","C","https://www.record.com",codeAudit-09
+auditRecord-10,"AU-7890-890","2019/12/05 06:15","F",,codeAudit-10
+auditRecord-11,"AU-1234-111","2010/12/11 18:00","B","https://www.record.com",codeAudit-01
+auditRecord-12,"AU-5678-222","2011/05/20 13:00","C",,codeAudit-02
+auditRecord-13,"AU-9012-333","2012/08/03 08:30","A","https://www.record.com/profile",codeAudit-03
+auditRecord-14,"AU-3456-444","2013/02/17 06:45","B",,codeAudit-04
+auditRecord-15,"AU-7890-555","2014/09/30 12:30","F","https://www.record.com",codeAudit-05
+auditRecord-16,"AU-1234-666","2015/11/22 17:00","F_MINUS",,codeAudit-06
+auditRecord-17,"AU-5678-777","2016/04/08 10:15","B","https://www.record.com",codeAudit-07
+auditRecord-18,"AU-9012-888","2017/07/14 15:30","F",,codeAudit-08
+auditRecord-19,"AU-3456-999","2018/10/19 19:45","A","https://www.record.com",codeAudit-09
+auditRecord-20,"AU-7890-000","2019/12/05 05:15","B",,codeAudit-10

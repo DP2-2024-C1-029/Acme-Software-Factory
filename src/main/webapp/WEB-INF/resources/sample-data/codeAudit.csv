@@ -1,2 +1,11 @@
 key,code,executionDate,type,correctiveActions,link
 codeAudit-01,"ABC-123",2010/12/11 23:00,"STATIC","No changes needed","https://www.audit.org"
+codeAudit-02,"DEF-456",2011/05/20 15:30,"DYNAMIC","Code optimizations recommended","https://www.audit.org"
+codeAudit-03,"GHI-789",2012/08/03 10:45,"STATIC","Minor code refactor required","https://www.audit.org/login"
+codeAudit-04,"JKL-012",2013/02/17 08:20,"DYNAMIC","77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF",
+codeAudit-05,"MNO-345",2014/09/30 14:15,"STATIC",".","https://www.audit.org"
+codeAudit-06,"PQR-678",2015/11/22 19:55,"DYNAMIC","Performance improvements suggested",
+codeAudit-07,"STU-901",2016/04/08 12:10,"STATIC","i",
+codeAudit-08,"VWX-234",2017/07/14 17:40,"DYNAMIC","Code review recommended","https://www.audit.org"
+codeAudit-09,"YZA-567",2018/10/19 21:25,"STATIC","The quick brown fox jumps over the lazy dog, making a swift escape through the dense forest under me","https://www.audit.org"
+codeAudit-10,"BCD-890",2019/12/05 07:05,"DYNAMIC","Memory optimization required","https://www.audit.org"
