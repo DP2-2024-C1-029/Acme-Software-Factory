@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>805</x>
+      <y>28</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Fin 17:48</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>28</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Inicio 17:37</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>665</x>
+      <y>56</y>
+      <w>133</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Inicio 19:50 28 de Febrero</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>84</x>
+      <y>91</y>
+      <w>273</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Claim
+--
++ code: String {NotBlank, Unique, Pattern(C-[0-9]{4})}
++ instantiationMoment: Date {Past, Temporal(TIMESTAMP)}
++ heading: String {NotBlank, Length(1,75)}
++ description: String {NotBlank, Length(1,100)}
++ department: String {NotBlank, Length(1,100)}
++ emailAddress: String {Email}
++ link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>567</x>
+      <y>721</y>
+      <w>245</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+UserStory
+--
++ title: String {NotBlank, Length(1,75)}
++ description: String {NotBlank, Length(1,100)}
++ estimatedCost: int {Min(1)}
++ acceptanceCriteria: String {NotBlank, Length(1,100)}
++ priority: Priority {NotNull}
++ link: String {URL}
++ draftMode: boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>567</x>
+      <y>343</y>
+      <w>266</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Project
+--
++ code: String {NotBlank, Unique, Patter([A-Z]{3}-[0-9]{4})}
++ title: String {NotBlank, Length(1,75)}
++ abstractText: String {NotBlank, Length(1,100)}
++ indication: boolean
++ cost: Money {NotNull}
++ link: String {URL}
++ draftMode: boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>987</x>
+      <y>560</y>
+      <w>266</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Rol&gt;&gt;
+Manager
+--
++ degree: String {NotBlank, Length(1,75)}
++ overview: String {NotBlank, Length(1,100)}
++ certifications: String {NotBlank, Length(1,100)}
++ link: String {URL}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>231</x>
+      <y>511</y>
+      <w>56</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Priority
+--
+MUST
+SHOULD
+COULD
+WONT</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>805</x>
+      <y>56</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Fin 20:53</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>567</y>
+      <w>245</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+PrjectUserStory
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>679</x>
+      <y>616</y>
+      <w>35</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+has
+m1=1</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>686</x>
+      <y>455</y>
+      <w>35</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+has
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>826</x>
+      <y>413</y>
+      <w>245</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+created by -&gt;
+m1=1</panel_attributes>
+    <additional_attributes>330.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>805</x>
+      <y>658</y>
+      <w>196</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+created by -&gt;
+m1=1</panel_attributes>
+    <additional_attributes>260.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>665</x>
+      <y>91</y>
+      <w>133</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Inicio 18:05 7 de marzo</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>812</x>
+      <y>532</y>
+      <w>161</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>Tabla intermedia para representar 
+una relacion ManyToMany
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>798</x>
+      <y>560</y>
+      <w>98</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>343</x>
+      <y>574</y>
+      <w>182</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Tanto en Project como en UserStory
+se han añadido la propiedad draftMode
+para indicar si esta publicado o no.
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>231</x>
+      <y>315</y>
+      <w>273</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+ManagerDashboard
+--
++ totalUserStoryMust: int
++ totalUserStoryShould: int
++ totalUserStoryCould: int
++ totalUserStoryWont: int
++ averageEstimatedCost: Double
++ deviationEstimatedCost: Double
++ minimumEstimatedCost: double
++ maximumEstimatedCost: double
++ averageCostProject: Double
++ deviationCostProject: Double
++ minimumCostProject: double
++ maximumCostProject: double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>455</y>
+      <w>133</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>427</x>
+      <y>623</y>
+      <w>154</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>200.0;300.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>847</x>
+      <y>273</y>
+      <w>210</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>La propiedad abstractText se ha nombrado 
+asi ya que abstract es una palabra reservada
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>826</x>
+      <y>301</y>
+      <w>84</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>595</x>
+      <y>273</y>
+      <w>210</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>La propiedad cost debe ser 
+positiva, incluido 0
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>294</y>
+      <w>21</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+</diagram>
