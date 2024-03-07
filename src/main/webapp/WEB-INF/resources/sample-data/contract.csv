@@ -1,0 +1,31 @@
+key,code,instantiation-moment,provider-name,customer-name,goals,budget,key:project,key:client
+contract-01,A-001,2000/07/09 0:00,SUN,luis,mejorar,EUR 1000.0,project-01,client-01
+contract-02,ZZZ-999,2000/07/09 0:00,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-03,LLL-499,2000/07/09 0:00,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-04,GH-369,2000/07/09 0:00,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-05,XYZ-050,2000/07/09 0:00,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-06,A-002,2022/06/30 23:59,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-07,A-003,2011/01/07 12:22,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-08,A-004,2021/05/10 18:12,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-09,A-005,2005/01/31 22:57,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-10,A-006,2000/07/13 0:00,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-11,A-007,2000/07/14 0:00,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-12,A-008,2000/07/15 0:00,department of space defense and technological development of super earth,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-13,A-009,2000/07/16 0:00,Central Intelligence Agency of the USA,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-14,A-010,2000/07/17 0:00,मलाका प्रणालीहरू,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-15,A-011,2000/07/18 0:00,órgão gestor da pesca e da caça do governo brasileiro,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-16,A-012,2000/07/19 0:00,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-17,A-013,2000/07/20 0:00,SUN,"Uvuvwevwevwe Onyetenyevwe Ugwemuhwem Osas ugaarsade jaguar, tamer mas cas iyo ilaaliyaha Wakanda",mejorar,EUR 1000.00,project-01,client-01
+contract-18,A-014,2000/07/21 0:00,SUN,asociación española por el deporte y salud mental,mejorar,EUR 1000.00,project-01,client-01
+contract-19,A-015,2000/07/22 0:00,SUN,Brhadaranyakopanishadvivekachudaman@ Erreh,mejorar,EUR 1000.00,project-01,client-01
+contract-20,A-016,2000/07/23 0:00,SUN,asociacion de conducta de entidades del gran banco de españa nuestra nacion,mejorar,EUR 1000.00,project-01,client-01
+contract-21,A-017,2000/07/24 0:00,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-22,A-018,2000/07/25 0:00,SUN,luis,"mejorar las ventas, acceder a mejor software, aumentar la calidad en el desarrollo, prosperar.",EUR 1000.00,project-01,client-01
+contract-23,A-019,2000/07/26 0:00,SUN,luis,"desarrollar tecnología necesaria , aumentar ventas",EUR 1000.00,project-01,client-01
+contract-24,A-020,2000/07/27 0:00,SUN,luis,ser mejor persona,EUR 1000.00,project-01,client-01
+contract-25,A-021,2000/07/28 0:00,SUN,luis,"encabezar la competencia tecnológica, contratar más emplead@s.",EUR 1000.00,project-01,client-01
+contract-26,A-022,2000/07/29 0:00,SUN,luis,mejorar,EUR 1000.00,project-01,client-01
+contract-27,A-023,2000/07/30 0:00,SUN,luis,mejorar,EUR 1000000.00,project-01,client-01
+contract-28,A-024,2000/07/31 0:00,SUN,luis,mejorar,EUR 500000.00,project-01,client-01
+contract-29,A-025,2000/08/01 0:00,SUN,luis,mejorar,EUR 34899.12,project-01,client-01
+contract-30,A-026,2000/08/02 0:00,SUN,luis,mejorar,EUR 79234.60,project-01,client-01
