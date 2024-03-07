@@ -1,0 +1,9 @@
+key,code,instantiationMoment,heading,description,department,emailAddress,link
+claim-01,"C-0001",2022/02/15 00:00,"heading 1","description 1","department 1", "claim-01@gmail.com","http://www.optionalLink.com"
+claim-02,"C-0002",2022/02/15 00:00,"heading 2","description 2","department 2", "claim-02@gmail.com",
+claim-03,"C-0003",2022/02/15 00:00,"heading 3","description 3","department 3", "claim-03@gmail.com","http://www.optionalLink.com"
+claim-04,"C-0004",2022/02/15 00:00,"heading 4","description 4","department 4", "claim-04@gmail.com","http://www.optionalLink.com"
+claim-05,"C-0000",2022/07/28 23:59,"heading 5","description 5","department 5", "claim-05@gmail.com","http://www.optionalLink.com"
+claim-06,"C-0005",2022/02/28 23:58,"heading 6","description 6","department 6", "claim-06@gmail.com","http://www.optionalLink.com"
+claim-07,"C-9999",2022/02/15 00:00,"heading 7","description 7","department 7", "claim-07@gmail.com","http://www.optionalLink.com"
+claim-08,"C-9998",2022/02/15 00:00,"heading 8","description 8","department 8", "claim-08@gmail.com","http://www.optionalLink.com"
