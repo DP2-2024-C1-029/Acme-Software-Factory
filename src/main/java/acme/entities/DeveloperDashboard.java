@@ -10,16 +10,16 @@ import lombok.Setter;
 public class DeveloperDashboard extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
-	private Integer				totalTrainingModuleWithUpdateMoment;
+	int							totalTrainingModuleWithUpdateMoment;
 
-	private Integer				totalNumberOfTrainingSessionsWithLink;
+	int							totalNumberOfTrainingSessionsWithLink;
 
-	private Double				averageTrainingModuleTime;
+	Double						averageTrainingModuleTime;
 
-	private Double				deviationTrainingModuleTime;
+	Double						deviationTrainingModuleTime;
 
-	private Double				minimumTrainingModuleTime;
+	Double						minimumTrainingModuleTime;
 
-	private Double				maximumTrainingModuleTime;
+	Double						maximumTrainingModuleTime;
 
 }

@@ -36,7 +36,7 @@ public class Developer extends AbstractRole {
 	private String				listOfSkills;
 
 	@URL
-	private String				furtherInformationLink;
+	private String				link;
 
 	@Email
 	@NotBlank

@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
@@ -33,13 +35,14 @@ public class TrainingModule extends AbstractEntity {
 	private String				code;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@PastOrPresent
+	@Past
 	private Date				creationMoment;
 
 	@NotBlank
 	@Length(max = 100)
 	private String				details;
 
+	@NotNull
 	private DifficultyLevel		difficultyLevel;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -49,5 +52,6 @@ public class TrainingModule extends AbstractEntity {
 	@URL
 	private String				link;
 
+	@NotNull
 	private Integer				estimatedTotalTime;
 }

@@ -10,30 +10,30 @@ import lombok.Setter;
 public class AdministratorDashboard extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
-	private Integer				totalNumberOfPrincipalsWithAdministrator;
+	int							totalNumberOfPrincipalsWithAdministrator;
 
-	private Integer				totalNumberOfPrincipalsWithManager;
+	int							totalNumberOfPrincipalsWithManager;
 
-	private Integer				totalNumberOfPrincipalsWithDeveloper;
+	int							totalNumberOfPrincipalsWithDeveloper;
 
-	private Integer				totalNumberOfPrincipalsWithSponsor;
+	int							totalNumberOfPrincipalsWithSponsor;
 
-	private Integer				totalNumberOfPrincipalsWithAuditor;
+	int							totalNumberOfPrincipalsWithAuditor;
 
-	private Integer				totalNumberOfPrincipalsWithClient;
+	int							totalNumberOfPrincipalsWithClient;
 
-	private Double				ratioOfNoticesWithEmailAndLink;
+	Double						ratioOfNoticesWithEmailAndLink;
 
-	private Double				ratioOfCriticalObjectives;
+	Double						ratioOfCriticalObjectives;
 
-	private Double				ratioOfNonCriticalObjectives;
+	Double						ratioOfNonCriticalObjectives;
 
-	private Double				averageValueInTheRisks;
+	Double						averageValueInTheRisks;
 
-	private Double				minValueInTheRisks;
+	Double						minValueInTheRisks;
 
-	private Double				maxValueInTheRisks;
+	Double						maxValueInTheRisks;
 
-	private Double				deviationValueInTheRisks;
+	Double						deviationValueInTheRisks;
 
 }
