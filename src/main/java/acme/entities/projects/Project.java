@@ -8,12 +8,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
@@ -40,16 +40,16 @@ public class Project extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 100)
-	@Column(name = "abstract")
 	private String				abstractText;
 
 	private boolean				indication;
 
-	@PositiveOrZero
-	private Double				cost;
+	@NotNull
+	@Valid
+	private Money				cost;
 
 	@URL
-	private String				optionalLink;
+	private String				link;
 
 	private boolean				draftMode;
 
@@ -59,7 +59,7 @@ public class Project extends AbstractEntity {
 
 	@NotNull
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Manager				manager;
 
 }

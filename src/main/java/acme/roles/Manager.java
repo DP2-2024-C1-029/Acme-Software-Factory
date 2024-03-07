@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractRole;
 import lombok.Getter;
@@ -33,7 +34,8 @@ public class Manager extends AbstractRole {
 	@Length(max = 100)
 	private String				certifications;
 
-	private String				optionalLink;
+	@URL
+	private String				link;
 
 	// Derived attributes -----------------------------------------------------
 

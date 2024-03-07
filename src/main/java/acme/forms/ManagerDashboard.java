@@ -23,17 +23,17 @@ public class ManagerDashboard extends AbstractForm {
 
 	private int					totalUserStoryWont;
 
-	private double				averageEstimatedCost;
+	private Double				averageEstimatedCost;
 
-	private double				deviationEstimatedCost;
+	private Double				deviationEstimatedCost;
 
 	private double				minimumEstimatedCost;
 
 	private double				maximumEstimatedCost;
 
-	private double				averageCostProject;
+	private Double				averageCostProject;
 
-	private double				deviationCostProject;
+	private Double				deviationCostProject;
 
 	private double				minimumCostProject;
 

@@ -55,7 +55,7 @@ public class Claim extends AbstractEntity {
 	private String				emailAddress;
 
 	@URL
-	private String				optionalLink;
+	private String				link;
 
 	// Derived attributes -----------------------------------------------------
 
