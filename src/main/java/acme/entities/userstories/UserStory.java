@@ -1,30 +1,25 @@
 
-package acme.entities;
+package acme.entities.userstories;
 
-import java.util.Date;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Inheritance
 @Getter
 @Setter
-public class Claim extends AbstractEntity {
+public class UserStory extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -32,35 +27,36 @@ public class Claim extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@Column(unique = true)
-	@NotBlank
-	@Pattern(regexp = "C-[0-9]{4}", message = "El formato debe ser C- seguido de 4 dígitos")
-	private String				code;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@PastOrPresent
-	private Date				instantiationMoment;
-
 	@NotBlank
 	@Length(max = 75)
-	private String				heading;
+	private String				title;
 
 	@NotBlank
 	@Length(max = 100)
 	private String				description;
 
+	@Min(1)
+	private int					estimatedCost;
+
 	@NotBlank
 	@Length(max = 100)
-	private String				department;
+	private String				acceptanceCriteria;
 
-	@Email
-	private String				emailAddress;
+	@NotNull
+	private Priority			priority;
 
 	@URL
 	private String				link;
 
+	private boolean				draftMode;
+
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Manager				manager;
 
 }

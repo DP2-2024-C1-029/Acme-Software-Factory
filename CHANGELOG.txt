@@ -10,5 +10,13 @@
 
 ** Year 2024
 
-24.1.0	Initialize configuration and customize Acme Software Factory
+D01	Inicializacion de la configuracion y customizacion del proyecto Acme Software Factory
+
+
+** 2024/03/
+
+D02 - Group:  Creacion de las entidades referentes a los requisitos grupal y datos de pruebas.
+
+D02 - Student #1: Creacion de las entidades referentes a los requisitos del student 1 y datos de pruebas.
+
 

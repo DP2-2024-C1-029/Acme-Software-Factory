@@ -1,12 +1,16 @@
 
-package acme.entities;
+package acme.entities.claims;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -16,10 +20,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Inheritance
 @Getter
 @Setter
-public class Project extends AbstractEntity {
+public class Claim extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -27,24 +30,29 @@ public class Project extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}", message = "El formato debe ser 3 letras mayúsculas seguidas de un guión y 4 dígitos")
+	@NotBlank
+	@Pattern(regexp = "C-[0-9]{4}")
 	private String				code;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Past
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				title;
+	private String				heading;
 
 	@NotBlank
 	@Length(max = 100)
-	@Column(name = "abstract")
-	private String				abstractText;
+	private String				description;
 
-	private boolean				indication;
+	@NotBlank
+	@Length(max = 100)
+	private String				department;
 
-	@PositiveOrZero
-	private Double				cost;
+	@Email
+	private String				emailAddress;
 
 	@URL
 	private String				link;
