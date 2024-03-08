@@ -22,12 +22,6 @@ public class Auditor extends AbstractRole {
 
 	// Attributes -------------------------------------------------------------
 
-	@NotBlank
-	private String				company;
-
-	@NotBlank
-	private String				sector;
-
 	//	firm (not blank, shorter than 76 characters)
 	@NotBlank
 	@Length(max = 75)

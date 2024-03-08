@@ -50,10 +50,12 @@ public class AuditRecord extends AbstractEntity {
 	// the	period during which the subject was audited (in the past, at least one hour long)
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
+	@NotNull
 	private Date				startPeriod;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@PastOrPresent
+	@NotNull
 	private Date				endPeriod;
 
 	// a mark (“A+”, “A”,“B”, “C”, “F”, or “F-”)
@@ -71,12 +73,4 @@ public class AuditRecord extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private CodeAudit			codeAudit;
-
-	// Relationships ----------------------------------------------------------
-
-	//@NotNull
-	//@Valid
-	//@ManyToOne(optional = false)
-	//private Project				project;
-
 }

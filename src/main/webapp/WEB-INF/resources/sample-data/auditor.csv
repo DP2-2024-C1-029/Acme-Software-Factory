@@ -1,3 +1,3 @@
-key,key:userAccount,company,sector,firm,professionalId,certifications,link
-auditor-01,user-account-auditor-01,ETSII,Software Eng., Universida de Sevilla,US-12345,"Java Certification, AWS Certified",https://example.com/auditor-01-info
-auditor-02,user-account-auditor-02,Гугл,Поиск информации, Рижский университет,LT1337-G.PI,"Python, Java, Spring, Яндекс Фреймворк",
+key,key:user-account,firm,professional-id,certifications,link
+auditor-01,user-account-auditor-01,Universida de Sevilla,US-12345,"Java Certification, AWS Certified",https://example.com/auditor-01-info
+auditor-02,user-account-auditor-02,Рижский университет,LT1337-G.PI,"Python, Java, Spring, Яндекс Фреймворк",null

@@ -8,8 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
@@ -40,15 +41,18 @@ public class Risk extends AbstractEntity {
 
 	//	an identification date (in the past)
 	@Past
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				identificationDate;
 
 	//	an impact (positive real number)
-	@Min(0)
+	@Range(min = 0, max = 100)
+	@Digits(integer = 3, fraction = 2)
 	private double				impact;
 
 	//	a probability, 
 	@Range(min = 0, max = 1)
+	@Digits(integer = 1, fraction = 2)
 	private double				probability;
 
 	//	a description (not blank, shorter than 101 characters)
