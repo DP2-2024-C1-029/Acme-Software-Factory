@@ -3,7 +3,11 @@ user-account-manager-02,true,"UserIdentity{name: 'Maria', surname: 'Manager', em
 user-account-manager-01,true,"UserIdentity{name: 'Alsonso', surname: 'Manager', email: 'alfonso@acme.com'}",manager1,manager1
 user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",consumer1,consumer1
 user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
+user-account-client-01,true,"UserIdentity{name: 'LOL', surname: 'حسان', email: 'lol@acme.com'}",client1,client1
+user-account-client-02,true,"UserIdentity{name: 'david', surname: 'Андреев', email: 'LGA@acme.com'}",client2,client2
 user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider', email: 'laurel@acme.com'}",provider1,provider1
 user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
+user-account-auditor-01,true,"UserIdentity{name: 'Jaime', surname: 'Varas Cáceres', email: 'jaivarcac@acme.com'}",auditor1,auditor1
+user-account-auditor-02,true,"UserIdentity{name: 'Ларри', surname: 'Страница', email: 'larrypage@acme.com'}",auditor2,auditor2
 user-account-administrator-02,true,"UserIdentity{name: 'Administrator_1', surname: 'Acme 1', email: 'administrator1@acme.com'}",administrator1,administrator1
 user-account-administrator-03,true,"UserIdentity{name: 'Administrator_2', surname: 'Acme 2', email: 'administrator2@acme.com'}",administrator2,administrator2

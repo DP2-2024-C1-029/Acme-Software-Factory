@@ -1,5 +1,5 @@
 
-package acme.entities.claims;
+package acme.entities.risks;
 
 import java.util.Date;
 
@@ -7,13 +7,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
+import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -23,7 +25,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Claim extends AbstractEntity {
+public class Risk extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -31,36 +33,44 @@ public class Claim extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
+	//	a reference (pattern “R-[0-9]{3}”), not blank, unique)
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "C-[0-9]{4}")
-	private String				code;
+	@Pattern(regexp = "R-\\d{3}")
+	private String				reference;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	//	an identification date (in the past)
 	@Past
 	@NotNull
-	private Date				instantiationMoment;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				identificationDate;
 
-	@NotBlank
-	@Length(max = 75)
-	private String				heading;
+	//	an impact (positive real number)
+	@Range(min = 0, max = 100)
+	@Digits(integer = 3, fraction = 2)
+	private double				impact;
 
+	//	a probability, 
+	@Range(min = 0, max = 1)
+	@Digits(integer = 1, fraction = 2)
+	private double				probability;
+
+	//	a description (not blank, shorter than 101 characters)
 	@NotBlank
 	@Length(max = 100)
 	private String				description;
 
-	@NotBlank
-	@Length(max = 100)
-	private String				department;
-
-	@Email
-	private String				emailAddress;
-
+	//	an optional link with further information
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	// Derived attributes -----------------------------------------------------
 
-	// Relationships ----------------------------------------------------------
 
+	//	a value (result of the multiplication of impact and probability)
+	@Transient
+	public Double value() {
+		return this.impact * this.probability;
+	}
 }

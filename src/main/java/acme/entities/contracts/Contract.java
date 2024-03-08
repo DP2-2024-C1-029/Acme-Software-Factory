@@ -1,29 +1,32 @@
 
-package acme.entities.claims;
+package acme.entities.contracts;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
+import acme.entities.projects.Project;
+import acme.roles.Client;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Claim extends AbstractEntity {
+public class Contract extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -31,36 +34,45 @@ public class Claim extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
+	//	a reference (pattern “[A-Z]{1-3}-[0-9]{3}”), not blank, unique) OK
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "C-[0-9]{4}")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Past
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				instantiationMoment;
 
-	@NotBlank
 	@Length(max = 75)
-	private String				heading;
-
 	@NotBlank
-	@Length(max = 100)
-	private String				description;
+	private String				providerName;
 
+	@Length(max = 75)
 	@NotBlank
+	private String				customerName;
+
 	@Length(max = 100)
-	private String				department;
+	@NotBlank
+	private String				goals;
 
-	@Email
-	private String				emailAddress;
-
-	@URL
-	private String				link;
+	// Service will apply the constraint
+	@NotNull
+	private Money				budget;
 
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
+
+	@ManyToOne(optional = false)
+	@Valid
+	@NotNull
+	private Project				project;
+
+	@ManyToOne(optional = false)
+	@Valid
+	@NotNull
+	private Client				client;
 
 }
