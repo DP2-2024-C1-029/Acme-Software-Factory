@@ -1,33 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>7</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>546</x>
-      <y>245</y>
-      <w>273</w>
-      <h>119</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Claim
---
-+ code: String {NotBlank, Unique, Pattern(C-[0-9]{4})}
-+ instantiationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
-+ heading: String {NotBlank, Length(1,75)}
-+ description: String {NotBlank, Length(1,100)}
-+ department: String {NotBlank, Length(1,100)}
-+ emailAddress: String {Email}
-+ link: String {URL}</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>217</x>
-      <y>217</y>
-      <w>273</w>
-      <h>182</h>
+      <x>0</x>
+      <y>342</y>
+      <w>351</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 AdministratorDashboard
@@ -38,33 +18,74 @@ AdministratorDashboard
 + totalNumberOfPrincipalsWithSponsor: int
 + totalNumberOfPrincipalsWithAuditor: int
 + totalNumberOfPrincipalsWithClient: int
-+ ratioOfNoticesWithEmailAndLink: Double
-+ ratioOfCriticalObjectives: Double
-+ ratioOfNonCriticalObjectives: Double
-+ averageValueInTheRisks: Double
+- ratioOfNoticesWithEmailAndLink: Double
+- ratioOfCriticalObjectives: Double
+- ratioOfNonCriticalObjectives: Double
+- averageValueInTheRisks: Double
 + minValueInTheRisks: double
 + maxValueInTheRisks: double
-+ deviationValueInTheRisks: Double
+- deviationValueInTheRisks: Double
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>539</x>
-      <y>392</y>
-      <w>322</w>
-      <h>119</h>
+      <x>405</x>
+      <y>513</y>
+      <w>414</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Risk
+--
++ reference: String {NotBlank, Unique, Pattern(R-[0-9]{3})}
++ identificationDate: Date {Past, NotNull, Temporal(TIMESTAMP)}
++ impact: double {Digits(3,2), Range(1,100)}
++ probability: double {Digits(1,2), Range(0,1)}
++ description: String {NotBlank, Length(1,100)}
+- link: String {URL, Length(0,255)}
++ / value: Double {Transient}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>405</x>
+      <y>207</y>
+      <w>414</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Claim
+--
++ code: String {NotBlank, Unique, Pattern(C-[0-9]{4})}
++ instantiationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
++ heading: String {NotBlank, Length(1,75)}
++ description: String {NotBlank, Length(1,100)}
++ department: String {NotBlank, Length(1,100)}
+- emailAddress: String {Email}
+- link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>405</x>
+      <y>369</y>
+      <w>414</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Notice
 --
 + instantiationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
-+ title: String {NotBlank}
-+ author: String {NotBlank}
-+ message: String {NotBlank}
-+ email: String {Email}
-+ link: furtherInformationLink {URL}
++ title: String {NotBlank, Length(1,75)}
++ author: String {NotBlank, Length(1,75)}
++ message: String {NotBlank, Length(1,100)}
+- email: String {Email, Length(0,255)}
+- link: String {URL, Length(0,255)}
 </panel_attributes>
     <additional_attributes/>
   </element>
