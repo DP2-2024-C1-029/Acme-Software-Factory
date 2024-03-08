@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>360</y>
+      <x>72</x>
+      <y>216</y>
       <w>312</w>
       <h>208</h>
     </coordinates>
@@ -31,8 +31,8 @@ bg=pink</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>520</y>
+      <x>408</x>
+      <y>376</y>
       <w>368</w>
       <h>136</h>
     </coordinates>
@@ -52,8 +52,8 @@ Risk
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>248</y>
+      <x>408</x>
+      <y>104</y>
       <w>368</w>
       <h>136</h>
     </coordinates>
@@ -72,8 +72,8 @@ Claim
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>392</y>
+      <x>408</x>
+      <y>248</y>
       <w>368</w>
       <h>120</h>
     </coordinates>
@@ -85,6 +85,66 @@ Notice
 + author: String {NotBlank, Length(1,75)}
 + message: String {NotBlank, Length(1,100)}
 - email: String {Email, Length(0,255)}
+- link: String {URL, Length(0,255)}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>408</x>
+      <y>520</y>
+      <w>368</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Banner
+--
++ instantiationMoment: Date {Past, NotNull}
++ displayStartMoment: Date {Past, NotNull}
++ displayEndMoment: Date {Past, NotNull}
++ picture: String {URL, NotBlank, Length(1,255)}
++ slogan: String {NotBlank, Length(1,75)}
++ link: String {URL, NotBlank, Length(1,255)}
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>936</x>
+      <y>368</y>
+      <w>128</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+ObjectivePriority
+--
+LOW
+MEDIUM
+HIGH
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>824</x>
+      <y>168</y>
+      <w>360</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Objective
+--
++ instantiationMoment: Date {Past,NotNull}
++ title: String {NotBlank, Length(1,75)}
++ description: String {NotBlank, Length(1,100)}
++ priority: ObjectivePriority {NotNull}
++ isCritical: boolean {NotNull}
++ initialExecutionPeriod: Date {NotNull}
++ endingExecutionPeriod: Date {NotNull}
 - link: String {URL, Length(0,255)}
 </panel_attributes>
     <additional_attributes/>
