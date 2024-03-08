@@ -1,0 +1,12 @@
+# messages-es.i18n
+
+validation.risk.reference.pattern = La referencia debe seguir el patrón R-XXX
+validation.risk.reference.notblank = La referencia no puede estar en blanco
+validation.risk.date = La fecha de identificación debe estar en el pasado
+validation.risk.impact = El impacto debe ser un número real positivo
+validation.risk.probability.notnull = La probabilidad no puede ser nula
+validation.risk.description.notblank = La descripción no puede estar en blanco
+validation.risk.description.max = La descripción debe tener menos de 101 caracteres
+
+validation.job.reference = La referencia debe contener letras, dígitos, guiones bajos y guiones solamente
+default.placeholder.phone = Utilice el formato internacional +99 (999) 999999

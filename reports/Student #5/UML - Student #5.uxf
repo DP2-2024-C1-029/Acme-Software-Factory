@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>627</x>
+      <y>286</y>
+      <w>462</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+CodeAudit
+--
++ code: String {NotBlank, Unique,  Pattern ([A-Z]{1,3}-[0-9]{3})}
++ executionDate: Date {Past, Temporal(TIMESTAMP)}
++ type: AuditType {NotNull}
++ correctiveActions: String {NotBlank, Length(1,100)}
+- link: String {URL, Length(1,255)}
++ / mark: Mark {Transient}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1133</x>
+      <y>231</y>
+      <w>154</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Mark
+--
++ A_PLUS
++ A
++ B
++ C
++ F
++ F_MINUS
+bg=#09B8FF
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>627</x>
+      <y>671</y>
+      <w>462</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+AuditRecord
+--
++ code: String {NotBlank, Unique,  Pattern (AU-[0-9]{4}-[0-9]{3})}
++ startPeriod: Date {NotNull, Past, Temporal(TIMESTAMP)}
++ endPeriod: Date {NotNull, Past, Temporal(TIMESTAMP)}
++ mark: Mark {NotNull}
+- link: String {URL, Length(1,255)}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>22</x>
+      <y>506</y>
+      <w>352</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Auditor
+--
++ firm: String {NotBlank, Length(1,75)}
++ professionalId: String {NotBlank, Length(1,25)}
++ certifications: String {NotBlank, Length(1,100)}
+- link: String {URL, Length(1,255)}
+bg=orange
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1232</x>
+      <y>440</y>
+      <w>385</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+DeveloperDashboard
+--
++ totalTrainingModuleWithUpdateMoment: int
++ totalNumberOfTrainingSessionsWithLink: int
++ averageTrainingModuleTime: Double
++ deviationTrainingModuleTime: Double
++ minimumTrainingModuleTime: double
++ maximumTrainingModuleTime: double
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>836</x>
+      <y>440</y>
+      <w>77</w>
+      <h>253</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=0..*
+m2=1
+Has &gt;</panel_attributes>
+    <additional_attributes>10.0;210.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1221</x>
+      <y>726</y>
+      <w>352</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Para la creación del periodo se ha creado
+los atributos startDate y endDate, 
+para poder calcular una semana justo desde el
+creationMomento, y luedo comprobar la duración
+del trainingSession
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1078</x>
+      <y>770</y>
+      <w>165</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>187</x>
+      <y>374</y>
+      <w>462</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=0..*
+m2=1
+Has &gt;</panel_attributes>
+    <additional_attributes>400.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>242</x>
+      <y>0</y>
+      <w>286</w>
+      <h>187</h>
+    </coordinates>
+    <panel_attributes>acme.entities.codeaudits::AuditRecord
+--
+-serialVersionUID = 1L: long
+-code: String
+-startPeriod: Date
+-endPeriod: Date
+-mark: Mark
+-link: String
+-codeAudit: CodeAudit
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>22</y>
+      <w>275</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>acme.entities.codeaudits::CodeAudit
+--
+-serialVersionUID = 1L: long
+-code: String
+-executionDate: Date
+-type: AuditType
+-correctiveActions: String
+-link: String
+-auditor: Auditor
+-project: Project
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>11</y>
+      <w>286</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>acme.forms::AuditorDashboard
+--
+-serialVersionUID = 1L: long
+-totalStaticCodeAudits: Integer
+-totalDynamicCodeAudits: Integer
+-averageAuditRecords: Double
+-deviationAuditRecords: Double
+-minimunAuditRecords: Integer
+-maximunAuditRecords: Integer
+-averageDurationAuditRecords: Double
+-deviationDurationAuditRecords: Double
+-minimunDurationAuditRecords: Integer
+-maximunDurationAuditRecords: Integer
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1309</x>
+      <y>253</y>
+      <w>154</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AuditType
+--
++ DYNAMIC
++ STATIC
+bg=#09B8FF
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

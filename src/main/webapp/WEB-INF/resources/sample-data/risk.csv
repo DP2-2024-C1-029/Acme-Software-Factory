@@ -1,0 +1,30 @@
+key,reference,identification-date,impact,probability,description,link
+risk-01,R-000,2000/01/01 00:00,1,1.00,Weak service validations,https://www.risk.com
+risk-02,R-123,2000/01/01 00:00,1,1.00,Weak service validations,https://www.risk.com
+risk-03,R-789,2000/01/01 00:00,1,1.00,Weak service validations,https://www.risk.com
+risk-04,R-001,2000/01/01 00:01,1,1.00,Weak service validations,https://www.risk.com
+risk-05,R-002,2022/07/30 00:00,1,1.00,Weak service validations,https://www.risk.com
+risk-06,R-003,2022/07/29 23:59,1,1.00,Weak service validations,https://www.risk.com
+risk-07,R-004,2011/03/15 12:00,1,1.00,Weak service validations,https://www.risk.com
+risk-08,R-005,2011/03/15 12:00,0,1.00,Weak service validations,https://www.risk.com
+risk-09,R-006,2011/03/15 12:00,0.01,1.00,Weak service validations,https://www.risk.com
+risk-10,R-007,2011/03/15 12:00,50,1.00,Weak service validations,https://www.risk.com
+risk-11,R-008,2011/03/15 12:00,99.99,1.00,Weak service validations,https://www.risk.com
+risk-12,R-009,2011/03/15 12:00,100.00,1.00,Weak service validations,https://www.risk.com
+risk-13,R-010,2011/03/15 12:00,100.00,0.99,Weak service validations,https://www.risk.com
+risk-14,R-011,2011/03/15 12:00,100.00,0.5,Weak service validations,https://www.risk.com
+risk-15,R-012,2011/03/15 12:00,100.00,0.01,Weak service validations,https://www.risk.com
+risk-16,R-013,2011/03/15 12:00,100.00,0.00,Weak service validations,https://www.risk.com
+risk-17,R-014,2011/03/15 12:00,100.00,0.00,.,https://www.risk.com
+risk-18,R-015,2011/03/15 12:00,100.00,0.00,77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF76,https://www.risk.com
+risk-19,R-016,2011/03/15 12:00,100.00,0.00,ЁЂЃЄЅІЇЈЉЊЋЌЍЎЏАБВГДЕЖЗИЙКЛМНОПРопрстуфхцчшщъыьэюя,https://www.risk.com
+risk-20,R-017,2011/03/15 12:00,100.00,0.00,ÅÍÎÏ˝ÓÔÒÚÆ☃,https://www.risk.com
+risk-21,R-018,2011/03/15 12:00,100.00,0.00,찦차를 타고 온 펲시맨과 쑛다리 똠방각하,https://www.risk.com
+risk-22,R-019,2011/03/15 12:00,100.00,0.00,(｡◕ ∀ ◕｡) ñ7,https://www.risk.com
+risk-23,R-020,2011/03/15 12:00,100.00,0.00,مِ الْقَائِمَةِ وَفِيم يَخُصَّ التَّطْبِيقَاتُ الْحاسُو,https://www.risk.com
+risk-24,R-021,2011/03/15 12:00,100.00,0.00,<script>alert(123)</script>,https://www.risk.com
+risk-25,R-022,2011/03/15 12:00,100.00,0.00,<script>alert(123)</script>,null
+risk-26,R-023,2011/03/15 12:00,100.00,0.00,7gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF76,null
+risk-27,R-024,2011/03/15 12:00,100.00,0.00,Çç,null
+risk-28,R-025,2011/03/15 12:00,100.00,0.00,Çç,https://www.77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vC4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF7677gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLA90BG17FHLAuPdV1Pg7z9ukwyuuTOF76.org
+risk-29,R-026,2011/03/15 12:00,100.00,0.00,Çç,https://www.77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vC4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF7677gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv4O3eQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLA90BG17FHLAuPdV1Pg7z9ukwyuuTOF76.org
