@@ -1,0 +1,11 @@
+key,creationMoment,details,code,difficultyLevel,updateMoment,link,estimatedTotalTime,key:project
+trainingModule-01,2022/01/15 10:00,Detalles de la tarea A,ABC-123,BASIC,2022/01/29 10:00,https://example.com/taskA,60,project-02
+trainingModule-02,2021/03/05 10:00,Detalles de la tarea B,XYZ-456,INTERMEDIATE,2021/03/10 10:00,https://example.com/taskB,120,project-01
+trainingModule-03,2020/02/10 10:00,Detalles de la tarea C,DEF-789,ADVANCED,2020/02/15 10:00,https://example.com/taskC,180,project-10
+trainingModule-04,2020/02/10 10:20,ლორემ იფსუმ,DEF-729,ADVANCED,2020/02/15 12:00,null,300,project-10
+trainingModule-05,2021/12/12 13:20,щaнgЬ₴оёpvf$añlя,AAA-000,INTERMEDIATE,2021/12/12 13:21,https://exampletextdefault123testdefault.com/task,23,project-03
+trainingModule-06,2021/12/12 23:20,ويل النص العربي اللبناني إلى كلام بأصوات الذكاء الاصطن,BBB-111,INTERMEDIATE,2021/12/12 23:24,null,0,project-04
+trainingModule-07,1971/12/12 13:20,ABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRST123123123123,CCC-666,ADVANCED,1971/12/12 15:23,https://examplewebpage.net/task,0,project-06
+trainingModule-08,2000/11/11 23:23,色到艾丝伊艾勒艾,ZZZ-999,BASIC,2000/11/11 23:27,https://es.es/,56,project-05
+trainingModule-09,2010/06/18 01:20,zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz,XSA-463,ADVANCED,2010/06/18 03:20,https://A.com/,153,project-08
+trainingModule-10,2015/04/04 13:20,A,GHA-469,BASIC,2015/04/04 13:29,https://lol.net/,56,project-09
