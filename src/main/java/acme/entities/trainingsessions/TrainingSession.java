@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.trainingsessions;
 
 import java.util.Date;
 
@@ -18,6 +18,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.trainingmodules.TrainingModule;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.forms;
 
 import acme.client.data.AbstractForm;
 import lombok.Getter;
@@ -30,9 +30,9 @@ public class AdministratorDashboard extends AbstractForm {
 
 	Double						averageValueInTheRisks;
 
-	Double						minValueInTheRisks;
+	double						minValueInTheRisks;
 
-	Double						maxValueInTheRisks;
+	double						maxValueInTheRisks;
 
 	Double						deviationValueInTheRisks;
 

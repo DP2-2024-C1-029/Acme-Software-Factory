@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.forms;
 
 import acme.client.data.AbstractForm;
 import lombok.Getter;
@@ -18,8 +18,8 @@ public class DeveloperDashboard extends AbstractForm {
 
 	Double						deviationTrainingModuleTime;
 
-	Double						minimumTrainingModuleTime;
+	double						minimumTrainingModuleTime;
 
-	Double						maximumTrainingModuleTime;
+	double						maximumTrainingModuleTime;
 
 }

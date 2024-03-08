@@ -21,4 +21,51 @@ Claim
 + link: String {URL}</panel_attributes>
     <additional_attributes/>
   </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>308</y>
+      <w>273</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AdministratorDashboard
+--
++ totalNumberOfPrincipalsWithAdministrator: int
++ totalNumberOfPrincipalsWithManager: int
++ totalNumberOfPrincipalsWithDeveloper: int
++ totalNumberOfPrincipalsWithSponsor: int
++ totalNumberOfPrincipalsWithAuditor: int
++ totalNumberOfPrincipalsWithClient: int
++ ratioOfNoticesWithEmailAndLink: Double
++ ratioOfCriticalObjectives: Double
++ ratioOfNonCriticalObjectives: Double
++ averageValueInTheRisks: Double
++ minValueInTheRisks: double
++ maxValueInTheRisks: double
++ deviationValueInTheRisks: Double
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>567</x>
+      <y>420</y>
+      <w>273</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Notice
+--
++ instantiationMoment: Date {Past,Temporal(TIMESTAMP)}
++ title: String {NotBlank}
++ author: String {NotBlank}
++ message: String {NotBlank}
++ email: String {Email}
++ link: furtherInformationLink {URL}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
 </diagram>
