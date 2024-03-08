@@ -25,7 +25,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>460</x>
+      <x>1040</x>
       <y>220</y>
       <w>140</w>
       <h>100</h>
@@ -152,7 +152,7 @@ bg=yellow</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>La relación de Developer con los 
-trainings se piden en el D03
+trainings se pide en el D03
 bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
@@ -166,5 +166,19 @@ bg=yellow</panel_attributes>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>380</x>
+      <y>300</y>
+      <w>250</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=0..*
+m2=1
+Has &gt;</panel_attributes>
+    <additional_attributes>230.0;10.0;10.0;150.0</additional_attributes>
   </element>
 </diagram>

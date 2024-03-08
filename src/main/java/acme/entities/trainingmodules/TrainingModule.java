@@ -20,6 +20,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.projects.Project;
+import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -64,5 +65,9 @@ public class TrainingModule extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Project				project;
 
-	//La asociación don el rol developer se pide para el entregable D03, por lo que se desarrollará en dicho entregable,
+	//La asociación don el rol developer se pide para el entregable D03, por lo que se terminará de desarrollar en el D03
+	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
+	private Developer			developer;
 }
