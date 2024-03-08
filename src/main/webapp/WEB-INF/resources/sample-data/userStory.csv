@@ -4,14 +4,15 @@ userStory-02,"title story 2","user story 2",2,"acceptance criteria 2", "SHOULD",
 userStory-03,"title story 3","user story 3",2,"acceptance criteria 3", "COULD",,true,manager-01
 userStory-04,"title story 4","user story 4",2,"acceptance criteria 4", "WONT","http://www.jira.com",true,manager-01
 userStory-05,"title story 5","user story 5",2,"acceptance criteria 5", "MUST","http://www.jira.com",true,manager-01
-userStory-06,"title story 6","user story 6",3,"acceptance criteria 6", "MUST","http://www.jira.com",true,manager-02
+userStory-06,"title story 6","user story 6",3,"acceptance criteria 6", "MUST","http://www.jira.com",false,manager-02
 userStory-07,"title story 7","user story 7",3,"acceptance criteria 7", "MUST","http://www.jira.com",true,manager-02
-userStory-08,"title story 8","user story 8",3,"acceptance criteria 8", "COULD","http://www.jira.com",true,manager-02
+userStory-08,"title story 8","user story 8",3,"acceptance criteria 8", "COULD","http://www.jira.com",false,manager-02
 userStory-09,"title story 9","user story 9",3,"acceptance criteria 9", "COULD","http://www.jira.com",true,manager-02
 userStory-10,"title story 10","user story 10",4,"acceptance criteria 10", "COULD","http://www.jira.com",true,manager-02
 userStory-11,"title story 11","user story 11",4,"acceptance criteria 11", "WONT","http://www.jira.com",true,manager-02
 userStory-12,"title story 12                                                       prueba","u",4,"acceptance criteria 12                                                                        prueba", "WONT","http://www.jira.com",true,manager-02
-userStory-13,"title story 13                                                       prueb","user story                                                               13",4,"acceptance criteria 13                                                                        prueb", "WONT","http://www.jira.com",true,manager-02
+userStory-13,"title story 13                                                       prueb","user story                                                               13",4,"acceptance criteria 13                                                                        prueb", "WONT","http://www.jira.com",false,manager-01
 userStory-14,"t","user story                                                              14",4,"a", "WONT","http://www.jira.com",true,manager-02
 userStory-15,"title story 15","user story 15",1,"acceptance criteria 15", "WONT","http://www.jira.com",true,manager-02
 userStory-16,"title story 16","user story 16",2,"acceptance criteria 16", "WONT","http://www.jira.com",true,manager-02
+userStory-17,"貸んい建濯よ芝弾テソ","Λορεμ ιπσθμ δολορ σιτ αμετ",2,"alert('¡Hola, mundo!');", "COULD","http://www.jira.com",false,manager-02
