@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -19,13 +20,15 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
+import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-public class Invoice {
+public class Invoice extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -48,8 +51,8 @@ public class Invoice {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				dueDate;
 
-	@Min(1)
-	private int					quantity;
+	// TODO - comprobar positivo sin 0 en servicios
+	private Money				quantity;
 
 	@Min(0)
 	@Digits(integer = 3, fraction = 2)
@@ -63,12 +66,17 @@ public class Invoice {
 
 
 	@Transient
-	private double totalAmount() {
-		return this.tax * this.quantity;
+	private Money totalAmount() {
+		Money m = new Money();
+		m.setAmount(this.quantity.getAmount() * (1 + this.tax / 100));
+		m.setCurrency(this.quantity.getCurrency());
+		return m;
 	}
 
 
 	// Relationships ----------------------------------------------------------
+	@Valid
+	@NotNull
 	@ManyToOne
 	private Sponsorship sponsorship;
 }
