@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>11</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>627</x>
-      <y>286</y>
-      <w>462</w>
-      <h>165</h>
+      <x>423</x>
+      <y>288</y>
+      <w>378</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 CodeAudit
@@ -24,10 +24,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1133</x>
-      <y>231</y>
-      <w>154</w>
-      <h>165</h>
+      <x>828</x>
+      <y>288</y>
+      <w>126</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 Mark
@@ -45,10 +45,10 @@ bg=#09B8FF
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>627</x>
-      <y>671</y>
-      <w>462</w>
-      <h>154</h>
+      <x>432</x>
+      <y>540</y>
+      <w>378</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 AuditRecord
@@ -64,10 +64,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>22</x>
-      <y>506</y>
-      <w>352</w>
-      <h>143</h>
+      <x>27</x>
+      <y>306</y>
+      <w>288</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Auditor
@@ -83,156 +83,62 @@ bg=orange
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1232</x>
-      <y>440</y>
-      <w>385</w>
-      <h>165</h>
+      <x>828</x>
+      <y>477</y>
+      <w>315</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 DeveloperDashboard
 --
-+ totalTrainingModuleWithUpdateMoment: int
-+ totalNumberOfTrainingSessionsWithLink: int
-+ averageTrainingModuleTime: Double
-+ deviationTrainingModuleTime: Double
-+ minimumTrainingModuleTime: double
-+ maximumTrainingModuleTime: double
++ totalStaticCodeAudits: int
++ totalDynamicCodeAudits: int
+-averageAuditRecords: Double
+-deviationAuditRecords: Double
++ minimunAuditRecords: int
++ maximunAuditRecords: int
+-averageDurationAuditRecords: Double
+-deviationDurationAuditRecords: Double
++ minimunDurationAuditRecords: int
++ maximunDurationAuditRecords: int
 bg=pink</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>836</x>
-      <y>440</y>
-      <w>77</w>
-      <h>253</h>
+      <x>603</x>
+      <y>414</y>
+      <w>63</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
 m1=0..*
 m2=1
 Has &gt;</panel_attributes>
-    <additional_attributes>10.0;210.0;20.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>1221</x>
-      <y>726</y>
-      <w>352</w>
-      <h>110</h>
-    </coordinates>
-    <panel_attributes>Para la creación del periodo se ha creado
-los atributos startDate y endDate, 
-para poder calcular una semana justo desde el
-creationMomento, y luedo comprobar la duración
-del trainingSession
-bg=yellow</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1078</x>
-      <y>770</y>
-      <w>165</w>
-      <h>33</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>187</x>
-      <y>374</y>
-      <w>462</w>
-      <h>154</h>
+      <x>306</x>
+      <y>342</y>
+      <w>135</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
 m1=0..*
 m2=1
 Has &gt;</panel_attributes>
-    <additional_attributes>400.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>242</x>
-      <y>0</y>
-      <w>286</w>
-      <h>187</h>
-    </coordinates>
-    <panel_attributes>acme.entities.codeaudits::AuditRecord
---
--serialVersionUID = 1L: long
--code: String
--startPeriod: Date
--endPeriod: Date
--mark: Mark
--link: String
--codeAudit: CodeAudit
---
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>0</x>
-      <y>22</y>
-      <w>275</w>
-      <h>209</h>
-    </coordinates>
-    <panel_attributes>acme.entities.codeaudits::CodeAudit
---
--serialVersionUID = 1L: long
--code: String
--executionDate: Date
--type: AuditType
--correctiveActions: String
--link: String
--auditor: Auditor
--project: Project
---
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>0</x>
-      <y>11</y>
-      <w>286</w>
-      <h>264</h>
-    </coordinates>
-    <panel_attributes>acme.forms::AuditorDashboard
---
--serialVersionUID = 1L: long
--totalStaticCodeAudits: Integer
--totalDynamicCodeAudits: Integer
--averageAuditRecords: Double
--deviationAuditRecords: Double
--minimunAuditRecords: Integer
--maximunAuditRecords: Integer
--averageDurationAuditRecords: Double
--deviationDurationAuditRecords: Double
--minimunDurationAuditRecords: Integer
--maximunDurationAuditRecords: Integer
---
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1309</x>
-      <y>253</y>
-      <w>154</w>
-      <h>88</h>
+      <x>972</x>
+      <y>315</y>
+      <w>126</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 AuditType
@@ -241,6 +147,84 @@ AuditType
 + STATIC
 bg=#09B8FF
 </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>549</x>
+      <y>126</y>
+      <w>108</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Proyect
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>603</x>
+      <y>180</y>
+      <w>99</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=0..*
+m2=1
+Belongs to &gt;</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>225</x>
+      <y>162</y>
+      <w>279</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>La propiedad derivada Mark se calcula 
+como la moda de las notas de los AuditRecords 
+correspondientes; en caso de empate se elige
+la menor de las empatadas.
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>225</y>
+      <w>99</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>369</x>
+      <y>585</y>
+      <w>81</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>162</x>
+      <y>567</y>
+      <w>216</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>El tiempo entre el tiempo de inicio
+y final, debe ser al menos 1 hora.
+bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
