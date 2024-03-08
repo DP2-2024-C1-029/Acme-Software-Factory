@@ -13,7 +13,7 @@
 Claim
 --
 + code: String {NotBlank, Unique, Pattern(C-[0-9]{4})}
-+ instantiationMoment: Date {Past, Temporal(TIMESTAMP)}
++ instantiationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
 + heading: String {NotBlank, Length(1,75)}
 + description: String {NotBlank, Length(1,100)}
 + department: String {NotBlank, Length(1,100)}
@@ -24,8 +24,8 @@ Claim
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
-      <y>308</y>
+      <x>217</x>
+      <y>217</y>
       <w>273</w>
       <h>182</h>
     </coordinates>
@@ -51,21 +51,21 @@ bg=pink</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>567</x>
-      <y>420</y>
-      <w>273</w>
+      <x>539</x>
+      <y>392</y>
+      <w>322</w>
       <h>119</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Notice
 --
-+ instantiationMoment: Date {Past,Temporal(TIMESTAMP)}
++ instantiationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
 + title: String {NotBlank}
 + author: String {NotBlank}
 + message: String {NotBlank}
 + email: String {Email}
 + link: furtherInformationLink {URL}
-bg=green</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
