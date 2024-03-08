@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>546</x>
+      <y>245</y>
+      <w>273</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Claim
+--
++ code: String {NotBlank, Unique, Pattern(C-[0-9]{4})}
++ instantiationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
++ heading: String {NotBlank, Length(1,75)}
++ description: String {NotBlank, Length(1,100)}
++ department: String {NotBlank, Length(1,100)}
++ emailAddress: String {Email}
++ link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>217</x>
+      <y>217</y>
+      <w>273</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AdministratorDashboard
+--
++ totalNumberOfPrincipalsWithAdministrator: int
++ totalNumberOfPrincipalsWithManager: int
++ totalNumberOfPrincipalsWithDeveloper: int
++ totalNumberOfPrincipalsWithSponsor: int
++ totalNumberOfPrincipalsWithAuditor: int
++ totalNumberOfPrincipalsWithClient: int
++ ratioOfNoticesWithEmailAndLink: Double
++ ratioOfCriticalObjectives: Double
++ ratioOfNonCriticalObjectives: Double
++ averageValueInTheRisks: Double
++ minValueInTheRisks: double
++ maxValueInTheRisks: double
++ deviationValueInTheRisks: Double
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>539</x>
+      <y>392</y>
+      <w>322</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Notice
+--
++ instantiationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
++ title: String {NotBlank}
++ author: String {NotBlank}
++ message: String {NotBlank}
++ email: String {Email}
++ link: furtherInformationLink {URL}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
