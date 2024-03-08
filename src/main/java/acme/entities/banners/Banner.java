@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.banners;
 
 import java.util.Date;
 
