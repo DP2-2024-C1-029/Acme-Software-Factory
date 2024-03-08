@@ -7,6 +7,8 @@ user-account-client-01,true,"UserIdentity{name: 'LOL', surname: 'حسان', emai
 user-account-client-02,true,"UserIdentity{name: 'david', surname: 'Андреев', email: 'LGA@acme.com'}",client2,client2
 user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider', email: 'laurel@acme.com'}",provider1,provider1
 user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
+user-account-sponsor-01,true,"UserIdentity{name: 'Joseph', surname: 'Sponsor', email: 'joseph@acme.com'}",sponsor1,sponsor1
+user-account-sponsor-02,true,"UserIdentity{name: '威仪', surname: '何塞', email: 'weiyibo@acme.com'}",sponsor2,sponsor2
 user-account-auditor-01,true,"UserIdentity{name: 'Jaime', surname: 'Varas Cáceres', email: 'jaivarcac@acme.com'}",auditor1,auditor1
 user-account-auditor-02,true,"UserIdentity{name: 'Ларри', surname: 'Страница', email: 'larrypage@acme.com'}",auditor2,auditor2
 user-account-administrator-02,true,"UserIdentity{name: 'Administrator_1', surname: 'Acme 1', email: 'administrator1@acme.com'}",administrator1,administrator1
