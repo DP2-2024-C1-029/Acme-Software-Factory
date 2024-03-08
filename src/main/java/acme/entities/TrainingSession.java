@@ -36,9 +36,11 @@ public class TrainingSession extends AbstractEntity {
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				startTime;
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endTime;
 
