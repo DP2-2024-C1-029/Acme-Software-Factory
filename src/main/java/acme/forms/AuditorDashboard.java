@@ -22,23 +22,23 @@ public class AuditorDashboard extends AbstractForm {
 	//		average, deviation, minimum, and maximum time of the period lengths 
 	//			in their audit records.
 
-	private Integer				totalStaticCodeAudits;
+	private int					totalStaticCodeAudits;
 
-	private Integer				totalDynamicCodeAudits;
+	private int					totalDynamicCodeAudits;
 
 	private Double				averageAuditRecords;
 
 	private Double				deviationAuditRecords;
 
-	private Integer				minimunAuditRecords;
+	private int					minimunAuditRecords;
 
-	private Integer				maximunAuditRecords;
+	private int					maximunAuditRecords;
 
 	private Double				averageDurationAuditRecords;
 
 	private Double				deviationDurationAuditRecords;
 
-	private Integer				minimunDurationAuditRecords;
+	private int					minimunDurationAuditRecords;
 
-	private Integer				maximunDurationAuditRecords;
+	private int					maximunDurationAuditRecords;
 }
