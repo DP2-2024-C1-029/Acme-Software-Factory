@@ -21,12 +21,12 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	
-	<name>Acme-SF-D01</name>
+	<name>Acme-SF</name>
 	<description>This is Acme Software Factory project </description>
 	
 	<groupId>Acme</groupId>
-	<artifactId>Acme-SF-D01</artifactId>
-	<version>24.1.0</version>
+	<artifactId>Acme-SF</artifactId>
+	<version>D02</version>
 	<packaging>war</packaging>
 	
 	<parent>
