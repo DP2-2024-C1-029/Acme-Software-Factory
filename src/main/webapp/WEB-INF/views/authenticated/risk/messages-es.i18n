@@ -1,0 +1,21 @@
+# messages-es.i18n
+
+authenticated.risk.form.title = Detalles del riesgo
+authenticated.risk.list.title = Listado de riesgos
+
+authenticated.risk.form.label.reference = Referencia
+authenticated.risk.form.label.identificationDate = Fecha de identificación
+authenticated.risk.form.label.impact = Impacto
+authenticated.risk.form.label.probability = Probabilidad
+authenticated.risk.form.label.description = Descripción
+authenticated.risk.form.label.link = Enlace
+authenticated.risk.form.label.value = Valor
+
+authenticated.risk.form.button.create = Registrar
+authenticated.risk.form.button.update = Actualizar
+
+authenticated.risk.list.label.reference = Referencia
+authenticated.risk.list.label.identificationDate = Fecha de identificación
+authenticated.risk.list.label.impact = Impacto
+authenticated.risk.list.label.probability = Probabilidad
+authenticated.risk.list.label.value = Valor
