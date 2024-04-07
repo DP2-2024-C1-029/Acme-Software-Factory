@@ -16,7 +16,10 @@ public class AuthenticatedRiskController extends AbstractController<Authenticate
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedRiskListService listService;
+	private AuthenticatedRiskListService	listService;
+
+	@Autowired
+	private AuthenticatedRiskShowService	showService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -24,6 +27,7 @@ public class AuthenticatedRiskController extends AbstractController<Authenticate
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 	}
 
 }

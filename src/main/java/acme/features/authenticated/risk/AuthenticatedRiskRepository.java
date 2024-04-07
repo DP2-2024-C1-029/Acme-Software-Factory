@@ -26,4 +26,7 @@ public interface AuthenticatedRiskRepository extends AbstractRepository {
 	@Query("select r from Risk r")
 	Collection<Risk> findMany();
 
+	@Query("select r from Risk r where r.id = :id")
+	Risk findOneRiskById(int id);
+
 }
