@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>558</x>
+      <y>315</y>
+      <w>378</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+CodeAudit
+--
++ code: String {NotBlank, Unique,  Pattern ([A-Z]{1,3}-[0-9]{3})}
++ executionDate: Date {Past, Temporal(TIMESTAMP)}
++ type: AuditType {NotNull}
++ correctiveActions: String {NotBlank, Length(1,100)}
+- link: String {URL, Length(1,255)}
++ / mark: Mark {Transient}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>963</x>
+      <y>315</y>
+      <w>126</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Mark
+--
++ A_PLUS
++ A
++ B
++ C
++ F
++ F_MINUS
+bg=#09B8FF
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>567</x>
+      <y>567</y>
+      <w>378</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+AuditRecord
+--
++ code: String {NotBlank, Unique,  Pattern (AU-[0-9]{4}-[0-9]{3})}
++ startPeriod: Date {NotNull, Past, Temporal(TIMESTAMP)}
++ endPeriod: Date {NotNull, Past, Temporal(TIMESTAMP)}
++ mark: Mark {NotNull}
+- link: String {URL, Length(1,255)}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>162</x>
+      <y>333</y>
+      <w>288</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Auditor
+--
++ firm: String {NotBlank, Length(1,75)}
++ professionalId: String {NotBlank, Length(1,25)}
++ certifications: String {NotBlank, Length(1,100)}
+- link: String {URL, Length(1,255)}
+bg=orange
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>963</x>
+      <y>477</y>
+      <w>315</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+DeveloperDashboard
+--
++ totalStaticCodeAudits: int
++ totalDynamicCodeAudits: int
+-averageAuditRecords: Double
+-deviationAuditRecords: Double
++ minimunAuditRecords: int
++ maximunAuditRecords: int
+-averageDurationAuditRecords: Double
+-deviationDurationAuditRecords: Double
++ minimunDurationAuditRecords: int
++ maximunDurationAuditRecords: int
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>738</x>
+      <y>441</y>
+      <w>63</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=0..*
+m2=1
+Has &gt;</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>441</x>
+      <y>369</y>
+      <w>135</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=0..*
+m2=1
+Has &gt;</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1107</x>
+      <y>342</y>
+      <w>126</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AuditType
+--
++ DYNAMIC
++ STATIC
+bg=#09B8FF
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>684</x>
+      <y>153</y>
+      <w>108</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Proyect
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>738</x>
+      <y>207</y>
+      <w>99</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=0..*
+m2=1
+Belongs to &gt;</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>360</x>
+      <y>189</y>
+      <w>279</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>La propiedad derivada Mark se calcula 
+como la moda de las notas de los AuditRecords 
+correspondientes; en caso de empate se elige
+la menor de las empatadas.
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>486</x>
+      <y>252</y>
+      <w>99</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>648</y>
+      <w>81</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>297</x>
+      <y>630</y>
+      <w>216</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>El tiempo entre el tiempo de inicio
+y final, debe ser al menos 1 hora.
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>387</x>
+      <y>531</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>The oldest date 
+must not be earlier
+than 2000/01/01 
+00:00
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>558</y>
+      <w>81</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>70.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>891</x>
+      <y>252</y>
+      <w>45</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;70.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>891</x>
+      <y>198</y>
+      <w>126</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>The oldest date 
+must not be earlier
+than 2000/01/01 
+00:00
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

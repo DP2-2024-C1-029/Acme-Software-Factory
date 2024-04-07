@@ -9,6 +9,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
@@ -37,6 +38,7 @@ public class Claim extends AbstractEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
+	@NotNull
 	private Date				instantiationMoment;
 
 	@NotBlank
@@ -52,9 +54,11 @@ public class Claim extends AbstractEntity {
 	private String				department;
 
 	@Email
+	@Length(max = 255)
 	private String				emailAddress;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	// Derived attributes -----------------------------------------------------
