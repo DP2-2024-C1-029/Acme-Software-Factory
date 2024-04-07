@@ -1,0 +1,21 @@
+# messages-es.i18n
+
+administrator.risk.form.title = Detalles del riesgo
+administrator.risk.list.title = Listado de riesgos
+
+administrator.risk.form.label.reference = Referencia
+administrator.risk.form.label.identificationDate = Fecha de identificación
+administrator.risk.form.label.impact = Impacto
+administrator.risk.form.label.probability = Probabilidad
+administrator.risk.form.label.description = Descripción
+administrator.risk.form.label.link = Enlace
+administrator.risk.form.label.value = Valor
+
+administrator.risk.form.button.create = Registrar
+administrator.risk.form.button.update = Actualizar
+
+administrator.risk.list.label.reference = Referencia
+administrator.risk.list.label.identificationDate = Fecha de identificación
+administrator.risk.list.label.impact = Impacto
+administrator.risk.list.label.probability = Probabilidad
+administrator.risk.list.label.value = Valor

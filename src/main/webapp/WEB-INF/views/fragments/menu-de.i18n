@@ -25,6 +25,7 @@ master.menu.authenticated.list-risks = Risiken auflisten
 master.menu.administrator = Administrator
 master.menu.administrator.dashboard = Leistungsübersicht
 master.menu.administrator.user-accounts = Benutzerkonten
+master.menu.administrator.list-risks = Risiken auflisten
 master.menu.administrator.populate-initial = Datenbank initialisieren
 master.menu.administrator.populate-sample = Datenbank mit Beispielen befüllen
 master.menu.administrator.shut-down = System herunterfahren

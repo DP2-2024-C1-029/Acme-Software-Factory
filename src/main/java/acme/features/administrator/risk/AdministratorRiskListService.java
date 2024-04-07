@@ -10,25 +10,25 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.risk;
+package acme.features.administrator.risk;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
+import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.risks.Risk;
 
 @Service
-public class AuthenticatedRiskListService extends AbstractService<Authenticated, Risk> {
+public class AdministratorRiskListService extends AbstractService<Administrator, Risk> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedRiskRepository repository;
+	private AdministratorRiskRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 

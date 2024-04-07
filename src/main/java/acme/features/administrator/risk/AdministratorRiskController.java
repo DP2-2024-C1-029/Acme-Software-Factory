@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.risk;
+package acme.features.administrator.risk;
 
 import javax.annotation.PostConstruct;
 
@@ -7,16 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.client.data.accounts.Authenticated;
+import acme.client.data.accounts.Administrator;
 import acme.entities.risks.Risk;
 
 @Controller
-public class AuthenticatedRiskController extends AbstractController<Authenticated, Risk> {
+public class AdministratorRiskController extends AbstractController<Administrator, Risk> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedRiskListService listService;
+	private AdministratorRiskListService	listService;
+
+	@Autowired
+	private AdministratorRiskShowService	showService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -24,6 +27,7 @@ public class AuthenticatedRiskController extends AbstractController<Authenticate
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 	}
 
 }
