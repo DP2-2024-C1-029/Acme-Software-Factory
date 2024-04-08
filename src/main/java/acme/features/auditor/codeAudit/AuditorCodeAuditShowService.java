@@ -1,5 +1,5 @@
 
-package acme.features.auditor.codeAudits;
+package acme.features.auditor.codeAudit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +42,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "link");
 
 		super.getResponse().addData(dataset);
 	}

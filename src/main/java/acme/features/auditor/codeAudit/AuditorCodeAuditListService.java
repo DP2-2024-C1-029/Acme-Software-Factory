@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.auditor.codeAudits;
+package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
 
@@ -53,7 +53,7 @@ public class AuditorCodeAuditListService extends AbstractService<Auditor, CodeAu
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability");
+		dataset = super.unbind(object, "code", "executionDate", "type");
 
 		super.getResponse().addData(dataset);
 	}
