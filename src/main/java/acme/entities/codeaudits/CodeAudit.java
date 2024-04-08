@@ -68,6 +68,8 @@ public class CodeAudit extends AbstractEntity {
 	@Length(max = 255)
 	private String				link;
 
+	private boolean				draftMode;
+
 	// Derived attributes -----------------------------------------------------
 
 	// a mark (computed as the mode of the marks in the corresponding auditing records; ties must be broken towards the smallest mark) 
