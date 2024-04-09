@@ -12,6 +12,9 @@ import acme.entities.sponsorships.Sponsorship;
 @Repository
 public interface SponsorSponsorshipRepository extends AbstractRepository {
 
+	@Query("select s from Sponsorship s where s.id = :id")
+	Sponsorship findOneSponsorshipById(int id);
+
 	@Query("select s from Sponsorship s where s.sponsor.id = :id")
 	Collection<Sponsorship> findManySponsorshipsBySponsorId(int id);
 

@@ -14,11 +14,11 @@ import acme.roles.Sponsor;
 public class SponsorSponsorshipController extends AbstractController<Sponsor, Sponsorship> {
 
 	@Autowired
-	public SponsorSponsorshipListService listService;
+	public SponsorSponsorshipListService	listService;
 
-	//	@Autowired
-	//	public SponsorSponsorshipShowService	showService;
-	//
+	@Autowired
+	public SponsorSponsorshipShowService	showService;
+
 	//	@Autowired
 	//	public SponsorSponsorshipCreateService	createService;
 	//
@@ -32,5 +32,6 @@ public class SponsorSponsorshipController extends AbstractController<Sponsor, Sp
 	@PostConstruct
 	protected void initialize() {
 		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 	}
 }
