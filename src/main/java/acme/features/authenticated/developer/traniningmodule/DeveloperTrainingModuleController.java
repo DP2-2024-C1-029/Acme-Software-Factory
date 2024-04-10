@@ -35,5 +35,7 @@ public class DeveloperTrainingModuleController extends AbstractController<Develo
 	@PostConstruct
 	protected void initialize() {
 		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
+
 	}
 }

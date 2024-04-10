@@ -7,6 +7,6 @@
 
 <acme:list>
 	<acme:list-column code="developer.trainingmodule.list.label.code" path="code" width="20%"/>
-	<acme:list-column code="developer.trainingmodule.list.label.details" path="type" width="40%"/>	
-	<acme:list-column code="developer.trainingmodule.list.label." path="amount" width="40%"/>
+	<acme:list-column code="developer.trainingmodule.list.label.details" path="details" width="40%"/>	
+	<acme:list-column code="developer.trainingmodule.list.label.project.title" path="project.title" width="40%"/>
 </acme:list>
