@@ -48,7 +48,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "code", "executionDate", "type", "correctiveActions", "link");
+		super.bind(object, "code", "executionDate", "type", "correctiveActions", "link", "project");
 	}
 
 	@Override
