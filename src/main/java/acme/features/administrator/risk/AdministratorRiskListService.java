@@ -52,11 +52,9 @@ public class AdministratorRiskListService extends AbstractService<Administrator,
 		assert object != null;
 
 		Dataset dataset;
-		Double value = object.getImpact() * object.getProbability();
 
-		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability");
-		dataset.put("payload", Double.toString(value));
-		//dataset.put("value", Double.toString(object.value()));
+		dataset = super.unbind(object, "reference", "identificationDate");
+		dataset.put("value", object.value());
 
 		super.getResponse().addData(dataset);
 	}

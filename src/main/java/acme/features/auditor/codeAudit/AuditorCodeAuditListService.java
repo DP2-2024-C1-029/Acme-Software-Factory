@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.codeaudits.CodeAudit;
@@ -41,8 +42,10 @@ public class AuditorCodeAuditListService extends AbstractService<Auditor, CodeAu
 	@Override
 	public void load() {
 		Collection<CodeAudit> objects;
+		Principal principal;
 
-		objects = this.repository.findMany();
+		principal = super.getRequest().getPrincipal();
+		objects = this.repository.findMine(principal.getActiveRoleId());
 
 		super.getBuffer().addData(objects);
 	}

@@ -1,0 +1,18 @@
+# messages-de.i18n
+
+validation.risk.reference.pattern = Die Referenz muss dem Muster R-XXX folgen
+validation.risk.reference.notblank = Die Referenz darf nicht leer sein
+validation.risk.date = Das Identifikationsdatum muss in der Vergangenheit liegen
+validation.risk.impact = Die Auswirkung muss eine positive reelle Zahl sein
+validation.risk.probability.notnull = Die Wahrscheinlichkeit darf nicht null sein
+validation.risk.description.notblank = Die Beschreibung darf nicht leer sein
+validation.risk.description.max = Die Beschreibung darf maximal 101 Zeichen lang sein
+
+validation.codeaudit.code.pattern = Der Code muss dem Muster ABC-XXX folgen
+validation.codeaudit.code.notblank = Der Code darf nicht leer sein
+validation.codeaudit.date = Das Ausführungsdatum muss in der Vergangenheit liegen
+validation.codeaudit.correctiveActions.notblank = Die Korrekturmaßnahmen dürfen nicht leer sein
+validation.codeaudit.correctiveActions.max = Die Korrekturmaßnahmen dürfen maximal 101 Zeichen lang sein
+
+validation.job.reference = Die Referenz darf nur Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten
+default.placeholder.phone = Verwenden Sie das internationale Format +99 (999) 999999

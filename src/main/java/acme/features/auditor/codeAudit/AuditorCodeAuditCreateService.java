@@ -2,24 +2,21 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
-import java.util.EnumMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.codeaudits.AuditRecord;
 import acme.entities.codeaudits.AuditType;
 import acme.entities.codeaudits.CodeAudit;
-import acme.entities.codeaudits.Mark;
 import acme.entities.projects.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditCreateService extends AbstractService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -37,53 +34,63 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 	@Override
 	public void load() {
 		CodeAudit object;
-		int id;
+		Auditor auditor;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneCodeAuditById(id);
+		auditor = this.repository.findOneAuditorById(super.getRequest().getPrincipal().getActiveRoleId());
+		object = new CodeAudit();
+		object.setDraftMode(true);
+		object.setAuditor(auditor);
 
 		super.getBuffer().addData(object);
+	}
+
+	@Override
+	public void bind(final CodeAudit object) {
+		assert object != null;
+
+		super.bind(object, "code", "executionDate", "type", "correctiveActions", "link");
+	}
+
+	@Override
+	public void validate(final CodeAudit object) {
+		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			CodeAudit existing;
+
+			existing = this.repository.findOneCodeAuditByCode(object.getCode());
+			super.state(existing == null, "reference", "Auditor.CodeAudit.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
+			super.state(MomentHelper.isPast(object.getExecutionDate()), "executionDate", "Auditor.CodeAudit.form.error.too-close");
+	}
+
+	@Override
+	public void perform(final CodeAudit object) {
+		assert object != null;
+
+		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final CodeAudit object) {
 		assert object != null;
 
-		Collection<AuditRecord> auditRecords;
 		Collection<Project> projects;
 		SelectChoices choices;
 		SelectChoices types;
 		Dataset dataset;
 
-		choices = SelectChoices.from(AuditType.class, object.getType());
+		types = SelectChoices.from(AuditType.class, object.getType());
+
+		// TODO CÓMO ENLAZAR CON PROJECT
 
 		projects = this.repository.findManyProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		auditRecords = this.repository.findAllAuditRecordsByCodeAuditId(object.getId());
-
-		EnumMap<Mark, Integer> modeMap = new EnumMap<>(Mark.class);
-
-		for (AuditRecord record : auditRecords) {
-			Mark mode = record.getMark();
-			modeMap.put(mode, modeMap.getOrDefault(mode, 0) + 1);
-		}
-
-		Mark mode = null;
-		int maxFrequency = 0;
-		for (Map.Entry<Mark, Integer> entry : modeMap.entrySet())
-			if (entry.getValue() == maxFrequency) { // si empata a la frecuencia máx
-				if (mode != null && mode.ordinal() > entry.getKey().ordinal()) // nos quedamos con la de menor nota
-					mode = entry.getKey();
-			} else if (entry.getValue() > maxFrequency) { // si la frecuencia es mayor nos quedamos con esa
-				maxFrequency = entry.getValue();
-				mode = entry.getKey();
-			}
-
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "link", "draftMode");
-		dataset.put("types", choices);
-		dataset.put("mark", mode);
-		dataset.put("isPassing", mode != null && mode.compareTo(Mark.C) <= 0);
+		dataset.put("types", types);
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
