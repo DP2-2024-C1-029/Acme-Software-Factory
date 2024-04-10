@@ -59,7 +59,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 			CodeAudit existing;
 
 			existing = this.repository.findOneCodeAuditByCode(object.getCode());
-			super.state(existing == null, "reference", "Auditor.CodeAudit.form.error.duplicated");
+			super.state(existing == null, "code", "Auditor.CodeAudit.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("executionDate"))

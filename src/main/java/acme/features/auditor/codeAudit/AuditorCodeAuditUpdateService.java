@@ -1,5 +1,5 @@
 /*
- * EmployerJobDeleteService.java
+ * EmployerJobUpdateService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -18,23 +18,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.codeaudits.AuditRecord;
 import acme.entities.codeaudits.AuditType;
 import acme.entities.codeaudits.CodeAudit;
 import acme.entities.projects.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private AuditorCodeAuditRepository repository;
 
-	// AbstractService interface ----------------------------------------------
+	// AbstractService<Employer, Job> -------------------------------------
 
 
 	@Override
@@ -66,23 +66,27 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 	public void bind(final CodeAudit object) {
 		assert object != null;
 
-		super.bind(object, "code", "executionDate", "type", "correctiveActions", "link", "auditor", "project");
+		Auditor auditor;
+		auditor = this.repository.findOneAuditorById(super.getRequest().getPrincipal().getActiveRoleId());
+
+		super.bind(object, "code", "executionDate", "type", "correctiveActions", "link", "project");
+		object.setAuditor(auditor);
+
 	}
 
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
+			super.state(MomentHelper.isPast(object.getExecutionDate()), "executionDate", "Auditor.CodeAudit.form.error.too-close");
 	}
 
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
 
-		Collection<AuditRecord> records;
-
-		records = this.repository.findManyAuditRecordsByCodeAuditId(object.getId());
-		this.repository.deleteAll(records);
-		this.repository.delete(object);
+		this.repository.save(object);
 	}
 
 	@Override
@@ -101,12 +105,12 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 		projects = this.repository.findManyProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "link", "draftMode");
+		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "link", "draftMode");
+		dataset.put("type", types.getSelected().getKey());
 		dataset.put("types", types);
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
 	}
-
 }

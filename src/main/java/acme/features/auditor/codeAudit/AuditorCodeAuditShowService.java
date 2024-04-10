@@ -55,7 +55,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		SelectChoices types;
 		Dataset dataset;
 
-		choices = SelectChoices.from(AuditType.class, object.getType());
+		types = SelectChoices.from(AuditType.class, object.getType());
 
 		projects = this.repository.findManyProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
@@ -80,8 +80,9 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 				mode = entry.getKey();
 			}
 
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "link", "draftMode");
-		dataset.put("types", choices);
+		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "link", "draftMode");
+		dataset.put("type", types.getSelected().getKey());
+		dataset.put("types", types);
 		dataset.put("mark", mode);
 		dataset.put("isPassing", mode != null && mode.compareTo(Mark.C) <= 0);
 		dataset.put("project", choices.getSelected().getKey());
@@ -89,5 +90,4 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		super.getResponse().addData(dataset);
 	}
-
 }
