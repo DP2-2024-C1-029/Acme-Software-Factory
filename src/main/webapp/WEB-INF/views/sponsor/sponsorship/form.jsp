@@ -15,13 +15,13 @@
 	<acme:input-select code="sponsor.sponsorship.form.label.projects" path="project" choices="${projects}"/>
 	
 	<jstl:choose>	 
-		<jstl:when test="${_command == 'show' && isPublished == false}">
+		<jstl:when test="${_command == 'show' && isPublished == true}">
 			<acme:button code="sponsor.sponsorship.form.button.invoices" action="/sponsor/invoice/list?masterId=${id}"/>			
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && isPublished == true}">
-			<%-- <acme:button code="sponsor.sponsorship.form.button.duties" action="/employer/duty/list?masterId=${id}"/> --%>
-			<%-- <acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update"/>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && isPublished == false}">
+			<acme:button code="sponsor.sponsorship.form.button.invoices" action="/sponsor/invoice/list?masterId=${id}"/>
 			<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete"/>
+			<%-- <acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update"/>
 			<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish"/> --%>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
