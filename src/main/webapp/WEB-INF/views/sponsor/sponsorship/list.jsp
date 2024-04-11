@@ -8,3 +8,7 @@
 	<acme:list-column code="sponsor.sponsorship.list.label.amount" path="amount" width="40%"/>
 	<acme:list-column code="sponsor.sponsorship.list.label.type" path="type" width="40%"/>	
 </acme:list>
+
+<jstl:if test="${_command == 'list' }">
+	<acme:button code="sponsor.sponsorship.form.button.create" action="/sponsor/sponsorship/create"/>
+</jstl:if>
