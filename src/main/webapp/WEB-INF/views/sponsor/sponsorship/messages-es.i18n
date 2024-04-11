@@ -32,5 +32,6 @@ sponsor.sponsorship.form.button.publish = Publicar
 sponsor.sponsorship.form.error.duplicated = Este código ya está en uso.
 sponsor.sponsorship.form.error.not-exists = Este proyecto no te pertenece, por lo que no puedes utilizarlo.
 sponsor.sponsorship.form.error.not-after = El periodo inicial debe comenzar después de la fecha de inicio.
-sponsor.sponsorship.form.error.too-close = El periodo final debe ser al menos 7 días después del periodo inicial.
+sponsor.sponsorship.form.error.too-close = El periodo final debe ser al menos 1 mes después del periodo inicial.
 sponsor.sponsorship.form.error.negative-amount = El importe debe ser positivo.
+sponsor.sponsorship.form.error.not-total-amount-invoices = El patrocinio no se puede publicar porque la suma de los importes de sus facturas no coincide con el importe del patrocinio.

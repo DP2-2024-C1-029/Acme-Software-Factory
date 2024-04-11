@@ -18,7 +18,7 @@ import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sponsorship> {
+public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sponsorship> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -30,18 +30,27 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		Sponsorship sponsorship;
+		Sponsor sponsor;
+
+		masterId = super.getRequest().getData("id", int.class);
+		sponsorship = this.repository.findOneSponsorshipById(masterId);
+		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
+
+		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsor) && !sponsorship.isPublished();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Sponsorship sponsorship;
-		Sponsor sponsor;
+		int id;
 
-		sponsor = this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
-		sponsorship = new Sponsorship();
-		sponsorship.setPublished(false);
-		sponsorship.setSponsor(sponsor);
+		id = super.getRequest().getData("id", int.class);
+		sponsorship = this.repository.findOneSponsorshipById(id);
 
 		super.getBuffer().addData(sponsorship);
 	}
@@ -68,13 +77,14 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			Sponsorship existing;
 
 			existing = this.repository.findOneSponsorshipByCode(object.getCode());
-			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicated");
+			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Collection<Project> myProjects;
 
 			myProjects = this.repository.findManyProjectsBySponsorId(super.getRequest().getPrincipal().getActiveRoleId());
+
 			super.state(myProjects.contains(object.getProject()), "project", "sponsor.sponsorship.form.error.not-exists");
 		}
 
