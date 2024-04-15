@@ -10,3 +10,7 @@
 	<acme:list-column code="developer.trainingmodule.list.label.details" path="details" width="40%"/>	
 	<acme:list-column code="developer.trainingmodule.list.label.project.title" path="project.title" width="40%"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="developer.trainingmodule.list.button.create" action="/developer/training-module/create"/>
+</jstl:if>	

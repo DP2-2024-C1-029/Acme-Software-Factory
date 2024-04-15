@@ -8,7 +8,15 @@
 	<acme:input-textbox code="developer.trainingmodule.list.label.details" path="details"/>
 	<acme:input-textbox code="developer.trainingmodule.list.label.code" path="code"/>
 	<acme:input-select code="developer.trainingmodule.list.label.difficultyLevels" path="difficultyLevel" choices="${difficultyLevels}"/>
-	<acme:input-email code="developer.trainingmodule.list.label.updateMoment" path="updateMoment"/>
+	<acme:input-moment code="developer.trainingmodule.list.label.updateMoment" path="updateMoment"/>
 	<acme:input-integer code="developer.trainingmodule.list.label.estimatedTotalTime" path="estimatedTotalTime"/>
 	<acme:input-url code="developer.trainingmodule.list.label.link" path="link"/>
+	<acme:input-select code="developer.trainingmodule.list.label.projects" path="project" choices="${projects}"/>
+	
+	
+	<jstl:choose>	 
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="developer.trainingmodule.form.button.create" action="/developer/training-module/create"/>
+		</jstl:when>		
+	</jstl:choose>
 </acme:form>

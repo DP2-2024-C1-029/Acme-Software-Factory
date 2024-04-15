@@ -12,6 +12,7 @@ import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
 import acme.entities.trainingmodules.DifficultyLevel;
 import acme.entities.trainingmodules.TrainingModule;
+import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
 @Service
@@ -73,10 +74,10 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	public void perform(final TrainingModule object) {
 		assert object != null;
 
-		Collection<Project> projects;
+		Collection<TrainingSession> trainingSessions;
 
-		projects = this.repository.findManyProjectsByTrainingModuleId(object.getId());
-		this.repository.deleteAll(projects);
+		trainingSessions = this.repository.findManyTrainingSessionsByTrainingModuleId(object.getId());
+		this.repository.deleteAll(trainingSessions);
 		this.repository.delete(object);
 	}
 
@@ -85,13 +86,15 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		assert object != null;
 
 		int developerId;
-		Collection<TrainingModule> trainingModules;
+		SelectChoices choicesProject;
+		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
 
 		developerId = super.getRequest().getPrincipal().getActiveRoleId();
-		trainingModules = this.repository.findManyTrainingModuleByDeveloperId(developerId);
 		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
+		projects = this.repository.findManyProjectsByDeveloperId(developerId);
+		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
 		dataset = super.unbind(object, "creationMoment", "details", "code", "updateMoment", "link", "estimatedTotalTime");
 		dataset.put("difficultyLevel", choices.getSelected().getKey());
