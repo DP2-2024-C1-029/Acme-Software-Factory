@@ -55,14 +55,14 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		int developerId;
-		Developer developer;
-
-		developerId = super.getRequest().getData("developer", int.class);
-		developer = this.repository.findOneDeveloperById(developerId);
+		int projectId;
+		Project project;
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repository.findOneProjectById(projectId);
 
 		super.bind(object, "creationMoment", "details", "code", "diffitultyLevel", "updateMoment", "link", "estimatedTotalTime");
-		object.setDeveloper(developer);
+		object.setProject(project);
+
 	}
 
 	@Override
@@ -99,6 +99,8 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		dataset = super.unbind(object, "creationMoment", "details", "code", "updateMoment", "link", "estimatedTotalTime");
 		dataset.put("difficultyLevel", choices.getSelected().getKey());
 		dataset.put("difficultyLevels", choices);
+		dataset.put("project", choicesProject.getSelected().getKey());
+		dataset.put("projects", choicesProject);
 
 		super.getResponse().addData(dataset);
 	}

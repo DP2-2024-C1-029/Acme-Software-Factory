@@ -17,6 +17,9 @@
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="developer.trainingmodule.form.button.create" action="/developer/training-module/create"/>
+		</jstl:when>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+			<acme:submit code="developer.trainingmodule.form.button.delete" action="/developer/training-module/delete"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>
