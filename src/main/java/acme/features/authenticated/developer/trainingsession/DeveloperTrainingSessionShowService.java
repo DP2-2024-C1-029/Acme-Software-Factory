@@ -32,7 +32,7 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 
 		trainingSessionId = super.getRequest().getData("id", int.class);
 		trainingSession = this.repository.findOneTrainingSessionById(trainingSessionId);
-		status = trainingSession != null && super.getRequest().getPrincipal().hasRole("Developer");
+		status = trainingSession != null && super.getRequest().getPrincipal().hasRole(trainingSession.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -61,7 +61,7 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 
 		developerId = super.getRequest().getPrincipal().getActiveRoleId();
 		trainingModules = this.repository.findManyTrainingModuleByDeveloperId(developerId);
-		choicesTrainingModules = SelectChoices.from(trainingModules, "title", object.getTrainingModule());
+		choicesTrainingModules = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
 
 		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink");
 		dataset.put("trainingModule", choicesTrainingModules.getSelected().getKey());
