@@ -1,6 +1,25 @@
 sponsor.invoice.list.title = Listing of invoices
+sponsor.invoice.form.title = Invoice form
 
 sponsor.invoice.list.label.code = Code 
 sponsor.invoice.list.label.dueDate = Due date
 sponsor.invoice.list.label.totalAmount = Total amount
+sponsor.invoice.list.label.isPublished = Published
+
+sponsor.invoice.form.label.code = Code 
+sponsor.invoice.form.label.registrationTime = Registration time
+sponsor.invoice.form.label.dueDate = Due date
+sponsor.invoice.form.label.quantity = Quantity
+sponsor.invoice.form.label.tax = Taxes
+sponsor.invoice.form.label.totalAmount = Total amount
+sponsor.invoice.form.label.link = Link
+sponsor.invoice.form.label.isPublished = Published
+
+sponsor.invoice.form.button.update = Update
+sponsor.invoice.form.button.delete = Delete
+sponsor.invoice.form.button.publish = Publish
 sponsor.invoice.list.button.create = Create
+
+sponsor.invoice.form.error.duplicated = This code is already in use
+sponsor.invoice.form.error.too-close = The due date must be at least 1 month later to the registration time
+sponsor.invoice.form.error.negative-amount = The quantity must be positive not nought
