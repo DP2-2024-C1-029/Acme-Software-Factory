@@ -1,0 +1,6 @@
+sponsor.invoice.list.title = Listing of invoices
+
+sponsor.invoice.list.label.code = Code 
+sponsor.invoice.list.label.dueDate = Due date
+sponsor.invoice.list.label.totalAmount = Total amount
+sponsor.invoice.list.button.create = Create
