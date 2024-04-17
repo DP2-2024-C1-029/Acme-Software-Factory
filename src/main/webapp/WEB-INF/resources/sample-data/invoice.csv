@@ -2,8 +2,8 @@ key,key:sponsorship,code,registrationTime,dueDate,quantity,tax,link,isPublished
 invoice-01,sponsorship-01,IN-1000-0000,2019/06/08 13:00,2022/09/05 15:00,"EUR 4,397.00",21.00,,false
 invoice-02,sponsorship-01,IN-1000-0001,2019/06/08 13:00,2022/09/05 15:00,"EUR 4,000.00",21.00,,false
 invoice-03,sponsorship-01,IN-1000-0002,2019/06/08 13:00,2022/09/05 15:00,"EUR 4,000.00",21.00,,false
-invoice-04,sponsorship-02,IN-1000-0003,2019/06/08 13:00,2022/09/05 15:00,"EUR 12,397.00",21.00,,true
-invoice-05,sponsorship-02,IN-1000-0004,2019/06/08 13:00,2022/09/05 15:00,"EUR 12,397.00",21.00,,false
+invoice-04,sponsorship-02,IN-1000-0003,2019/06/08 13:00,2022/09/05 15:00,"EUR 6,198.50",21.00,,true
+invoice-05,sponsorship-02,IN-1000-0004,2019/06/08 13:00,2022/09/05 15:00,"EUR 6,198.50",21.00,,false
 invoice-06,sponsorship-03,IN-1000-0005,2019/06/08 13:00,2022/09/05 15:00,"EUR 12,397.00",21.00,,true
 invoice-07,sponsorship-04,IN-0000-0000,2019/06/08 13:00,2022/09/05 15:00,"EUR 12,397.00",21.00,,true
 invoice-08,sponsorship-05,IN-0000-0001,2019/06/08 13:00,2022/09/05 15:00,"EUR 12,397.00",21.00,,true

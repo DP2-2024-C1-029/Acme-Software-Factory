@@ -1,6 +1,6 @@
 key,key:project,key:sponsor,code,moment,initial_execution_period,ending_execution_period,amount,type,email,link,isPublished
 sponsorship-01,project-01,sponsor-01,A-000,2019/06/08 13:00,2022/07/30 14:00,2022/09/05 15:00,"EUR 15,000.37",FINANCIAL,correo.prueba@gmail.com,https://www.google.com,false
-sponsorship-02,project-01,sponsor-01,A-001,2019/06/08 13:00,2022/07/30 14:00,2022/09/05 15:00,"EUR 15,000.37",FINANCIAL,correo.prueba@gmail.com,https://www.google.com,true
+sponsorship-02,project-01,sponsor-01,A-001,2019/06/08 13:00,2022/07/30 14:00,2022/09/05 15:00,"EUR 15,000.37",FINANCIAL,correo.prueba@gmail.com,https://www.google.com,false
 sponsorship-03,project-01,sponsor-01,A-002,2019/06/08 13:00,2022/07/30 14:00,2022/09/05 15:00,"EUR 15,000.37",FINANCIAL,correo.prueba@gmail.com,https://www.google.com,true
 sponsorship-04,project-02,sponsor-01,A-003,2019/06/08 13:00,2022/07/30 14:00,2022/09/05 15:00,"EUR 15,000.37",FINANCIAL,correo.prueba@gmail.com,https://www.google.com,true
 sponsorship-05,project-03,sponsor-01,A-004,2019/06/08 13:00,2022/07/30 14:00,2022/09/05 15:00,"EUR 15,000.37",FINANCIAL,correo.prueba@gmail.com,https://www.google.com,true

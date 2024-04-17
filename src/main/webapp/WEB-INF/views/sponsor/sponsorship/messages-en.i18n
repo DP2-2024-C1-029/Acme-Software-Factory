@@ -36,3 +36,4 @@ sponsor.sponsorship.form.error.not-after = The initial period must start after t
 sponsor.sponsorship.form.error.too-close = The final period must be at least 1 month after the initial period.
 sponsor.sponsorship.form.error.negative-amount = The amount must be positive.
 sponsor.sponsorship.form.error.not-total-amount-invoices = The sponsorship cannot be published because the sum of amounts of its invoices is not equal to the amount of the sponsorship.
+sponsor.sponsorship.form.error.not-all-invoices-published = Not all the invoices are published.

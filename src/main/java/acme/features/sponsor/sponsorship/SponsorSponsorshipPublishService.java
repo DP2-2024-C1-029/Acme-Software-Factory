@@ -110,6 +110,13 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			sumTotalAmountsInvoices = Math.round(sumTotalAmountsInvoices * 100) / 100.0;
 			super.state(sumTotalAmountsInvoices != null && sumTotalAmountsInvoices.equals(object.getAmount().getAmount()), "*", "sponsor.sponsorship.form.error.not-total-amount-invoices");
 		}
+
+		{
+			boolean allInvoicesPublished;
+
+			allInvoicesPublished = this.repository.findManyInvoicesBySponsorshipId(object.getId()).stream().allMatch(Invoice::isPublished);
+			super.state(allInvoicesPublished, "*", "sponsor.sponsorship.form.error.not-all-invoices-published");
+		}
 	}
 
 	@Override
