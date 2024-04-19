@@ -1,0 +1,14 @@
+sponsor.sponsordashboard.form.title = Panel de Control de Patrocinios
+
+sponsor.dashboard.form.title.general-indicators = Indicadores Generales
+
+sponsor.dashboard.form.label.total-invoices-with-tax-lower-to-21 = Facturas Totales con Impuesto Inferior al 21%
+sponsor.dashboard.form.label.total-sponsorships-with-link = Patrocinios Totales con Enlace
+sponsor.dashboard.form.label.average-amount-sponsorships = Promedio del Importe de los Patrocinios
+sponsor.dashboard.form.label.deviation-amount-sponsorships = Desviación del Importe de los Patrocinios
+sponsor.dashboard.form.label.minimum-amount-sponsorships = Importe Mínimo de los Patrocinios
+sponsor.dashboard.form.label.maximum-amount-sponsorships = Importe Máximo de los Patrocinios
+sponsor.dashboard.form.label.average-quantity-invoices = Promedio de la Cantidad de Facturas
+sponsor.dashboard.form.label.deviation-quantity-invoices = Desviación de la Cantidad de Facturas
+sponsor.dashboard.form.label.minimum-quantity-invoices = Cantidad Mínima de Facturas
+sponsor.dashboard.form.label.maximum-quantity-invoices = Cantidad Máxima de Facturas
