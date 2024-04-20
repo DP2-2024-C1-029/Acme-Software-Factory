@@ -10,17 +10,15 @@
 	<acme:input-textbox code="developer.trainingsession.list.label.location" path="location"/>
 	<acme:input-textbox code="developer.trainingsession.list.label.instructor" path="instructor"/>
 	<acme:input-email code="developer.trainingsession.list.label.contactEmail" path="contactEmail"/>
-	<acme:input-url code="developer.trainingsession.list.label.furtherInformationLink" path="furtherInformationLink"/>
-	<acme:input-select code="developer.trainingsession.list.label.trainingModules" path="trainingModule" choices="${trainingModules}"/>
-	
+	<acme:input-url code="developer.trainingsession.list.label.furtherInformationLink" path="furtherInformationLink"/>	
 	
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="developer.trainingsession.form.button.create" action="/developer/training-sessio/create"/>
+			<acme:submit code="developer.trainingsession.form.button.create" action="/developer/training-session/create?masterId=${masterId}"/>
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
-			<acme:submit code="developer.trainingsession.form.button.delete" action="/developer/training-sessio/delete"/>
-			<acme:submit code="developer.trainingsession.form.button.update" action="/developer/training-sessio/update"/>
+			<acme:submit code="developer.trainingsession.form.button.delete" action="/developer/training-session/delete"/>
+			<acme:submit code="developer.trainingsession.form.button.update" action="/developer/training-session/update"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>

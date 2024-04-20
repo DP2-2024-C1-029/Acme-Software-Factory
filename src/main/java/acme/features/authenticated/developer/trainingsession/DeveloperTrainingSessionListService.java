@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
@@ -23,16 +24,25 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		TrainingModule trainingModule;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		trainingModule = this.repository.findOneTrainingModuleById(masterId);
+		status = trainingModule != null && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
+
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
 		Collection<TrainingSession> objects;
-		int developerId;
+		int masterId;
 
-		developerId = super.getRequest().getPrincipal().getActiveRoleId();
-		objects = this.repository.findManyTrainingSessionByDeveloperId(developerId);
+		masterId = super.getRequest().getData("masterId", int.class);
+		objects = this.repository.findManyTrainingSessionByTrainingModuleId(masterId);
 
 		super.getBuffer().addData(objects);
 	}
@@ -46,5 +56,16 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		dataset = super.unbind(object, "code", "location", "contactEmail");
 
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<TrainingSession> object) {
+		assert object != null;
+
+		int masterId;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+
+		super.getResponse().addGlobal("masterId", masterId);
 	}
 }

@@ -79,7 +79,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			super.state(object.getEstimatedTotalTime() > 0, "estimatedTotalTime", "developer.trainingModule.form.error.negative-estimated-total-time");
 
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(object.getUpdateMoment().compareTo(object.getCreationMoment()) > 0, "salary", "developer.trainingModule.form.error.update-moment-cant-be-past");
+			super.state(object.getUpdateMoment().compareTo(object.getCreationMoment()) > 0, "updateMoment", "developer.trainingModule.form.error.update-moment-cant-be-past");
 	}
 
 	@Override

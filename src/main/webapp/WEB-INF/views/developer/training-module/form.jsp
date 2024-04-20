@@ -21,6 +21,7 @@
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
 			<acme:submit code="developer.trainingmodule.form.button.delete" action="/developer/training-module/delete"/>
 			<acme:submit code="developer.trainingmodule.form.button.update" action="/developer/training-module/update"/>
+			<acme:button code="master.menu.developer.all-trainingsession" action="/developer/training-session/list?masterId=${id}"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>

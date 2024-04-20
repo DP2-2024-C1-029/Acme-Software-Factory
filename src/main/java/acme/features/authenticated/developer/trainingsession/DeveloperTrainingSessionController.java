@@ -11,32 +11,32 @@ import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
 @Controller
-public class DeveloperTrainingSessionModuleController extends AbstractController<Developer, TrainingSession> {
+public class DeveloperTrainingSessionController extends AbstractController<Developer, TrainingSession> {
 
 	@Autowired
-	public DeveloperTrainingSessionListService	listService;
+	public DeveloperTrainingSessionListService		listService;
 
 	@Autowired
-	public DeveloperTrainingSessionShowService	showService;
+	public DeveloperTrainingSessionShowService		showService;
 
 	//	@Autowired
-	//	public DeveloperTrainingModuleShowService	showService;
+	//	public DeveloperTrainingSessionShowService	showService;
+	//
+	@Autowired
+	public DeveloperTrainingSessionCreateService	createService;
 	//
 	//@Autowired
-	//public DeveloperTrainingModuleCreateService	createService;
+	//public DeveloperTrainingSessionUpdateService	updateService;
 	//
 	//@Autowired
-	//public DeveloperTrainingModuleUpdateService	updateService;
-	//
-	//@Autowired
-	//public DeveloperTrainingModuleDeleteService	deleteService;
+	//public DeveloperTrainingSessionDeleteService	deleteService;
 
 
 	@PostConstruct
 	protected void initialize() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
-		//super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("create", this.createService);
 		//super.addBasicCommand("delete", this.deleteService);
 		//super.addBasicCommand("update", this.updateService);
 
