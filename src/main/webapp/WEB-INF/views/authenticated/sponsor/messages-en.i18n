@@ -1,0 +1,9 @@
+authenticated.sponsor.form.label.title = Sponsor data
+
+authenticated.sponsor.form.label.name = Name
+authenticated.sponsor.form.label.benefits = List of expected Benefits
+authenticated.sponsor.form.label.link = Link
+authenticated.sponsor.form.label.email = Email
+
+authenticated.sponsor.form.button.create = Create
+authenticated.sponsor.form.button.update = Update
