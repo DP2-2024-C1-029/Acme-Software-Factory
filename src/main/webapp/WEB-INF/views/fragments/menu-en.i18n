@@ -46,8 +46,9 @@ master.menu.consumer.favourite-link = Favourite link
 
 # master.menu.sponsor #########################################################
 
-master.menu.sponsor = Sponsor
-master.menu.sponsor.sponsorship.list = List Sponsorships
+master.menu.sponsorship = Sponsorship
+master.menu.sponsor.sponsorship.list-mine = List My Sponsorships
+master.menu.sponsor.sponsorship.list-all = List All Sponsorships
 master.menu.sponsor.dashboard.show = Sponsor dashboard
 
 # master.menu.user-account ####################################################

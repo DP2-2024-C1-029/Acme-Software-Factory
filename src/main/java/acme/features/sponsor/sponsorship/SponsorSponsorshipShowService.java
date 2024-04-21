@@ -33,7 +33,7 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 		sponsorshipId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(sponsorshipId);
-		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
+		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(Sponsor.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -61,7 +61,7 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		choicesType = SelectChoices.from(SponsorType.class, object.getType());
-		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
 		dataset = super.unbind(object, "code", "moment", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link", "isPublished");
@@ -69,6 +69,7 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 		dataset.put("types", choicesType);
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
+		dataset.put("showInvoices", sponsorId == object.getSponsor().getId());
 
 		super.getResponse().addData(dataset);
 	}

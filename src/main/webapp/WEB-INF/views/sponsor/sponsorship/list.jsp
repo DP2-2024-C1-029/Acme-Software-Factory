@@ -9,4 +9,6 @@
 	<acme:list-column code="sponsor.sponsorship.list.label.type" path="type" width="40%"/>	
 </acme:list>
 
-<acme:button code="sponsor.sponsorship.form.button.create" action="/sponsor/sponsorship/create"/>
+<jstl:if test="${_command == 'list-mine'}">
+	<acme:button code="sponsor.sponsorship.form.button.create" action="/sponsor/sponsorship/create"/>
+</jstl:if>

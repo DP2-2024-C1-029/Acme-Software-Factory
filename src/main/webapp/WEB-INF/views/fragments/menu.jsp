@@ -44,8 +44,9 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
-			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list" action="/sponsor/sponsorship/list"/>
+		<acme:menu-option code="master.menu.sponsorship" access="hasRole('Sponsor')">
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-all" action="/sponsor/sponsorship/list"/>
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-mine" action="/sponsor/sponsorship/list-mine"/>
 			<acme:menu-suboption code="master.menu.sponsor.dashboard.show" action="/sponsor/sponsordashboard/show"/>
 		</acme:menu-option>
 	</acme:menu-left>

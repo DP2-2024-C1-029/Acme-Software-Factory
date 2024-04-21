@@ -96,7 +96,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		choicesType = SelectChoices.from(SponsorType.class, object.getType());
-		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
 		dataset = super.unbind(object, "code", "moment", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link");

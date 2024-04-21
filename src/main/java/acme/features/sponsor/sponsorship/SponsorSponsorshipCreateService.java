@@ -74,7 +74,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Collection<Project> myProjects;
 
-			myProjects = this.repository.findManyProjectsBySponsorId(super.getRequest().getPrincipal().getActiveRoleId());
+			myProjects = this.repository.findManyProjects();
 			super.state(myProjects.contains(object.getProject()), "project", "sponsor.sponsorship.form.error.not-exists");
 		}
 
@@ -111,7 +111,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		choicesType = SelectChoices.from(SponsorType.class, object.getType());
-		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
 		dataset = super.unbind(object, "code", "moment", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link");
