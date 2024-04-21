@@ -8,5 +8,8 @@
 	<acme:list-column code="administrator.risk.list.label.identificationDate" path="identificationDate" width="20%"/>
 	<acme:list-column code="administrator.risk.list.label.impact" path="impact" width="20%"/>
 	<acme:list-column code="administrator.risk.list.label.probability" path="probability" width="20%"/>
-	<acme:list-column code="administrator.risk.list.label.value" path="value" width="20%"/>
+	<acme:list-column code="administrator.risk.list.label.riskValue" path="riskValue" width="20%"/>
 </acme:list>
+
+<acme:button code="administrator.risk.list.button.create" action="/administrator/risk/create"/>
+

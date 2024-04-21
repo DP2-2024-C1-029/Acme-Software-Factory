@@ -10,7 +10,6 @@ import acme.client.views.SelectChoices;
 import acme.entities.codeaudits.AuditRecord;
 import acme.entities.codeaudits.CodeAudit;
 import acme.entities.codeaudits.Mark;
-import acme.features.auditor.codeAudit.AuditorCodeAuditRepository;
 import acme.roles.Auditor;
 
 @Service
@@ -19,7 +18,7 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuditorCodeAuditRepository repository;
+	private AuditorAuditRecordRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 

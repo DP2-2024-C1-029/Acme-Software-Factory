@@ -6,11 +6,12 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.risks.Risk;
 
 @Service
-public class AdministratorRiskShowService extends AbstractService<Administrator, Risk> {
+public class AdministratorRiskUpdateService extends AbstractService<Administrator, Risk> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -37,13 +38,41 @@ public class AdministratorRiskShowService extends AbstractService<Administrator,
 	}
 
 	@Override
+	public void bind(final Risk object) {
+		assert object != null;
+
+		super.bind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
+	}
+
+	@Override
+	public void validate(final Risk object) {
+		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("reference")) {
+			Risk existing;
+
+			existing = this.repository.findOneRiskByReference(object.getReference());
+			super.state(existing == null || existing.equals(object), "reference", "administrator.risk.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("identificationDate"))
+			super.state(MomentHelper.isPresentOrPast(object.getIdentificationDate()), "identificationDate", "administrator.risk.form.error.too-close");
+	}
+
+	@Override
+	public void perform(final Risk object) {
+		assert object != null;
+
+		this.repository.save(object);
+	}
+
+	@Override
 	public void unbind(final Risk object) {
 		assert object != null;
 
 		Dataset dataset;
 
 		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
-		dataset.put("riskValue", object.value());
 
 		super.getResponse().addData(dataset);
 	}
