@@ -1,5 +1,5 @@
 
-package acme.forms;
+package acme.forms.sponsor;
 
 import acme.client.data.AbstractForm;
 import acme.client.data.datatypes.Money;
@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Sponsordashboard extends AbstractForm {
+public class Dashboard extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 

@@ -1,5 +1,5 @@
 
-package acme.features.sponsor.sponsordashboard;
+package acme.features.sponsor.dashboard;
 
 import java.util.Collection;
 

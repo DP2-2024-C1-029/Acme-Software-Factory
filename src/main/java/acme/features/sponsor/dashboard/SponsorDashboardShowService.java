@@ -1,5 +1,5 @@
 
-package acme.features.sponsor.sponsordashboard;
+package acme.features.sponsor.dashboard;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,11 +13,11 @@ import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.features.authenticated.exchange.AuthenticatedExchangeService;
-import acme.forms.Sponsordashboard;
+import acme.forms.sponsor.Dashboard;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponsordashboard> {
+public class SponsorDashboardShowService extends AbstractService<Sponsor, Dashboard> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -38,7 +38,7 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 	@Override
 	public void load() {
 		int sponsorId;
-		Sponsordashboard dashboard;
+		Dashboard dashboard;
 		Integer totalInvoicesWithTaxLowerTo21;
 		Integer totalSponsorshipsWithLink;
 		Double averageAmountSponsorships;
@@ -78,7 +78,7 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 		minimumQuantityInvoices = allQuantitiesInvoices.stream().mapToDouble(Money::getAmount).min().orElse(0);
 		maximumQuantityInvoices = allQuantitiesInvoices.stream().mapToDouble(Money::getAmount).max().orElse(0);
 
-		dashboard = new Sponsordashboard();
+		dashboard = new Dashboard();
 		dashboard.setTotalInvoicesWithTaxLowerTo21(totalInvoicesWithTaxLowerTo21);
 		dashboard.setTotalSponsorshipsWithLink(totalSponsorshipsWithLink);
 		dashboard.setAverageAmountSponsorships(this.moneyOfAmount(averageAmountSponsorships));
@@ -116,7 +116,7 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 	}
 
 	@Override
-	public void unbind(final Sponsordashboard object) {
+	public void unbind(final Dashboard object) {
 		Dataset dataset;
 
 		dataset = super.unbind(object, "totalInvoicesWithTaxLowerTo21", "totalSponsorshipsWithLink", "averageAmountSponsorships", "deviationAmountSponsorships", "minimumAmountSponsorships", "maximumAmountSponsorships", "averageQuantityInvoices",
