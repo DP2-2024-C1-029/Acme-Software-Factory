@@ -6,12 +6,11 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingSessionCreateService extends AbstractService<Developer, TrainingSession> {
+public class DeveloperTrainingSessionUpdateService extends AbstractService<Developer, TrainingSession> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -25,29 +24,23 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 	public void authorise() {
 		boolean status;
 		int masterId;
-		TrainingModule trainingModule;
+		TrainingSession trainingSession;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		trainingModule = this.repository.findOneTrainingModuleById(masterId);
-		status = trainingModule != null && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
+		masterId = super.getRequest().getData("id", int.class);
+		trainingSession = this.repository.findOneTrainingSessionById(masterId);
+		status = trainingSession != null && super.getRequest().getPrincipal().hasRole(trainingSession.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
 	@Override
 	public void load() {
-		TrainingSession trainingSession;
-
+		TrainingSession object;
 		int masterId;
-		TrainingModule trainingModule;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		trainingModule = this.repository.findOneTrainingModuleById(masterId);
+		masterId = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneTrainingSessionById(masterId);
 
-		trainingSession = new TrainingSession();
-
-		trainingSession.setTrainingModule(trainingModule);
-
-		super.getBuffer().addData(trainingSession);
+		super.getBuffer().addData(object);
 
 	}
 
@@ -69,7 +62,6 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			existing = this.repository.findOneTrainingSessionByCode(object.getCode());
 			super.state(existing == null, "reference", "developer.trainingSession.form.error.duplicated");
 		}
-
 		/*
 		 * Date startTime = object.getStartTime();
 		 * Date endTime = object.getEndTime();
@@ -84,9 +76,9 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		 * if (diffInDays < 7)
 		 * super.state(true, "updateMoment", "developer.trainingSession.form.error.update-moment-less-than-week");
 		 */
-
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
 			super.state(object.getStartTime().compareTo(object.getEndTime()) < 0, "updateMoment", "developer.trainingSession.form.error.update-moment-cant-be-past");
+
 	}
 
 	@Override
@@ -107,4 +99,5 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 		super.getResponse().addData(dataset);
 	}
+
 }
