@@ -1,5 +1,5 @@
 
-package acme.features.auditor.codeAudit;
+package acme.features.auditor.auditRecord;
 
 import java.util.Collection;
 
@@ -13,7 +13,7 @@ import acme.entities.projects.Project;
 import acme.roles.Auditor;
 
 @Repository
-public interface AuditorCodeAuditRepository extends AbstractRepository {
+public interface AuditorAuditRecordRepository extends AbstractRepository {
 
 	@Query("select c from CodeAudit c")
 	Collection<CodeAudit> findMany();
@@ -23,6 +23,9 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 
 	@Query("SELECT r from AuditRecord r where r.codeAudit.id = :id")
 	Collection<AuditRecord> findAllAuditRecordsByCodeAuditId(int id);
+
+	@Query("select a from AuditRecord a where a.id = :id")
+	AuditRecord findOneAuditRecordById(int id);
 
 	@Query("SELECT a from Auditor a where a.id = :id")
 	Auditor findOneAuditorById(int id);
@@ -38,9 +41,6 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 
 	@Query("SELECT c from CodeAudit c where c.auditor.id = :id")
 	Collection<CodeAudit> findMine(int id);
-
-	@Query("SELECT a from AuditRecord a where a.id = :id")
-	AuditRecord findOneAuditRecordById(int id);
 
 	@Query("SELECT a.codeAudit from AuditRecord a where a.id = :id")
 	CodeAudit findOneCodeAuditByAuditRecordId(int id);
