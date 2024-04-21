@@ -1,0 +1,37 @@
+# messages-es.i18n
+#
+# Copyright (C) 2024-2024 Ismael Gata Dorado.
+
+#### LISTA
+manager.project.list.title = Lista de proyectos
+manager.project.list.label.code = Código
+manager.project.list.label.title = Titulo
+manager.project.list.label.abstractText = Texto
+manager.project.list.label.indication = Indicación
+manager.project.list.label.cost = Coste
+manager.project.list.label.link = Link
+manager.project.list.label.draftMode = Publicado
+
+#### FORMULARIO
+manager.project.form.title = Detalles del proyecto
+manager.project.form.label.code = Código
+manager.project.form.label.title = Titulo
+manager.project.form.label.abstractText = Texto
+manager.project.form.label.indication = Indicación
+manager.project.form.label.cost = Coste
+manager.project.form.label.link = Link
+manager.project.form.label.draftMode = Publicado
+
+#### BOTONES
+manager.project.form.button.update = Actualizar
+manager.project.form.button.delete = Borrar
+manager.project.form.button.create = Crear
+manager.project.list.button.create = Crear
+manager.project.form.button.showUserStory = Ver historias de usuarios
+manager.project.form.button.publish = Publicar
+
+##### ERRORES
+manager.project.form.error.duplicated = Ya existe un proyecto con el mismo codigo
+manager.project.form.error.negative-cost = El coste debe ser 0 o positivo
+manager.project.form.error.published = No puedes actualizar el proyecto, ya ha sido publicado
+manager.project.form.error.detele.published = No puedes borrar el proyecto, ya ha sido publicado
