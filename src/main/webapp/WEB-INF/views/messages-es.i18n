@@ -10,3 +10,38 @@ validation.risk.description.max = La descripción debe tener menos de 101 caract
 
 validation.job.reference = La referencia debe contener letras, dígitos, guiones bajos y guiones solamente
 default.placeholder.phone = Utilice el formato internacional +99 (999) 999999
+
+developer.training-module.list.title = Lista de todos los Training Module
+developer.training-module.form.title = Training Module
+developer.trainingmodule.list.label.creationMoment  = Momento de creación
+developer.trainingmodule.list.label.details = Detalles
+developer.trainingmodule.list.label.code = Código
+developer.trainingmodule.list.label.difficultyLevels = Dificultad
+developer.trainingmodule.list.label.updateMoment = Momento de actualización
+developer.trainingmodule.list.label.estimatedTotalTime = Tiempo total estimado
+developer.trainingmodule.list.label.link = Link
+developer.trainingmodule.list.label.projects = Selecciona un proyecto
+
+developer.trainingmodule.form.button.create = Crear Training Module
+developer.trainingmodule.list.button.create = Crear Training Module
+developer.trainingmodule.form.button.delete = Borrar Training Module
+developer.trainingmodule.form.button.update = Actualizar Training Module
+ 
+master.menu.developer.all-trainingsession = Mostrar todos los Training Session
+master.menu.developer = Developer
+master.menu.developer.all-trainingmodule = Mostrar Training Module
+
+developer.training-session.form.title = Training Session
+developer.training-session.list.title = Lista de todos los Training Session
+developer.trainingsession.list.label.code = Código
+developer.trainingsession.list.label.startTime = Fecha de inicio
+developer.trainingsession.list.label.endTime = Fecha de Fin
+developer.trainingsession.list.label.location = Localización
+developer.trainingsession.list.label.instructor = Nombre del instructor
+developer.trainingsession.list.label.contactEmail = Email de contacto
+developer.trainingsession.list.label.project.contactEmail = Email de contacto
+developer.trainingsession.list.label.furtherInformationLink = Link de información
+developer.trainingsession.form.button.create = Crear Training Session
+developer.trainingsession.list.button.create = Crear Training Session
+developer.trainingsession.form.button.delete = Borrar Training Session
+developer.trainingsession.form.button.update = Actualizar Training Session
