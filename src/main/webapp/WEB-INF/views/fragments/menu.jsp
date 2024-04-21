@@ -52,6 +52,7 @@
 		
 		<acme:menu-option code="master.menu.others" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>
+			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list" access="hasRole('Administrator')"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
