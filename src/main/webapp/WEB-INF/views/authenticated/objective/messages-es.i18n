@@ -14,3 +14,5 @@ authenticated.objective.form.label.is-critical = ¿Es Crítico?
 authenticated.objective.form.label.initial-execution-period = Periodo Inicial de Ejecución
 authenticated.objective.form.label.ending-execution-period = Periodo Final de Ejecución
 authenticated.objective.form.label.link = Enlace
+
+administrator.objective.form.button.create = Crear

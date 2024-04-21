@@ -10,6 +10,6 @@
 	<acme:list-column code="authenticated.objective.list.label.is-critical" path="isCritical" width="20%"/>
 </acme:list>
 
-<%-- <jstl:if test="${_command == 'list-mine'}">
-	<acme:button code="authenticated.objective.form.button.create" action="/authenticated/objective/create"/>
-</jstl:if> --%>
+<acme:check-access test="hasRole('Administrator')">
+	<acme:button code="administrator.objective.form.button.create" action="/administrator/objective/create"/>
+</acme:check-access>
