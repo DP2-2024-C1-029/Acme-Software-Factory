@@ -10,5 +10,6 @@
 	<acme:list-column code="auditor.auditRecord.list.label.endPeriod" path="endPeriod" width="30%"/>
 </acme:list>
 
-<acme:button code="auditor.auditRecord.list.button.create" action="/auditor/code-audit/create"/>
+<acme:button test="${showCreate}" code="auditor.auditRecord.list.button.create" action="/auditor/audit-record/create?masterId=${masterId}"/>
+
 

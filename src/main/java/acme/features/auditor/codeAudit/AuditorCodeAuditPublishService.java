@@ -1,14 +1,3 @@
-/*
- * EmployerJobPublishService.java
- *
- * Copyright (C) 2012-2024 Rafael Corchuelo.
- *
- * In keeping with the traditional purpose of furthering education and research, it is
- * the policy of the copyright owner to permit non-commercial use and redistribution of
- * this software. It has been tested carefully, but it is not guaranteed for any particular
- * purposes. The copyright owner does not offer any warranties or representations, nor do
- * they accept any liabilities with respect to them.
- */
 
 package acme.features.auditor.codeAudit;
 
@@ -107,7 +96,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 			int maxFrequency = 0;
 			for (Map.Entry<Mark, Integer> entry : modeMap.entrySet())
 				if (entry.getValue() == maxFrequency) { // si empata a la frecuencia máx
-					if (mode != null && mode.ordinal() > entry.getKey().ordinal()) // nos quedamos con la de menor nota
+					if (mode != null && mode.ordinal() < entry.getKey().ordinal()) // nos quedamos con la de menor nota
 						mode = entry.getKey();
 				} else if (entry.getValue() > maxFrequency) { // si la frecuencia es mayor nos quedamos con esa
 					maxFrequency = entry.getValue();
@@ -140,9 +129,35 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		projects = this.repository.findManyProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
+		// CÁLCULO DE LA MARK MEDIANTE LA MODA
+
+		Collection<AuditRecord> auditRecords;
+		auditRecords = this.repository.findAllAuditRecordsByCodeAuditId(object.getId());
+
+		EnumMap<Mark, Integer> modeMap = new EnumMap<>(Mark.class);
+
+		for (AuditRecord record : auditRecords) {
+			Mark mode = record.getMark();
+			modeMap.put(mode, modeMap.getOrDefault(mode, 0) + 1);
+		}
+
+		Mark mode = null;
+		int maxFrequency = 0;
+		for (Map.Entry<Mark, Integer> entry : modeMap.entrySet())
+			if (entry.getValue() == maxFrequency) { // si empata a la frecuencia máx
+				if (mode != null && mode.ordinal() < entry.getKey().ordinal()) // nos quedamos con la de menor nota
+					mode = entry.getKey();
+			} else if (entry.getValue() > maxFrequency) { // si la frecuencia es mayor nos quedamos con esa
+				maxFrequency = entry.getValue();
+				mode = entry.getKey();
+			}
+
+		// ----
+
 		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "link", "draftMode");
 		dataset.put("type", types.getSelected().getKey());
 		dataset.put("types", types);
+		dataset.put("mark", mode);
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

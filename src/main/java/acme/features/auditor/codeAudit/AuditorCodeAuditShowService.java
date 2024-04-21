@@ -82,7 +82,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		int maxFrequency = 0;
 		for (Map.Entry<Mark, Integer> entry : modeMap.entrySet())
 			if (entry.getValue() == maxFrequency) { // si empata a la frecuencia máx
-				if (mode != null && mode.ordinal() > entry.getKey().ordinal()) // nos quedamos con la de menor nota
+				if (mode != null && mode.ordinal() < entry.getKey().ordinal()) // nos quedamos con la de menor nota
 					mode = entry.getKey();
 			} else if (entry.getValue() > maxFrequency) { // si la frecuencia es mayor nos quedamos con esa
 				maxFrequency = entry.getValue();

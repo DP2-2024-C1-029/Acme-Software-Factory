@@ -1,29 +1,28 @@
 # messages-en.i18n
 
-auditor.code-audit.form.title = Code Audit Details
-auditor.code-audit.list.title = Code Audit List
+auditor.audit-record.form.title = Audit Record Details
+auditor.audit-record.list.title = Audit Record List
 
-auditor.AuditRecord.form.label.code = Code
-auditor.AuditRecord.form.label.executionDate = Execution date
-auditor.AuditRecord.form.label.type = Type
-auditor.AuditRecord.form.label.correctiveActions = Corrective actions
-auditor.AuditRecord.form.label.link = Link
-auditor.AuditRecord.form.label.mark = Mark
-auditor.AuditRecord.form.label.project = Project
-auditor.AuditRecord.form.label.draftMode = DraftMode
+auditor.auditRecord.form.label.code = Code
+auditor.auditRecord.form.label.startPeriod = Period start date
+auditor.auditRecord.form.label.endPeriod = Period end date
+auditor.auditRecord.form.label.link = Link
+auditor.auditRecord.form.label.mark = Mark
+auditor.auditRecord.form.label.codeAudit = Code audit
+auditor.auditRecord.form.label.draftMode = DraftMode
 
-auditor.AuditRecord.form.button.auditRecords = Audit records
-auditor.AuditRecord.form.button.update = Update
-auditor.AuditRecord.form.button.delete = Delete
-auditor.AuditRecord.form.button.publish = Publish
-auditor.AuditRecord.form.button.create = Create
+auditor.auditRecord.form.button.update = Update
+auditor.auditRecord.form.button.delete = Delete
+auditor.auditRecord.form.button.publish = Publish
+auditor.auditRecord.form.button.create = Create
 
-auditor.codeAutit.form.error.duplicated = Duplicated code
-auditor.AuditRecord.form.error.too-close = Execution date is not in the past
- auditor.AuditRecord.form.error.low-mark = Mark must be at least "C" to publish
+auditor.auditRecord.form.error.duplicated = Duplicated code
+auditor.auditRecord.form.error.too-close = Execution date is not in the past
+auditor.auditRecord.form.error.low-mark = Mark must be at least "C" to publish
+auditor.auditRecord.form.error.too-short = The period must be at least 1 hour long
+auditor.auditRecord.form.error.end-after-start = The end date must be after the start
 
-
-auditor.AuditRecord.list.button.create = Create
+auditor.auditRecord.list.button.create = Create
 
 auditor.auditRecord.list.label.code = Code
 auditor.auditRecord.list.label.mark = Mark

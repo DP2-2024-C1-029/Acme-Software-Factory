@@ -1,20 +1,7 @@
-/*
- * EmployerJobPublishService.java
- *
- * Copyright (C) 2012-2024 Rafael Corchuelo.
- *
- * In keeping with the traditional purpose of furthering education and research, it is
- * the policy of the copyright owner to permit non-commercial use and redistribution of
- * this software. It has been tested carefully, but it is not guaranteed for any particular
- * purposes. The copyright owner does not offer any warranties or representations, nor do
- * they accept any liabilities with respect to them.
- */
 
 package acme.features.auditor.auditRecord;
 
-import java.util.Collection;
-import java.util.EnumMap;
-import java.util.Map;
+import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,14 +11,12 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.codeaudits.AuditRecord;
-import acme.entities.codeaudits.AuditType;
 import acme.entities.codeaudits.CodeAudit;
 import acme.entities.codeaudits.Mark;
-import acme.entities.projects.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditRecordPublishService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorAuditRecordPublishService extends AbstractService<Auditor, AuditRecord> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -44,82 +29,63 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, C
 	@Override
 	public void authorise() {
 		boolean status;
-		int codeAuditId;
+		int auditRecordId;
 		CodeAudit codeAudit;
+		AuditRecord auditRecord;
 		Auditor auditor;
 
-		codeAuditId = super.getRequest().getData("id", int.class);
-		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
+		auditRecordId = super.getRequest().getData("id", int.class);
+		auditRecord = this.repository.findOneAuditRecordById(auditRecordId);
+		codeAudit = this.repository.findOneCodeAuditByAuditRecordId(auditRecordId);
 		auditor = codeAudit == null ? null : codeAudit.getAuditor();
-		status = codeAudit != null && codeAudit.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
-
+		status = codeAudit != null && auditRecord.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		CodeAudit object;
+		AuditRecord object;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneCodeAuditById(id);
+		object = this.repository.findOneAuditRecordById(id);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void bind(final CodeAudit object) {
+	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		Auditor auditor;
-		auditor = this.repository.findOneAuditorById(super.getRequest().getPrincipal().getActiveRoleId());
-
-		super.bind(object, "code", "executionDate", "type", "correctiveActions", "link", "project");
-		object.setAuditor(auditor);
+		super.bind(object, "code", "startPeriod", "endPeriod", "mark", "link");
 	}
 
 	@Override
-	public void validate(final CodeAudit object) {
+	public void validate(final AuditRecord object) {
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			CodeAudit existing;
+			AuditRecord existing;
 
-			existing = this.repository.findOneCodeAuditByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "auditor.codeAutit.form.error.duplicated");
+			existing = this.repository.findOneAuditRecordByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "auditor.auditRecord.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
-			super.state(MomentHelper.isPast(object.getExecutionDate()), "executionDate", "Auditor.CodeAudit.form.error.too-close");
+		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
+			super.state(MomentHelper.isPresentOrPast(object.getStartPeriod()), "startPeriod", "auditor.auditRecord.form.error.not-past");
 
-		if (!super.getBuffer().getErrors().hasErrors("mark")) {
-			Collection<AuditRecord> auditRecords;
-			auditRecords = this.repository.findAllAuditRecordsByCodeAuditId(object.getId());
+		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
+			super.state(MomentHelper.isPresentOrPast(object.getEndPeriod()), "endPeriod", "auditor.auditRecord.form.error.not-past");
 
-			EnumMap<Mark, Integer> modeMap = new EnumMap<>(Mark.class);
+		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
+			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "auditor.auditRecord.form.error.end-after-start");
 
-			for (AuditRecord record : auditRecords) {
-				Mark mode = record.getMark();
-				modeMap.put(mode, modeMap.getOrDefault(mode, 0) + 1);
-			}
-
-			Mark mode = null;
-			int maxFrequency = 0;
-			for (Map.Entry<Mark, Integer> entry : modeMap.entrySet())
-				if (entry.getValue() == maxFrequency) { // si empata a la frecuencia máx
-					if (mode != null && mode.ordinal() > entry.getKey().ordinal()) // nos quedamos con la de menor nota
-						mode = entry.getKey();
-				} else if (entry.getValue() > maxFrequency) { // si la frecuencia es mayor nos quedamos con esa
-					maxFrequency = entry.getValue();
-					mode = entry.getKey();
-				}
-
-			super.state(mode != null && mode.ordinal() <= 3, "mark", "auditor.codeaudit.form.error.low-mark");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && !super.getBuffer().getErrors().hasErrors("endPeriod"))
+			super.state(MomentHelper.isLongEnough(object.getStartPeriod(), object.getEndPeriod(), 1, ChronoUnit.HOURS), "endPeriod", "auditor.auditRecord.form.error.too-short");
 	}
 
 	@Override
-	public void perform(final CodeAudit object) {
+	public void perform(final AuditRecord object) {
 		assert object != null;
 
 		object.setDraftMode(false);
@@ -127,24 +93,17 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, C
 	}
 
 	@Override
-	public void unbind(final CodeAudit object) {
+	public void unbind(final AuditRecord object) {
 		assert object != null;
 
-		Collection<Project> projects;
-		SelectChoices choices;
-		SelectChoices types;
+		SelectChoices marks;
 		Dataset dataset;
 
-		types = SelectChoices.from(AuditType.class, object.getType());
+		marks = SelectChoices.from(Mark.class, object.getMark());
 
-		projects = this.repository.findManyProjects();
-		choices = SelectChoices.from(projects, "title", object.getProject());
-
-		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "link", "draftMode");
-		dataset.put("type", types.getSelected().getKey());
-		dataset.put("types", types);
-		dataset.put("project", choices.getSelected().getKey());
-		dataset.put("projects", choices);
+		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "link", "codeAudit", "draftMode");
+		dataset.put("mark", marks.getSelected().getKey());
+		dataset.put("marks", marks);
 
 		super.getResponse().addData(dataset);
 	}

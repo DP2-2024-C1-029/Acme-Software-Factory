@@ -1,14 +1,3 @@
-/*
- * AuthenticatedAnnouncementListService.java
- *
- * Copyright (C) 2012-2024 Rafael Corchuelo.
- *
- * In keeping with the traditional purpose of furthering education and research, it is
- * the policy of the copyright owner to permit non-commercial use and redistribution of
- * this software. It has been tested carefully, but it is not guaranteed for any particular
- * purposes. The copyright owner does not offer any warranties or representations, nor do
- * they accept any liabilities with respect to them.
- */
 
 package acme.features.auditor.auditRecord;
 
@@ -67,5 +56,21 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 		dataset = super.unbind(object, "code", "mark", "startPeriod", "endPeriod");
 
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<AuditRecord> objects) {
+		assert objects != null;
+
+		int masterId;
+		CodeAudit codeAudit;
+		final boolean showCreate;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		codeAudit = this.repository.findOneCodeAuditById(masterId);
+		showCreate = codeAudit.isDraftMode() && super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor());
+
+		super.getResponse().addGlobal("masterId", masterId);
+		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 }
