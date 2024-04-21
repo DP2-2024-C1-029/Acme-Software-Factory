@@ -55,6 +55,7 @@ master.menu.sponsor.dashboard.show = Tablero de control de patrocinador
 
 master.menu.others = Listar otras entidades
 master.menu.authenticated.objective.list = Lista de objetivos
+master.menu.administrator.banner.list = Lista de banners
 
 # master.menu.user-account ####################################################
 

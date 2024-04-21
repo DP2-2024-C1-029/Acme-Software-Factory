@@ -55,6 +55,7 @@ master.menu.sponsor.dashboard.show = Sponsor dashboard
 
 master.menu.others = Listing other entities
 master.menu.authenticated.objective.list = Listing objectives
+master.menu.administrator.banner.list = Listing banners
 
 # master.menu.user-account ####################################################
 

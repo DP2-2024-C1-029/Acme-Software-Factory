@@ -10,4 +10,4 @@
 	<acme:list-column code="administrator.banner.list.label.displayEndMoment" path="displayEndMoment" width="30%"/>	
 </acme:list>
 
-<%-- <acme:button code="administrator.banner.form.button.create" action="/administrator/banner/create"/> --%>
+<acme:button code="administrator.banner.form.button.create" action="/administrator/banner/create"/>

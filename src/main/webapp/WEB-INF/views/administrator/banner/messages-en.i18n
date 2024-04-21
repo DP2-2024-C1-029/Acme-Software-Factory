@@ -16,3 +16,6 @@ administrator.banner.form.label.link = Link
 administrator.banner.form.button.create = Create
 administrator.banner.form.button.update = Update
 administrator.banner.form.button.delete = Delete
+
+administrator.banner.form.error.too-close = The display must end at least 1 week after when it starts.
+administrator.banner.form.error.not-after = The display must start after the instantiation moment.
