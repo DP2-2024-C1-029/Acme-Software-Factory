@@ -1,21 +1,30 @@
 # messages-en.i18n
 
-administrator.risk.form.title = Risk Details
-administrator.risk.list.title = Risk List
+auditor.code-audit.form.title = Code Audit Details
+auditor.code-audit.list.title = Code Audit List
 
-administrator.risk.form.label.reference = Reference
-administrator.risk.form.label.identificationDate = Identification Date
-administrator.risk.form.label.impact = Impact
-administrator.risk.form.label.probability = Probability
-administrator.risk.form.label.description = Description
-administrator.risk.form.label.link = Link
-administrator.risk.form.label.value = Value
+auditor.codeAudit.form.label.code = Code
+auditor.codeAudit.form.label.executionDate = Execution date
+auditor.codeAudit.form.label.type = Type
+auditor.codeAudit.form.label.correctiveActions = Corrective actions
+auditor.codeAudit.form.label.link = Link
+auditor.codeAudit.form.label.mark = Mark
+auditor.codeAudit.form.label.project = Project
+auditor.codeAudit.form.label.draftMode = DraftMode
 
-administrator.risk.form.button.create = Create
-administrator.risk.form.button.update = Update
+auditor.codeAudit.form.button.auditRecords = Audit records
+auditor.codeAudit.form.button.update = Update
+auditor.codeAudit.form.button.delete = Delete
+auditor.codeAudit.form.button.publish = Publish
+auditor.codeAudit.form.button.create = Create
 
-administrator.risk.list.label.reference = Reference
-administrator.risk.list.label.identificationDate = Identification Date
-administrator.risk.list.label.impact = Impact
-administrator.risk.list.label.probability = Probability
-administrator.risk.list.label.value = Value
+auditor.codeAutit.form.error.duplicated = Duplicated code
+auditor.codeAudit.form.error.too-close = Execution date is not in the past
+ auditor.codeaudit.form.error.low-mark = Mark must be at least "C" to publish
+
+
+auditor.codeAudit.list.button.create = Create
+
+auditor.codeAudit.list.label.code = Code
+auditor.codeAudit.list.label.executionDate = Execution date
+auditor.codeAudit.list.label.type = Type

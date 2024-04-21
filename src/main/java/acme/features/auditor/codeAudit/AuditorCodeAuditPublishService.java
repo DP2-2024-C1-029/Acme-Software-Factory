@@ -1,5 +1,5 @@
 /*
- * EmployerJobDeleteService.java
+ * EmployerJobPublishService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -13,21 +13,25 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.EnumMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.codeaudits.AuditRecord;
 import acme.entities.codeaudits.AuditType;
 import acme.entities.codeaudits.CodeAudit;
+import acme.entities.codeaudits.Mark;
 import acme.entities.projects.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditPublishService extends AbstractService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -48,6 +52,7 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
 		auditor = codeAudit == null ? null : codeAudit.getAuditor();
 		status = codeAudit != null && codeAudit.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -76,17 +81,49 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			CodeAudit existing;
+
+			existing = this.repository.findOneCodeAuditByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "auditor.codeAutit.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
+			super.state(MomentHelper.isPast(object.getExecutionDate()), "executionDate", "Auditor.CodeAudit.form.error.too-close");
+
+		if (!super.getBuffer().getErrors().hasErrors("mark")) {
+			Collection<AuditRecord> auditRecords;
+			auditRecords = this.repository.findAllAuditRecordsByCodeAuditId(object.getId());
+
+			EnumMap<Mark, Integer> modeMap = new EnumMap<>(Mark.class);
+
+			for (AuditRecord record : auditRecords) {
+				Mark mode = record.getMark();
+				modeMap.put(mode, modeMap.getOrDefault(mode, 0) + 1);
+			}
+
+			Mark mode = null;
+			int maxFrequency = 0;
+			for (Map.Entry<Mark, Integer> entry : modeMap.entrySet())
+				if (entry.getValue() == maxFrequency) { // si empata a la frecuencia máx
+					if (mode != null && mode.ordinal() > entry.getKey().ordinal()) // nos quedamos con la de menor nota
+						mode = entry.getKey();
+				} else if (entry.getValue() > maxFrequency) { // si la frecuencia es mayor nos quedamos con esa
+					maxFrequency = entry.getValue();
+					mode = entry.getKey();
+				}
+
+			super.state(mode != null && mode.ordinal() <= 3, "mark", "auditor.codeaudit.form.error.low-mark");
+		}
 	}
 
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
 
-		Collection<AuditRecord> records;
-
-		records = this.repository.findManyAuditRecordsByCodeAuditId(object.getId());
-		this.repository.deleteAll(records);
-		this.repository.delete(object);
+		object.setDraftMode(false);
+		this.repository.save(object);
 	}
 
 	@Override
@@ -111,5 +148,4 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 
 		super.getResponse().addData(dataset);
 	}
-
 }

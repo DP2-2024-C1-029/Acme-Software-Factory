@@ -51,6 +51,7 @@ public class CodeAudit extends AbstractEntity {
 
 	// an execution date (in the past)
 	@Past
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				executionDate;
 
@@ -60,7 +61,7 @@ public class CodeAudit extends AbstractEntity {
 
 	// a list of proposed corrective actions (not blank, shorter than 101 characters)
 	@NotBlank
-	@Length(max = 100)
+	@Length(min = 1, max = 100)
 	private String				correctiveActions;
 
 	// an optional link with further information.

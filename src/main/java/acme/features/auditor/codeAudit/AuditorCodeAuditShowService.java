@@ -31,7 +31,16 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int codeAuditId;
+		CodeAudit codeAudit;
+		Auditor auditor;
+
+		codeAuditId = super.getRequest().getData("id", int.class);
+		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
+		auditor = codeAudit == null ? null : codeAudit.getAuditor();
+		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(auditor);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

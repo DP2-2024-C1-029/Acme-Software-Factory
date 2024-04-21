@@ -84,12 +84,11 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 
 		types = SelectChoices.from(AuditType.class, object.getType());
 
-		// TODO CÓMO ENLAZAR CON PROJECT
-
 		projects = this.repository.findManyProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "link", "draftMode");
+		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "link", "draftMode");
+		dataset.put("type", types.getSelected().getKey());
 		dataset.put("types", types);
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);

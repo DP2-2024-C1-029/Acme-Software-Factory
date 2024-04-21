@@ -78,8 +78,15 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 	public void validate(final CodeAudit object) {
 		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			CodeAudit existing;
+
+			existing = this.repository.findOneCodeAuditByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "auditor.codeAutit.form.error.duplicated");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
-			super.state(MomentHelper.isPast(object.getExecutionDate()), "executionDate", "Auditor.CodeAudit.form.error.too-close");
+			super.state(MomentHelper.isPresentOrPast(object.getExecutionDate()), "executionDate", "auditor.codeAudit.form.error.too-close");
 	}
 
 	@Override
@@ -99,8 +106,6 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		Dataset dataset;
 
 		types = SelectChoices.from(AuditType.class, object.getType());
-
-		// TODO CÓMO ENLAZAR CON PROJECT
 
 		projects = this.repository.findManyProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());

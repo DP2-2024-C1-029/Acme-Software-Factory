@@ -1,21 +1,29 @@
-# messages-es.i18n
+# messages-en.i18n
 
-administrator.risk.form.title = Detalles del riesgo
-administrator.risk.list.title = Listado de riesgos
+auditor.code-audit.form.title = Detalles de auditorias de código
+auditor.code-audit.list.title = Listado de auditorias de código
 
-administrator.risk.form.label.reference = Referencia
-administrator.risk.form.label.identificationDate = Fecha de identificación
-administrator.risk.form.label.impact = Impacto
-administrator.risk.form.label.probability = Probabilidad
-administrator.risk.form.label.description = Descripción
-administrator.risk.form.label.link = Enlace
-administrator.risk.form.label.value = Valor
+auditor.codeAudit.form.label.code = Código
+auditor.codeAudit.form.label.executionDate = Fecha de ejecución
+auditor.codeAudit.form.label.type = Tipo
+auditor.codeAudit.form.label.correctiveActions = Acciones correctivas
+auditor.codeAudit.form.label.link = Enlace
+auditor.codeAudit.form.label.mark = Nota
+auditor.codeAudit.form.label.project = Proyecto
+auditor.codeAudit.form.label.draftMode = DraftMode
 
-administrator.risk.form.button.create = Registrar
-administrator.risk.form.button.update = Actualizar
+auditor.codeAudit.form.button.auditRecords = Registros de la auditoría
+auditor.codeAudit.form.button.update = Actualizar
+auditor.codeAudit.form.button.delete = Borrar
+auditor.codeAudit.form.button.publish = Publicar
+auditor.codeAudit.form.button.create = Crear
 
-administrator.risk.list.label.reference = Referencia
-administrator.risk.list.label.identificationDate = Fecha de identificación
-administrator.risk.list.label.impact = Impacto
-administrator.risk.list.label.probability = Probabilidad
-administrator.risk.list.label.value = Valor
+auditor.codeAutit.form.error.duplicated = Código duplicado
+auditor.codeAudit.form.error.too-close = La fecha de ejecución no es pasada
+ auditor.codeaudit.form.error.low-mark = La nota debe ser al menos "C" para publicar
+
+auditor.codeAudit.list.button.create = Crear
+
+auditor.codeAudit.list.label.code = Código
+auditor.codeAudit.list.label.executionDate = Fecha de ejecución
+auditor.codeAudit.list.label.type = Tipo

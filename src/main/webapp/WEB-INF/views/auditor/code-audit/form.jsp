@@ -9,13 +9,13 @@
 	<acme:input-select code="auditor.codeAudit.form.label.type" path="type" choices="${types}"/>
 	<acme:input-textarea code="auditor.codeAudit.form.label.correctiveActions" path="correctiveActions"/>
 	<acme:input-url code="auditor.codeAudit.form.label.link" path="link"/>
-	<acme:input-textbox code="auditor.codeAudit.form.label.mark" path="mark"/>
-	<acme:input-select code="auditor.codeAudit.form.label.project" path="project" choices="${projects}"/>
-	<acme:input-checkbox code="auditor.codeAudit.form.label.draftMode" path="draftMode"/>
+		<acme:input-select code="auditor.codeAudit.form.label.project" path="project" choices="${projects}"/>
+	<acme:input-textbox code="auditor.codeAudit.form.label.mark" path="mark" readonly="true" placeholder="---"/>
+	<acme:input-checkbox code="auditor.codeAudit.form.label.draftMode" path="draftMode" readonly="true"/>
 	
 	
 	<jstl:choose>	 
-		<jstl:when test="${false}">
+		<jstl:when test="${draftMode == false}">
 			<acme:button code="auditor.codeAudit.form.button.auditRecords" action="/auditor/audit-record/list?masterId=${id}"/>			
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
