@@ -49,6 +49,10 @@
 			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-mine" action="/sponsor/sponsorship/list-mine"/>
 			<acme:menu-suboption code="master.menu.sponsor.dashboard.show" action="/sponsor/sponsordashboard/show"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.others" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>
+		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>

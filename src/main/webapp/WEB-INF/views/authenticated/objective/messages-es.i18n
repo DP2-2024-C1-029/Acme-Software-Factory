@@ -1,0 +1,16 @@
+authenticated.objective.list.title = Listado de Objetivos
+authenticated.objective.form.title = Formulario de Objetivo
+
+authenticated.objective.list.label.title = Título
+authenticated.objective.list.label.priority = Prioridad
+authenticated.objective.list.label.instantiation-moment = Momento de Instanciación
+authenticated.objective.list.label.is-critical = ¿Es Crítico?
+
+authenticated.objective.form.label.title = Título
+authenticated.objective.form.label.description = Descripción
+authenticated.objective.form.label.instantiation-moment = Momento de Instanciación
+authenticated.objective.form.label.priority = Prioridad
+authenticated.objective.form.label.is-critical = ¿Es Crítico?
+authenticated.objective.form.label.initial-execution-period = Periodo Inicial de Ejecución
+authenticated.objective.form.label.ending-execution-period = Periodo Final de Ejecución
+authenticated.objective.form.label.link = Enlace

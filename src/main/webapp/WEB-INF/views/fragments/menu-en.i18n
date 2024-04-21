@@ -51,6 +51,11 @@ master.menu.sponsor.sponsorship.list-mine = List My Sponsorships
 master.menu.sponsor.sponsorship.list-all = List All Sponsorships
 master.menu.sponsor.dashboard.show = Sponsor dashboard
 
+# master.menu.others ##########################################################
+
+master.menu.others = Listing other entities
+master.menu.authenticated.objective.list = Listing objectives
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
