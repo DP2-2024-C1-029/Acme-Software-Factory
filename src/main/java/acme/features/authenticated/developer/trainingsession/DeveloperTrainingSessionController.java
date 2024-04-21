@@ -28,8 +28,8 @@ public class DeveloperTrainingSessionController extends AbstractController<Devel
 	@Autowired
 	public DeveloperTrainingSessionUpdateService	updateService;
 	//
-	//@Autowired
-	//public DeveloperTrainingSessionDeleteService	deleteService;
+	@Autowired
+	public DeveloperTrainingSessionDeleteService	deleteService;
 
 
 	@PostConstruct
@@ -37,7 +37,7 @@ public class DeveloperTrainingSessionController extends AbstractController<Devel
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
-		//super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("delete", this.deleteService);
 		super.addBasicCommand("update", this.updateService);
 
 	}
