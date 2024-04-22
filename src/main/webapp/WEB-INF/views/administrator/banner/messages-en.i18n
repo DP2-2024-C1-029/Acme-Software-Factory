@@ -1,0 +1,21 @@
+administrator.banner.list.title = Listing of banners
+administrator.banner.form.title = Banner form
+
+administrator.banner.list.label.slogan = Slogan
+administrator.banner.list.label.picture = URL of picture
+administrator.banner.list.label.displayStartMoment = Starts display at
+administrator.banner.list.label.displayEndMoment = Ends display at
+
+administrator.banner.form.label.slogan = Slogan
+administrator.banner.form.label.instantiationMoment = Instantiation moment
+administrator.banner.form.label.displayStartMoment = Starts display at
+administrator.banner.form.label.displayEndMoment = Ends display at
+administrator.banner.form.label.picture = Picture
+administrator.banner.form.label.link = Link
+
+administrator.banner.form.button.create = Create
+administrator.banner.form.button.update = Update
+administrator.banner.form.button.delete = Delete
+
+administrator.banner.form.error.too-close = The display must end at least 1 week after when it starts.
+administrator.banner.form.error.not-after = The display must start after the instantiation moment.

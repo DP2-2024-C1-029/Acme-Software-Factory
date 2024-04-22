@@ -44,6 +44,19 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+# master.menu.sponsor #########################################################
+
+master.menu.sponsorship = Sponsorship
+master.menu.sponsor.sponsorship.list-mine = List My Sponsorships
+master.menu.sponsor.sponsorship.list-all = List All Sponsorships
+master.menu.sponsor.dashboard.show = Sponsor dashboard
+
+# master.menu.others ##########################################################
+
+master.menu.others = Listing other entities
+master.menu.authenticated.objective.list = Listing objectives
+master.menu.administrator.banner.list = Listing banners
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -52,3 +65,5 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.sponsor = Sponsor data
+master.menu.user-account.become-sponsor = Become a sponsor

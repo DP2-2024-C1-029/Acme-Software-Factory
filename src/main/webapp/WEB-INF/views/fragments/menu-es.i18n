@@ -44,6 +44,19 @@ master.menu.provider.favourite-link = Enlace favorito
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+# master.menu.sponsor #########################################################
+
+master.menu.sponsorship = Patrocinios
+master.menu.sponsor.sponsorship.list-mine = Listar mis patrocinios
+master.menu.sponsor.sponsorship.list-all = Listar todos los patrocinios
+master.menu.sponsor.dashboard.show = Tablero de control de patrocinador
+
+# master.menu.others ##########################################################
+
+master.menu.others = Listar otras entidades
+master.menu.authenticated.objective.list = Lista de objetivos
+master.menu.administrator.banner.list = Lista de banners
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -52,3 +65,5 @@ master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.sponsor = Datos del patrocinador
+master.menu.user-account.become-sponsor = Hazte patrocinador

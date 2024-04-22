@@ -1,13 +1,14 @@
 
-package acme.forms;
+package acme.forms.sponsor;
 
 import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class SponsorDashboard extends AbstractForm {
+public class Dashboard extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -19,13 +20,21 @@ public class SponsorDashboard extends AbstractForm {
 
 	private int					totalSponsorshipsWithLink;
 
-	private Integer				averageAmount;
+	private Money				averageAmountSponsorships;
 
-	private Double				deviationAmount;
+	private Money				deviationAmountSponsorships;
 
-	private Double				minimumAmount;
+	private Money				minimumAmountSponsorships;
 
-	private Double				maximumAmount;
+	private Money				maximumAmountSponsorships;
+
+	private Money				averageQuantityInvoices;
+
+	private Money				deviationQuantityInvoices;
+
+	private Money				minimumQuantityInvoices;
+
+	private Money				maximumQuantityInvoices;
 
 	// Derived attributes -----------------------------------------------------
 
