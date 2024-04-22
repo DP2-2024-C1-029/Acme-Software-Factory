@@ -1,0 +1,29 @@
+client.contract.list.title = Tus Contratos
+client.contract.list.label.code = Código
+client.contract.list.label.instantiationMoment = Momento de creación
+client.contract.list.label.providerName = Nombre del Proveedor
+client.contract.list.label.customerName = Nombre del cliente
+client.contract.list.label.goals = Objetivos
+client.contract.list.label.budget = Presupuesto
+client.contract.list.label.draftMode = Modo borrador
+client.contract.list.label.project = Nombre del proyecto
+
+client.contract.form.title = Datos del contrato
+client.contract.form.label.code = Código
+client.contract.form.label.instantiationMoment = Momento de creación
+client.contract.form.label.providerName = Nombre del Proveedor
+client.contract.form.label.customerName = Nombre del cliente
+client.contract.form.label.goals = Objetivos
+client.contract.form.label.budget = Presupuesto
+client.contract.form.label.draftMode = Modo borrador
+client.contract.form.label.project = Nombre del proyecto
+client.contract.form.button.update = Actualizar
+client.contract.form.button.delete = Borrar
+client.contract.form.button.create = Crear
+client.contract.form.button.publish = Publicar
+client.contract.form.button.progress-logs = Registros de progreso
+
+
+client.contract.form.error.duplicatedCode = Código duplicado
+client.contract.form.error.budget = El presupuesto es mayor al coste asociado al proyecto
+client.contract.form.error.publishError = El presupuesto total no debe sobrepasar el coste del proyecto

@@ -19,12 +19,12 @@
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
+<<<<<<< HEAD
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://www.youtube.com/"/>
+=======
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
-			<acme:menu-suboption code="master.menu.anonymous.josporhue" action="https://www.samsung.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.ismgator" action="https://www.ted.com/"/>
-			<acme:menu-suboption code="master.menu.anonymous.davgodfer" action="https://www.youtube.com/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-juagombor" action="https://www.informatica.us.es/"/>
-			<acme:menu-suboption code="master.menu.anonymous.jaivarcac" action="https://planefinder.net/"/>
+>>>>>>> cefec18c4b7c40f3cbcf2558700d1c6b09c92a0f
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -43,13 +43,6 @@
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
-			<acme:menu-suboption code="master.menu.client.contract.list" action="/client/contract/list"/>
-			<acme:menu-suboption code="master.menu.client.dashboard" action="/client/client-dashboard/show"/>
-		</acme:menu-option>
-				
-		
 	</acme:menu-left>
 
 	<acme:menu-right>
@@ -62,7 +55,6 @@
 			<acme:menu-suboption code="master.menu.user-account.provider" action="/authenticated/provider/update" access="hasRole('Provider')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRole('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/consumer/update" access="hasRole('Consumer')"/>
-			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/authenticated/system/sign-out" access="isAuthenticated()"/>

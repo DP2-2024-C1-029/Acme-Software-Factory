@@ -1,0 +1,29 @@
+client.contract.list.title = Your Contracts
+client.contract.list.label.code = Code
+client.contract.list.label.instantiationMoment = Instantiation moment
+client.contract.list.label.providerName = Provider name
+client.contract.list.label.customerName = Customer name
+client.contract.list.label.goals = Goals
+client.contract.list.label.budget = Budget
+client.contract.list.label.draftMode = DraftMode
+client.contract.list.label.project = Project name
+
+client.contract.form.title = Contract data
+client.contract.form.label.code = Code
+client.contract.form.label.instantiationMoment = Instantiation moment
+client.contract.form.label.providerName = Provider name
+client.contract.form.label.customerName = Customer name
+client.contract.form.label.goals = Goals
+client.contract.form.label.budget = Budget
+client.contract.form.label.draftMode = Draft mode
+client.contract.form.label.project = Project name
+client.contract.form.button.update = Update
+client.contract.form.button.delete = Delete
+client.contract.form.button.create = Create
+client.contract.form.button.publish = Publish
+client.contract.form.button.progress-logs = Progress logs
+
+
+client.contract.form.error.duplicatedCode = Duplicate code
+client.contract.form.error.budget= The budget is greater than the cost associated with the project
+client.contract.form.error.publishError = The total budget must not exceed the cost of the project

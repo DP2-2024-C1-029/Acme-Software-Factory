@@ -18,12 +18,12 @@ master.menu.sign-out = Sign out
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
+<<<<<<< HEAD
+master.menu.anonymous.favourite-link = YouTube
+=======
 master.menu.anonymous.favourite-link = Favourite link
-master.menu.anonymous.josporhue = 32074667V: Portela Huerta, José María
 master.menu.anonymous.ismgator = 28839629K: Gata Dorado, Ismael
-master.menu.anonymous.davgodfer = 20094441P: Godoy Fernández, David
-master.menu.anonymous.favourite-juagombor = 49105638V: Gómez Borrallo, Juan José
-master.menu.anonymous.jaivarcac = 80228784T: Varas Cáceres, Jaime 
+>>>>>>> cefec18c4b7c40f3cbcf2558700d1c6b09c92a0f
 
 # master.menu.administrator ###################################################
 
@@ -44,12 +44,6 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
-# master.menu.client ##########################################################
-
-master.menu.client = Client
-master.menu.client.contract.list = Contracts list
-master.menu.client.dashboard = Your client dashboard
-
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -58,5 +52,3 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
-master.menu.user-account.client = Client data
-master.menu.user-account.become-client = Become a Client

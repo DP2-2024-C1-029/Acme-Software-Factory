@@ -1,5 +1,5 @@
 
-package forms;
+package acme.forms;
 
 import acme.client.data.AbstractForm;
 import lombok.Getter;
@@ -15,13 +15,13 @@ public class ClientDashboard extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	Integer						numberLogsWithCompletenessBelow25;
+	int							numberLogsWithCompletenessBelow25;
 
-	Integer						numberLogsWithCompletenessBetween25And50;
+	int							numberLogsWithCompletenessBetween25And50;
 
-	Integer						numberLogsWithCompletenessBetween50And75;
+	int							numberLogsWithCompletenessBetween50And75;
 
-	Integer						numberLogsWithCompletenessAbove75;
+	int							numberLogsWithCompletenessAbove75;
 
 	Double						averageBudget;
 

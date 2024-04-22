@@ -9,13 +9,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.contracts.Contract;
@@ -39,8 +40,9 @@ public class ProgressLogs extends AbstractEntity {
 	@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")
 	private String				recordId;
 
-	@Range(min = 0, max = 1)
-	private double				completeness;
+	@DecimalMin(value = "0.00")
+	@DecimalMax(value = "100.00")
+	private float				completeness;
 
 	@NotBlank
 	@Length(max = 100)
@@ -54,6 +56,8 @@ public class ProgressLogs extends AbstractEntity {
 	@NotBlank
 	@Length(max = 75)
 	private String				responsiblePerson;
+
+	private boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
 
