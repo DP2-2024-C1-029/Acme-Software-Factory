@@ -44,8 +44,6 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 	public void bind(final UserStory object) {
 		assert object != null;
 
-		boolean published = super.getRequest().getData("published", boolean.class);
-
 		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
 
 	}
