@@ -49,6 +49,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		codeAudit = this.repository.findOneCodeAuditById(masterId);
 
 		object = new AuditRecord();
+		object.setCode("AU-");
 		object.setCodeAudit(codeAudit);
 		object.setDraftMode(true);
 
