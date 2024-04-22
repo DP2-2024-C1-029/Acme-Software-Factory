@@ -1,0 +1,14 @@
+sponsor.dashboard.form.title = Sponsor Dashboard
+
+sponsor.dashboard.form.title.general-indicators = General indicators
+
+sponsor.dashboard.form.label.total-invoices-with-tax-lower-to-21 = Total of invoices with a tax lower to 21%
+sponsor.dashboard.form.label.total-sponsorships-with-link = Total of sponsorships with a link
+sponsor.dashboard.form.label.average-amount-sponsorships = Average of the amount of the sponsorships
+sponsor.dashboard.form.label.deviation-amount-sponsorships = Deviation of the amount of the sponsorships
+sponsor.dashboard.form.label.minimum-amount-sponsorships = Minimum amount of the sponsorships
+sponsor.dashboard.form.label.maximum-amount-sponsorships = Maximum amount of the sponsorships
+sponsor.dashboard.form.label.average-quantity-invoices = Average of the amount of the sponsorships
+sponsor.dashboard.form.label.deviation-quantity-invoices = Deviation of the amount of the sponsorships
+sponsor.dashboard.form.label.minimum-quantity-invoices = Minimum amount of the sponsorships
+sponsor.dashboard.form.label.maximum-quantity-invoices = Maximum amount of the sponsorships
