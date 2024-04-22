@@ -105,6 +105,12 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 
 			super.state(mode != null && mode.ordinal() <= 3, "mark", "auditor.codeaudit.form.error.low-mark");
 		}
+		{
+			boolean allRecordsPublished;
+
+			allRecordsPublished = this.repository.findManyAuditRecordsByCodeAuditId(object.getId()).stream().allMatch(a -> !a.isDraftMode());
+			super.state(allRecordsPublished, "*", "auditor.codeaudit.form.error.not-all-records-published");
+		}
 	}
 
 	@Override

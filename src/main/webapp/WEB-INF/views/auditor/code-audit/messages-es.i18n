@@ -21,6 +21,7 @@ auditor.codeAudit.form.button.create = Crear
 auditor.codeAutit.form.error.duplicated = Código duplicado
 auditor.codeAudit.form.error.too-close = La fecha de ejecución no es pasada
  auditor.codeaudit.form.error.low-mark = La nota debe ser al menos "C" para publicar
+ auditor.codeaudit.form.error.not-all-records-published = Todos los reportes de esta auditoría deben estar publicados
 
 auditor.codeAudit.list.button.create = Crear
 

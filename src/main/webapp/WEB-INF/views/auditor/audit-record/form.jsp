@@ -8,7 +8,6 @@
 	<acme:input-moment code="auditor.auditRecord.form.label.startPeriod" path="startPeriod"/>
 	<acme:input-moment code="auditor.auditRecord.form.label.endPeriod" path="endPeriod"/>
 	<acme:input-select code="auditor.auditRecord.form.label.mark" path="mark" choices="${marks}"/>
-	<acme:input-textbox code="auditor.auditRecord.form.label.codeAudit" path="codeAudit" readonly="true"/>
 	<acme:input-checkbox code="auditor.auditRecord.form.label.draftMode" path="draftMode" readonly="true"/>
 	
 	
