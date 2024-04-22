@@ -1,0 +1,21 @@
+# messages-en.i18n
+#
+# Copyright (C) 2024 Ismael Gata Dorado.
+#
+
+manager.manager-dashboard.form.title = Panel de indicadores del gestor
+manager.dashboard.form.label.total-user-story-must = Total de historias de usuario con prioridad "Obligatorias" 
+manager.dashboard.form.label.total-user-story-should = Total de historias de usuario con prioridad "Deberia" 
+manager.dashboard.form.label.total-user-story-could = Total de historias de usuario con prioridad "Podría" 
+manager.dashboard.form.label.total-user-story-wont = Total de historias de usuario con prioridad "No" 
+manager.dashboard.form.label.average-estimated-cost = Media del coste estimado de las historias de usuario
+manager.dashboard.form.label.deviation-estimated-cost =  Desviacion del coste estimado de historias de usuario
+manager.dashboard.form.label.minimum-estimated-cost = Minimo coste estimado de las historias de usuario
+manager.dashboard.form.label.maximum-estimated-cost =  Maximo coste estimado de las historias de usuario
+manager.dashboard.form.label.average-cost-project = Media del coste del los proyectos
+manager.dashboard.form.label.deviation-cost-project = Desviacion del coste de los proyectos
+manager.dashboard.form.label.minimum-cost-project = Minimo coste de los proyectos
+manager.dashboard.form.label.maximum-cost-project = Maximo coste de los proyectos
+
+
+

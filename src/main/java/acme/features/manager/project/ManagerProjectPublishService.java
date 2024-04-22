@@ -1,12 +1,15 @@
 
 package acme.features.manager.project;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
+import acme.entities.projects.ProjectUserStory;
 import acme.roles.Manager;
 
 @Service
@@ -53,6 +56,15 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		Project projectPreSave = this.repository.findOneProjectById(id);
 		if (!super.getBuffer().getErrors().hasErrors("published"))
 			super.state(projectPreSave.isDraftMode(), "published", "manager.project.form.error.published");
+
+		Collection<ProjectUserStory> listProjectUserStory = this.repository.findUserStoryByProjectPublished(id);
+
+		if (!super.getBuffer().getErrors().hasErrors("published"))
+			super.state(!listProjectUserStory.isEmpty(), "published", "manager.project.form.error.published.without_userStory");
+
+		if (!super.getBuffer().getErrors().hasErrors("published"))
+			super.state(!projectPreSave.isIndication(), "published", "manager.project.form.error.published.fatal_error");
+
 	}
 
 	@Override

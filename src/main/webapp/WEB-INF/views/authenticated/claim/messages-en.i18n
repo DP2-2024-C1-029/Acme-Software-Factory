@@ -21,9 +21,13 @@ authenticated.claim.form.label.description = Description
 authenticated.claim.form.label.department = Department
 authenticated.claim.form.label.emailAddress = Email
 authenticated.claim.form.label.link = Link
+authenticated.claim.form.label.confirmation = Confirm that the claim is correct
 
 #### BUTTONS
 authenticated.claim.form.button.create = Publish
 authenticated.claim.list.button.create = New claim
 
 ##### ERRORS
+authenticated.claim.form.error.duplicated = Claim exists with same code
+authenticated.claim.form.error.future = Instantation moment must be in the past
+authenticated.claim.form.error.confirmation = You must confirm the claim

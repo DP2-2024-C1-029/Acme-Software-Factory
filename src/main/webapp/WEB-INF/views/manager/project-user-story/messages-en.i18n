@@ -11,3 +11,4 @@ manager.project-user-story.list.label.acceptanceCriteria = Acceptance criteria
 manager.project-user-story.list.label.priority = Priority
 manager.project-user-story.list.label.link = Link
 manager.project-user-story.list.label.draftMode = Published
+manager.project-user-story.list.label.check = Select

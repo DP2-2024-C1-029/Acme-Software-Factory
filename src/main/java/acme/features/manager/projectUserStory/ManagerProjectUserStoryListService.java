@@ -41,8 +41,11 @@ public class ManagerProjectUserStoryListService extends AbstractService<Manager,
 	public void unbind(final ProjectUserStory object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "project.code", "project.title", "project.cost");
-
+		Dataset dataset = super.unbind(object, "userStory.title", "userStory.priority", "userStory.estimatedCost");
+		if (super.getRequest().getLocale().getLanguage().equals("es"))
+			dataset.put("published", object.getUserStory().isDraftMode() ? "No" : "Si");
+		else if (super.getRequest().getLocale().getLanguage().equals("en"))
+			dataset.put("published", object.getUserStory().isDraftMode() ? "No" : "Yes");
 		super.getResponse().addData(dataset);
 	}
 }

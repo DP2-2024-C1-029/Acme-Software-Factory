@@ -19,7 +19,8 @@
 	<acme:input-url code="authenticated.claim.form.label.link" path="link"/>
 	
 	<jstl:choose>
-		<jstl:when test="${_command == 'publish'}">
+		<jstl:when test="${_command == 'publish' }">
+			<acme:input-checkbox code="authenticated.claim.form.label.confirmation" path="confirmation"/>
 			<acme:submit code="authenticated.claim.form.button.create" action="/authenticated/claim/publish"/>
 		</jstl:when>
 				

@@ -58,6 +58,7 @@ master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.manager = Gestor
 master.menu.manager.my-projects = Ver mis proyectos
 master.menu.manager.my-user-stories = Ver mis historias de usuario
+master.menu.manager.dashboard = Panel de indicadores
 
 # master.menu.authenticated ########################################################
 master.menu.authenticated = Datos

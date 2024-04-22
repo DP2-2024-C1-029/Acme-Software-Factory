@@ -59,6 +59,7 @@ master.menu.user-account.become-consumer = Become a consumer
 master.menu.manager = Manager
 master.menu.manager.my-projects = List my projects
 master.menu.manager.my-user-stories = List my user stories
+master.menu.manager.dashboard = Dashboard
 
 # master.menu.authenticated ########################################################
 master.menu.authenticated = Data

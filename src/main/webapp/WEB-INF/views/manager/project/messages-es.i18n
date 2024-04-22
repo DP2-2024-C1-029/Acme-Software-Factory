@@ -35,3 +35,5 @@ manager.project.form.error.duplicated = Ya existe un proyecto con el mismo codig
 manager.project.form.error.negative-cost = El coste debe ser 0 o positivo
 manager.project.form.error.published = No puedes actualizar el proyecto, ya ha sido publicado
 manager.project.form.error.detele.published = No puedes borrar el proyecto, ya ha sido publicado
+manager.project.form.error.published.without_userStory = El proyecto debe tener al menos una historia de usuario y que este publicada
+manager.project.form.error.published.fatal_error = El proyecto no puede contener ningun error
