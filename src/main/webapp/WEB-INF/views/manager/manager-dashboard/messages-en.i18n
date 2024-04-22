@@ -1,0 +1,19 @@
+# messages-en.i18n
+#
+# Copyright (C) 2024 Ismael Gata Dorado.
+#
+
+manager.manager-dashboard.form.title = Manager's indicators panel
+manager.dashboard.form.label.total-user-story-must = Total number of user stories with priority "Must"
+manager.dashboard.form.label.total-user-story-should = Total number of user stories with priority "Should"
+manager.dashboard.form.label.total-user-story-could = Total number of user stories with priority "Could"
+manager.dashboard.form.label.total-user-story-wont = Total number of user stories with priority "Wont"
+manager.dashboard.form.label.average-estimated-cost = Average estimated cost of user stories
+manager.dashboard.form.label.deviation-estimated-cost = Deviation of the estimated cost of user stories
+manager.dashboard.form.label.minimum-estimated-cost = Minimum estimated cost of user stories
+manager.dashboard.form.label.maximum-estimated-cost = Maximum estimated cost of user stories 
+manager.dashboard.form.label.average-cost-project = Average cost of projects
+manager.dashboard.form.label.deviation-cost-project = Deviation of the cost of the projects
+manager.dashboard.form.label.minimum-cost-project = Minimum cost of projects
+manager.dashboard.form.label.maximum-cost-project = Maximum cost of projects
+

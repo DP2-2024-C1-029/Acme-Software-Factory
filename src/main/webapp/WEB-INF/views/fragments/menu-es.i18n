@@ -67,3 +67,13 @@ master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.sponsor = Datos del patrocinador
 master.menu.user-account.become-sponsor = Hazte patrocinador
+
+# master.menu.manager ########################################################
+master.menu.manager = Gestor
+master.menu.manager.my-projects = Ver mis proyectos
+master.menu.manager.my-user-stories = Ver mis historias de usuario
+master.menu.manager.dashboard = Panel de indicadores
+
+# master.menu.authenticated ########################################################
+master.menu.authenticated = Datos
+master.menu.authenticated.claim = Ver reclamaciones
