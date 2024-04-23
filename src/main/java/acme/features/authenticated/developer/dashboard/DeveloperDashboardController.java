@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.forms.Dashboard;
+import acme.forms.developer.Dashboard;
 import acme.roles.Developer;
 
 @Controller

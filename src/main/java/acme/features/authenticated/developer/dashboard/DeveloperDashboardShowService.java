@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.forms.Dashboard;
+import acme.forms.developer.Dashboard;
 import acme.roles.Developer;
 
 @Service
