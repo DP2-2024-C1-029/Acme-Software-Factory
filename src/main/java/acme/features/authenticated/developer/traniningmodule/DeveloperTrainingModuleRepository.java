@@ -24,9 +24,6 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 	@Query("select d from Developer d where d.id = :id")
 	Developer findOneDeveloperById(int id);
 
-	@Query("select t from TrainingModule t where t.code = :code")
-	TrainingModule findOneJobByCode(String code);
-
 	@Query("select DISTINCT s.project from TrainingModule s where s.developer.id = :id")
 	Collection<Project> findManyProjectsByDeveloperId(int id);
 
@@ -35,6 +32,9 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 
 	@Query("select t from TrainingSession t where t.trainingModule.id = :id")
 	Collection<TrainingSession> findManyTrainingSessionsByTrainingModuleId(int id);
+
+	@Query("SELECT t FROM TrainingModule t")
+	Collection<TrainingModule> findAllTrainingModules();
 
 	//@Query("select p from Project p where p.trainingmodule.id = :id")
 	//Collection<Project> findManyProjectsByTrainingModuleId(int id);

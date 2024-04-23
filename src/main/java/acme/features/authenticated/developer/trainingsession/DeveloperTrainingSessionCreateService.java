@@ -75,6 +75,16 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			super.state(existing == null, "reference", "developer.trainingSession.form.error.duplicated");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			int id;
+			boolean existingCode;
+
+			id = super.getRequest().getData("id", int.class);
+			existingCode = this.repository.findAllTrainingSessions().stream().filter(e -> e.getId() != id).anyMatch(e -> e.getCode().equals(object.getCode()));
+
+			super.state(!existingCode, "code", "developer.trainingModule.form.error.duplicated-code");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("startTime") && !super.getBuffer().getErrors().hasErrors("endTime")) {
 			Date startTime = MomentHelper.deltaFromMoment(object.getStartTime(), 1, ChronoUnit.WEEKS);
 

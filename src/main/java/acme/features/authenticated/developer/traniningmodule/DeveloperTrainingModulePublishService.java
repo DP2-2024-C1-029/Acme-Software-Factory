@@ -68,10 +68,13 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			TrainingModule existing;
+			int id;
+			boolean existingCode;
 
-			existing = this.repository.findOneJobByCode(object.getCode());
-			super.state(existing == null, "reference", "developer.trainingModule.form.error.duplicated");
+			id = super.getRequest().getData("id", int.class);
+			existingCode = this.repository.findAllTrainingModules().stream().filter(e -> e.getId() != id).anyMatch(e -> e.getCode().equals(object.getCode()));
+
+			super.state(!existingCode, "code", "developer.trainingModule.form.error.duplicated-code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("estimatedTotalTime"))

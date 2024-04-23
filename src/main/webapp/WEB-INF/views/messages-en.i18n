@@ -61,8 +61,8 @@ developer.dashboard.form.label.average-time-training-module	= Avg time training 
 developer.dashboard.form.label.deviation-time-training-module = Deviation time training module
 developer.dashboard.form.label.minimum-time-training-module	= Min time training module
 developer.dashboard.form.label.maximum-time-training-module = Max time training module
-developer.trainingModule.list.label.draftMode = Draft Mode
-developer.trainingModule.form.button.publish = Publish
+developer.trainingmodule.list.label.draftMode = Draft Mode
+developer.trainingmodule.form.button.publish = Publish
 
 developer.trainingsession.list.label.draftMode = Draft Mode
 developer.trainingsession.form.button.publish = Publish
