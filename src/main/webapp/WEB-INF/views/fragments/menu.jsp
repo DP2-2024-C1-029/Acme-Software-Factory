@@ -26,13 +26,9 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-juagombor" action="https://www.informatica.us.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.jaivarcac" action="https://planefinder.net/"/>
 		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
-		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
-			<acme:menu-suboption code="master.menu.administrator.list-risks" action="/administrator/risk/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>			
@@ -68,7 +64,8 @@
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.claim" action="/authenticated/claim/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>
-			<acme:menu-suboption code="master.menu.authenticated.list-risks" action="/authenticated/risk/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.list-risks" action="/authenticated/risk/list" access="!hasRole('Administrator')"/>
+			<acme:menu-suboption code="master.menu.administrator.list-risks" action="/administrator/risk/list" access="hasRole('Administrator')"/>
 			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list" access="hasRole('Administrator')"/>
 		</acme:menu-option>
 		

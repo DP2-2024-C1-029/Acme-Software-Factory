@@ -11,7 +11,7 @@ administrator.risk.form.label.description = Descripción
 administrator.risk.form.label.link = Enlace
 administrator.risk.form.label.riskValue = Valor
 
-administrator.risk.form.button.create = Registrar
+administrator.risk.form.button.create = Crear
 administrator.risk.form.button.update = Actualizar
 administrator.risk.form.button.delete = Borrar
 
@@ -21,3 +21,5 @@ administrator.risk.list.label.identificationDate = Fecha de identificación
 administrator.risk.list.label.impact = Impacto
 administrator.risk.list.label.probability = Probabilidad
 administrator.risk.list.label.riskValue = Valor
+
+administrator.risk.list.button.create = Crear

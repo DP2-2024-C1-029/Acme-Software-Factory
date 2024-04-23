@@ -21,3 +21,5 @@ administrator.risk.list.label.identificationDate = Identification Date
 administrator.risk.list.label.impact = Impact
 administrator.risk.list.label.probability = Probability
 administrator.risk.list.label.riskValue = Value
+
+administrator.risk.list.button.create = Create
