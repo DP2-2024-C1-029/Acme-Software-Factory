@@ -2,6 +2,7 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 
 		auditor = this.repository.findOneAuditorById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new CodeAudit();
+		object.setExecutionDate(new Date(MomentHelper.getCurrentMoment().getTime() - 1));
 		object.setDraftMode(true);
 		object.setAuditor(auditor);
 

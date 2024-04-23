@@ -9,7 +9,7 @@ authenticated.risk.form.label.impact = Impacto
 authenticated.risk.form.label.probability = Probabilidad
 authenticated.risk.form.label.description = Descripción
 authenticated.risk.form.label.link = Enlace
-authenticated.risk.form.label.value = Valor
+authenticated.risk.form.label.riskValue = Valor
 
 authenticated.risk.form.button.create = Registrar
 authenticated.risk.form.button.update = Actualizar
@@ -18,4 +18,4 @@ authenticated.risk.list.label.reference = Referencia
 authenticated.risk.list.label.identificationDate = Fecha de identificación
 authenticated.risk.list.label.impact = Impacto
 authenticated.risk.list.label.probability = Probabilidad
-authenticated.risk.list.label.value = Valor
+authenticated.risk.list.label.riskValue = Valor

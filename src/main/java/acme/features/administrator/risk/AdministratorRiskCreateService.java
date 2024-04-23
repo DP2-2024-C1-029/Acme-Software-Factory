@@ -1,6 +1,8 @@
 
 package acme.features.administrator.risk;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +33,7 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 		Risk object;
 
 		object = new Risk();
-		object.setIdentificationDate(MomentHelper.getCurrentMoment());
+		object.setIdentificationDate(new Date(MomentHelper.getCurrentMoment().getTime() - 1));
 		object.setReference("R-");
 
 		super.getBuffer().addData(object);
