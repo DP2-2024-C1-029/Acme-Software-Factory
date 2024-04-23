@@ -10,7 +10,7 @@ auditor.codeAudit.form.label.correctiveActions = Acciones correctivas
 auditor.codeAudit.form.label.link = Enlace
 auditor.codeAudit.form.label.mark = Nota
 auditor.codeAudit.form.label.project = Proyecto
-auditor.codeAudit.form.label.draftMode = DraftMode
+auditor.codeAudit.form.label.draftMode = Modo borrador
 
 auditor.codeAudit.form.button.auditRecords = Registros de la auditoría
 auditor.codeAudit.form.button.update = Actualizar

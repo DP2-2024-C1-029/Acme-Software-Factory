@@ -9,7 +9,7 @@ auditor.auditRecord.form.label.endPeriod = Fecha fin del periodo
 auditor.auditRecord.form.label.link = Enlace
 auditor.auditRecord.form.label.mark = Nota
 auditor.auditRecord.form.label.codeAudit = Auditoría de código
-auditor.auditRecord.form.label.draftMode = DraftMode
+auditor.auditRecord.form.label.draftMode = Modo borrador
 
 auditor.auditRecord.form.button.update = Actualizar
 auditor.auditRecord.form.button.delete = Borrar
