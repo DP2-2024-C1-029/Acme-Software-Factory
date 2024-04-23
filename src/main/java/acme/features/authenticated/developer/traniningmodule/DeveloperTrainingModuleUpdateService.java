@@ -2,11 +2,13 @@
 package acme.features.authenticated.developer.traniningmodule;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
@@ -35,7 +37,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		trainingModule = this.repository.findOneTrainingModuleById(masterId);
 		developer = trainingModule == null ? null : trainingModule.getDeveloper();
 
-		status = trainingModule != null && super.getRequest().getPrincipal().hasRole(developer);
+		status = trainingModule != null && trainingModule.isDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -60,8 +62,12 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "creationMoment", "details", "code", "diffitultyLevel", "updateMoment", "link", "estimatedTotalTime");
+		Date moment = MomentHelper.getCurrentMoment();
+		Date updateMoment = new Date(moment.getTime() - 60000); // Le restamos tiempo para asegurar que esta en el pasado
+
+		super.bind(object, "creationMoment", "details", "code", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
 		object.setProject(project);
+		object.setUpdateMoment(updateMoment);
 	}
 
 	@Override
@@ -104,7 +110,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		projects = this.repository.findManyProjectsByDeveloperId(developerId);
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "creationMoment", "details", "code", "updateMoment", "link", "estimatedTotalTime");
+		dataset = super.unbind(object, "creationMoment", "details", "code", "updateMoment", "link", "estimatedTotalTime", "draftMode");
 		dataset.put("difficultyLevel", choices.getSelected().getKey());
 		dataset.put("difficultyLevels", choices);
 		dataset.put("project", choicesProject.getSelected().getKey());

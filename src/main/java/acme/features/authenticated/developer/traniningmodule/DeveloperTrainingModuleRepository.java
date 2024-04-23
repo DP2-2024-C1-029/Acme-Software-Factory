@@ -37,6 +37,6 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 	Collection<TrainingSession> findManyTrainingSessionsByTrainingModuleId(int id);
 
 	//@Query("select p from Project p where p.trainingmodule.id = :id")
-	//Collection<Project> findManyProjectsByTrainingModuleId(int id); ME LA TENGO QUE TRAER DE LA TABLA
+	//Collection<Project> findManyProjectsByTrainingModuleId(int id);
 
 }

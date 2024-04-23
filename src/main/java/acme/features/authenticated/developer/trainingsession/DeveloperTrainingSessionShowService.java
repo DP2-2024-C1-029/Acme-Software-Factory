@@ -63,7 +63,7 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 		trainingModules = this.repository.findManyTrainingModuleByDeveloperId(developerId);
 		choicesTrainingModules = SelectChoices.from(trainingModules, "code", object.getTrainingModule());
 
-		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink");
+		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink", "draftMode");
 		dataset.put("trainingModule", choicesTrainingModules.getSelected().getKey());
 		dataset.put("trainingModules", choicesTrainingModules);
 		dataset.put("masterId", object.getTrainingModule().getId());

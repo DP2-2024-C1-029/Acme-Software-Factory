@@ -10,19 +10,18 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingSessionUpdateService extends AbstractService<Developer, TrainingSession> {
+public class DeveloperTrainingSessionPublishService extends AbstractService<Developer, TrainingSession> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	public DeveloperTrainingSessionRepository repository;
+	protected DeveloperTrainingSessionRepository repository;
 
-	// AbstractService interface ----------------------------------------------
+	// AbstractService<Authenticated, TrainingModule> ---------------------------
 
 
 	@Override
@@ -37,16 +36,13 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		super.getResponse().setAuthorised(status);
 	}
+
 	@Override
 	public void load() {
-		TrainingSession object;
-		int masterId;
+		int id = super.getRequest().getData("id", int.class);
+		TrainingSession trainingSession = this.repository.findOneTrainingSessionById(id);
 
-		masterId = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneTrainingSessionById(masterId);
-
-		super.getBuffer().addData(object);
-
+		super.getBuffer().addData(trainingSession);
 	}
 
 	@Override
@@ -54,7 +50,6 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		assert object != null;
 
 		super.bind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink");
-
 	}
 
 	@Override
@@ -75,15 +70,20 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingSession.form.error.update-moment-less-than-week");
 		}
 
-		int masterId = super.getRequest().getData("trainingModuleId", int.class);
-		TrainingModule trainingModule = this.repository.findOneTrainingModuleById(masterId);
-		final boolean noDraftTrainingModule = trainingModule.isDraftMode();
-		super.state(noDraftTrainingModule, "*", "developer.trainingSession.form.error.trainingModule-noDraft");
+		/*
+		 * int masterId = super.getRequest().getData("masterId", int.class);
+		 * TrainingModule trainingModule = this.repository.findOneTrainingModuleByTrainingSessionId(masterId);
+		 * final boolean noDraftTrainingModule = trainingModule.isDraftMode();
+		 * super.state(noDraftTrainingModule, "*", "developer.trainingSession.form.error.trainingModule-noDraft");
+		 */
 
 	}
+
 	@Override
 	public void perform(final TrainingSession object) {
 		assert object != null;
+
+		object.setDraftMode(false);
 
 		this.repository.save(object);
 	}
@@ -92,11 +92,10 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	public void unbind(final TrainingSession object) {
 		assert object != null;
 
-		Dataset dataset;
+		Dataset dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink", "draftMode");
 
-		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink", "draftmode");
 		dataset.put("masterId", object.getTrainingModule().getId());
-
+		dataset.put("isPublished", object.getTrainingModule().isDraftMode());
 		super.getResponse().addData(dataset);
 	}
 

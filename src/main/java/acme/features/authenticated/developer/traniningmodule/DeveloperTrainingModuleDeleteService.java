@@ -2,6 +2,7 @@
 package acme.features.authenticated.developer.traniningmodule;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		masterId = super.getRequest().getData("id", int.class);
 		trainingModule = this.repository.findOneTrainingModuleById(masterId);
 		developer = trainingModule == null ? null : trainingModule.getDeveloper();
-		status = trainingModule != null && super.getRequest().getPrincipal().hasRole(developer);
+		status = trainingModule != null && trainingModule.isDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -68,6 +69,11 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+
+		int masterId = super.getRequest().getData("id", int.class);
+		List<TrainingSession> ls = this.repository.findManyTrainingSessionsByTrainingModuleId(masterId).stream().toList();
+		final boolean someDraftTrainingSession = ls.stream().allMatch(Session -> Session.isDraftMode());
+		super.state(someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-Nodraft");
 	}
 
 	@Override
@@ -96,7 +102,7 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		projects = this.repository.findManyProjectsByDeveloperId(developerId);
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "creationMoment", "details", "code", "updateMoment", "link", "estimatedTotalTime");
+		dataset = super.unbind(object, "creationMoment", "details", "code", "updateMoment", "link", "estimatedTotalTime", "draftMode");
 		dataset.put("difficultyLevel", choices.getSelected().getKey());
 		dataset.put("difficultyLevels", choices);
 		dataset.put("project", choicesProject.getSelected().getKey());

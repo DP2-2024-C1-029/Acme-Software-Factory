@@ -62,7 +62,10 @@ public class TrainingModule extends AbstractEntity {
 	@Range(min = 0, max = 999)
 	private Integer				estimatedTotalTime;
 
+	private boolean				draftMode;
+
 	// Relationships
+
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)

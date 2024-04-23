@@ -45,3 +45,18 @@ developer.trainingsession.form.button.create = Crear Training Session
 developer.trainingsession.list.button.create = Crear Training Session
 developer.trainingsession.form.button.delete = Borrar Training Session
 developer.trainingsession.form.button.update = Actualizar Training Session
+
+master.menu.developer.dashboard.show = Mostrar dashboard training module
+developer.dashboard.form.title = Dashboard
+developer.dashboard.form.title.general-indicators = Datos
+developer.dashboard.form.label.total-training-module-with-update-moment	= Total Training Module actualizados
+developer.dashboard.form.label.total-training-session-with-link	= Total Training Session con link
+developer.dashboard.form.label.average-time-training-module	= Tiempo medio Training Module
+developer.dashboard.form.label.deviation-time-training-module = Desviación del tiempo en Training Module
+developer.dashboard.form.label.minimum-time-training-module	= Tiempo mínimo Training Module
+developer.dashboard.form.label.maximum-time-training-module = Tiempo máximo Training Module
+developer.trainingModule.list.label.draftMode = Modo borrador
+developer.trainingModule.form.button.publish = Publicar
+
+developer.trainingsession.list.label.draftMode = Modo borrador
+developer.trainingsession.form.button.publish = Publicar

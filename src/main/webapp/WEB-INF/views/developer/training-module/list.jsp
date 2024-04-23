@@ -9,6 +9,8 @@
 	<acme:list-column code="developer.trainingmodule.list.label.code" path="code" width="20%"/>
 	<acme:list-column code="developer.trainingmodule.list.label.details" path="details" width="40%"/>	
 	<acme:list-column code="developer.trainingmodule.list.label.difficultyLevels" path="difficultyLevel" width="40%"/>
+	<acme:list-column code="developer.trainingModule.list.label.draftMode" path="draftMode"/>
+	
 </acme:list>
 
 <jstl:if test="${_command == 'list'}">

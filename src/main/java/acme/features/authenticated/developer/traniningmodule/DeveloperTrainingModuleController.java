@@ -14,22 +14,22 @@ import acme.roles.Developer;
 public class DeveloperTrainingModuleController extends AbstractController<Developer, TrainingModule> {
 
 	@Autowired
-	public DeveloperTrainingModuleListService	listService;
+	public DeveloperTrainingModuleListService		listService;
 
 	@Autowired
-	public DeveloperTrainingModuleShowService	showService;
+	public DeveloperTrainingModuleShowService		showService;
 
-	//	@Autowired
-	//	public DeveloperTrainingModuleShowService	showService;
-	//
 	@Autowired
-	public DeveloperTrainingModuleCreateService	createService;
-	//
+	public DeveloperTrainingModulePublishService	publishService;
+
 	@Autowired
-	public DeveloperTrainingModuleUpdateService	updateService;
-	//
+	public DeveloperTrainingModuleCreateService		createService;
+
 	@Autowired
-	public DeveloperTrainingModuleDeleteService	deleteService;
+	public DeveloperTrainingModuleUpdateService		updateService;
+
+	@Autowired
+	public DeveloperTrainingModuleDeleteService		deleteService;
 
 
 	@PostConstruct
@@ -40,5 +40,6 @@ public class DeveloperTrainingModuleController extends AbstractController<Develo
 		super.addBasicCommand("delete", this.deleteService);
 		super.addBasicCommand("update", this.updateService);
 
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 }

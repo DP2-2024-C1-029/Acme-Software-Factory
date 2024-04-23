@@ -1,10 +1,14 @@
 
 package acme.features.authenticated.developer.trainingsession;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingsessions.TrainingSession;
@@ -46,6 +50,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		trainingSession = new TrainingSession();
 
 		trainingSession.setTrainingModule(trainingModule);
+		trainingSession.setDraftMode(true);
 
 		super.getBuffer().addData(trainingSession);
 
@@ -70,23 +75,18 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			super.state(existing == null, "reference", "developer.trainingSession.form.error.duplicated");
 		}
 
-		/*
-		 * Date startTime = object.getStartTime();
-		 * Date endTime = object.getEndTime();
-		 * 
-		 * // Calcular la diferencia en milisegundos
-		 * long diffInMilliseconds = endTime.getTime() - startTime.getTime();
-		 * 
-		 * // Convertir de milisegundos a días
-		 * long diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
-		 * 
-		 * // Comprobamos que sea una semana
-		 * if (diffInDays < 7)
-		 * super.state(true, "updateMoment", "developer.trainingSession.form.error.update-moment-less-than-week");
-		 */
+		if (!super.getBuffer().getErrors().hasErrors("startTime") && !super.getBuffer().getErrors().hasErrors("endTime")) {
+			Date startTime = MomentHelper.deltaFromMoment(object.getStartTime(), 1, ChronoUnit.WEEKS);
 
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(object.getStartTime().compareTo(object.getEndTime()) < 0, "updateMoment", "developer.trainingSession.form.error.update-moment-cant-be-past");
+			// Comprobamos que sea una semana
+			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingSession.form.error.update-moment-less-than-week");
+		}
+
+		int masterId = super.getRequest().getData("masterId", int.class);
+		TrainingModule trainingModule = this.repository.findOneTrainingModuleById(masterId);
+		final boolean noDraftTrainingModule = trainingModule.isDraftMode();
+		super.state(noDraftTrainingModule, "*", "developer.trainingSession.form.error.trainingModule-noDraft");
+
 	}
 
 	@Override
@@ -102,7 +102,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink");
+		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink", "draftMode");
 		dataset.put("masterId", object.getTrainingModule().getId());
 
 		super.getResponse().addData(dataset);

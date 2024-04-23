@@ -30,7 +30,7 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 
 		masterId = super.getRequest().getData("id", int.class);
 		trainingSession = this.repository.findOneTrainingSessionById(masterId);
-		status = trainingSession != null && super.getRequest().getPrincipal().hasRole(trainingSession.getTrainingModule().getDeveloper());
+		status = trainingSession != null && trainingSession.isDraftMode() && super.getRequest().getPrincipal().hasRole(trainingSession.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -71,7 +71,7 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink");
+		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink", "draftMode");
 		dataset.put("masterId", object.getTrainingModule().getId());
 
 		super.getResponse().addData(dataset);
