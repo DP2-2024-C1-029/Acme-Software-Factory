@@ -63,11 +63,15 @@ public class Invoice extends AbstractEntity {
 	@URL
 	@Length(max = 255)
 	private String				link;
+
+	// For deriverable 03
+	private boolean				isPublished;
+
 	// Derived attributes -----------------------------------------------------
 
 
 	@Transient
-	private Money totalAmount() {
+	public Money totalAmount() {
 		Money m = new Money();
 		m.setAmount(this.quantity.getAmount() * (1 + this.tax / 100));
 		m.setCurrency(this.quantity.getCurrency());

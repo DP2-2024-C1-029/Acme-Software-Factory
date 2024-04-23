@@ -53,17 +53,45 @@ master.menu.consumer.favourite-link = Enlace favorito
 # master.menu.auditor ##########################################################
 
 master.menu.auditor = Auditor
-master.menu.auditor.list-codeAudit = Listar mis auditorías de código
+master.menu.auditor.list-code-audit = Listar mis auditorías de código
 master.menu.auditor.dashboard = Panel de auditorías
+
+# master.menu.sponsor #########################################################
+
+master.menu.sponsorship = Patrocinios
+master.menu.sponsor.sponsorship.list-mine = Listar mis patrocinios
+master.menu.sponsor.sponsorship.list-all = Listar todos los patrocinios
+master.menu.sponsor.dashboard.show = Tablero de control de patrocinador
+
+# master.menu.others ##########################################################
+
+master.menu.others = Listar otras entidades
+master.menu.authenticated.objective.list = Lista de objetivos
+master.menu.administrator.banner.list = Lista de banners
 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
+
 master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
+
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+
 master.menu.user-account.auditor = Datos de auditor
 master.menu.user-account.become-auditor = Hazte auditor
 
+master.menu.user-account.sponsor = Datos del patrocinador
+master.menu.user-account.become-sponsor = Hazte patrocinador
+
+# master.menu.manager ########################################################
+master.menu.manager = Gestor
+master.menu.manager.my-projects = Ver mis proyectos
+master.menu.manager.my-user-stories = Ver mis historias de usuario
+master.menu.manager.dashboard = Panel de indicadores
+
+# master.menu.authenticated ########################################################
+master.menu.authenticated = Datos
+master.menu.authenticated.claim = Ver reclamaciones

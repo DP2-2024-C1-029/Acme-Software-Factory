@@ -1,0 +1,18 @@
+authenticated.objective.list.title = Listing of objectives
+authenticated.objective.form.title = Objective form
+
+authenticated.objective.list.label.title = Title
+authenticated.objective.list.label.priority = Priority
+authenticated.objective.list.label.instantiation-moment = Intantiation moment
+authenticated.objective.list.label.is-critical = Is critical?
+
+authenticated.objective.form.label.title = Title
+authenticated.objective.form.label.description = Description
+authenticated.objective.form.label.instantiation-moment = Instantiation moment
+authenticated.objective.form.label.priority = Priority
+authenticated.objective.form.label.is-critical = Is critical?
+authenticated.objective.form.label.initial-execution-period = Initial execution Period
+authenticated.objective.form.label.ending-execution-period = Final execution Period
+authenticated.objective.form.label.link = Link
+
+administrator.objective.form.button.create = Create

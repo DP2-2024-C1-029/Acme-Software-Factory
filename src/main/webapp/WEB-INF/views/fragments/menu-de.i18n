@@ -40,6 +40,11 @@ master.menu.provider.favourite-link = Lieblingslink
 master.menu.consumer = Verbraucher
 master.menu.consumer.favourite-link = Lieblingslink
 
+# master.menu.sponsor #########################################################
+
+master.menu.sponsor = Sponsoren
+master.menu.sponsor.sponsorship.list = Sponsorenliste
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Konto

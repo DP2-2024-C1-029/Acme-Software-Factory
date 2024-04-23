@@ -1,0 +1,14 @@
+# messages-es.i18n
+#
+# Copyright (C) 2024-2024 Ismael Gata Dorado.
+
+#### LIST
+manager.project-user-story.list.title = Lista de historias de usuario del proyecto
+manager.project-user-story.list.label.title = Titulo
+manager.project-user-story.list.label.description = Descripcion
+manager.project-user-story.list.label.estimatedCost = Coste estimado
+manager.project-user-story.list.label.acceptanceCriteria = Criteria de aceptación
+manager.project-user-story.list.label.priority = Prioridad
+manager.project-user-story.list.label.link = Link
+manager.project-user-story.list.label.draftMode = Publicado
+manager.project-user-story.list.label.check = Seleccionar
