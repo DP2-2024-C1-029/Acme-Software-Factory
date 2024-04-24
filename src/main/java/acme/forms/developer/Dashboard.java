@@ -1,5 +1,5 @@
 
-package acme.forms;
+package acme.forms.developer;
 
 import acme.client.data.AbstractForm;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class DeveloperDashboard extends AbstractForm {
+public class Dashboard extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 	int							totalTrainingModuleWithUpdateMoment;
