@@ -13,20 +13,4 @@
 	<acme:input-url code="developer.trainingmodule.list.label.link" path="link"/>
 	
 	<acme:input-select code="developer.trainingmodule.list.label.projects" path="project" choices="${projects}"/>
-	
-	
-	<jstl:choose>	 
-		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="developer.trainingmodule.form.button.create" action="/developer/training-module/create"/>
-		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-			<acme:submit code="developer.trainingmodule.form.button.delete" action="/developer/training-module/delete"/>
-			<acme:submit code="developer.trainingmodule.form.button.update" action="/developer/training-module/update"/>
-			<acme:submit code="developer.trainingmodule.form.button.publish" action="/developer/training-module/publish?id=${id}"/>
-			<acme:button code="master.menu.developer.all-trainingsession" action="/developer/training-session/list?masterId=${id}"/>
-		</jstl:when>		
-		<jstl:otherwise>
-			<acme:button code="master.menu.developer.all-trainingsession" action="/developer/training-session/list?masterId=${id}"/>
-		</jstl:otherwise>
-	</jstl:choose>
-	</acme:form>
+</acme:form>

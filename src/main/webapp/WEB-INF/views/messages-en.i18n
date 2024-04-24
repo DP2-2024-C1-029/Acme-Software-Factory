@@ -33,9 +33,9 @@ developer.trainingmodule.list.button.create = Create Training Module
 developer.trainingmodule.form.button.delete = Delete Training Module
 developer.trainingmodule.form.button.update = Update Training Module
 
-master.menu.developer.all-trainingsession = Show Training Sessions associated
+master.menu.developer.all-trainingsession = List Training Sessions associated
 master.menu.developer = Developer
-master.menu.developer.all-trainingmodule = Show Training Module
+master.menu.developer.all-trainingmodule = List Training Module
 
 developer.training-session.list.title = All Training Session
 developer.training-session.form.title = Training Session
@@ -66,9 +66,18 @@ developer.trainingmodule.form.button.publish = Publish
 
 developer.trainingsession.list.label.draftMode = Draft Mode
 developer.trainingsession.form.button.publish = Publish
+master.menu.user-account.become-developer = Become developer
+master.menu.user-account.developer = Developer
+
+authenticated.developer.form.label.link = Link
+authenticated.developer.form.label.email = Email
+authenticated.developer.form.button.create = Create
+
+any.training-module.list.title = List of Training Module
 
 developer.trainingsession.form.error.duplicated-code = The code already exists
 developer.trainingmodule.form.error.duplicated-code = The code already exists
+developer.trainingModule.form.error.trainingSession-draft = You cannot publish because the existing training session is in draftmode
 developer.trainingModule.form.error.drafted-project = Project draftmode must be false
 developer.trainingModule.form.error.trainingSession-Nodraft = You cannot delete because exists a training Session with draftmode false
 developer.trainingModule.form.error.trainingSession-empty = You must have at least one Training Session to publish the Training Module
