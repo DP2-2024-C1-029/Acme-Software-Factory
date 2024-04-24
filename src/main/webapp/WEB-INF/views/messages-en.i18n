@@ -69,7 +69,10 @@ developer.trainingsession.form.button.publish = Publish
 
 developer.trainingsession.form.error.duplicated-code = The code already exists
 developer.trainingmodule.form.error.duplicated-code = The code already exists
+developer.trainingModule.form.error.drafted-project = Project draftmode must be false
+developer.trainingModule.form.error.trainingSession-Nodraft = You cannot delete because exists a training Session with draftmode false
 developer.trainingModule.form.error.trainingSession-empty = You must have at least one Training Session to publish the Training Module
+developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week = Start date Must be one week ahead Training Module Creation Moment
 developer.trainingModule.form.error.negative-estimated-total-time = Estimated Total Time must be positive
 developer.trainingsession.form.error.end-date-less-than-week = End Date must be one week ahead start Date
 developer.trainingSession.form.error.training-module-no-draft = You can't publish a new Training Session because the Training Module is published

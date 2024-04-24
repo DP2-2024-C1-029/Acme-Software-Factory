@@ -87,6 +87,9 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		super.state(!noSession, "*", "developer.trainingModule.form.error.trainingSession-empty");
 		super.state(!someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
 
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");
+
 	}
 
 	@Override

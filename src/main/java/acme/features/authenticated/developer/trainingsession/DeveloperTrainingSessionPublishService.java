@@ -73,6 +73,17 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingSession.form.error.update-moment-less-than-week");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("startTime")) {
+			Date startTime = MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 1, ChronoUnit.WEEKS);
+			super.state(MomentHelper.isAfter(object.getStartTime(), startTime), "endTime", "developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week");
+
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("endTime")) {
+			boolean endBeforeCreation = MomentHelper.isAfter(object.getEndTime(), object.getTrainingModule().getCreationMoment());
+			super.state(endBeforeCreation, "endTime", "developer.trainingSession.form.error.end-before-creation");
+		}
+
 	}
 
 	@Override
