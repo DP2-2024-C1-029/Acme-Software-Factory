@@ -66,7 +66,7 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		types = SelectChoices.from(AuditType.class, object.getType());
 
-		projects = this.repository.findManyProjects();
+		projects = this.repository.findManyPublishedProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
 		auditRecords = this.repository.findAllAuditRecordsByCodeAuditId(object.getId());

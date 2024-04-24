@@ -33,8 +33,8 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Dashbo
 
 	@Override
 	public void load() {
-		int totalStaticCodeAudits;
-		int totalDynamicCodeAudits;
+		int totalStaticCodeAudits = 0;
+		int totalDynamicCodeAudits = 0;
 		Double averageAuditRecords;
 		Double deviationAuditRecords;
 		int minimunAuditRecords;
@@ -43,53 +43,71 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Dashbo
 		Double deviationDurationAuditRecords;
 		double minimunDurationAuditRecords;
 		double maximunDurationAuditRecords;
+		List<Integer> auditRecordsCounts = null;
+		List<Object[]> listPeriods = null;
+
+		Auditor auditor = this.repository.findOneAuditorById(super.getRequest().getPrincipal().getActiveRoleId());
 
 		// Llamadas al repositorio para obtener los valores
-		totalStaticCodeAudits = this.repository.totalStaticCodeAudits();
-		totalDynamicCodeAudits = this.repository.totalDynamicCodeAudits();
-		List<Integer> auditRecordsCounts = this.repository.findRecordCountsByAudit();
-		List<Object[]> listPeriods = this.repository.findPeriods();
-
-		// Listado de duraciones de registros
-		List<Long> durations = new ArrayList<>();
-		for (Object[] period : listPeriods) {
-			// Extraer los periodos de inicio y fin
-			java.sql.Timestamp startPeriodTimestamp = (java.sql.Timestamp) period[0];
-			java.sql.Timestamp endPeriodTimestamp = (java.sql.Timestamp) period[1];
-
-			LocalDateTime startPeriod = startPeriodTimestamp.toLocalDateTime();
-			LocalDateTime endPeriod = endPeriodTimestamp.toLocalDateTime();
-
-			// Calcular la duración en segundos usando Duration
-			long duration = Duration.between(startPeriod, endPeriod).get(ChronoUnit.SECONDS);
-			durations.add(duration);
+		if (auditor != null) {
+			totalStaticCodeAudits = this.repository.totalStaticCodeAudits(auditor.getId());
+			totalDynamicCodeAudits = this.repository.totalDynamicCodeAudits(auditor.getId());
+			auditRecordsCounts = this.repository.findRecordCountsByAudit(auditor.getId());
+			listPeriods = this.repository.findPeriods(auditor.getId());
 		}
 
-		// Calculos cantidades de registros
-		averageAuditRecords = auditRecordsCounts.stream().mapToInt(Integer::intValue).average().orElse(Double.NaN);
-		double countVariance = auditRecordsCounts.stream().mapToDouble(count -> Math.pow(count - averageAuditRecords, 2)).average().orElse(Double.NaN);
-		deviationAuditRecords = Math.sqrt(countVariance);
-		minimunAuditRecords = auditRecordsCounts.stream().mapToInt(Integer::intValue).min().orElseThrow();
-		maximunAuditRecords = auditRecordsCounts.stream().mapToInt(Integer::intValue).max().orElseThrow();
+		if (auditRecordsCounts != null && listPeriods != null) {
+			// Listado de duraciones de registros
+			List<Long> durations = new ArrayList<>();
+			for (Object[] period : listPeriods) {
+				// Extraer los periodos de inicio y fin
+				java.sql.Timestamp startPeriodTimestamp = (java.sql.Timestamp) period[0];
+				java.sql.Timestamp endPeriodTimestamp = (java.sql.Timestamp) period[1];
 
-		// Calculos duraciones de registros
-		double averageDurationAuditRecordsInSeconds = durations.stream().mapToLong(Long::longValue).average().orElse(Double.NaN);
-		averageDurationAuditRecords = (double) Duration.of((long) averageDurationAuditRecordsInSeconds, ChronoUnit.SECONDS).toMinutes();
-		averageDurationAuditRecords = Math.round(averageDurationAuditRecords / 60.0 * 10) / 10.0;
+				LocalDateTime startPeriod = startPeriodTimestamp.toLocalDateTime();
+				LocalDateTime endPeriod = endPeriodTimestamp.toLocalDateTime();
 
-		double durationVariance = durations.stream().mapToDouble(duration -> Math.pow(duration - averageDurationAuditRecordsInSeconds, 2)).average().orElse(Double.NaN);
-		long deviationDurationAuditRecordsInSeconds = (long) Math.sqrt(durationVariance);
-		deviationDurationAuditRecords = (double) Duration.of(deviationDurationAuditRecordsInSeconds, ChronoUnit.SECONDS).toMinutes();
-		deviationDurationAuditRecords = Math.round(deviationDurationAuditRecords / 60.0 * 10) / 10.0;
+				// Calcular la duración en segundos usando Duration
+				long duration = Duration.between(startPeriod, endPeriod).get(ChronoUnit.SECONDS);
+				durations.add(duration);
+			}
 
-		minimunDurationAuditRecords = durations.stream().mapToLong(Long::longValue).min().orElseThrow();
-		minimunDurationAuditRecords = Duration.of((long) minimunDurationAuditRecords, ChronoUnit.SECONDS).toMinutes();
-		minimunDurationAuditRecords = Math.round(minimunDurationAuditRecords / 60.0 * 10) / 10.0;
+			// Calculos cantidades de registros
+			averageAuditRecords = auditRecordsCounts.stream().mapToInt(Integer::intValue).average().orElse(0);
+			double countVariance = auditRecordsCounts.stream().mapToDouble(count -> Math.pow(count - averageAuditRecords, 2)).average().orElse(0);
+			deviationAuditRecords = Math.sqrt(countVariance);
+			minimunAuditRecords = auditRecordsCounts.stream().mapToInt(Integer::intValue).min().orElse(0);
+			maximunAuditRecords = auditRecordsCounts.stream().mapToInt(Integer::intValue).max().orElse(0);
 
-		maximunDurationAuditRecords = durations.stream().mapToLong(Long::longValue).max().orElseThrow();
-		maximunDurationAuditRecords = Duration.of((long) maximunDurationAuditRecords, ChronoUnit.SECONDS).toMinutes();
-		maximunDurationAuditRecords = Math.round(maximunDurationAuditRecords / 60.0 * 10) / 10.0;
+			// Calculos duraciones de registros
+			double averageDurationAuditRecordsInSeconds = durations.stream().mapToLong(Long::longValue).average().orElse(0);
+			averageDurationAuditRecords = (double) Duration.of((long) averageDurationAuditRecordsInSeconds, ChronoUnit.SECONDS).toMinutes();
+			averageDurationAuditRecords = Math.round(averageDurationAuditRecords / 60.0 * 10) / 10.0;
 
+			double durationVariance = durations.stream().mapToDouble(duration -> Math.pow(duration - averageDurationAuditRecordsInSeconds, 2)).average().orElse(0);
+			long deviationDurationAuditRecordsInSeconds = (long) Math.sqrt(durationVariance);
+			deviationDurationAuditRecords = (double) Duration.of(deviationDurationAuditRecordsInSeconds, ChronoUnit.SECONDS).toMinutes();
+			deviationDurationAuditRecords = Math.round(deviationDurationAuditRecords / 60.0 * 10) / 10.0;
+
+			minimunDurationAuditRecords = durations.stream().mapToLong(Long::longValue).min().orElse(0);
+			minimunDurationAuditRecords = Duration.of((long) minimunDurationAuditRecords, ChronoUnit.SECONDS).toMinutes();
+			minimunDurationAuditRecords = Math.round(minimunDurationAuditRecords / 60.0 * 10) / 10.0;
+
+			maximunDurationAuditRecords = durations.stream().mapToLong(Long::longValue).max().orElse(0);
+			maximunDurationAuditRecords = Duration.of((long) maximunDurationAuditRecords, ChronoUnit.SECONDS).toMinutes();
+			maximunDurationAuditRecords = Math.round(maximunDurationAuditRecords / 60.0 * 10) / 10.0;
+		} else {
+			totalStaticCodeAudits = 0;
+			totalDynamicCodeAudits = 0;
+			averageAuditRecords = 0.;
+			deviationAuditRecords = 0.;
+			minimunAuditRecords = 0;
+			maximunAuditRecords = 0;
+			averageDurationAuditRecords = 0.;
+			deviationDurationAuditRecords = 0.;
+			minimunDurationAuditRecords = 0;
+			maximunDurationAuditRecords = 0;
+		}
 		// Asignación de valores calculados
 		Dashboard dashboard = new Dashboard();
 

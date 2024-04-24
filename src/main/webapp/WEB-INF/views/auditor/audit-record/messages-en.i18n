@@ -28,3 +28,4 @@ auditor.auditRecord.list.label.code = Code
 auditor.auditRecord.list.label.mark = Mark
 auditor.auditRecord.list.label.startPeriod = Start date
 auditor.auditRecord.list.label.endPeriod = End date
+auditor.auditRecord.list.label.published = Published

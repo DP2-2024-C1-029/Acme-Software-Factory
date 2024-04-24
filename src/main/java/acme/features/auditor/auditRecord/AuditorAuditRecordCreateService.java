@@ -107,6 +107,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		dataset = super.unbind(object, "code", "startPeriod", "endPeriod", "link", "draftMode");
 		dataset.put("mark", marks.getSelected().getKey());
 		dataset.put("marks", marks);
+		dataset.put("masterId", object.getCodeAudit().getId());
 
 		super.getResponse().addData(dataset);
 	}

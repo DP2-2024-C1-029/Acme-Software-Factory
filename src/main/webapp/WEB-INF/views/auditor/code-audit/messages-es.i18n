@@ -28,3 +28,4 @@ auditor.codeAudit.list.button.create = Crear
 auditor.codeAudit.list.label.code = Código
 auditor.codeAudit.list.label.executionDate = Fecha de ejecución
 auditor.codeAudit.list.label.type = Tipo
+auditor.codeAudit.list.label.published = Publicado

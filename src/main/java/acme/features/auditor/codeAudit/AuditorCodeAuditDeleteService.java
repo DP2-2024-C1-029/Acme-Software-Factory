@@ -92,7 +92,7 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 
 		types = SelectChoices.from(AuditType.class, object.getType());
 
-		projects = this.repository.findManyProjects();
+		projects = this.repository.findManyPublishedProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
 		// CÁLCULO DE LA MARK MEDIANTE LA MODA

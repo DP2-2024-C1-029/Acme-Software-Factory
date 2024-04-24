@@ -66,6 +66,9 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 
 		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
 			super.state(MomentHelper.isPast(object.getExecutionDate()), "executionDate", "Auditor.CodeAudit.form.error.too-close");
+
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(!object.getProject().isDraftMode(), "project", "Auditor.CodeAudit.form.error.drafted-project");
 	}
 
 	@Override
@@ -86,7 +89,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 
 		types = SelectChoices.from(AuditType.class, object.getType());
 
-		projects = this.repository.findManyProjects();
+		projects = this.repository.findManyPublishedProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
 		dataset = super.unbind(object, "code", "executionDate", "correctiveActions", "link", "draftMode");
