@@ -1,5 +1,5 @@
 
-package acme.forms;
+package acme.forms.auditor;
 
 import acme.client.data.AbstractForm;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AuditorDashboard extends AbstractForm {
+public class Dashboard extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -38,7 +38,7 @@ public class AuditorDashboard extends AbstractForm {
 
 	private Double				deviationDurationAuditRecords;
 
-	private int					minimunDurationAuditRecords;
+	private double				minimunDurationAuditRecords;
 
-	private int					maximunDurationAuditRecords;
+	private double				maximunDurationAuditRecords;
 }

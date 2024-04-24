@@ -1,24 +1,24 @@
-key,code,execution-date,type,corrective-actions,link,key:auditor,key:project
-code-audit-01,ABC-123,2000/01/01 00:00,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01
-code-audit-02,XYZ-789,2000/01/01 00:00,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01
-code-audit-03,JJJ-555,2000/01/01 00:00,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01
-code-audit-04,JJJ-556,2000/01/01 00:01,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01
-code-audit-05,JJJ-557,2011/03/15 12:00,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01
-code-audit-06,JJJ-558,2022/07/29 23:59,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01
-code-audit-07,JJJ-559,2022/07/30 00:00,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01
-code-audit-08,JJJ-560,2022/07/30 00:00,STATIC,Memory management required,https://www.audit.org,auditor-01,project-01
-code-audit-09,JJJ-561,2022/07/30 00:00,STATIC,.,https://www.audit.org,auditor-01,project-01
-code-audit-10,JJJ-562,2022/07/30 00:00,STATIC,77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF76,https://www.audit.org,auditor-01,project-01
-code-audit-11,JJJ-563,2022/07/30 00:00,STATIC,7gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF76,https://www.audit.org,auditor-01,project-01
-code-audit-12,JJJ-564,2022/07/30 00:00,STATIC,ЁЂЃЄЅІЇЈЉЊЋЌЍЎЏАБВГДЕЖЗИЙКЛМНОПРопрстуфхцчшщъыьэюя,https://www.audit.org,auditor-01,project-01
-code-audit-13,JJJ-565,2022/07/30 00:00,STATIC,찦차를 타고 온 펲시맨과 쑛다리 똠방각하,https://www.audit.org,auditor-01,project-01
-code-audit-14,JJJ-566,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,https://www.audit.org,auditor-01,project-01
-code-audit-15,JJJ-567,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,https://www.77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vC4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF7677gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLA90BG17FHLAuPdV1Pg7z9ukwyuuTOF76.org,auditor-01,project-01
-code-audit-16,JJJ-568,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,https://www.77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vC4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF7677gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv4O3DeQNAyGUMhNcKxU0wa9Ba5Bbnv90BG17FHLA90BG17FHLAuPdV1Pg7z9ukwyuuTOF76.org,auditor-01,project-01
-code-audit-17,JJJ-569,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-01,project-01
-code-audit-18,JJJ-570,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-01
-code-audit-19,JJJ-571,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-02
-code-audit-20,JJJ-572,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-03
-code-audit-21,JJJ-573,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-03
-code-audit-22,JJJ-574,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-03
-code-audit-23,JJJ-575,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-05
+key,code,execution-date,type,corrective-actions,link,key:auditor,key:project,draft-mode
+code-audit-01,ABC-123,2000/01/01 00:00,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01,false
+code-audit-02,XYZ-789,2000/01/01 00:00,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01,false
+code-audit-03,JJJ-555,2000/01/01 00:00,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01,false
+code-audit-04,JJJ-556,2000/01/01 00:01,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01,false
+code-audit-05,JJJ-557,2011/03/15 12:00,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01,true
+code-audit-06,JJJ-558,2022/07/29 23:59,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01,true
+code-audit-07,JJJ-559,2022/07/30 00:00,DYNAMIC,Memory management required,https://www.audit.org,auditor-01,project-01,true
+code-audit-08,JJJ-560,2022/07/30 00:00,STATIC,Memory management required,https://www.audit.org,auditor-01,project-01,true
+code-audit-09,JJJ-561,2022/07/30 00:00,STATIC,.,https://www.audit.org,auditor-01,project-01,true
+code-audit-10,JJJ-562,2022/07/30 00:00,STATIC,77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF76,https://www.audit.org,auditor-01,project-01,true
+code-audit-11,JJJ-563,2022/07/30 00:00,STATIC,7gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF76,https://www.audit.org,auditor-01,project-01,true
+code-audit-12,JJJ-564,2022/07/30 00:00,STATIC,ЁЂЃЄЅІЇЈЉЊЋЌЍЎЏАБВГДЕЖЗИЙКЛМНОПРопрстуфхцчшщъыьэюя,https://www.audit.org,auditor-01,project-01,true
+code-audit-13,JJJ-565,2022/07/30 00:00,STATIC,찦차를 타고 온 펲시맨과 쑛다리 똠방각하,https://www.audit.org,auditor-01,project-01,true
+code-audit-14,JJJ-566,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,https://www.audit.org,auditor-01,project-01,true
+code-audit-15,JJJ-567,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,https://www.77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vC4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF7677gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLA90BG17FHLAuPdV1Pg7z9ukwyuuTOF76.org,auditor-01,project-01,true
+code-audit-16,JJJ-568,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,https://www.77gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vC4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv90BG17FHLAuPdV1Pg7z9ukwyuuTOF7677gjfr8tCJTeGCgQBpFfP7m5Jhix2F2SkUy4vCK4O3DeQNAyGUMhNcKxU0wa9Ba5Bsbnv4O3DeQNAyGUMhNcKxU0wa9Ba5Bbnv90BG17FHLA90BG17FHLAuPdV1Pg7z9ukwyuuTOF76.org,auditor-01,project-01,true
+code-audit-17,JJJ-569,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-01,project-01,true
+code-audit-18,JJJ-570,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-01,true
+code-audit-19,JJJ-571,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-02,true
+code-audit-20,JJJ-572,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-03,true
+code-audit-21,JJJ-573,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-03,true
+code-audit-22,JJJ-574,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-03,true
+code-audit-23,JJJ-575,2022/07/30 00:00,STATIC,<script>alert(123ç)</script>,null,auditor-02,project-05,true

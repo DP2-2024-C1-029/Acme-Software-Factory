@@ -1,0 +1,14 @@
+auditor.dashboard.form.title = Panel de control del auditor
+
+auditor.dashboard.form.title.general-indicators = Indicadores generales
+
+auditor.dashboard.form.label.totalStaticCodeAudits = Número total de auditorías de código estático:
+auditor.dashboard.form.label.totalDynamicCodeAudits = Número total de auditorías de código dinámico:
+auditor.dashboard.form.label.averageAuditRecords = Promedio de registros de auditoría por auditoría:
+auditor.dashboard.form.label.deviationAuditRecords = Desviación estándar de registros de auditoría por auditoría:
+auditor.dashboard.form.label.minimunAuditRecords = Número mínimo de registros de auditoría por auditoría:
+auditor.dashboard.form.label.maximunAuditRecords = Número máximo de registros de auditoría por auditoría:
+auditor.dashboard.form.label.averageDurationAuditRecords = Duración promedio de registros de auditoría:
+auditor.dashboard.form.label.deviationDurationAuditRecords = Desviación estándar de la duración de registros de auditoría:
+auditor.dashboard.form.label.minimunDurationAuditRecords = Duración mínima de registros de auditoría:
+auditor.dashboard.form.label.maximunDurationAuditRecords = Duración máxima de registros de auditoría:
