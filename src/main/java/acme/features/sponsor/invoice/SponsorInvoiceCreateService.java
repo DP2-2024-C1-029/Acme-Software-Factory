@@ -56,6 +56,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		object.setQuantity(money);
 		object.setSponsorship(sponsorship);
 		object.setPublished(false);
+		object.setRegistrationTime(MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.MILLIS));
 
 		super.getBuffer().addData(object);
 	}

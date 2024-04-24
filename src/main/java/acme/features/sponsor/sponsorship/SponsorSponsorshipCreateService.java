@@ -42,6 +42,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		sponsorship = new Sponsorship();
 		sponsorship.setPublished(false);
 		sponsorship.setSponsor(sponsor);
+		sponsorship.setMoment(MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.MILLIS));
 
 		super.getBuffer().addData(sponsorship);
 	}

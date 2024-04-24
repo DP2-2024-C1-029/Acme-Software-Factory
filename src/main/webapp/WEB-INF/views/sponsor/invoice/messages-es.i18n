@@ -18,6 +18,7 @@ sponsor.invoice.form.label.isPublished = Publicada
 sponsor.invoice.form.button.update = Actualizar
 sponsor.invoice.form.button.delete = Eliminar
 sponsor.invoice.form.button.publish = Publicar
+sponsor.invoice.form.button.create = Crear
 sponsor.invoice.list.button.create = Crear
 
 sponsor.invoice.form.error.duplicated = Este código ya está en uso

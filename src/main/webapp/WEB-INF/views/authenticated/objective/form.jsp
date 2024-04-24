@@ -6,7 +6,7 @@
 <acme:form>
 	<acme:input-textbox code="authenticated.objective.form.label.title" path="title"/>
 	<acme:input-textarea code="authenticated.objective.form.label.description" path="description"/>
-	<acme:input-moment code="authenticated.objective.form.label.instantiation-moment" path="instantiationMoment"/>
+	<acme:input-moment code="authenticated.objective.form.label.instantiation-moment" path="instantiationMoment" readonly="true"/>
 	<acme:input-select code="authenticated.objective.form.label.priority" path="priority" choices="${priorities}"/>
 	<acme:input-checkbox code="authenticated.objective.form.label.is-critical" path="isCritical"/>
 	<acme:input-moment code="authenticated.objective.form.label.initial-execution-period" path="initialExecutionPeriod"/>
