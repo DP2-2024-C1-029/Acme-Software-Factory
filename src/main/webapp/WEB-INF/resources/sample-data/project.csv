@@ -1,6 +1,6 @@
 key,code,title,abstractText,indication,cost,link,draftMode,key:manager
 project-01,"ABC-1234","Project 1","abstract 1",false, "EUR 15,000.98", "http://www.youtube.com",false,manager-01
-project-02,"DEF-5678","Project 2","abstract 2",false, "EUR 12,345.00", "http://www.twitter.com",true,manager-01
+project-02,"DEF-5678","Project 2","abstract 2",false, "EUR 12,345.00", "http://www.twitter.com",false,manager-01
 project-03,"GHI-9101","Project 3","abstract 3",true, "USD 25,000.00", "http://www.facebook.com",true,manager-01
 project-04,"JKL-1121","Project 4","abstract 4",false, "USD 15,000.98",,false,manager-02
 project-05,"MNO-3145","Project 5","abstract 5",true, "GBP 30,000.00", "http://www.instagram.com",true,manager-02
