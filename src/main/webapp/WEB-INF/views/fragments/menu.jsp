@@ -50,10 +50,11 @@
 			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-dashboard/show"/>			
 		</acme:menu-option>
   
-    <acme:menu-option code="master.menu.sponsorship" access="hasRole('Sponsor')">
-			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-all" action="/sponsor/sponsorship/list"/>
-			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-mine" action="/sponsor/sponsorship/list-mine"/>
-			<acme:menu-suboption code="master.menu.sponsor.dashboard.show" action="/sponsor/dashboard/show"/>
+    	<acme:menu-option code="master.menu.sponsorship">
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-all" action="/any/sponsorship/list" access="isAnonymous() || !hasRole('Sponsor')"/>
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-all" action="/any/sponsorship/list" access="hasRole('Sponsor')"/>
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-mine" action="/sponsor/sponsorship/list-mine" access="hasRole('Sponsor')"/>
+			<acme:menu-suboption code="master.menu.sponsor.dashboard.show" action="/sponsor/dashboard/show" access="hasRole('Sponsor')"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">

@@ -1,0 +1,37 @@
+any.sponsorship.form.title = Formulario de Patrocinio
+any.sponsorship.list.title = Listado de Patrocinios
+
+sponsor.sponsorship.list.label.code = Código
+sponsor.sponsorship.list.label.moment = Fecha de Inicio
+sponsor.sponsorship.list.label.amount = Importe
+sponsor.sponsorship.list.label.type = Tipo
+sponsor.sponsorship.list.label.email = Email
+sponsor.sponsorship.list.label.link = Enlace
+sponsor.sponsorship.list.label.initialExecutionPeriod = Periodo Inicial
+sponsor.sponsorship.list.label.endingExecutionPeriod = Periodo Final
+sponsor.sponsorship.list.label.projects = Proyectos
+
+sponsor.sponsorship.form.label.code = Código
+sponsor.sponsorship.form.label.moment = Fecha de Inicio
+sponsor.sponsorship.form.label.amount = Importe
+sponsor.sponsorship.form.label.types = Tipos
+sponsor.sponsorship.form.label.email = Email
+sponsor.sponsorship.form.label.link = Enlace
+sponsor.sponsorship.form.label.initialExecutionPeriod = Periodo Inicial
+sponsor.sponsorship.form.label.endingExecutionPeriod = Periodo Final
+sponsor.sponsorship.form.label.projects = Proyectos
+
+sponsor.sponsorship.form.button.invoices = Facturas
+sponsor.sponsorship.form.button.duties = Obligaciones
+sponsor.sponsorship.form.button.create = Crear
+sponsor.sponsorship.form.button.update = Actualizar
+sponsor.sponsorship.form.button.delete = Eliminar
+sponsor.sponsorship.form.button.publish = Publicar
+
+sponsor.sponsorship.form.error.duplicated = Este código ya está en uso.
+sponsor.sponsorship.form.error.not-exists = Este proyecto no te pertenece, por lo que no puedes utilizarlo.
+sponsor.sponsorship.form.error.not-after = El periodo inicial debe comenzar después de la fecha de inicio.
+sponsor.sponsorship.form.error.too-close = El periodo final debe ser al menos 1 mes después del periodo inicial.
+sponsor.sponsorship.form.error.negative-amount = El importe debe ser positivo.
+sponsor.sponsorship.form.error.not-total-amount-invoices = El patrocinio no se puede publicar porque la suma de los importes de sus facturas no coincide con el importe del patrocinio.
+sponsor.sponsorship.form.error.not-all-invoices-published = No todas las facturas están publicadas.

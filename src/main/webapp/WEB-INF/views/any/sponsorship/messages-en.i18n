@@ -1,0 +1,37 @@
+any.sponsorship.form.title = Sponsorship Form
+any.sponsorship.list.title = Listing of sponsorships
+
+sponsor.sponsorship.list.label.code = Code
+sponsor.sponsorship.list.label.moment = Start moment
+sponsor.sponsorship.list.label.amount = Amount
+sponsor.sponsorship.list.label.type = Type
+sponsor.sponsorship.list.label.email = Email
+sponsor.sponsorship.list.label.link = Link
+sponsor.sponsorship.list.label.initialExecutionPeriod = Initial period 
+sponsor.sponsorship.list.label.endingExecutionPeriod = Final period
+sponsor.sponsorship.list.label.projects = Projects
+
+sponsor.sponsorship.form.label.code = Code
+sponsor.sponsorship.form.label.moment = Start moment
+sponsor.sponsorship.form.label.amount = Amount
+sponsor.sponsorship.form.label.types = Types
+sponsor.sponsorship.form.label.email = Email
+sponsor.sponsorship.form.label.link = Link
+sponsor.sponsorship.form.label.initialExecutionPeriod = Initial period 
+sponsor.sponsorship.form.label.endingExecutionPeriod = Final period
+sponsor.sponsorship.form.label.projects = Projects
+
+sponsor.sponsorship.form.button.invoices = Invoices
+sponsor.sponsorship.form.button.duties = Duties
+sponsor.sponsorship.form.button.create = Create
+sponsor.sponsorship.form.button.update = Update
+sponsor.sponsorship.form.button.delete = Delete
+sponsor.sponsorship.form.button.publish = Publish
+
+sponsor.sponsorship.form.error.duplicated = This code is already used.
+sponsor.sponsorship.form.error.not-exists = This project is not yours, so you cannot use it.
+sponsor.sponsorship.form.error.not-after = The initial period must start after the start moment.
+sponsor.sponsorship.form.error.too-close = The final period must be at least 1 month after the initial period.
+sponsor.sponsorship.form.error.negative-amount = The amount must be positive.
+sponsor.sponsorship.form.error.not-total-amount-invoices = The sponsorship cannot be published because the sum of amounts of its invoices is not equal to the amount of the sponsorship.
+sponsor.sponsorship.form.error.not-all-invoices-published = Not all the invoices are published.
