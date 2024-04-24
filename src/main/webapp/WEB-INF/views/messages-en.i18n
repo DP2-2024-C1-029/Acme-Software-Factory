@@ -33,9 +33,9 @@ developer.trainingmodule.list.button.create = Create Training Module
 developer.trainingmodule.form.button.delete = Delete Training Module
 developer.trainingmodule.form.button.update = Update Training Module
 
-master.menu.developer.all-trainingsession = Show Training Sessions associated
+master.menu.developer.all-trainingsession = List Training Sessions associated
 master.menu.developer = Developer
-master.menu.developer.all-trainingmodule = Show Training Module
+master.menu.developer.all-trainingmodule = List Training Module
 
 developer.training-session.list.title = All Training Session
 developer.training-session.form.title = Training Session
@@ -72,6 +72,8 @@ master.menu.user-account.developer = Developer
 authenticated.developer.form.label.link = Link
 authenticated.developer.form.label.email = Email
 authenticated.developer.form.button.create = Create
+
+any.training-module.list.title = List of Training Module
 
 developer.trainingsession.form.error.duplicated-code = The code already exists
 developer.trainingmodule.form.error.duplicated-code = The code already exists

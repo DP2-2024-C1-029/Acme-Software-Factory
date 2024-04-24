@@ -57,6 +57,7 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.developer.all-trainingmodule" action="/any/training-module/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.claim" action="/authenticated/claim/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>
 			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list" access="hasRole('Administrator')"/>
