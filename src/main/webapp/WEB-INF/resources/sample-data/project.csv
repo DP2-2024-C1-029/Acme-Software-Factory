@@ -8,5 +8,9 @@ project-06,"ZZZ-9999","Project 6                                                
 project-07,"AAA-0000","Project 6                                                            prueb","abstract 7                                                                                    prueb",false, "GBP 15,000.98",,true,manager-02
 project-08,"AAA-0001","P","a",true, "EUR 15,000.98",,true,manager-02
 project-09,"AAA-0002","Project 9","abstract 9",true, "EUR 0",,true,manager-02
-project-10,"AAA-0003","貸んい建濯よ芝弾テソ","Λορεμ ιπσθμ δολορ σιτ αμετ",true, "EUR 0",,true,manager-02
+project-10,"AAA-0003","貸んい建濯よ芝弾テソ","Λορεμ ιπσθμ δολορ σιτ αμετ",false, "EUR 0",,true,manager-02
 project-11,"AAA-0004","貸んい建濯よ芝弾テソ","alert('¡Hola, mundo!');",false, "EUR 0",,false,manager-01
+project-12,"GGG-9101","Project 12","abstract 3",true, "USD 25,000.00", "http://www.tesla.com",false,manager-02
+project-13,"GHJ-9101","Project 13","abstract 3",true, "GBP 30,000.00", "http://www.telegram.com",false,manager-02
+project-14,"HJA-9101","Project 14","abstract 3",true, "EUR 15,000.98", "http://www.duolingo.com",false,manager-02
+project-15,"AGF-9101","Project 15","abstract 3",true, "EUR 15,000.00", "http://www.twitch.com",false,manager-02

@@ -60,3 +60,10 @@ developer.trainingModule.form.button.publish = Publicar
 
 developer.trainingsession.list.label.draftMode = Modo borrador
 developer.trainingsession.form.button.publish = Publicar
+
+developer.trainingsession.form.error.duplicated-code = El código ya existe
+developer.trainingmodule.form.error.duplicated-code = El código ya existe
+developer.trainingModule.form.error.trainingSession-empty = Debes tener al menos un Training Session para publicar el Training Module
+developer.trainingModule.form.error.negative-estimated-total-time = El tiempo total estimado debe ser positivo
+developer.trainingsession.form.error.end-date-less-than-week = El tiempo de fin debe estar una semana por delante.
+developer.trainingSession.form.error.training-module-no-draft = No puedes publicar el Training Session, porque su Training Module ya ha sido publicado

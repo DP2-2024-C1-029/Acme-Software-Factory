@@ -109,7 +109,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		SelectChoices choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 
-		projects = this.repository.findManyProjectsByDeveloperId(developerId);
+		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
 		Dataset dataset = super.unbind(object, "creationMoment", "details", "code", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "project");

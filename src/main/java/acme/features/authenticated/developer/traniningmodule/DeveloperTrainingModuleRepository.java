@@ -24,8 +24,8 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 	@Query("select d from Developer d where d.id = :id")
 	Developer findOneDeveloperById(int id);
 
-	@Query("select DISTINCT s.project from TrainingModule s where s.developer.id = :id")
-	Collection<Project> findManyProjectsByDeveloperId(int id);
+	@Query("select distinct p from Project p where p.draftMode = false")
+	Collection<Project> findManyProjects();
 
 	@Query("select p from Project p where p.id = :id")
 	Project findOneProjectById(int id);

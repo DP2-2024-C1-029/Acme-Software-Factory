@@ -69,33 +69,26 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			TrainingSession existing;
-
-			existing = this.repository.findOneTrainingSessionByCode(object.getCode());
-			super.state(existing == null, "reference", "developer.trainingSession.form.error.duplicated");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			int id;
 			boolean existingCode;
 
 			id = super.getRequest().getData("id", int.class);
 			existingCode = this.repository.findAllTrainingSessions().stream().filter(e -> e.getId() != id).anyMatch(e -> e.getCode().equals(object.getCode()));
 
-			super.state(!existingCode, "code", "developer.trainingModule.form.error.duplicated-code");
+			super.state(!existingCode, "code", "developer.trainingsession.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("startTime") && !super.getBuffer().getErrors().hasErrors("endTime")) {
 			Date startTime = MomentHelper.deltaFromMoment(object.getStartTime(), 1, ChronoUnit.WEEKS);
 
 			// Comprobamos que sea una semana
-			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingSession.form.error.update-moment-less-than-week");
+			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingsession.form.error.end-date-less-than-week");
 		}
 
 		int masterId = super.getRequest().getData("masterId", int.class);
 		TrainingModule trainingModule = this.repository.findOneTrainingModuleById(masterId);
 		final boolean noDraftTrainingModule = trainingModule.isDraftMode();
-		super.state(noDraftTrainingModule, "*", "developer.trainingSession.form.error.trainingModule-noDraft");
+		super.state(noDraftTrainingModule, "*", "developer.trainingSession.form.error.training-module-no-draft");
 
 	}
 

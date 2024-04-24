@@ -63,7 +63,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 			id = super.getRequest().getData("id", int.class);
 			existingCode = this.repository.findAllTrainingSessions().stream().filter(e -> e.getId() != id).anyMatch(e -> e.getCode().equals(object.getCode()));
 
-			super.state(!existingCode, "code", "developer.trainingModule.form.error.duplicated-code");
+			super.state(!existingCode, "code", "developer.trainingsession.form.error.duplicated-code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("startTime") && !super.getBuffer().getErrors().hasErrors("endTime")) {
@@ -72,13 +72,6 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 			// Comprobamos que sea una semana
 			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingSession.form.error.update-moment-less-than-week");
 		}
-
-		/*
-		 * int masterId = super.getRequest().getData("masterId", int.class);
-		 * TrainingModule trainingModule = this.repository.findOneTrainingModuleByTrainingSessionId(masterId);
-		 * final boolean noDraftTrainingModule = trainingModule.isDraftMode();
-		 * super.state(noDraftTrainingModule, "*", "developer.trainingSession.form.error.trainingModule-noDraft");
-		 */
 
 	}
 

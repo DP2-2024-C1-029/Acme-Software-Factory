@@ -67,20 +67,20 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			id = super.getRequest().getData("id", int.class);
 			existingCode = this.repository.findAllTrainingSessions().stream().filter(e -> e.getId() != id).anyMatch(e -> e.getCode().equals(object.getCode()));
 
-			super.state(!existingCode, "code", "developer.trainingModule.form.error.duplicated-code");
+			super.state(!existingCode, "code", "developer.trainingsession.form.error.duplicated-code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("startTime") && !super.getBuffer().getErrors().hasErrors("endTime")) {
 			Date startTime = MomentHelper.deltaFromMoment(object.getStartTime(), 1, ChronoUnit.WEEKS);
 
 			// Comprobamos que sea una semana
-			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingSession.form.error.update-moment-less-than-week");
+			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingsession.form.error.end-date-less-than-week");
 		}
 
 		int masterId = super.getRequest().getData("id", int.class);
 		TrainingSession trainingSession = this.repository.findOneTrainingSessionById(masterId);
 		boolean noDraftTrainingSession = trainingSession.isDraftMode();
-		super.state(noDraftTrainingSession, "*", "developer.trainingSession.form.error.trainingModule-noDraft");
+		super.state(noDraftTrainingSession, "*", "developer.trainingSession.form.error.training-module-no-draft");
 
 	}
 	@Override
