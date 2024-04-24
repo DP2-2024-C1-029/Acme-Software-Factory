@@ -69,6 +69,10 @@ developer.trainingsession.form.button.publish = Publish
 master.menu.user-account.become-developer = Become developer
 master.menu.user-account.developer = Developer
 
+authenticated.developer.form.label.link = Link
+authenticated.developer.form.label.email = Email
+authenticated.developer.form.button.create = Create
+
 developer.trainingsession.form.error.duplicated-code = The code already exists
 developer.trainingmodule.form.error.duplicated-code = The code already exists
 developer.trainingModule.form.error.trainingSession-draft = You cannot publish because the existing training session is in draftmode

@@ -48,19 +48,30 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, Da
 		allTimeTrainingModules = this.repository.findAllTimeOfTrainingModule(developerId);
 		sizeTrainingModule = allTimeTrainingModules.size();
 
-		// Average, deviation, minimum and maximum amounts of Training Modules
-		averageTrainingModuleTime = allTimeTrainingModules.stream().mapToDouble(Integer::intValue).average().orElse(0);
-		deviationTrainingModuleTime = this.deviation(allTimeTrainingModules, averageTrainingModuleTime, sizeTrainingModule);
-		minimumTrainingModuleTime = allTimeTrainingModules.stream().mapToDouble(Integer::intValue).min().orElse(0);
-		maximumTrainingModuleTime = allTimeTrainingModules.stream().mapToDouble(Integer::intValue).max().orElse(0);
+		averageTrainingModuleTime = allTimeTrainingModules.isEmpty() ? Double.NaN : allTimeTrainingModules.stream().mapToDouble(Integer::intValue).average().orElse(Double.NaN);
+		deviationTrainingModuleTime = allTimeTrainingModules.isEmpty() ? Double.NaN : this.deviation(allTimeTrainingModules, averageTrainingModuleTime, sizeTrainingModule);
+		minimumTrainingModuleTime = allTimeTrainingModules.isEmpty() ? Double.NaN : allTimeTrainingModules.stream().mapToDouble(Integer::intValue).min().orElse(Double.NaN);
+		maximumTrainingModuleTime = allTimeTrainingModules.isEmpty() ? Double.NaN : allTimeTrainingModules.stream().mapToDouble(Integer::intValue).max().orElse(Double.NaN);
 
 		dashboard = new Dashboard();
-		dashboard.setTotalNumberOfTrainingSessionsWithLink(totalNumberOfTrainingSessionsWithLink);
-		dashboard.setTotalTrainingModuleWithUpdateMoment(totalTrainingModuleWithUpdateMoment);
-		dashboard.setAverageTrainingModuleTime(averageTrainingModuleTime);
-		dashboard.setDeviationTrainingModuleTime(deviationTrainingModuleTime);
-		dashboard.setMinimumTrainingModuleTime(minimumTrainingModuleTime);
-		dashboard.setMaximumTrainingModuleTime(maximumTrainingModuleTime);
+
+		if (totalTrainingModuleWithUpdateMoment != null && totalTrainingModuleWithUpdateMoment != 0)
+			dashboard.setTotalTrainingModuleWithUpdateMoment(totalTrainingModuleWithUpdateMoment);
+
+		if (totalNumberOfTrainingSessionsWithLink != null && totalNumberOfTrainingSessionsWithLink != 0)
+			dashboard.setTotalNumberOfTrainingSessionsWithLink(totalNumberOfTrainingSessionsWithLink);
+
+		if (!Double.isNaN(averageTrainingModuleTime))
+			dashboard.setAverageTrainingModuleTime(averageTrainingModuleTime);
+
+		if (!Double.isNaN(deviationTrainingModuleTime))
+			dashboard.setDeviationTrainingModuleTime(deviationTrainingModuleTime);
+
+		if (!Double.isNaN(minimumTrainingModuleTime))
+			dashboard.setMinimumTrainingModuleTime(minimumTrainingModuleTime);
+
+		if (!Double.isNaN(maximumTrainingModuleTime))
+			dashboard.setMaximumTrainingModuleTime(maximumTrainingModuleTime);
 
 		super.getBuffer().addData(dashboard);
 	}

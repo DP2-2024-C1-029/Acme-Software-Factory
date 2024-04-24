@@ -13,7 +13,14 @@
 			<acme:message code="developer.dashboard.form.label.total-training-module-with-update-moment"/>
 		</th>
 		<td>
-			<acme:print value="${totalTrainingModuleWithUpdateMoment}"/>
+			<jstl:choose>
+			    <jstl:when test="${totalTrainingModuleWithUpdateMoment == 0}">
+			        <acme:print value="N/A"/>
+			    </jstl:when>
+			    <jstl:otherwise>
+			        <acme:print value="${totalTrainingModuleWithUpdateMoment}"/>
+			    </jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>
 	<tr>
@@ -21,7 +28,14 @@
 			<acme:message code="developer.dashboard.form.label.total-training-session-with-link"/>
 		</th>
 		<td>
-			<acme:print value="${totalNumberOfTrainingSessionsWithLink}"/>
+			<jstl:choose>
+			    <jstl:when test="${totalNumberOfTrainingSessionsWithLink == 0}">
+			        <acme:print value="N/A"/>
+			    </jstl:when>
+			    <jstl:otherwise>
+			        <acme:print value="${totalNumberOfTrainingSessionsWithLink}"/>
+			    </jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>
 	<tr>
@@ -29,7 +43,14 @@
 			<acme:message code="developer.dashboard.form.label.average-time-training-module"/>
 		</th>
 		<td>
-			<acme:print value="${averageTrainingModuleTime}"/>
+			<jstl:choose>
+			    <jstl:when test="${averageTrainingModuleTime == null}">
+			        <acme:print value="N/A"/>
+			    </jstl:when>
+			    <jstl:otherwise>
+			        <acme:print value="${averageTrainingModuleTime}"/>
+			    </jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>
 	<tr>
@@ -37,7 +58,14 @@
 		<acme:message code="developer.dashboard.form.label.deviation-time-training-module"/>
 		</th>
 		<td>
-		<acme:print value="${deviationTrainingModuleTime}"/>
+			<jstl:choose>
+			    <jstl:when test="${deviationTrainingModuleTime == null || deviationTrainingModuleTime == 0.00}">
+			        <acme:print value="N/A"/>
+			    </jstl:when>
+			    <jstl:otherwise>
+			        <acme:print value="${deviationTrainingModuleTime}"/>
+			    </jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>
 	<tr>
@@ -45,7 +73,14 @@
 		<acme:message code="developer.dashboard.form.label.minimum-time-training-module"/>
 		</th>
 		<td>
-		<acme:print value="${minimumTrainingModuleTime}"/>
+			<jstl:choose>
+			    <jstl:when test="${minimumTrainingModuleTime == 0.00}">
+			        <acme:print value="N/A"/>
+			    </jstl:when>
+			    <jstl:otherwise>
+			        <acme:print value="${minimumTrainingModuleTime}"/>
+			    </jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>
 	<tr>
@@ -53,7 +88,14 @@
 		<acme:message code="developer.dashboard.form.label.maximum-time-training-module"/>
 		</th>
 		<td>
-		<acme:print value="${maximumTrainingModuleTime}"/>
+			<jstl:choose>
+			    <jstl:when test="${maximumTrainingModuleTime == 0.00}">
+			        <acme:print value="N/A"/>
+			    </jstl:when>
+			    <jstl:otherwise>
+			        <acme:print value="${maximumTrainingModuleTime}"/>
+			    </jstl:otherwise>
+			</jstl:choose>
 		</td>
 	</tr>
 </table>

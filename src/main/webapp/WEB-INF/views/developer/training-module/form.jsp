@@ -9,7 +9,7 @@
 	<acme:input-textbox code="developer.trainingmodule.list.label.code" path="code"/>
 	<acme:input-select code="developer.trainingmodule.list.label.difficultyLevels" path="difficultyLevel" choices="${difficultyLevels}"/>
 	<acme:input-moment code="developer.trainingmodule.list.label.updateMoment" readonly="true" path="updateMoment"/>
-	<acme:input-integer code="developer.trainingmodule.list.label.estimatedTotalTime" path="estimatedTotalTime"/>
+	<acme:input-integer code="developer.trainingmodule.list.label.estimatedTotalTime" placeholder="100" path="estimatedTotalTime"/>
 	<acme:input-url code="developer.trainingmodule.list.label.link" path="link"/>
 	
 	<acme:input-select code="developer.trainingmodule.list.label.projects" path="project" choices="${projects}"/>
@@ -24,8 +24,9 @@
 			<acme:submit code="developer.trainingmodule.form.button.update" action="/developer/training-module/update"/>
 			<acme:submit code="developer.trainingmodule.form.button.publish" action="/developer/training-module/publish?id=${id}"/>
 			<acme:button code="master.menu.developer.all-trainingsession" action="/developer/training-session/list?masterId=${id}"/>
-			
 		</jstl:when>		
-		
+		<jstl:otherwise>
+			<acme:button code="master.menu.developer.all-trainingsession" action="/developer/training-session/list?masterId=${id}"/>
+		</jstl:otherwise>
 	</jstl:choose>
 	</acme:form>

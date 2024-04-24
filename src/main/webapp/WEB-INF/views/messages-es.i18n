@@ -33,6 +33,10 @@ master.menu.developer.all-trainingmodule = Mostrar Training Module
 master.menu.user-account.become-developer = Convertirse en developer
 master.menu.user-account.developer = Developer
 
+authenticated.developer.form.label.link = Link
+authenticated.developer.form.label.email = Email
+authenticated.developer.form.button.create = Crear
+
 developer.training-session.form.title = Training Session
 developer.training-session.list.title = Lista de todos los Training Session
 developer.trainingsession.list.label.code = Código
