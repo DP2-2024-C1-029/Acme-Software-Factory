@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.developer.traniningmodule;
+package acme.features.developer.trainingsession;
 
 import javax.annotation.PostConstruct;
 
@@ -7,29 +7,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.trainingmodules.TrainingModule;
+import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
 @Controller
-public class DeveloperTrainingModuleController extends AbstractController<Developer, TrainingModule> {
+public class DeveloperTrainingSessionController extends AbstractController<Developer, TrainingSession> {
 
 	@Autowired
-	public DeveloperTrainingModuleListService		listService;
+	public DeveloperTrainingSessionListService		listService;
 
 	@Autowired
-	public DeveloperTrainingModuleShowService		showService;
+	public DeveloperTrainingSessionShowService		showService;
 
 	@Autowired
-	public DeveloperTrainingModulePublishService	publishService;
+	public DeveloperTrainingSessionPublishService	publishService;
 
 	@Autowired
-	public DeveloperTrainingModuleCreateService		createService;
+	public DeveloperTrainingSessionCreateService	createService;
 
 	@Autowired
-	public DeveloperTrainingModuleUpdateService		updateService;
+	public DeveloperTrainingSessionUpdateService	updateService;
 
 	@Autowired
-	public DeveloperTrainingModuleDeleteService		deleteService;
+	public DeveloperTrainingSessionDeleteService	deleteService;
 
 
 	@PostConstruct
@@ -41,5 +41,7 @@ public class DeveloperTrainingModuleController extends AbstractController<Develo
 		super.addBasicCommand("update", this.updateService);
 
 		super.addCustomCommand("publish", "update", this.publishService);
+
 	}
+
 }

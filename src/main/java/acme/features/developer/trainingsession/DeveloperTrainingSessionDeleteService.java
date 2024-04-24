@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.developer.trainingsession;
+package acme.features.developer.trainingsession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

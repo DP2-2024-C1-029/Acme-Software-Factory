@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.developer.traniningmodule;
+package acme.features.developer.trainingmodule;
 
 import java.util.Collection;
 import java.util.List;
@@ -82,14 +82,20 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		int masterId = super.getRequest().getData("id", int.class);
 		List<TrainingSession> ls = this.repository.findManyTrainingSessionsByTrainingModuleId(masterId).stream().toList();
-		final boolean someDraftTrainingSession = ls.stream().anyMatch(Session -> Session.isDraftMode());
-		final boolean noSession = ls.isEmpty();
+		boolean someDraftTrainingSession = ls.stream().anyMatch(Session -> Session.isDraftMode());
+		boolean noSession = ls.isEmpty();
 		super.state(!noSession, "*", "developer.trainingModule.form.error.trainingSession-empty");
 		super.state(!someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");
 
+		/*
+		 * int trainingModuleId = super.getRequest().getData("id", int.class);
+		 * Collection<TrainingModule> trainingModules = this.repository.findAllTrainingModules();
+		 * boolean someTrainingModule = trainingModules.stream().anyMatch(Module -> Module.getId() == trainingModuleId);
+		 * super.state(!someTrainingModule, "*", "developer.trainingModule.form.error.trainingModule-empty");
+		 */
 	}
 
 	@Override

@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.developer.traniningmodule;
+package acme.features.developer.trainingmodule;
 
 import java.util.Collection;
 import java.util.Date;
@@ -7,7 +7,6 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
@@ -18,8 +17,7 @@ import acme.entities.trainingmodules.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleCreateService extends AbstractService<Developer, TrainingModule> {
-
+public class DeveloperTrainingModuleUpdateService extends AbstractService<Developer, TrainingModule> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -30,45 +28,46 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		TrainingModule trainingModule;
+		Developer developer;
+
+		masterId = super.getRequest().getData("id", int.class);
+		trainingModule = this.repository.findOneTrainingModuleById(masterId);
+		developer = trainingModule == null ? null : trainingModule.getDeveloper();
+
+		status = trainingModule != null && trainingModule.isDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		TrainingModule object;
-		Developer developer;
+		TrainingModule trainingModule;
+		int id;
 
-		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new TrainingModule();
-		object.setDeveloper(developer);
-		object.setDraftMode(true);
+		id = super.getRequest().getData("id", int.class);
+		trainingModule = this.repository.findOneTrainingModuleById(id);
 
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(trainingModule);
 	}
 
 	@Override
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
-		Principal principal;
-		Developer developer;
-
 		int projectId;
 		Project project;
-
-		principal = super.getRequest().getPrincipal();
-		developer = this.repository.findOneDeveloperById(principal.getActiveRoleId());
-
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
 		Date moment = MomentHelper.getCurrentMoment();
-		Date creationMoment = new Date(moment.getTime() - 600000); // Le restamos 9 min para asegurar que esta en el pasado
+		Date updateMoment = new Date(moment.getTime() - 60000); // Le restamos tiempo para asegurar que esta en el pasado
 
 		super.bind(object, "creationMoment", "details", "code", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
-		object.setDeveloper(developer);
 		object.setProject(project);
-		object.setCreationMoment(creationMoment);
+		object.setUpdateMoment(updateMoment);
 	}
 
 	@Override
@@ -82,11 +81,14 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			id = super.getRequest().getData("id", int.class);
 			existingCode = this.repository.findAllTrainingModules().stream().filter(e -> e.getId() != id).anyMatch(e -> e.getCode().equals(object.getCode()));
 
-			super.state(!existingCode, "code", "developer.trainingmodule.form.error.duplicated-code");
+			super.state(!existingCode, "code", "developer.trainingModule.form.error.duplicated-code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("estimatedTotalTime"))
 			super.state(object.getEstimatedTotalTime() > 0, "estimatedTotalTime", "developer.trainingModule.form.error.negative-estimated-total-time");
+
+		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
+			super.state(object.getUpdateMoment().compareTo(object.getCreationMoment()) > 0, "salary", "developer.trainingModule.form.error.update-moment-cant-be-past");
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");

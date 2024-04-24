@@ -66,9 +66,12 @@ developer.trainingmodule.form.button.publish = Publish
 
 developer.trainingsession.list.label.draftMode = Draft Mode
 developer.trainingsession.form.button.publish = Publish
+master.menu.user-account.become-developer = Become developer
+master.menu.user-account.developer = Developer
 
 developer.trainingsession.form.error.duplicated-code = The code already exists
 developer.trainingmodule.form.error.duplicated-code = The code already exists
+developer.trainingModule.form.error.trainingSession-draft = You cannot publish because the existing training session is in draftmode
 developer.trainingModule.form.error.drafted-project = Project draftmode must be false
 developer.trainingModule.form.error.trainingSession-Nodraft = You cannot delete because exists a training Session with draftmode false
 developer.trainingModule.form.error.trainingSession-empty = You must have at least one Training Session to publish the Training Module

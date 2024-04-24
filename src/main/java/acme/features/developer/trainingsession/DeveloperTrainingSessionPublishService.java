@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.developer.trainingsession;
+package acme.features.developer.trainingsession;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -14,14 +14,14 @@ import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingSessionUpdateService extends AbstractService<Developer, TrainingSession> {
+public class DeveloperTrainingSessionPublishService extends AbstractService<Developer, TrainingSession> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	public DeveloperTrainingSessionRepository repository;
+	protected DeveloperTrainingSessionRepository repository;
 
-	// AbstractService interface ----------------------------------------------
+	// AbstractService<Authenticated, TrainingModule> ---------------------------
 
 
 	@Override
@@ -36,16 +36,13 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		super.getResponse().setAuthorised(status);
 	}
+
 	@Override
 	public void load() {
-		TrainingSession object;
-		int masterId;
+		int id = super.getRequest().getData("id", int.class);
+		TrainingSession trainingSession = this.repository.findOneTrainingSessionById(id);
 
-		masterId = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneTrainingSessionById(masterId);
-
-		super.getBuffer().addData(object);
-
+		super.getBuffer().addData(trainingSession);
 	}
 
 	@Override
@@ -53,7 +50,6 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		assert object != null;
 
 		super.bind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink");
-
 	}
 
 	@Override
@@ -74,7 +70,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			Date startTime = MomentHelper.deltaFromMoment(object.getStartTime(), 1, ChronoUnit.WEEKS);
 
 			// Comprobamos que sea una semana
-			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingsession.form.error.end-date-less-than-week");
+			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingSession.form.error.update-moment-less-than-week");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("startTime")) {
@@ -88,15 +84,13 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			super.state(endBeforeCreation, "endTime", "developer.trainingSession.form.error.end-before-creation");
 		}
 
-		int masterId = super.getRequest().getData("id", int.class);
-		TrainingSession trainingSession = this.repository.findOneTrainingSessionById(masterId);
-		boolean noDraftTrainingSession = trainingSession.isDraftMode();
-		super.state(noDraftTrainingSession, "*", "developer.trainingSession.form.error.training-module-no-draft");
-
 	}
+
 	@Override
 	public void perform(final TrainingSession object) {
 		assert object != null;
+
+		object.setDraftMode(false);
 
 		this.repository.save(object);
 	}
@@ -105,11 +99,10 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	public void unbind(final TrainingSession object) {
 		assert object != null;
 
-		Dataset dataset;
+		Dataset dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink", "draftMode");
 
-		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink");
 		dataset.put("masterId", object.getTrainingModule().getId());
-
+		dataset.put("isPublished", object.getTrainingModule().isDraftMode());
 		super.getResponse().addData(dataset);
 	}
 

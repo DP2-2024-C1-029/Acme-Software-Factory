@@ -30,6 +30,8 @@ developer.trainingmodule.form.button.update = Actualizar Training Module
 master.menu.developer.all-trainingsession = Mostrar todos los Training Session
 master.menu.developer = Developer
 master.menu.developer.all-trainingmodule = Mostrar Training Module
+master.menu.user-account.become-developer = Convertirse en developer
+master.menu.user-account.developer = Developer
 
 developer.training-session.form.title = Training Session
 developer.training-session.list.title = Lista de todos los Training Session
@@ -64,6 +66,7 @@ developer.trainingsession.form.button.publish = Publicar
 developer.trainingsession.form.error.duplicated-code = El código ya existe
 developer.trainingmodule.form.error.duplicated-code = El código ya existe
 developer.trainingModule.form.error.drafted-project = Project draftmode debe estar en false
+developer.trainingModule.form.error.trainingSession-draft = No puedes publicar training module porque tienes un training session y no está publicado
 developer.trainingModule.form.error.trainingSession-Nodraft = No puedes borrar el training module porque existe un training session publicado
 developer.trainingModule.form.error.trainingSession-empty = Debes tener al menos un Training Session para publicar el Training Module
 developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week = La fecha de inicio del Training Session debe estar una semana por delante de la fecha de creación del Training Module
