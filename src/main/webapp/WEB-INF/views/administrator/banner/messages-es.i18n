@@ -1,0 +1,21 @@
+administrator.banner.list.title = Listado de Banners
+administrator.banner.form.title = Formulario de Banner
+
+administrator.banner.list.label.slogan = Eslogan
+administrator.banner.list.label.picture = URL de la Imagen
+administrator.banner.list.label.displayStartMoment = Inicio de la Publicación
+administrator.banner.list.label.displayEndMoment = Fin de la Publicación
+
+administrator.banner.form.label.slogan = Eslogan
+administrator.banner.form.label.instantiationMoment = Momento de Creación
+administrator.banner.form.label.displayStartMoment = Inicio de la Publicación
+administrator.banner.form.label.displayEndMoment = Fin de la Publicación
+administrator.banner.form.label.picture = Imagen
+administrator.banner.form.label.link = Enlace
+
+administrator.banner.form.button.create = Crear
+administrator.banner.form.button.update = Actualizar
+administrator.banner.form.button.delete = Eliminar
+
+administrator.banner.form.error.too-close = La finalización de la publicación debe ser al menos 1 semana después de su inicio.
+administrator.banner.form.error.not-after = El inicio de la publicación debe ser posterior al momento de creación.

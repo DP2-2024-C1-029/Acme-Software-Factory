@@ -1,0 +1,39 @@
+# messages-en.i18n
+#
+# Copyright (C) 2022-2024 Ismael Gata Dorado.
+
+#### LIST
+manager.project.list.title = Project list
+manager.project.list.label.code = Code
+manager.project.list.label.title = Title
+manager.project.list.label.abstractText = Text
+manager.project.list.label.indication = Indication
+manager.project.list.label.cost = Cost
+manager.project.list.label.link = Link
+manager.project.list.label.draftMode = Published
+
+#### FORM
+manager.project.form.label.code = Code
+manager.project.form.label.title = Title
+manager.project.form.label.abstractText = Text
+manager.project.form.label.indication = Indication
+manager.project.form.label.cost = Cost
+manager.project.form.label.link = Link
+manager.project.form.label.draftMode = Published
+manager.project.form.title = Project details
+
+#### BUTTONS
+manager.project.form.button.update = Update
+manager.project.form.button.delete = Delete
+manager.project.form.button.create = Create
+manager.project.list.button.create = Create
+manager.project.form.button.showUserStory = Show user stories
+manager.project.form.button.publish = Publish
+
+##### ERRORS
+manager.project.form.error.duplicated = Project exists with same code
+manager.project.form.error.negative-cost = The cost must be 0 or positive
+manager.project.form.error.published = Can't update project, it has already been published
+manager.project.form.error.detele.published = Can't delete project, it has already been published
+manager.project.form.error.published.without_userStory = The project must have at least one user story and that this published
+manager.project.form.error.published.fatal_error = The project must not contain any errors
