@@ -16,6 +16,7 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -58,9 +59,13 @@ public class TrainingModule extends AbstractEntity {
 	private String				link;
 
 	@NotNull
+	@Range(min = 0, max = 999)
 	private Integer				estimatedTotalTime;
 
+	private boolean				draftMode;
+
 	// Relationships
+
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)

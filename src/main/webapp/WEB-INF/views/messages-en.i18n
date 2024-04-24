@@ -16,3 +16,63 @@ validation.codeaudit.correctiveActions.max = Corrective actions must be shorter 
 
 validation.job.reference	= The reference must have letters, digits, underscores, and hyphens only
 default.placeholder.phone	= Use international format +99 (999) 999999
+
+developer.training-module.list.title = List of all Training Module
+developer.training-module.form.title = Training Module
+developer.trainingmodule.list.label.creationMoment = Creation Moment
+developer.trainingmodule.list.label.details = Details
+developer.trainingmodule.list.label.code = Code
+developer.trainingmodule.list.label.difficultyLevels = Difficulty Level
+developer.trainingmodule.list.label.updateMoment = Update Moment
+developer.trainingmodule.list.label.estimatedTotalTime = Estimated Total Time
+developer.trainingmodule.list.label.link = Link
+developer.trainingmodule.list.label.projects = Select a project
+
+developer.trainingmodule.form.button.create = Create Training Module
+developer.trainingmodule.list.button.create = Create Training Module
+developer.trainingmodule.form.button.delete = Delete Training Module
+developer.trainingmodule.form.button.update = Update Training Module
+
+master.menu.developer.all-trainingsession = Show Training Sessions associated
+master.menu.developer = Developer
+master.menu.developer.all-trainingmodule = Show Training Module
+
+developer.training-session.list.title = All Training Session
+developer.training-session.form.title = Training Session
+developer.trainingsession.list.label.code = Code
+developer.trainingsession.list.label.startTime = Start Time
+developer.trainingsession.list.label.endTime = End Time
+developer.trainingsession.list.label.location = Location
+developer.trainingsession.list.label.instructor = Instructor
+developer.trainingsession.list.label.contactEmail = Contact Email
+developer.trainingsession.list.label.project.contactEmail = Contact Email
+developer.trainingsession.list.label.furtherInformationLink = Information Link
+developer.trainingsession.form.button.create = Create Training Session
+developer.trainingsession.list.button.create = Create Training Session
+developer.trainingsession.form.button.delete = Delete Training Session
+developer.trainingsession.form.button.update = Update Training Session
+
+master.menu.developer.dashboard.show = Show training module dashboard
+developer.dashboard.form.title = Dashboard
+developer.dashboard.form.title.general-indicators = Data
+developer.dashboard.form.label.total-training-module-with-update-moment	= Total training module with update moment
+developer.dashboard.form.label.total-training-session-with-link	= Total training session with link
+developer.dashboard.form.label.average-time-training-module	= Avg time training module
+developer.dashboard.form.label.deviation-time-training-module = Deviation time training module
+developer.dashboard.form.label.minimum-time-training-module	= Min time training module
+developer.dashboard.form.label.maximum-time-training-module = Max time training module
+developer.trainingmodule.list.label.draftMode = Draft Mode
+developer.trainingmodule.form.button.publish = Publish
+
+developer.trainingsession.list.label.draftMode = Draft Mode
+developer.trainingsession.form.button.publish = Publish
+
+developer.trainingsession.form.error.duplicated-code = The code already exists
+developer.trainingmodule.form.error.duplicated-code = The code already exists
+developer.trainingModule.form.error.drafted-project = Project draftmode must be false
+developer.trainingModule.form.error.trainingSession-Nodraft = You cannot delete because exists a training Session with draftmode false
+developer.trainingModule.form.error.trainingSession-empty = You must have at least one Training Session to publish the Training Module
+developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week = Start date Must be one week ahead Training Module Creation Moment
+developer.trainingModule.form.error.negative-estimated-total-time = Estimated Total Time must be positive
+developer.trainingsession.form.error.end-date-less-than-week = End Date must be one week ahead start Date
+developer.trainingSession.form.error.training-module-no-draft = You can't publish a new Training Session because the Training Module is published

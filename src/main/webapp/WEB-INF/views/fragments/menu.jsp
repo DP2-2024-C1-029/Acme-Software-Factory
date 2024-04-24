@@ -61,6 +61,11 @@
 			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>
 			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list" access="hasRole('Administrator')"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
+			<acme:menu-suboption code="master.menu.developer.all-trainingmodule" action="/developer/training-module/list"/>
+			<acme:menu-suboption code="master.menu.developer.dashboard.show" action="/developer/dashboard/show"/>
+		</acme:menu-option>
 	</acme:menu-left>
 	
 	<acme:menu-right>

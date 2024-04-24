@@ -62,7 +62,10 @@ public class TrainingSession extends AbstractEntity {
 	@Length(max = 255)
 	private String				furtherInformationLink;
 
+	private boolean				draftMode;
+
 	// Relationships
+
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
