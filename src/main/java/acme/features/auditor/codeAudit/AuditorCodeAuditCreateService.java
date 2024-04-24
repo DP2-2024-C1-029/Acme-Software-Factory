@@ -61,14 +61,14 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 			CodeAudit existing;
 
 			existing = this.repository.findOneCodeAuditByCode(object.getCode());
-			super.state(existing == null, "code", "Auditor.CodeAudit.form.error.duplicated");
+			super.state(existing == null, "code", "auditor.CodeAudit.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
-			super.state(MomentHelper.isPast(object.getExecutionDate()), "executionDate", "Auditor.CodeAudit.form.error.too-close");
+			super.state(MomentHelper.isPast(object.getExecutionDate()), "executionDate", "auditor.CodeAudit.form.error.too-close");
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(!object.getProject().isDraftMode(), "project", "Auditor.CodeAudit.form.error.drafted-project");
+			super.state(!object.getProject().isDraftMode(), "project", "auditor.CodeAudit.form.error.drafted-project");
 	}
 
 	@Override

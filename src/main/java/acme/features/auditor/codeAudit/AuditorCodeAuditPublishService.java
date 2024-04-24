@@ -105,6 +105,8 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 
 			super.state(mode != null && mode.ordinal() <= 3, "mark", "auditor.codeaudit.form.error.low-mark");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(!object.getProject().isDraftMode(), "project", "auditor.CodeAudit.form.error.drafted-project");
 		{
 			boolean allRecordsPublished;
 
