@@ -10,6 +10,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
+import acme.entities.progressLogs.ProgressLogs;
 import acme.entities.projects.Project;
 import acme.roles.Client;
 
@@ -52,6 +53,31 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
+
+		int projectId = object.getProject().getId();
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Contract existing;
+
+			existing = this.repository.findContractByCode(object.getCode());
+			if (existing != null)
+				super.state(existing.getId() == object.getId(), "code", "client.contract.form.error.duplicatedCode");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			Collection<Contract> contracts = this.repository.findContractsByProjectId(projectId);
+
+			Double totalBudgetUsd = contracts.stream().mapToDouble(u -> this.repository.currencyTransformerUsd(u.getBudget())).sum();
+			Double projectCostUsd = this.repository.currencyTransformerUsd(object.getProject().getCost());
+
+			super.state(totalBudgetUsd <= projectCostUsd, "*", "client.contract.form.error.publishError");
+		}
+
+		{
+			Collection<ProgressLogs> numProgressLogsPublished;
+			numProgressLogsPublished = this.repository.findManyProgressLogsNotPublishedByContractId(object.getId());
+			super.state(numProgressLogsPublished.isEmpty(), "*", "client.contract.form.error.not-all-progress-logs-published");
+		}
 	}
 
 	@Override
@@ -81,10 +107,10 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		SelectChoices choicesProject;
 		Dataset dataset;
 
-		projects = this.repository.findProjects();
+		projects = this.repository.findPublishedProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "moment", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
 

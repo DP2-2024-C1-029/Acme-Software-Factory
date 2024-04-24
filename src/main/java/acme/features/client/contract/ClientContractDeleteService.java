@@ -69,6 +69,13 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
+
+		{
+			Collection<ProgressLogs> progressLogsNotPublished;
+			progressLogsNotPublished = this.repository.findManyProgressLogsNotPublishedByContractId(object.getId());
+			super.state(progressLogsNotPublished.isEmpty(), "*", "client.contract.form.error.published-progress-logs-found");
+		}
+
 	}
 
 	@Override
@@ -91,10 +98,10 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 		SelectChoices choicesProject;
 		Dataset dataset;
 
-		projects = this.repository.findProjects();
+		projects = this.repository.findPublishedProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
 

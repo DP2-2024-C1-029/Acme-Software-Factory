@@ -11,6 +11,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.contracts.Contract;
 import acme.entities.progressLogs.ProgressLogs;
 import acme.entities.projects.Project;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.roles.Client;
 
 @Repository
@@ -34,8 +35,20 @@ public interface ClientContractRepository extends AbstractRepository {
 	@Query("select p from Project p")
 	Collection<Project> findProjects();
 
+	@Query("select p from Project p where p.draftMode = false")
+	Collection<Project> findPublishedProjects();
+
 	@Query("select p from ProgressLogs p where p.contract.id = :id")
 	Collection<ProgressLogs> findManyProgressLogsByContractId(int id);
+
+	@Query("select p from ProgressLogs p where p.contract.id = :id and p.draftMode = true")
+	Collection<ProgressLogs> findManyProgressLogsNotPublishedByContractId(int id);
+
+	@Query("select c from Contract c where c.project.id = :projectId")
+	Collection<Contract> findContractsByProjectId(int projectId);
+
+	@Query("select sc from SystemConfiguration sc")
+	SystemConfiguration findSystemConfiguration();
 
 	default double currencyTransformerUsd(final Money initial) {
 		double res = initial.getAmount();

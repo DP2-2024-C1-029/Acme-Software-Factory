@@ -1,20 +1,23 @@
-client.progress-log.list.title = Registros de progreso
-client.progress-log.list.label.recordId= Identificador
-client.progress-log.list.label.completeness = Porcentaje de completitud
-client.progress-log.list.label.comment = Comentario
-client.progress-log.list.label.registrationMoment = Momento del registro
-client.progress-log.list.label.responsiblePerson = Responsable
-client.progress-log.list.label.contract = Contrato
+client.progress-logs.list.title = Registros de progreso
+client.progress-logs.list.label.recordId= Identificador
+client.progress-logs.list.label.completeness = Porcentaje de completitud
+client.progress-logs.list.label.comment = Comentario
+client.progress-logs.list.label.registrationMoment = Momento del registro
+client.progress-logs.list.label.responsiblePerson = Responsable
+client.progress-logs.list.label.contract = Contrato
+client.progress-logs.list.label.draftMode = Publicado
 
 
-client.progress-log.form.title = Datos del Registro de progreso
-client.progress-log.form.label.recordId = Identificador
-client.progress-log.form.label.completeness = Porcentaje de completitud
-client.progress-log.form.label.comment = Comentario
-client.progress-log.form.label.registrationMoment = Momento del registro
-client.progress-log.form.label.responsiblePerson = Responsable
-client.progress-log.form.button.update = Actualizar
-client.progress-log.form.button.delete = Borrar
-client.progress-log.form.button.create = Crear
-client.progress-log.form.button.progressLogs = Registros de progreso
-client.progress-log.form.label.contract = Contrato
+
+client.progress-logs.form.title = Datos del Registro de progreso
+client.progress-logs.form.label.contract = Contrato
+client.progress-logs.form.label.recordId = Identificador
+client.progress-logs.form.label.completeness = Porcentaje de completitud
+client.progress-logs.form.label.comment = Comentario
+client.progress-logs.form.label.registrationMoment = Momento del registro
+client.progress-logs.form.label.responsiblePerson = Responsable
+client.progress-logs.form.button.update = Actualizar
+client.progress-logs.form.button.delete = Borrar
+client.progress-logs.form.button.create = Crear
+client.progress-logs.form.button.progressLogs = Registros de progreso
+client.progress-logs.form.button.publish = Publicar

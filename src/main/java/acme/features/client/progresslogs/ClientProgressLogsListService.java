@@ -42,9 +42,13 @@ public class ClientProgressLogsListService extends AbstractService<Client, Progr
 	public void unbind(final ProgressLogs object) {
 		assert object != null;
 
+		String payload;
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "draftMode");
+		payload = String.format("%s", object.getResponsiblePerson());
+		dataset.put("draftMode", object.isDraftMode() ? "❌" : "✔️");
+		dataset.put("payload", payload);
 		super.getResponse().addData(dataset);
 
 	}
@@ -56,6 +60,7 @@ public class ClientProgressLogsListService extends AbstractService<Client, Progr
 		int contractId;
 
 		contractId = super.getRequest().getData("contractId", int.class);
+
 		super.getResponse().addGlobal("contractId", contractId);
 	}
 
