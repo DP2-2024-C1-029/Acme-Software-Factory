@@ -23,6 +23,7 @@ auditor.codeAudit.form.error.too-close = Execution date is not in the past
 auditor.codeaudit.form.error.low-mark = Mark must be at least "C" to publish
 auditor.codeaudit.form.error.not-all-records-published = All records from this code audit must be published
 auditor.CodeAudit.form.error.drafted-project = Linked projects must be published
+auditor.codeaudit.form.error.not-published-records = You cannot delete an audit with published records
 
 auditor.codeAudit.list.button.create = Create
 

@@ -68,6 +68,13 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+
+		{
+			boolean noPublishedRecords;
+
+			noPublishedRecords = this.repository.findManyAuditRecordsByCodeAuditId(object.getId()).stream().allMatch(a -> a.isDraftMode());
+			super.state(noPublishedRecords, "*", "auditor.codeaudit.form.error.not-published-records");
+		}
 	}
 
 	@Override

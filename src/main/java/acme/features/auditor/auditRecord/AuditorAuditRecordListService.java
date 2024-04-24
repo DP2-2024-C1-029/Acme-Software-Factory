@@ -54,7 +54,10 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "mark", "startPeriod", "endPeriod");
-		dataset.put("published", object.isDraftMode() ? "❌" : "✔️");
+		if (super.getRequest().getLocale().getLanguage().equals("es"))
+			dataset.put("published", object.isDraftMode() ? "No" : "Si");
+		else if (super.getRequest().getLocale().getLanguage().equals("en"))
+			dataset.put("published", object.isDraftMode() ? "No" : "Yes");
 
 		super.getResponse().addData(dataset);
 	}

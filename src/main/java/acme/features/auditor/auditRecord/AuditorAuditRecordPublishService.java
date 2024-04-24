@@ -78,7 +78,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
 			super.state(MomentHelper.isPresentOrPast(object.getEndPeriod()), "endPeriod", "auditor.auditRecord.form.error.not-past");
 
-		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
+		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && !super.getBuffer().getErrors().hasErrors("endPeriod"))
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "auditor.auditRecord.form.error.end-after-start");
 
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && !super.getBuffer().getErrors().hasErrors("endPeriod"))
