@@ -36,6 +36,8 @@ developer.trainingmodule.form.button.update = Update Training Module
 master.menu.developer.all-trainingsession = List Training Sessions associated
 master.menu.developer = Developer
 master.menu.developer.all-trainingmodule = List Training Module
+master.menu.authenticated.notice-list = List Notices
+master.menu.authenticated.notice-show = Show Notices
 
 developer.training-session.list.title = All Training Session
 developer.training-session.form.title = Training Session
