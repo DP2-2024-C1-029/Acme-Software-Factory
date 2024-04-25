@@ -59,7 +59,7 @@ public class TrainingModule extends AbstractEntity {
 	private String				link;
 
 	@NotNull
-	@Range(min = 0, max = 999)
+	@Range(min = 1, max = 999)
 	private Integer				estimatedTotalTime;
 
 	private boolean				draftMode;
