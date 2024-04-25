@@ -53,7 +53,7 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 		assert object != null;
 
 		// TODO - Preguntar si es una validación válida
-		if (!super.getBuffer().getErrors().hasErrors("endingExecutionPeriod")) {
+		if (!super.getBuffer().getErrors().hasErrors("endingExecutionPeriod") && !super.getBuffer().getErrors().hasErrors("initialExecutionPeriod")) {
 			Date minimumDeadline;
 
 			minimumDeadline = MomentHelper.deltaFromMoment(object.getInitialExecutionPeriod(), 1, ChronoUnit.HOURS);

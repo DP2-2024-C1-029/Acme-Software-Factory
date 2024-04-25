@@ -80,7 +80,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(myProjects.contains(object.getProject()), "project", "sponsor.sponsorship.form.error.not-exists");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("endingExecutionPeriod")) {
+		if (!super.getBuffer().getErrors().hasErrors("endingExecutionPeriod") && !super.getBuffer().getErrors().hasErrors("initialExecutionPeriod")) {
 			Date minimumDeadline;
 
 			minimumDeadline = MomentHelper.deltaFromMoment(object.getInitialExecutionPeriod(), 1, ChronoUnit.MONTHS);

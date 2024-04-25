@@ -1,6 +1,8 @@
 
 package acme.features.administrator.configuration;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +57,9 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 
 		int sizeAcceptedObject;
 		int sizeDistinctAccepted;
+		Collection<String> objectCurrencies;
+		Collection<String> allCurrenciesOfAPI;
+		Collection<String> allCurrenciesInSystem;
 
 		if (!super.getBuffer().getErrors().hasErrors("currency"))
 			super.state(object.getAcceptedCurrencies().matches(".*" + object.getCurrency() + ".*"), "currency", "administrator.configuration.form.error.currency-not-in-accepted");
@@ -63,6 +68,12 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 			sizeAcceptedObject = object.getAcceptedCurrencies().split(";").length;
 			sizeDistinctAccepted = (int) Stream.of(object.getAcceptedCurrencies().split(";")).distinct().count();
 			super.state(sizeAcceptedObject == sizeDistinctAccepted, "acceptedCurrencies", "administrator.configuration.form.error.duplicated-currency");
+
+			objectCurrencies = Stream.of(object.getAcceptedCurrencies().split(";")).toList();
+			allCurrenciesOfAPI = this.repository.findCurrenciesFromAPI();
+			allCurrenciesInSystem = this.repository.findAllCurrentCurrencies();
+			super.state(allCurrenciesOfAPI.containsAll(objectCurrencies), "*", "administrator.configuration.form.error.not-accepted-by-api");
+			super.state(allCurrenciesInSystem.containsAll(objectCurrencies), "*", "administrator.configuration.form.error.not-all-of-the-system");
 		}
 	}
 
@@ -77,9 +88,16 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 	public void unbind(final Configuration object) {
 		assert object != null;
 
+		String allCurrentCurrencies;
+		String allAcceptedByAPI;
 		Dataset dataset;
 
+		allCurrentCurrencies = this.repository.findAllCurrentCurrencies().stream().collect(Collectors.joining(";"));
+		allAcceptedByAPI = this.repository.findCurrenciesFromAPI().stream().collect(Collectors.joining(";"));
+
 		dataset = super.unbind(object, "currency", "acceptedCurrencies");
+		dataset.put("currentCurrencies", allCurrentCurrencies);
+		dataset.put("currenciesFromAPI", allAcceptedByAPI);
 
 		super.getResponse().addData(dataset);
 	}
