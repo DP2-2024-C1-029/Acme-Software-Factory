@@ -4,6 +4,7 @@ package acme.roles;
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -25,14 +26,17 @@ public class Developer extends AbstractRole {
 
 	@NotBlank
 	@Length(max = 75)
+	@NotNull
 	private String				degree;
 
 	@NotBlank
 	@Length(max = 100)
+	@NotNull
 	private String				specialisation;
 
 	@NotBlank
 	@Length(max = 100)
+	@NotNull
 	private String				listOfSkills;
 
 	@URL
@@ -40,6 +44,7 @@ public class Developer extends AbstractRole {
 
 	@Email
 	@NotBlank
+	@NotNull
 	private String				email;
 
 	// Derived attributes -----------------------------------------------------

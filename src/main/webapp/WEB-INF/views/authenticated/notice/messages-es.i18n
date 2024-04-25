@@ -1,0 +1,15 @@
+# messages-es.i18n
+
+authenticated.notice.form.title = Detalles de las noticias
+authenticated.notice.list.title = Listado de noticias
+
+authenticated.notice.form.label.title = Titulo
+authenticated.notice.form.label.author = Autor
+authenticated.notice.form.label.message = Mensaje
+authenticated.notice.form.label.email = Email
+authenticated.notice.form.label.link = Link
+authenticated.notice.form.label.instantiationMoment = Momento de creación
+
+authenticated.notice.form.button.create = Crear
+authenticated.notice.form.label.confirmation = Confirmar que la noticia es correcta
+authenticated.notice.list.button.create = Nueva noticia
