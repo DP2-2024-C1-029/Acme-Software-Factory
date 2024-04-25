@@ -36,6 +36,7 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 		Objective objects;
 
 		objects = new Objective();
+		objects.setInstantiationMoment(MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.MILLIS));
 
 		super.getBuffer().addData(objects);
 	}
@@ -44,7 +45,7 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 	public void bind(final Objective object) {
 		assert object != null;
 
-		super.bind(object, "title", "isCritical", "instantiationMoment", "description", "initialExecutionPeriod", "endingExecutionPeriod", "link", "priority");
+		super.bind(object, "title", "isCritical", "description", "initialExecutionPeriod", "endingExecutionPeriod", "link", "priority");
 	}
 
 	@Override

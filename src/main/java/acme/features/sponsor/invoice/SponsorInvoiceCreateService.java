@@ -3,11 +3,11 @@ package acme.features.sponsor.invoice;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
@@ -44,16 +44,11 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		Invoice object;
 		int masterId;
 		Sponsorship sponsorship;
-		Money money;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(masterId);
 
 		object = new Invoice();
-		money = new Money();
-		money.setAmount(0.0);
-		money.setCurrency("");
-		object.setQuantity(money);
 		object.setSponsorship(sponsorship);
 		object.setPublished(false);
 		object.setRegistrationTime(MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.MILLIS));
@@ -86,8 +81,13 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			super.state(MomentHelper.isAfter(object.getDueDate(), minimumDeadline), "dueDate", "sponsor.invoice.form.error.too-close");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");
+			super.state(Stream.of(acceptedCurrencies).anyMatch(c -> c.equals(object.getQuantity().getCurrency())), //
+				"quantity", "sponsor.invoice.form.error.quantity-not-valid");
+
 			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.negative-amount");
+		}
 	}
 
 	@Override

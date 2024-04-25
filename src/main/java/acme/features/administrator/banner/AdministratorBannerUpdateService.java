@@ -40,8 +40,10 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 	@Override
 	public void load() {
 		Banner object;
+		int bannerId;
 
-		object = new Banner();
+		bannerId = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneBannerById(bannerId);
 
 		super.getBuffer().addData(object);
 	}
@@ -81,7 +83,7 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "displayStartMoment", "displayEndMoment", "picture", "slogan", "link");
+		dataset = super.unbind(object, "instantiationMoment", "displayStartMoment", "displayEndMoment", "picture", "slogan", "link");
 
 		super.getResponse().addData(dataset);
 	}
