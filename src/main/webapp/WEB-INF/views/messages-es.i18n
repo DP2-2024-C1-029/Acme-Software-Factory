@@ -33,6 +33,8 @@ developer.trainingModule.form.error.drafted-project = Project draftmode debe est
 developer.trainingModule.form.error.trainingSession-draft = No puedes publicar training module porque tienes un training session y no está publicado
 developer.trainingModule.form.error.trainingSession-Nodraft = No puedes borrar el training module porque existe un training session publicado
 developer.trainingModule.form.error.trainingSession-empty = Debes tener al menos un Training Session para publicar el Training Module
+developer.trainingmodule.list.label.draftMode = Modo borrador
+
 
 master.menu.developer.all-trainingsession = Mostrar todos los Training Session
 master.menu.developer = Developer

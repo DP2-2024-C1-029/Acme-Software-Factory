@@ -39,6 +39,7 @@ developer.trainingmodule.form.button.create = Create Training Module
 developer.trainingmodule.list.button.create = Create Training Module
 developer.trainingmodule.form.button.delete = Delete Training Module
 developer.trainingmodule.form.button.update = Update Training Module
+developer.trainingmodule.list.label.draftMode = Draft Mode
 
 master.menu.developer.all-trainingsession = List Training Sessions associated
 master.menu.developer = Developer
