@@ -5,7 +5,7 @@
 
 <acme:form>
 	<acme:input-textbox code="authenticated.notice.form.label.title" path="title"/>
-	<acme:input-textbox code="authenticated.notice.form.label.author" path="author"/>
+	<acme:input-textbox code="authenticated.notice.form.label.author" path="author" readonly="true"/>
 	<acme:input-textarea code="authenticated.notice.form.label.message" path="message"/>
 	<acme:input-email code="authenticated.notice.form.label.email" path="email"/>
 	<acme:input-url code="authenticated.notice.form.label.link" path="link"/>
