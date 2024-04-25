@@ -27,7 +27,14 @@ developer.trainingmodule.list.label.updateMoment = Update Moment
 developer.trainingmodule.list.label.estimatedTotalTime = Estimated Total Time
 developer.trainingmodule.list.label.link = Link
 developer.trainingmodule.list.label.projects = Select a project
-
+developer.trainingmodule.list.label.draftMode = Draft Mode
+developer.trainingmodule.form.button.publish = Publish
+developer.trainingmodule.form.error.duplicated-code = The code already exists
+developer.trainingModule.form.error.trainingSession-draft = You cannot publish because the existing training session is in draftmode
+developer.trainingModule.form.error.drafted-project = Project draftmode must be false
+developer.trainingModule.form.error.trainingSession-Nodraft = You cannot delete because exists a training Session with draftmode false
+developer.trainingModule.form.error.trainingSession-empty = You must have at least one Training Session to publish the Training Module
+developer.trainingModule.form.error.negative-estimated-total-time = Estimated Total Time must be positive
 developer.trainingmodule.form.button.create = Create Training Module
 developer.trainingmodule.list.button.create = Create Training Module
 developer.trainingmodule.form.button.delete = Delete Training Module
@@ -38,6 +45,9 @@ master.menu.developer = Developer
 master.menu.developer.all-trainingmodule = List Training Module
 master.menu.authenticated.notice-list = List Notices
 master.menu.authenticated.notice-show = Show Notices
+master.menu.user-account.become-developer = Become developer
+master.menu.user-account.developer = Developer
+master.menu.developer.dashboard.show = Show training module dashboard
 
 developer.training-session.list.title = All Training Session
 developer.training-session.form.title = Training Session
@@ -53,8 +63,14 @@ developer.trainingsession.form.button.create = Create Training Session
 developer.trainingsession.list.button.create = Create Training Session
 developer.trainingsession.form.button.delete = Delete Training Session
 developer.trainingsession.form.button.update = Update Training Session
+developer.trainingSession.form.error.end-before-creation = End Time must be later than start Time
+developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week = Start date Must be one week ahead Training Module Creation Moment
+developer.trainingsession.form.error.end-date-less-than-week = End Date must be one week ahead start Date
+developer.trainingsession.form.error.duplicated-code = The code already exists
+developer.trainingSession.form.error.training-module-no-draft = You can't publish a new Training Session because the Training Module is published
+developer.trainingsession.list.label.draftMode = Draft Mode
+developer.trainingsession.form.button.publish = Publish
 
-master.menu.developer.dashboard.show = Show training module dashboard
 developer.dashboard.form.title = Dashboard
 developer.dashboard.form.title.general-indicators = Data
 developer.dashboard.form.label.total-training-module-with-update-moment	= Total training module with update moment
@@ -63,28 +79,10 @@ developer.dashboard.form.label.average-time-training-module	= Avg time training 
 developer.dashboard.form.label.deviation-time-training-module = Deviation time training module
 developer.dashboard.form.label.minimum-time-training-module	= Min time training module
 developer.dashboard.form.label.maximum-time-training-module = Max time training module
-developer.trainingmodule.list.label.draftMode = Draft Mode
-developer.trainingmodule.form.button.publish = Publish
-
-developer.trainingsession.list.label.draftMode = Draft Mode
-developer.trainingsession.form.button.publish = Publish
-master.menu.user-account.become-developer = Become developer
-master.menu.user-account.developer = Developer
 
 authenticated.developer.form.label.link = Link
 authenticated.developer.form.label.email = Email
 authenticated.developer.form.button.create = Create
 
 any.training-module.list.title = List of Training Module
-developer.trainingSession.form.error.end-before-creation = End Time must be later than start Time
-
-developer.trainingsession.form.error.duplicated-code = The code already exists
-developer.trainingmodule.form.error.duplicated-code = The code already exists
-developer.trainingModule.form.error.trainingSession-draft = You cannot publish because the existing training session is in draftmode
-developer.trainingModule.form.error.drafted-project = Project draftmode must be false
-developer.trainingModule.form.error.trainingSession-Nodraft = You cannot delete because exists a training Session with draftmode false
-developer.trainingModule.form.error.trainingSession-empty = You must have at least one Training Session to publish the Training Module
-developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week = Start date Must be one week ahead Training Module Creation Moment
-developer.trainingModule.form.error.negative-estimated-total-time = Estimated Total Time must be positive
-developer.trainingsession.form.error.end-date-less-than-week = End Date must be one week ahead start Date
-developer.trainingSession.form.error.training-module-no-draft = You can't publish a new Training Session because the Training Module is published
+any.training-module.form.title = Details of the Training Module
