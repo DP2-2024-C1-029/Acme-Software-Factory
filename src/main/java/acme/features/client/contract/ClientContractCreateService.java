@@ -30,7 +30,18 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int contractId;
+		Contract contract;
+		int clientId;
+		boolean isValid;
+
+		contractId = super.getRequest().getData("id", int.class);
+		contract = this.repository.findContractById(contractId);
+		clientId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		isValid = clientId == contract.getClient().getId() && contract.getProject() != null;
+
+		super.getResponse().setAuthorised(isValid);
 	}
 
 	@Override
@@ -58,7 +69,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		Date currentMoment;
 
 		currentMoment = MomentHelper.getCurrentMoment();
-		instantiationMoment = new Date(currentMoment.getTime() - 500);
+		instantiationMoment = new Date(currentMoment.getTime() - 5000);
 		object.setInstantiationMoment(instantiationMoment);
 
 	}
@@ -81,14 +92,12 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Contract existing;
-
 			existing = this.repository.findContractByCode(object.getCode());
 			super.state(existing == null, "code", "client.contract.form.error.duplicatedCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			if (object.getProject() != null)
-				super.state(this.repository.currencyTransformerUsd(object.getProject().getCost()) >= this.repository.currencyTransformerUsd(object.getBudget()), "budget", "client.contract.form.error.budget");
+		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
+			super.state(this.repository.currencyTransformerUsd(object.getProject().getCost()) >= this.repository.currencyTransformerUsd(object.getBudget()), "budget", "client.contract.form.error.budget");
 
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-budget");

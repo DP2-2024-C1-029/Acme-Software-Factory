@@ -5,7 +5,7 @@ client.progress-logs.list.label.comment = Comentario
 client.progress-logs.list.label.registrationMoment = Momento del registro
 client.progress-logs.list.label.responsiblePerson = Responsable
 client.progress-logs.list.label.contract = Contrato
-client.progress-logs.list.label.draftMode = Publicado
+client.progress-logs.list.label.draftMode = Modo borrador
 
 
 

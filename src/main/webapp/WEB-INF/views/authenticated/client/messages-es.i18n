@@ -2,7 +2,7 @@ authenticated.client.form.title = Detalles de cliente
 
 authenticated.client.form.label.identification = Código de identificación
 authenticated.client.form.label.companyName = Nombre de la compañia
-authenticated.client.form.label.type = Tipo
+authenticated.client.form.label.companyType = Tipo de compañia
 authenticated.client.form.label.email = Correo eletrónico
 authenticated.client.form.label.link = Enlace (opcional)
 

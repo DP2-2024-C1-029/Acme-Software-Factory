@@ -17,4 +17,4 @@ client.progress-logs.form.button.update = Update
 client.progress-logs.form.button.delete = Delete
 client.progress-logs.form.button.create = Create
 client.progress-logs.form.label.contract = Contract
-client.progress-logs.form.label.publish = Publish
+client.progress-logs.form.label.publish = Draft mode

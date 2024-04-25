@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.contracts.Contract;
 import acme.entities.progressLogs.ProgressLogs;
 import acme.roles.Client;
 
@@ -50,9 +51,22 @@ public class ClientProgressLogsUpdateService extends AbstractService<Client, Pro
 
 		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
 			ProgressLogs existing;
-
 			existing = this.repository.findProgressLogByRecordId(object.getRecordId());
-			super.state(existing == null, "recordId", "client.contract.form.error.duplicatedRecordId");
+			if (existing != null)
+				super.state(existing.getId() == object.getId(), "recordId", "client.contract.form.error.duplicatedRecordId");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
+			super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
+
+		if (!super.getBuffer().getErrors().hasErrors("publishedContract")) {
+			Integer contractId;
+			Contract contract;
+
+			contractId = super.getRequest().getData("contractId", int.class);
+			contract = this.repository.findContractById(contractId);
+
+			super.state(contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");
 		}
 	}
 
@@ -69,7 +83,7 @@ public class ClientProgressLogsUpdateService extends AbstractService<Client, Pro
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		dataset = super.unbind(object, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 }

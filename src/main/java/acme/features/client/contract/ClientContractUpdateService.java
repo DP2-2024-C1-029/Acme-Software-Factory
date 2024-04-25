@@ -88,7 +88,8 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 				super.state(existing.getId() == object.getId(), "code", "client.contract.form.error.duplicatedCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project")) {
+
 			Project referencedProject = object.getProject();
 			super.state(this.repository.currencyTransformerUsd(referencedProject.getCost()) >= this.repository.currencyTransformerUsd(object.getBudget()), "budget", "client.contract.form.error.budget");
 		}
@@ -99,6 +100,8 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(this.isCurrencyAccepted(object.getBudget()), "budget", "client.contract.form.error.acceptedCurrency");
 
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(!object.getProject().isDraftMode(), "project", "client.contract.form.error.project-not-published");
 	}
 
 	@Override
@@ -113,16 +116,13 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		assert contract != null;
 
 		Dataset dataset;
-		String projectCode = this.repository.findProjectById(contract.getProject().getId()).getCode();
 
 		Collection<Project> projects = this.repository.findPublishedProjects();
 		SelectChoices options;
 
-		options = SelectChoices.from(projects, "title", this.repository.findProjectById(contract.getProject().getId()));
+		options = SelectChoices.from(projects, "title", null);
 
 		dataset = super.unbind(contract, "code", "project", "providerName", "customerName", "instantiationMoment", "budget", "goals", "draftMode");
-
-		dataset.put("project", projectCode);
 		dataset.put("projects", options);
 
 		super.getResponse().addData(dataset);

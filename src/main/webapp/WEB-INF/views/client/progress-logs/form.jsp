@@ -12,7 +12,7 @@
 	
 
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')&& draftMode == true }">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode == true }">
 			<acme:submit code="client.progress-logs.form.button.update" action="/client/progress-logs/update" />
 			<acme:submit code="client.progress-logs.form.button.delete" action="/client/progress-logs/delete" />
 			<acme:submit code="client.progress-logs.form.button.publish" action="/client/progress-logs/publish" />

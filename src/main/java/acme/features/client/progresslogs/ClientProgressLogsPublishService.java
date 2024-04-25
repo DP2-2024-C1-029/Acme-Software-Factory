@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.contracts.Contract;
 import acme.entities.progressLogs.ProgressLogs;
 import acme.roles.Client;
 
@@ -44,19 +45,27 @@ public class ClientProgressLogsPublishService extends AbstractService<Client, Pr
 	}
 
 	@Override
-	public void validate(final ProgressLogs progressLog) {
-		assert progressLog != null;
+	public void validate(final ProgressLogs object) {
+		assert object != null;
 
-		//Contract referencedContract = progressLog.getContract();
-		//super.state(referencedContract != null, "*", "client.progressLog.form.error.invalidContract");
+		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
+			ProgressLogs existing;
+			existing = this.repository.findProgressLogByRecordId(object.getRecordId());
+			super.state(existing.getId() == object.getId(), "recordId", "client.contract.form.error.duplicatedRecordId");
+		}
 
-		//		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
-		//
-		//			ProgressLog progressLogWithCode = this.repository.findProgressLogByRecordId(progressLog.getRecordId());
-		//
-		//			super.state(progressLogWithCode == null, "recordId", "client.progress-log.form.error.recordId");
-		//		}
+		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
+			super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
 
+		if (!super.getBuffer().getErrors().hasErrors("publishedContract")) {
+			Integer contractId;
+			Contract contract;
+
+			contractId = super.getRequest().getData("contractId", int.class);
+			contract = this.repository.findContractById(contractId);
+
+			super.state(contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");
+		}
 	}
 
 	@Override
@@ -85,7 +94,7 @@ public class ClientProgressLogsPublishService extends AbstractService<Client, Pr
 
 		Dataset dataset;
 
-		dataset = super.unbind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		dataset = super.unbind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

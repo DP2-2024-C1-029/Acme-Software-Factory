@@ -47,14 +47,12 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	public void bind(final Contract object) {
 		assert object != null;
 
-		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget");
+		super.bind(object, "code", "instantiationMoment", "providerName", "customerName", "goals", "budget", "project", "draftMode");
 	}
 
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
-
-		int projectId = object.getProject().getId();
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Contract existing;
@@ -64,14 +62,17 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 				super.state(existing.getId() == object.getId(), "code", "client.contract.form.error.duplicatedCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project")) {
+			int projectId = object.getProject().getId();
 			Collection<Contract> contracts = this.repository.findContractsByProjectId(projectId);
-
 			Double totalBudgetUsd = contracts.stream().mapToDouble(u -> this.repository.currencyTransformerUsd(u.getBudget())).sum();
 			Double projectCostUsd = this.repository.currencyTransformerUsd(object.getProject().getCost());
 
 			super.state(totalBudgetUsd <= projectCostUsd, "*", "client.contract.form.error.publishError");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(!object.getProject().isDraftMode(), "project", "client.contract.form.error.project-not-published");
 
 		{
 			Collection<ProgressLogs> numProgressLogsPublished;

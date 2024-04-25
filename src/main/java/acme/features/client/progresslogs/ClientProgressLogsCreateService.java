@@ -54,9 +54,21 @@ public class ClientProgressLogsCreateService extends AbstractService<Client, Pro
 
 		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
 			ProgressLogs existing;
-
 			existing = this.repository.findProgressLogByRecordId(object.getRecordId());
-			super.state(existing == null, "recordId", "client.contract.form.error.duplicatedRecordId");
+			if (existing != null)
+				super.state(existing.getId() == object.getId(), "recordId", "client.contract.form.error.duplicatedRecordId");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
+			super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");
+
+		if (!super.getBuffer().getErrors().hasErrors("publishedContract")) {
+			Integer contractId;
+			Contract contract;
+
+			contractId = super.getRequest().getData("contractId", int.class);
+			contract = this.repository.findContractById(contractId);
+
+			super.state(contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");
 		}
 
 	}

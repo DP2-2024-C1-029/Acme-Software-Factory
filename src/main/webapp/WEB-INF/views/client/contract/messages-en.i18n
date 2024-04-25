@@ -5,7 +5,7 @@ client.contract.list.label.providerName = Provider name
 client.contract.list.label.customerName = Customer name
 client.contract.list.label.goals = Goals
 client.contract.list.label.budget = Budget
-client.contract.list.label.draftMode = Published
+client.contract.list.label.draftMode = Draft mode
 client.contract.list.label.project = Project name
 
 client.contract.form.title = Contract data
@@ -31,3 +31,4 @@ client.contract.form.error.not-all-progress-logs-published = All the progressLog
 client.contract.form.error.published-progress-logs-found = Cannot delete contract with published progress logs
 client.contract.form.error.negative-budget = The budget cannot be negative
 client.contract.form.error.acceptedCurrency = Currency not valid
+client.contract.form.error.project-not-published = The associated project must be published

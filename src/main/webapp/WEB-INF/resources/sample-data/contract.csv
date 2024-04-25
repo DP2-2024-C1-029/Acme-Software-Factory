@@ -29,3 +29,5 @@ contract-27,A-023,2000/07/30 0:00,SUN,luis,mejorar,EUR 1000000.00,project-01,cli
 contract-28,A-024,2000/07/31 0:00,SUN,luis,mejorar,EUR 500000.00,project-01,client-01,true
 contract-29,A-025,2000/08/01 0:00,SUN,luis,mejorar,EUR 34899.12,project-01,client-01,true
 contract-30,A-026,2000/08/02 0:00,SUN,luis,mejorar,EUR 79234.60,project-01,client-01,true
+contract-31,A-027,2000/08/02 0:00,SUN,luis,mejorar,EUR 1000.00,project-04,client-01,true
+contract-32,A-028,2000/08/02 0:00,SUN,luis,mejorar,EUR 1000.00,project-04,client-01,false

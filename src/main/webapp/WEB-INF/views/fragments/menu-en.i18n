@@ -62,6 +62,8 @@ master.menu.administrator.banner.list = Listing banners
 master.menu.client = Client
 master.menu.client.contract.list = Contracts list
 master.menu.client.dashboard = Your client dashboard
+master.menu.user-account.client = Client data
+master.menu.user-account.become-client = Become a Client
 
 
 # master.menu.user-account ####################################################
@@ -86,6 +88,5 @@ master.menu.manager.dashboard = Dashboard
 # master.menu.authenticated ########################################################
 master.menu.authenticated = Data
 master.menu.authenticated.claim = List claims
-master.menu.user-account.client = Client data
-master.menu.user-account.become-client = Become a Client
+
 

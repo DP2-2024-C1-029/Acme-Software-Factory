@@ -46,7 +46,6 @@ public class ClientContractListService extends AbstractService<Client, Contract>
 		String code = this.repository.findProjectById(object.getProject().getId()).getCode();
 
 		dataset = super.unbind(object, "code", "project", "draftMode", "providerName", "customerName", "instantiationMoment", "budget", "goals");
-		dataset.put("draftMode", object.isDraftMode() ? "❌" : "✔️");
 		dataset.put("project", code);
 		super.getResponse().addData(dataset);
 
