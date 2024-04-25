@@ -76,6 +76,7 @@ authenticated.developer.form.label.email = Email
 authenticated.developer.form.button.create = Create
 
 any.training-module.list.title = List of Training Module
+developer.trainingSession.form.error.end-before-creation = End Time must be later than start Time
 
 developer.trainingsession.form.error.duplicated-code = The code already exists
 developer.trainingmodule.form.error.duplicated-code = The code already exists

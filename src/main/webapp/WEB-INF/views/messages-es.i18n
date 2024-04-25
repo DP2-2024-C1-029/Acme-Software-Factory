@@ -27,6 +27,8 @@ developer.trainingmodule.list.button.create = Crear Training Module
 developer.trainingmodule.form.button.delete = Borrar Training Module
 developer.trainingmodule.form.button.update = Actualizar Training Module
 
+developer.trainingSession.form.error.end-before-creation = El tiempo final debe ser posterior al tiempo inicial
+
 master.menu.developer.all-trainingsession = Mostrar todos los Training Session
 master.menu.developer = Developer
 master.menu.developer.all-trainingmodule = Mostrar Training Module

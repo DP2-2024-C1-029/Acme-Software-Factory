@@ -29,7 +29,18 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 
 	@Override
 	public void load() {
-		Notice object = new Notice();
+
+		Notice object;
+		int userId;
+
+		object = new Notice();
+
+		userId = super.getRequest().getPrincipal().getAccountId();
+		final String surname = this.repository.findOneUserById(userId).getIdentity().getSurname();
+		final String name = this.repository.findOneUserById(userId).getIdentity().getName();
+		final String username = this.repository.findOneUserById(userId).getUsername();
+		object.setAuthor(username + " - " + surname + ", " + name);
+
 		super.getBuffer().addData(object);
 	}
 

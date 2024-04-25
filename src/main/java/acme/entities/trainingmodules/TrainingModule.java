@@ -35,6 +35,7 @@ public class TrainingModule extends AbstractEntity {
 
 	// Attributes
 	@NotBlank
+	@NotNull
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
@@ -44,6 +45,7 @@ public class TrainingModule extends AbstractEntity {
 	private Date				creationMoment;
 
 	@NotBlank
+	@NotNull
 	@Length(max = 100)
 	private String				details;
 
@@ -62,6 +64,7 @@ public class TrainingModule extends AbstractEntity {
 	@Range(min = 1, max = 999)
 	private Integer				estimatedTotalTime;
 
+	@NotNull
 	private boolean				draftMode;
 
 	// Relationships
