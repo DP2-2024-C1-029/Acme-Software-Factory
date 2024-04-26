@@ -21,10 +21,10 @@ public interface AuditorDashboardRepository extends AbstractRepository {
 	@Query("select count(c) from CodeAudit c where c.type = acme.entities.codeaudits.AuditType.DYNAMIC and c.auditor.id = :id and c.draftMode = false")
 	int totalDynamicCodeAudits(int id);
 
-	@Query("select count(r) from AuditRecord r where r.draftMode = false and r.codeAudit.auditor.id = :id group by r.codeAudit")
+	@Query("select count(r) from AuditRecord r where r.draftMode = false and r.codeAudit.draftMode = false and r.codeAudit.auditor.id = :id group by r.codeAudit")
 	List<Integer> findRecordCountsByAudit(int id);
 
-	@Query("select r.startPeriod, r.endPeriod from AuditRecord r where r.draftMode = false and r.codeAudit.auditor.id = :id")
+	@Query("select r.startPeriod, r.endPeriod from AuditRecord r where r.draftMode = false and r.codeAudit.draftMode = false and r.codeAudit.auditor.id = :id")
 	List<Object[]> findPeriods(int id);
 
 }

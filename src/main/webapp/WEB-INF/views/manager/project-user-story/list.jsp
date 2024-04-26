@@ -15,8 +15,4 @@
 	<acme:list-column code="manager.project-user-story.list.label.estimatedCost" path="estimatedCost" width="20%"/>
 	<acme:list-column code="manager.project-user-story.list.label.priority" path="priority" width="20%"/>
 	<acme:list-column code="manager.project-user-story.list.label.draftMode" path="published" width="20%"/>
-</acme:list> 
-
-<div style="float: right">
-	<acme:button code="default.label.return" action="##"/>
-</div>
+</acme:list>
