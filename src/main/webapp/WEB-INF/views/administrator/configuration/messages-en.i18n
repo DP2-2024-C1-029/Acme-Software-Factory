@@ -4,6 +4,7 @@ administrator.configuration.form.label.currency = Default currency
 administrator.configuration.form.label.acceptedCurrencies = List of permitted currencies in the system
 administrator.configuration.form.label.currentCurrencies = List of currencies in the system right now
 administrator.configuration.form.label.currenciesFromAPI = List of accepted currencies you can choose
+administrator.configuration.form.button.update = Update
 
 administrator.configuration.form.error.currency-not-in-accepted = Among this currencies there must be the default currency
 administrator.configuration.form.error.duplicated-currency = You cannot have two equal currencies at the same time
