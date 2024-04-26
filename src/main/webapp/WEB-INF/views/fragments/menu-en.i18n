@@ -67,6 +67,8 @@ master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.sponsor = Sponsor data
 master.menu.user-account.become-sponsor = Become a sponsor
+master.menu.user-account.manager = Manager data
+master.menu.user-account.become-manager = Become manager
 
 # master.menu.manager ########################################################
 
@@ -78,3 +80,4 @@ master.menu.manager.dashboard = Dashboard
 # master.menu.authenticated ########################################################
 master.menu.authenticated = Data
 master.menu.authenticated.claim = List claims
+master.menu.authenticated.project.published.list = List project published

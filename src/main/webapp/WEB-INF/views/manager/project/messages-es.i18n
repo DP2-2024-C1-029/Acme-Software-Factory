@@ -21,6 +21,7 @@ manager.project.form.label.indication = Indicación
 manager.project.form.label.cost = Coste
 manager.project.form.label.link = Link
 manager.project.form.label.draftMode = Publicado
+manager.project-user-story.list.label.userStories = Selecciona la historia de usuario a añadir
 
 #### BOTONES
 manager.project.form.button.update = Actualizar
@@ -29,6 +30,7 @@ manager.project.form.button.create = Crear
 manager.project.list.button.create = Crear
 manager.project.form.button.showUserStory = Ver historias de usuarios
 manager.project.form.button.publish = Publicar
+manager.project.form.button.showUserStoryToAdd = Ver historias de usuario a añadir
 
 ##### ERRORES
 manager.project.form.error.duplicated = Ya existe un proyecto con el mismo codigo

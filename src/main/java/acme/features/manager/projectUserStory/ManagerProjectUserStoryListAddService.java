@@ -1,6 +1,7 @@
 
 package acme.features.manager.projectUserStory;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,11 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
+import acme.entities.userstories.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerProjectUserStoryListService extends AbstractService<Manager, ProjectUserStory> {
+public class ManagerProjectUserStoryListAddService extends AbstractService<Manager, ProjectUserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -44,9 +46,18 @@ public class ManagerProjectUserStoryListService extends AbstractService<Manager,
 	public void load() {
 		Principal principal = super.getRequest().getPrincipal();
 		int projectId = super.getRequest().getData("id", int.class);
-		Collection<ProjectUserStory> objects = this.repository.findAllByManagerAndProject(principal.getActiveRoleId(), projectId);
+		Project project = this.repository.findProjectById(projectId);
+		Collection<UserStory> objects = this.repository.findUserStoryToAdd(principal.getActiveRoleId(), projectId);
 
-		super.getBuffer().addData(objects);
+		Collection<ProjectUserStory> listProjectUserStory = new ArrayList<>();
+		for (UserStory us : objects) {
+			ProjectUserStory object = new ProjectUserStory();
+			object.setProject(project);
+			object.setUserStory(us);
+			listProjectUserStory.add(object);
+		}
+
+		super.getBuffer().addData(listProjectUserStory);
 	}
 
 	@Override
@@ -54,9 +65,7 @@ public class ManagerProjectUserStoryListService extends AbstractService<Manager,
 		assert object != null;
 
 		Dataset dataset = new Dataset();
-		dataset.put("id", object.getId());
-		dataset.put("code", object.getProject().getCode());
-		dataset.put("projectId", object.getProject().getId());
+		dataset.put("id", object.getProject().getId() + "&uhId=" + object.getUserStory().getId());
 		dataset.put("title", object.getUserStory().getTitle());
 		dataset.put("estimatedCost", object.getUserStory().getEstimatedCost());
 		dataset.put("priority", object.getUserStory().getPriority());
