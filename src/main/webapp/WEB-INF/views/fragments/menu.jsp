@@ -25,7 +25,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.davgodfer" action="https://www.youtube.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-juagombor" action="https://www.informatica.us.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.jaivarcac" action="https://planefinder.net/"/>
-            <acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
+      <acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
 			<acme:menu-suboption code="master.menu.authenticated.claim" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.developer.all-trainingmodule" action="/any/training-module/list"/>
 		</acme:menu-option>
