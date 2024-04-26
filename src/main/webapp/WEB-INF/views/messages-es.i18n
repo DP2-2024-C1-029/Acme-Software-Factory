@@ -52,6 +52,15 @@ administrator.dashboard.form.label.averageValueInTheRisks = Media del valor de l
 administrator.dashboard.form.label.deviationValueInTheRisks	= Desviacion del valor de los riesgos
 administrator.dashboard.form.label.minValueInTheRisks = Valor mínimo de los riesgos
 administrator.dashboard.form.label.maxValueInTheRisks =	 Valor máximo de los riesgos
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithAdministrator	= Numero total de usuarios con rol administrador
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithManager= Numero total de usuarios con rol manager
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithDeveloper	= Numero total de usuarios con rol developer
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithSponsor	= Numero total de usuarios con rol sponsor
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithAuditor	= Numero total de usuarios con rol auditor
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithClient	= Numero total de usuarios con rol client
+administrator.dashboard.form.label.ratioOfNoticesWithEmailAndLink	= Ratio de noticias con email y link
+administrator.dashboard.form.label.ratioOfCriticalObjectives= Ratio de objetivos criticos
+administrator.dashboard.form.label.ratioOfNonCriticalObjectives = Ratio de objetivos no criticos
 
 authenticated.developer.form.label.link = Link
 authenticated.developer.form.label.email = Email

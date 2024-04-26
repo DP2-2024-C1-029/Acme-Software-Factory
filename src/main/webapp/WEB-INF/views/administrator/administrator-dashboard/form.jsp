@@ -10,17 +10,82 @@
 <table class="table table-sm">
 	<tr>
 		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.totalNumberOfPrincipalsWithAdministrator"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfPrincipalsWithAdministrator}"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.totalNumberOfPrincipalsWithManager"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfPrincipalsWithManager}"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.totalNumberOfPrincipalsWithDeveloper"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfPrincipalsWithDeveloper}"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.totalNumberOfPrincipalsWithSponsor"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfPrincipalsWithSponsor}"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.totalNumberOfPrincipalsWithAuditor"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfPrincipalsWithAuditor}"/>
+		</td>
+	</tr>
+		<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.totalNumberOfPrincipalsWithClient"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberOfPrincipalsWithClient}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.ratioOfNoticesWithEmailAndLink"/>
+		</th>
+		<td>
+			<acme:print value="${ratioOfNoticesWithEmailAndLink}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+		<acme:message code="administrator.dashboard.form.label.ratioOfCriticalObjectives"/>
+		</th>
+		<td>
+			<acme:print value="${ratioOfCriticalObjectives}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+		<acme:message code="administrator.dashboard.form.label.ratioOfNonCriticalObjectives"/>
+		</th>
+		<td>
+			<acme:print value="${ratioOfNonCriticalObjectives}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
 			<acme:message code="administrator.dashboard.form.label.averageValueInTheRisks"/>
 		</th>
 		<td>
-			<jstl:choose>
-			    <jstl:when test="${averageValueInTheRisks = NaN}">
-			        <acme:print value="N/A"/>
-			    </jstl:when>
-			    <jstl:otherwise>
-			        <acme:print value="${averageValueInTheRisks}"/>
-			    </jstl:otherwise>
-			</jstl:choose>
+			<acme:print value="${averageValueInTheRisks}"/>
 		</td>
 	</tr>
 	<tr>
@@ -43,14 +108,7 @@
 		<acme:message code="administrator.dashboard.form.label.minValueInTheRisks"/>
 		</th>
 		<td>
-			<jstl:choose>
-			    <jstl:when test="${minValueInTheRisks = NaN}">
-			        <acme:print value="N/A"/>
-			    </jstl:when>
-			    <jstl:otherwise>
-			        <acme:print value="${minValueInTheRisks}"/>
-			    </jstl:otherwise>
-			</jstl:choose>
+			<acme:print value="${minValueInTheRisks}"/>
 		</td>
 	</tr>
 	<tr>
@@ -58,14 +116,7 @@
 		<acme:message code="administrator.dashboard.form.label.maxValueInTheRisks"/>
 		</th>
 		<td>
-			<jstl:choose>
-			    <jstl:when test="${maxValueInTheRisks = NaN}">
-			        <acme:print value="N/A"/>
-			    </jstl:when>
-			    <jstl:otherwise>
-			        <acme:print value="${maxValueInTheRisks}"/>
-			    </jstl:otherwise>
-			</jstl:choose>
+			<acme:print value="${maxValueInTheRisks}"/>
 		</td>
 	</tr>
 </table>

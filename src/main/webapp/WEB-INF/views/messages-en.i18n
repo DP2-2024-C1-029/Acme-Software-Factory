@@ -57,6 +57,15 @@ administrator.dashboard.form.label.averageValueInTheRisks = Average value in the
 administrator.dashboard.form.label.deviationValueInTheRisks	= Deviation value in the risks
 administrator.dashboard.form.label.minValueInTheRisks = Min value in the risks
 administrator.dashboard.form.label.maxValueInTheRisks =	 Max value in the risks
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithAdministrator	= Total number of principal with role administrator
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithManager = Total number of principal with role manager
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithDeveloper	= Total number of principal with role developer
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithSponsor	= Total number of principal with role sponsor
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithAuditor	= Total number of principal with role auditor
+administrator.dashboard.form.label.totalNumberOfPrincipalsWithClient	= Total number of principal with role client
+administrator.dashboard.form.label.ratioOfNoticesWithEmailAndLink	= Ratio of notices with email and link
+administrator.dashboard.form.label.ratioOfCriticalObjectives = Ratio of critical objectives
+administrator.dashboard.form.label.ratioOfNonCriticalObjectives = Ratio of non critical objectives
 
 developer.training-session.list.title = All Training Session
 developer.training-session.form.title = Training Session

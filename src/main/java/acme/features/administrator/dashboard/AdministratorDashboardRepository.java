@@ -9,29 +9,40 @@ import acme.client.repositories.AbstractRepository;
 
 public interface AdministratorDashboardRepository extends AbstractRepository {
 
-	@Query("select case when count(t) > 0 then count(t) else null end from TrainingModule t where t.updateMoment <> null and t.developer.id = :id and t.draftMode = false")
-	Integer totalTrainingModuleWithUpdateMoment(int id);
-
-	@Query("select case when count(t) > 0 then count(t) else null end from TrainingSession t where t.furtherInformationLink <> '' and t.furtherInformationLink is not null and t.trainingModule.developer.id = :id and t.draftMode = false")
-	Integer totalNumberOfTrainingSessionsWithLink(int id);
-
-	@Query("select t.estimatedTotalTime from TrainingModule t where t.developer.id = :id and t.draftMode = false")
-	Collection<Integer> findAllTimeOfTrainingModule(int id);
-
 	@Query("select r.probability from Risk r")
 	Collection<Double> findAllValueOfRisk();
 
-	/*
-	 * Integer totalNumberOfPrincipalsWithAdministrator();
-	 * 
-	 * Integer totalNumberOfPrincipalsWithManager();
-	 * 
-	 * Integer totalNumberOfPrincipalsWithDeveloper();
-	 * 
-	 * Integer totalNumberOfPrincipalsWithSponsor();
-	 * 
-	 * Integer totalNumberOfPrincipalsWithAuditor();
-	 * 
-	 * Integer totalNumberOfPrincipalsWithClient();
-	 */
+	@Query("select case when count(n) > 0 then count(n) else null end from Notice n where n.email is not null and n.link is not null")
+	Double findTotalNoticesWithEmailAndLink();
+
+	@Query("select case when count(n) > 0 then count(n) else null end from Notice n")
+	Integer findTotalNotices();
+
+	@Query("select case when count(o) > 0 then count(o) else null end from Objective o where o.isCritical = true")
+	Double findTotalCriticalObjectives();
+
+	@Query("select case when count(o) > 0 then count(o) else null end from Objective o where o.isCritical = false")
+	Double findTotalNonCriticalObjectives();
+
+	@Query("select case when count(o) > 0 then count(o) else null end from Objective o")
+	Integer findTotalObjectives();
+
+	@Query("select count(a) from Administrator a")
+	Integer totalNumberOfPrincipalsWithAdministrator();
+
+	@Query("select count(m) from Manager m")
+	Integer totalNumberOfPrincipalsWithManager();
+
+	@Query("select count(d) from Developer d")
+	Integer totalNumberOfPrincipalsWithDeveloper();
+
+	@Query("select count(s) from Sponsor s")
+	Integer totalNumberOfPrincipalsWithSponsor();
+
+	@Query("select count(a) from Auditor a")
+	Integer totalNumberOfPrincipalsWithAuditor();
+
+	@Query("select count(c) from Client c")
+	Integer totalNumberOfPrincipalsWithClient();
+
 }

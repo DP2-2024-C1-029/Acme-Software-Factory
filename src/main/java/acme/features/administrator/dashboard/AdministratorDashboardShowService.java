@@ -39,24 +39,45 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 		Integer totalNumberOfPrincipalsWithSponsor;
 		Integer totalNumberOfPrincipalsWithAuditor;
 		Integer totalNumberOfPrincipalsWithClient;
+
 		Double ratioOfNoticesWithEmailAndLink;
+
 		Double ratioOfCriticalObjectives;
 		Double ratioOfNonCriticalObjectives;
+
 		Double averageValueInTheRisks;
 		Double minValueInTheRisks;
 		Double deviationValueInTheRisks;
 		Double maxValueInTheRisks;
+
 		Collection<Double> allValueRisk;
+		Double totalNoticesWithEmailAndLink;
+		Integer totalNotices;
+
+		Double totalCriticalObjectives;
+		Double totalNonCriticalObjectives;
+		Integer totalObjectives;
+
 		int sizeValueRisk;
 
-		/*
-		 * totalNumberOfPrincipalsWithAdministrator = this.repository.totalNumberOfPrincipalsWithAdministrator();
-		 * totalNumberOfPrincipalsWithManager = this.repository.totalNumberOfPrincipalsWithManager();
-		 * totalNumberOfPrincipalsWithDeveloper = this.repository.totalNumberOfPrincipalsWithDeveloper();
-		 * totalNumberOfPrincipalsWithSponsor = this.repository.totalNumberOfPrincipalsWithSponsor();
-		 * totalNumberOfPrincipalsWithAuditor = this.repository.totalNumberOfPrincipalsWithAuditor();
-		 * totalNumberOfPrincipalsWithClient = this.repository.totalNumberOfPrincipalsWithClient();
-		 */
+		totalNumberOfPrincipalsWithAdministrator = this.repository.totalNumberOfPrincipalsWithAdministrator();
+		totalNumberOfPrincipalsWithManager = this.repository.totalNumberOfPrincipalsWithManager();
+		totalNumberOfPrincipalsWithDeveloper = this.repository.totalNumberOfPrincipalsWithDeveloper();
+		totalNumberOfPrincipalsWithSponsor = this.repository.totalNumberOfPrincipalsWithSponsor();
+		totalNumberOfPrincipalsWithAuditor = this.repository.totalNumberOfPrincipalsWithAuditor();
+		totalNumberOfPrincipalsWithClient = this.repository.totalNumberOfPrincipalsWithClient();
+
+		totalNoticesWithEmailAndLink = this.repository.findTotalNoticesWithEmailAndLink();
+		totalNotices = this.repository.findTotalNotices();
+		ratioOfNoticesWithEmailAndLink = totalNoticesWithEmailAndLink / totalNotices * 100;
+
+		totalCriticalObjectives = this.repository.findTotalCriticalObjectives();
+		totalNonCriticalObjectives = this.repository.findTotalNonCriticalObjectives();
+		totalObjectives = this.repository.findTotalObjectives();
+
+		ratioOfCriticalObjectives = totalCriticalObjectives / totalObjectives * 100;
+		ratioOfNonCriticalObjectives = totalNonCriticalObjectives / totalObjectives * 100;
+
 		allValueRisk = this.repository.findAllValueOfRisk();
 		sizeValueRisk = allValueRisk.size();
 
@@ -67,13 +88,12 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 
 		dashboard = new AdministratorDashboard();
 
-		/*
-		 * if (totalTrainingModuleWithUpdateMoment != null && totalTrainingModuleWithUpdateMoment != 0)
-		 * dashboard.setTotalTrainingModuleWithUpdateMoment(totalTrainingModuleWithUpdateMoment);
-		 * 
-		 * if (totalNumberOfTrainingSessionsWithLink != null && totalNumberOfTrainingSessionsWithLink != 0)
-		 * dashboard.setTotalNumberOfTrainingSessionsWithLink(totalNumberOfTrainingSessionsWithLink);
-		 */
+		dashboard.setTotalNumberOfPrincipalsWithAdministrator(totalNumberOfPrincipalsWithAdministrator);
+		dashboard.setTotalNumberOfPrincipalsWithAuditor(totalNumberOfPrincipalsWithAuditor);
+		dashboard.setTotalNumberOfPrincipalsWithClient(totalNumberOfPrincipalsWithClient);
+		dashboard.setTotalNumberOfPrincipalsWithDeveloper(totalNumberOfPrincipalsWithDeveloper);
+		dashboard.setTotalNumberOfPrincipalsWithManager(totalNumberOfPrincipalsWithManager);
+		dashboard.setTotalNumberOfPrincipalsWithSponsor(totalNumberOfPrincipalsWithSponsor);
 
 		if (!allValueRisk.isEmpty()) {
 			dashboard.setAverageValueInTheRisks(averageValueInTheRisks);
@@ -81,6 +101,15 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 			dashboard.setMinValueInTheRisks(minValueInTheRisks);
 			dashboard.setMaxValueInTheRisks(maxValueInTheRisks);
 		}
+
+		if (!(totalCriticalObjectives == 0 || totalObjectives == 0))
+			dashboard.setRatioOfNoticesWithEmailAndLink(ratioOfNoticesWithEmailAndLink);
+
+		if (!(totalNonCriticalObjectives == 0 || totalObjectives == 0))
+			dashboard.setRatioOfNonCriticalObjectives(ratioOfNonCriticalObjectives);
+
+		if (!(totalNoticesWithEmailAndLink == 0 || totalNotices == 0))
+			dashboard.setRatioOfCriticalObjectives(ratioOfCriticalObjectives);
 
 		super.getBuffer().addData(dashboard);
 	}
@@ -95,7 +124,8 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 	public void unbind(final AdministratorDashboard object) {
 		Dataset dataset;
 
-		dataset = super.unbind(object, "averageValueInTheRisks", "deviationValueInTheRisks", "minValueInTheRisks", "maxValueInTheRisks");
+		dataset = super.unbind(object, "averageValueInTheRisks", "deviationValueInTheRisks", "minValueInTheRisks", "maxValueInTheRisks", "ratioOfNoticesWithEmailAndLink", "ratioOfNonCriticalObjectives", "ratioOfCriticalObjectives",
+			"totalNumberOfPrincipalsWithAdministrator", "totalNumberOfPrincipalsWithManager", "totalNumberOfPrincipalsWithDeveloper", "totalNumberOfPrincipalsWithSponsor", "totalNumberOfPrincipalsWithAuditor", "totalNumberOfPrincipalsWithClient");
 
 		super.getResponse().addData(dataset);
 	}
