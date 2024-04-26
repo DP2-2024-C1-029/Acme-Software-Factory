@@ -1,0 +1,32 @@
+# messages-en.i18n
+
+auditor.audit-record.form.title = Detalles de registro de auditorias
+auditor.audit-record.list.title = Listado de registros de auditorias
+
+auditor.auditRecord.form.label.code = Código
+auditor.auditRecord.form.label.startPeriod = Fecha inicio del periodo
+auditor.auditRecord.form.label.endPeriod = Fecha fin del periodo
+auditor.auditRecord.form.label.link = Enlace
+auditor.auditRecord.form.label.mark = Nota
+auditor.auditRecord.form.label.codeAudit = Auditoría de código
+auditor.auditRecord.form.label.draftMode = Modo borrador
+
+auditor.auditRecord.form.button.update = Actualizar
+auditor.auditRecord.form.button.delete = Borrar
+auditor.auditRecord.form.button.publish = Publicar
+auditor.auditRecord.form.button.create = Crear
+
+auditor.codeAutit.form.error.duplicated = Código duplicado
+auditor.auditRecord.form.error.too-close = La fecha de ejecución no es pasada
+auditor.auditRecord.form.error.low-mark = La nota debe ser al menos "C" para publicar
+auditor.auditRecord.form.error.too-short = El periodo debe durar al menos 1 hora
+auditor.auditRecord.form.error.end-after-start = La fecha de fin debe ser posterior a la de inicio
+ 
+
+auditor.auditRecord.list.button.create = Crear
+
+auditor.auditRecord.list.label.code = Código
+auditor.auditRecord.list.label.mark	 = Nota
+auditor.auditRecord.list.label.startPeriod = Fecha inicio
+auditor.auditRecord.list.label.endPeriod = Fecha fin
+auditor.auditRecord.list.label.published = Publicado

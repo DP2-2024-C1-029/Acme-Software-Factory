@@ -46,14 +46,17 @@ public class TrainingSession extends AbstractEntity {
 	private Date				endTime;
 
 	@NotBlank
+	@NotNull
 	@Length(max = 75)
 	private String				location;
 
 	@NotBlank
+	@NotNull
 	@Length(max = 75)
 	private String				instructor;
 
 	@NotBlank
+	@NotNull
 	@Email
 	@Length(max = 255)
 	private String				contactEmail;
@@ -62,7 +65,11 @@ public class TrainingSession extends AbstractEntity {
 	@Length(max = 255)
 	private String				furtherInformationLink;
 
+	@NotNull
+	private boolean				draftMode;
+
 	// Relationships
+
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
