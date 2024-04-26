@@ -50,6 +50,13 @@ master.menu.authenticated.notice-show = Show Notices
 master.menu.user-account.become-developer = Become developer
 master.menu.user-account.developer = Developer profile
 master.menu.developer.dashboard.show = Show training module dashboard
+master.menu.administrator.dashboard-adm = Administrator Dashboard
+
+administrator.administrator-dashboard.form.title = Administrator Dashboard
+administrator.dashboard.form.label.averageValueInTheRisks = Average value in the risks
+administrator.dashboard.form.label.deviationValueInTheRisks	= Deviation value in the risks
+administrator.dashboard.form.label.minValueInTheRisks = Min value in the risks
+administrator.dashboard.form.label.maxValueInTheRisks =	 Max value in the risks
 
 developer.training-session.list.title = All Training Session
 developer.training-session.form.title = Training Session

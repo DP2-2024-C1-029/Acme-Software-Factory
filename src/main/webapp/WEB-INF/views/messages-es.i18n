@@ -45,6 +45,13 @@ master.menu.user-account.developer = Developer perfil
 master.menu.authenticated.notice-list = Listar noticias
 master.menu.authenticated.notice-show = Mostrar noticias
 master.menu.developer.dashboard.show = Mostrar dashboard training module
+master.menu.administrator.dashboard-adm = Dashboard de administrador
+
+administrator.administrator-dashboard.form.title = Dashboard de administrador
+administrator.dashboard.form.label.averageValueInTheRisks = Media del valor de los riesgo
+administrator.dashboard.form.label.deviationValueInTheRisks	= Desviacion del valor de los riesgos
+administrator.dashboard.form.label.minValueInTheRisks = Valor mínimo de los riesgos
+administrator.dashboard.form.label.maxValueInTheRisks =	 Valor máximo de los riesgos
 
 authenticated.developer.form.label.link = Link
 authenticated.developer.form.label.email = Email
