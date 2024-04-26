@@ -51,12 +51,10 @@ public class Sponsorship extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				initialExecutionPeriod;
 
-	// TODO - Validar en servicios mínimo un mes después
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endingExecutionPeriod;
 
-	// TODO - Must be positive (in the servicies)
 	@NotNull
 	private Money				amount;
 
