@@ -3,7 +3,7 @@
 # Copyright (C) 2022-2024 Ismael Gata Dorado.
 
 #### LIST
-manager.project-user-story.list.title = List of user stories of project
+manager.project-user-story.list.title = User stories assigned/to be assigned
 manager.project-user-story.list.label.title = Title
 manager.project-user-story.list.label.description = Description
 manager.project-user-story.list.label.estimatedCost = Estimated cost
@@ -12,3 +12,18 @@ manager.project-user-story.list.label.priority = Priority
 manager.project-user-story.list.label.link = Link
 manager.project-user-story.list.label.draftMode = Published
 manager.project-user-story.list.label.check = Select
+manager.project-user-story.list.label.codeProject = Project code
+
+#### FROM
+manager.project-user-story.form.title = Project - User story
+manager.project-user-story.form.label.codeProject = Project code
+manager.project-user-story.form.label.titleUserStory = UH title
+
+
+### BUTTON
+manager.project-user-story.form.button.add = Add User history
+manager.project-user-story.form.button.remove = Remove from project
+
+####ERROR
+manager.project-user-story.form.error.exist = This user story already been add to this project
+manager.project-user-story.form.error.detele.published = This user story and project already been published

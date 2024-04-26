@@ -1,9 +1,13 @@
 
 package acme.features.manager.project;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
@@ -25,7 +29,8 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		int projectId = super.getRequest().getData("id", int.class);
 		Project project = this.repository.findOneProjectById(projectId);
 		Manager manager = project == null ? null : project.getManager();
-		boolean status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == manager.getId();
+		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		boolean status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,6 +58,13 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		Project projectPreSave = this.repository.findOneProjectById(id);
 		if (!super.getBuffer().getErrors().hasErrors("published"))
 			super.state(projectPreSave.isDraftMode(), "published", "manager.project.form.error.published");
+
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			final Money rP = object.getCost();
+			final List<String> acceptedCurrency = Arrays.asList(this.repository.findCurrencyConfiguration().getAcceptedCurrencies().split(";"));
+			super.state(acceptedCurrency.contains(rP.getCurrency()), "cost", "manager.project.form.error.cost.currency");
+			super.state(object.getCost().getAmount() >= 0, "cost", "manager.project.form.error.negative-cost");
+		}
 	}
 
 	@Override

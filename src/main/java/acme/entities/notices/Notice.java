@@ -6,11 +6,11 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -36,14 +36,18 @@ public class Notice extends AbstractEntity {
 	private Date				instantiationMoment;
 
 	@NotBlank
+	@NotNull
 	@Length(max = 75)
 	private String				title;
 
 	@NotBlank
+	@NotNull
 	@Length(max = 75)
+	@Pattern(regexp = "(.*) - (.*), (.*)")
 	private String				author;
 
 	@NotBlank
+	@NotNull
 	@Length(max = 100)
 	private String				message;
 
@@ -55,11 +59,4 @@ public class Notice extends AbstractEntity {
 	@Length(max = 255)
 	private String				link;
 
-
-	// Additional method 
-	@Transient
-	public void setAuthorFormatter(final String username, final String name, final String surname) {
-		String newAuthor = username + " - " + surname + ", " + name;
-		this.setAuthor(newAuthor);
-	}
 }

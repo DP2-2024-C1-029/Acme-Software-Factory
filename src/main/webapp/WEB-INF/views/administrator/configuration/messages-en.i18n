@@ -1,0 +1,11 @@
+administrator.configuration.form.title = Configuration form
+
+administrator.configuration.form.label.currency = Default currency
+administrator.configuration.form.label.acceptedCurrencies = List of permitted currencies in the system
+administrator.configuration.form.label.currentCurrencies = List of currencies in the system right now
+administrator.configuration.form.label.currenciesFromAPI = List of accepted currencies you can choose
+
+administrator.configuration.form.error.currency-not-in-accepted = Among this currencies there must be the default currency
+administrator.configuration.form.error.duplicated-currency = You cannot have two equal currencies at the same time
+administrator.configuration.form.error.not-accepted-by-api = There are currencies that are not in the accepted list
+administrator.configuration.form.error.not-all-of-the-system = You must include the currencies that are already in the system

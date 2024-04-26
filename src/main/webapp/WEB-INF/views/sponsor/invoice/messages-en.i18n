@@ -5,6 +5,8 @@ sponsor.invoice.list.label.code = Code
 sponsor.invoice.list.label.dueDate = Due date
 sponsor.invoice.list.label.totalAmount = Total amount
 sponsor.invoice.list.label.isPublished = Published
+sponsor.invoice.list.label.yes = Yes
+sponsor.invoice.list.label.no = No
 
 sponsor.invoice.form.label.code = Code 
 sponsor.invoice.form.label.registrationTime = Registration time
@@ -18,6 +20,7 @@ sponsor.invoice.form.label.isPublished = Published
 sponsor.invoice.form.button.update = Update
 sponsor.invoice.form.button.delete = Delete
 sponsor.invoice.form.button.publish = Publish
+sponsor.invoice.form.button.create = Create
 sponsor.invoice.list.button.create = Create
 
 sponsor.invoice.form.error.duplicated = This code is already in use

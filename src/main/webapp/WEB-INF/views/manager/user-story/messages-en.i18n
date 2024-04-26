@@ -33,3 +33,4 @@ manager.userstory.list.button.create = Create
 manager.userstory.form.error.negative-estimatedCost = Estimated cost must be positive
 manager.userstory.form.error.published = Can't update user story, it has already been published
 manager.userstory.form.error.detele.published = Can't delete user story, it has already been published
+manager.userstory.form.error.detele.project = Can't delete user story, it has assign to some project

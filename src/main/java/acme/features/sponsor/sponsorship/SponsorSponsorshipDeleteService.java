@@ -88,13 +88,11 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choicesProject;
 		SelectChoices choicesType;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		choicesType = SelectChoices.from(SponsorType.class, object.getType());
 		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());

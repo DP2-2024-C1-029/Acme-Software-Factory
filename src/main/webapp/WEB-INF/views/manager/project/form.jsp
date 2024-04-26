@@ -27,12 +27,15 @@
 		<acme:show-errors path="published"/>
 	</jstl:if>
 	
-	<jstl:if test="${acme:anyOf(_command, 'show|update|delete')}">
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 			<acme:button code="manager.project.form.button.showUserStory" action="/manager/project-user-story/list-by-project?id=${id}"/>
+			<jstl:if test="${published != null && published == false}">
+				<acme:button code="manager.project.form.button.showUserStoryToAdd" action="/manager/project-user-story/list-to-add?id=${id}"/>
+			</jstl:if>
 	</jstl:if>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && published == false}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && published == false}">
 			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>
 			<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
 			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
@@ -40,6 +43,5 @@
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
 		</jstl:when>
-				
 	</jstl:choose>
 </acme:form>

@@ -30,7 +30,8 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.repository.findOneProjectById(projectId);
 		manager = project == null ? null : project.getManager();
-		status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == manager.getId();
+		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -52,6 +53,7 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 
 		Dataset dataset = super.unbind(object, "code", "title", "abstractText", "indication", "cost", "link");
 		dataset.put("published", !object.isDraftMode());
+
 		super.getResponse().addData(dataset);
 	}
 }

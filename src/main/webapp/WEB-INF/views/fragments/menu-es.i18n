@@ -25,13 +25,20 @@ master.menu.anonymous.davgodfer = 20094441P: Godoy Fernández, David
 master.menu.anonymous.favourite-juagombor: 49105638V: Gómez Borrallo, Juan José
 master.menu.anonymous.jaivarcac = 80228784T: Varas Cáceres, Jaime
 
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.list-risks = Lista de riesgos
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
+master.menu.administrator.list-risks = Lista de riesgos
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
+master.menu.administrator.configuration.show = Configuración del sistema
 master.menu.administrator.shut-down = Parar el sistema
 
 # master.menu.provider ########################################################
@@ -44,9 +51,15 @@ master.menu.provider.favourite-link = Enlace favorito
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+# master.menu.auditor ##########################################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.list-code-audit = Listar mis auditorías de código
+master.menu.auditor.dashboard = Panel de auditorías
+
 # master.menu.sponsor #########################################################
 
-master.menu.sponsorship = Patrocinios
+master.menu.sponsorship = Patrocinador
 master.menu.sponsor.sponsorship.list-mine = Listar mis patrocinios
 master.menu.sponsor.sponsorship.list-all = Listar todos los patrocinios
 master.menu.sponsor.dashboard.show = Tablero de control de patrocinador
@@ -69,12 +82,21 @@ master.menu.user-account.become-client = Hazte cliente
 
 master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
+
 master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
+
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+
+master.menu.user-account.auditor = Datos de auditor
+master.menu.user-account.become-auditor = Hazte auditor
+
 master.menu.user-account.sponsor = Datos del patrocinador
 master.menu.user-account.become-sponsor = Hazte patrocinador
+
+master.menu.user-account.manager = Datos del manager
+master.menu.user-account.become-manager = Hazte gestor
 
 # master.menu.manager ########################################################
 
@@ -85,5 +107,6 @@ master.menu.manager.dashboard = Panel de indicadores
 
 # master.menu.authenticated ########################################################
 
-master.menu.authenticated = Datos
+master.menu.authenticated = Autenticado
 master.menu.authenticated.claim = Ver reclamaciones
+master.menu.authenticated.project.published.list = Ver proyectos publicados

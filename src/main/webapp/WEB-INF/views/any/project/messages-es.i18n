@@ -1,0 +1,21 @@
+# messages-es.i18n
+#
+# Copyright (C) 2024-2024 Ismael Gata Dorado.
+
+#### LISTA
+any.project.list.title = Lista de proyectos
+any.project.list.label.code = Código
+any.project.list.label.title = Titulo
+any.project.list.label.abstractText = Texto
+any.project.list.label.indication = Indicación
+any.project.list.label.cost = Coste
+any.project.list.label.link = Link
+
+#### FORMULARIO
+any.project.form.title = Detalles del proyecto
+any.project.form.label.code = Código
+any.project.form.label.title = Titulo
+any.project.form.label.abstractText = Texto
+any.project.form.label.indication = Indicación
+any.project.form.label.cost = Coste
+any.project.form.label.link = Link

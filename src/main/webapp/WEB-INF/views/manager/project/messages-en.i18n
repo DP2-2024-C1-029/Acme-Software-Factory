@@ -21,6 +21,7 @@ manager.project.form.label.cost = Cost
 manager.project.form.label.link = Link
 manager.project.form.label.draftMode = Published
 manager.project.form.title = Project details
+manager.project-user-story.list.label.userStories = Select User story to add
 
 #### BUTTONS
 manager.project.form.button.update = Update
@@ -29,6 +30,7 @@ manager.project.form.button.create = Create
 manager.project.list.button.create = Create
 manager.project.form.button.showUserStory = Show user stories
 manager.project.form.button.publish = Publish
+manager.project.form.button.showUserStoryToAdd = Show User Stories to add
 
 ##### ERRORS
 manager.project.form.error.duplicated = Project exists with same code
@@ -37,3 +39,4 @@ manager.project.form.error.published = Can't update project, it has already been
 manager.project.form.error.detele.published = Can't delete project, it has already been published
 manager.project.form.error.published.without_userStory = The project must have at least one user story and that this published
 manager.project.form.error.published.fatal_error = The project must not contain any errors
+manager.project.form.error.cost.currency = Currency is not accepted

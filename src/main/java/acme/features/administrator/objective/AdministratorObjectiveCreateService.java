@@ -36,6 +36,7 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 		Objective objects;
 
 		objects = new Objective();
+		objects.setInstantiationMoment(MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.MILLIS));
 
 		super.getBuffer().addData(objects);
 	}
@@ -44,15 +45,14 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 	public void bind(final Objective object) {
 		assert object != null;
 
-		super.bind(object, "title", "isCritical", "instantiationMoment", "description", "initialExecutionPeriod", "endingExecutionPeriod", "link", "priority");
+		super.bind(object, "title", "isCritical", "description", "initialExecutionPeriod", "endingExecutionPeriod", "link", "priority");
 	}
 
 	@Override
 	public void validate(final Objective object) {
 		assert object != null;
 
-		// TODO - Preguntar si es una validación válida
-		if (!super.getBuffer().getErrors().hasErrors("endingExecutionPeriod")) {
+		if (!super.getBuffer().getErrors().hasErrors("endingExecutionPeriod") && !super.getBuffer().getErrors().hasErrors("initialExecutionPeriod")) {
 			Date minimumDeadline;
 
 			minimumDeadline = MomentHelper.deltaFromMoment(object.getInitialExecutionPeriod(), 1, ChronoUnit.HOURS);
