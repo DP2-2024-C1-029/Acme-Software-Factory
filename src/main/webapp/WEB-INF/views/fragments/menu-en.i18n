@@ -97,7 +97,7 @@ master.menu.manager.my-user-stories = List my user stories
 master.menu.manager.dashboard = Dashboard
 
 # master.menu.authenticated ########################################################
-master.menu.authenticated = Data
+master.menu.authenticated = Authenticated
 master.menu.authenticated.claim = List claims
 master.menu.authenticated.project.published.list = List project published
 
