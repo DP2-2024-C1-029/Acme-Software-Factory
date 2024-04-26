@@ -23,7 +23,17 @@ public class ClientProgressLogsCreateService extends AbstractService<Client, Pro
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int Id;
+		Contract Contract;
+		Client Client;
+
+		Id = super.getRequest().getData("Id", int.class);
+		Contract = this.repository.findContractById(Id);
+		Client = Contract == null ? null : Contract.getClient();
+		status = Contract != null && super.getRequest().getPrincipal().hasRole(Client);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -56,7 +66,7 @@ public class ClientProgressLogsCreateService extends AbstractService<Client, Pro
 			ProgressLogs existing;
 			existing = this.repository.findProgressLogByRecordId(object.getRecordId());
 			if (existing != null)
-				super.state(existing.getId() == object.getId(), "recordId", "client.contract.form.error.duplicatedRecordId");
+				super.state(existing.getId() == object.getId(), "recordId", "client.progress-log.form.error.duplicated-record-id");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
 			super.state(object.getRegistrationMoment().after(object.getContract().getInstantiationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later");

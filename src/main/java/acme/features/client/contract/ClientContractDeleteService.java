@@ -37,7 +37,7 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 		Contract = this.repository.findContractById(ContractId);
 		Client = Contract == null ? null : Contract.getClient();
 
-		status = Contract != null && super.getRequest().getPrincipal().hasRole(Client);
+		status = Contract != null && Contract.isDraftMode() && super.getRequest().getPrincipal().hasRole(Client);
 
 		super.getResponse().setAuthorised(status);
 	}

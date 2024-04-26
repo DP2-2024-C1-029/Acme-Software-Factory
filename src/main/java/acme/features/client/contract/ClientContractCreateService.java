@@ -30,18 +30,8 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 
 	@Override
 	public void authorise() {
-		int contractId;
-		Contract contract;
-		int clientId;
-		boolean isValid;
+		super.getResponse().setAuthorised(true);
 
-		contractId = super.getRequest().getData("id", int.class);
-		contract = this.repository.findContractById(contractId);
-		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-
-		isValid = clientId == contract.getClient().getId() && contract.getProject() != null;
-
-		super.getResponse().setAuthorised(isValid);
 	}
 
 	@Override

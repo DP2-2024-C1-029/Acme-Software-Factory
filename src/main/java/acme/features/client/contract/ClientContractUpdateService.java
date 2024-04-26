@@ -2,6 +2,7 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
+import acme.entities.progressLogs.ProgressLogs;
 import acme.entities.projects.Project;
 import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.roles.Client;
@@ -37,7 +39,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		contract = this.repository.findContractById(contractId);
 		clientId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		isValid = clientId == contract.getClient().getId() && contract.getProject() != null;
+		isValid = clientId == contract.getClient().getId() && contract.isDraftMode() && contract.getProject() != null;
 
 		super.getResponse().setAuthorised(isValid);
 	}
@@ -103,9 +105,17 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "client.contract.form.error.project-not-published");
 
-		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
-			super.state(object.getInstantiationMoment().before(this.repository.findProgressLogEarliestRegistrationMomentByContractId(object.getId()).getRegistrationMoment()), "instantiationMoment", "client.contract.form.error.instantiation-moment");
-
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment")) {
+			ProgressLogs fetchedPl;
+			fetchedPl = this.repository.findProgressLogEarliestRegistrationMomentByContractId(object.getId());
+			Date registrationMoment;
+			if (fetchedPl == null)
+				registrationMoment = null;
+			else
+				registrationMoment = fetchedPl.getRegistrationMoment();
+			if (registrationMoment != null)
+				super.state(object.getInstantiationMoment().before(this.repository.findProgressLogEarliestRegistrationMomentByContractId(object.getId()).getRegistrationMoment()), "instantiationMoment", "client.contract.form.error.instantiation-moment");
+		}
 	}
 
 	@Override

@@ -29,12 +29,12 @@ public class ClientProgressLogsShowService extends AbstractService<Client, Progr
 		boolean status;
 		int id;
 		int clientId;
-		ProgressLogs ProgressLogs;
+		ProgressLogs ProgressLog;
 
 		id = super.getRequest().getData("id", int.class);
-		ProgressLogs = this.repository.findProgressLogById(id);
+		ProgressLog = this.repository.findProgressLogById(id);
 		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		status = clientId == ProgressLogs.getContract().getClient().getId() && ProgressLogs.getContract().getProject() != null;
+		status = clientId == ProgressLog.getContract().getClient().getId() && ProgressLog.getContract().getProject() != null;
 
 		super.getResponse().setAuthorised(status);
 	}

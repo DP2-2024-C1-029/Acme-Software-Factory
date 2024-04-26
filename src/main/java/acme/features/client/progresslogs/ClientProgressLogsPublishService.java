@@ -32,7 +32,7 @@ public class ClientProgressLogsPublishService extends AbstractService<Client, Pr
 		progressLog = this.repository.findProgressLogById(progressLogId);
 		Client = progressLog == null ? null : progressLog.getContract().getClient();
 
-		status = progressLog != null && super.getRequest().getPrincipal().hasRole(Client);
+		status = progressLog != null && progressLog.isDraftMode() && super.getRequest().getPrincipal().hasRole(Client);
 
 		super.getResponse().setAuthorised(status);
 	}

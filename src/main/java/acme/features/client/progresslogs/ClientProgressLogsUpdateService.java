@@ -23,7 +23,18 @@ public class ClientProgressLogsUpdateService extends AbstractService<Client, Pro
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int progressLogId;
+		ProgressLogs progressLog;
+		Client Client;
+
+		progressLogId = super.getRequest().getData("id", int.class);
+		progressLog = this.repository.findProgressLogById(progressLogId);
+		Client = progressLog == null ? null : progressLog.getContract().getClient();
+
+		status = progressLog != null && progressLog.isDraftMode() && super.getRequest().getPrincipal().hasRole(Client);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -53,7 +64,7 @@ public class ClientProgressLogsUpdateService extends AbstractService<Client, Pro
 			ProgressLogs existing;
 			existing = this.repository.findProgressLogByRecordId(object.getRecordId());
 			if (existing != null)
-				super.state(existing.getId() == object.getId(), "recordId", "client.contract.form.error.duplicatedRecordId");
+				super.state(existing.getId() == object.getId(), "recordId", "client.progress-log.form.error.duplicatedRecordId");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("registrationMoment"))
@@ -68,6 +79,9 @@ public class ClientProgressLogsUpdateService extends AbstractService<Client, Pro
 
 			super.state(contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("publishedProgressLog"))
+			super.state(object.isDraftMode(), "*", "client.progress-log.form.error.published-progress-log");
 	}
 
 	@Override
