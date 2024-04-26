@@ -104,3 +104,5 @@ authenticated.developer.form.button.create = Create
 
 any.training-module.list.title = List of Training Module
 any.training-module.form.title = Details of the Training Module
+any.claim.list.title = List of Claims
+any.claim.form.title = Details of claim

@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.claim;
+package acme.features.any.claim;
 
 import java.util.Collection;
 
@@ -10,7 +10,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.claims.Claim;
 
 @Repository
-public interface AuthenticatedClaimRepository extends AbstractRepository {
+public interface AnyClaimRepository extends AbstractRepository {
 
 	@Query("select c from Claim c")
 	Collection<Claim> findAllClaims();

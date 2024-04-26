@@ -99,3 +99,5 @@ developer.dashboard.form.label.maximum-time-training-module = Tiempo máximo Tra
 
 any.training-module.form.title = Detalles del Training Module
 any.training-module.list.title = Lista de Training Module
+any.claim.list.title = Lista de reclamaciones
+any.claim.form.title = Detalles de la reclamación
