@@ -41,23 +41,23 @@
 	<tr>
 		<th scope="row"><acme:message
 				code="auditor.dashboard.form.label.averageDurationAuditRecords" /></th>
-		<td><acme:print value="${averageDurationAuditRecords}h" /></td>
+		<td><acme:print value="${averageDurationAuditRecords}" /></td>
 	</tr>
 	<tr>
 		<th scope="row"><acme:message
 				code="auditor.dashboard.form.label.deviationDurationAuditRecords" />
 		</th>
-		<td><acme:print value="${deviationDurationAuditRecords}h" /></td>
+		<td><acme:print value="${deviationDurationAuditRecords}" /></td>
 	</tr>
 	<tr>
 		<th scope="row"><acme:message
 				code="auditor.dashboard.form.label.minimunDurationAuditRecords" /></th>
-		<td><acme:print value="${minimunDurationAuditRecords}h" /></td>
+		<td><acme:print value="${minimunDurationAuditRecords}" /></td>
 	</tr>
 	<tr>
 		<th scope="row"><acme:message
 				code="auditor.dashboard.form.label.maximunDurationAuditRecords" /></th>
-		<td><acme:print value="${maximunDurationAuditRecords}h" /></td>
+		<td><acme:print value="${maximunDurationAuditRecords}" /></td>
 	</tr>
 </table>
 <acme:return />
