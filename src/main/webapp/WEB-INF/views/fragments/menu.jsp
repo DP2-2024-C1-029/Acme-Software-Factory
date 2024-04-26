@@ -25,7 +25,9 @@
 			<acme:menu-suboption code="master.menu.anonymous.davgodfer" action="https://www.youtube.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-juagombor" action="https://www.informatica.us.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.jaivarcac" action="https://planefinder.net/"/>
-			<acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
+            <acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
+			<acme:menu-suboption code="master.menu.authenticated.claim" action="/any/claim/list"/>
+			<acme:menu-suboption code="master.menu.developer.all-trainingmodule" action="/any/training-module/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -65,13 +67,13 @@
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.developer.all-trainingmodule" action="/any/training-module/list"/>
-			<acme:menu-suboption code="master.menu.authenticated.claim" action="/authenticated/claim/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.notice-list" action="/authenticated/notice/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.claim" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.list-risks" action="/authenticated/risk/list" access="!hasRole('Administrator')"/>
 			<acme:menu-suboption code="master.menu.administrator.list-risks" action="/administrator/risk/list" access="hasRole('Administrator')"/>
 			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list" access="hasRole('Administrator')"/>
-			<acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
+			            <acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
