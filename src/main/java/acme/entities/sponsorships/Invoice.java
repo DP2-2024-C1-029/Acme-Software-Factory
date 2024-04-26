@@ -53,6 +53,8 @@ public class Invoice extends AbstractEntity {
 	private Date				dueDate;
 
 	// TODO - comprobar positivo sin 0 en servicios
+	@NotNull
+	@Valid
 	private Money				quantity;
 
 	@Min(0)
@@ -72,10 +74,13 @@ public class Invoice extends AbstractEntity {
 
 	@Transient
 	public Money totalAmount() {
-		Money m = new Money();
-		m.setAmount(this.quantity.getAmount() * (1 + this.tax / 100));
-		m.setCurrency(this.quantity.getCurrency());
-		return m;
+		if (this.quantity != null) {
+			Money m = new Money();
+			m.setAmount(this.quantity.getAmount() * (1 + this.tax / 100));
+			m.setCurrency(this.quantity.getCurrency());
+			return m;
+		} else
+			return null;
 	}
 
 

@@ -23,5 +23,9 @@ audit-record-21,AU-0000-018,2022/07/30 00:00,2022/07/30 00:00,F_MINUS,https://ww
 audit-record-22,AU-0000-019,2022/07/30 00:00,2022/07/30 00:00,F_MINUS,https://www.info.onion,code-audit-02,true
 audit-record-23,AU-0000-020,2022/07/30 00:00,2022/07/30 00:00,F_MINUS,https://www.info.onion,code-audit-02,true
 audit-record-24,AU-0000-021,2022/07/30 00:00,2022/07/30 00:00,F_MINUS,https://www.info.onion,code-audit-03,true
-audit-record-25,AU-0000-022,2020/01/01 00:00,2020/01/01 10:00,A,https://www.dashboard.us/,code-audit-04,false
-audit-record-26,AU-0000-023,2020/01/01 08:00,2020/01/01 15:00,C,https://www.dashboard.us/,code-audit-04,false
+audit-record-25,AU-0000-022,2020/01/01 00:00,2020/01/01 10:00,A,https://www.dashboard.us/,code-audit-04,true
+audit-record-26,AU-0000-380,2020/01/01 08:00,2020/01/01 15:00,A_PLUS,https://www.airbus.com/en,code-audit-20,false
+audit-record-27,AU-9658-321,2021/01/01 08:00,2021/03/01 15:00,B,https://www.airbus.com/en,code-audit-20,false
+audit-record-28,AU-9771-320,2018/01/01 08:00,2018/01/01 15:00,A_PLUS,https://www.airbus.com/en,code-audit-20,false
+audit-record-29,AU-7339-350,2016/01/01 08:00,2017/01/01 15:00,F,https://www.airbus.com/en,code-audit-20,false
+audit-record-30,AU-7339-340,2016/01/01 08:00,2017/01/01 15:00,A,https://www.airbus.com/en,code-audit-19,true

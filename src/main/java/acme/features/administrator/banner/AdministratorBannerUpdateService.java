@@ -40,8 +40,10 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 	@Override
 	public void load() {
 		Banner object;
+		int bannerId;
 
-		object = new Banner();
+		bannerId = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneBannerById(bannerId);
 
 		super.getBuffer().addData(object);
 	}
@@ -50,22 +52,22 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 	public void bind(final Banner object) {
 		assert object != null;
 
-		super.bind(object, "displayStartMoment", "displayEndMoment", "instantiationMoment", "picture", "slogan", "link");
+		super.bind(object, "displayStartMoment", "displayEndMoment", "picture", "slogan", "link");
 	}
 
 	@Override
 	public void validate(final Banner object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("displayEndMoment")) {
+		if (!super.getBuffer().getErrors().hasErrors("displayStartMoment"))
+			super.state(MomentHelper.isAfter(object.getDisplayStartMoment(), object.getInstantiationMoment()), "displayStartMoment", "administrator.banner.form.error.not-after");
+
+		if (!super.getBuffer().getErrors().hasErrors("displayEndMoment") && !super.getBuffer().getErrors().hasErrors("displayStartMoment")) {
 			Date minimumDeadline;
 
 			minimumDeadline = MomentHelper.deltaFromMoment(object.getDisplayStartMoment(), 1, ChronoUnit.WEEKS);
 			super.state(MomentHelper.isAfter(object.getDisplayEndMoment(), minimumDeadline), "displayEndMoment", "administrator.banner.form.error.too-close");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("displayStartMoment"))
-			super.state(MomentHelper.isAfter(object.getDisplayStartMoment(), object.getInstantiationMoment()), "displayStartMoment", "administrator.banner.form.error.not-after");
 	}
 
 	@Override
@@ -81,7 +83,7 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "displayStartMoment", "displayEndMoment", "instantiationMoment", "picture", "slogan", "link");
+		dataset = super.unbind(object, "instantiationMoment", "displayStartMoment", "displayEndMoment", "picture", "slogan", "link");
 
 		super.getResponse().addData(dataset);
 	}

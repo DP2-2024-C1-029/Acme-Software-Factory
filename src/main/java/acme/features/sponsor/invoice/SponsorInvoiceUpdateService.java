@@ -3,6 +3,7 @@ package acme.features.sponsor.invoice;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,7 +53,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "isPublished");
 	}
 
 	@Override
@@ -73,8 +74,13 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 			super.state(MomentHelper.isAfter(object.getDueDate(), minimumDeadline), "dueDate", "sponsor.invoice.form.error.too-close");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");
+			super.state(Stream.of(acceptedCurrencies).anyMatch(c -> c.equals(object.getQuantity().getCurrency())), //
+				"quantity", "sponsor.invoice.form.error.quantity-not-valid");
+
 			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.negative-amount");
+		}
 	}
 
 	@Override
