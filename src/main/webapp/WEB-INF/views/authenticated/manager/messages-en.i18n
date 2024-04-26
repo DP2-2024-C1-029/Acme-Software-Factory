@@ -1,0 +1,9 @@
+authenticated.manager.form.title = Datos del gestor
+
+authenticated.manager.form.label.degree = Grado
+authenticated.manager.form.label.overview = Resumen
+authenticated.manager.form.label.certifications = Certificaciones
+authenticated.manager.form.label.link = Link
+
+authenticated.manager.form.button.create = Crear
+authenticated.manager.form.button.update = Actualizar

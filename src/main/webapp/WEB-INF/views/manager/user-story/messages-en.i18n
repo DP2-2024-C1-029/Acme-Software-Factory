@@ -1,0 +1,36 @@
+# messages-en.i18n
+#
+# Copyright (C) 2022-2024 Ismael Gata Dorado.
+
+#### LIST
+manager.user-story.list.title = List of user stories
+manager.userstory.list.label.title = Title
+manager.userstory.list.label.description = Description
+manager.userstory.list.label.estimatedCost = Estimated cost
+manager.userstory.list.label.acceptanceCriteria = Acceptance criteria
+manager.userstory.list.label.priority = Priority
+manager.userstory.list.label.link = Link
+manager.userstory.list.label.draftMode = Published
+
+#### FORM
+manager.user-story.form.title = User story details
+manager.userstory.form.label.title = Title
+manager.userstory.form.label.description = Description
+manager.userstory.form.label.estimatedCost = Estimated cost
+manager.userstory.form.label.acceptanceCriteria = Acceptance criteria
+manager.userstory.form.label.priority = Priority
+manager.userstory.form.label.link = Link
+manager.userstory.form.label.draftMode = Published
+manager.userstory.form.label.published = User story published
+
+#### BUTTONS
+manager.user-story.form.button.update = Update
+manager.userstory.form.button.delete = Delete
+manager.userstory.form.button.create = Create
+manager.userstory.list.button.create = Create
+
+#### ERRORS
+manager.userstory.form.error.negative-estimatedCost = Estimated cost must be positive
+manager.userstory.form.error.published = Can't update user story, it has already been published
+manager.userstory.form.error.detele.published = Can't delete user story, it has already been published
+manager.userstory.form.error.detele.project = Can't delete user story, it has assign to some project

@@ -1,0 +1,33 @@
+# messages-en.i18n
+#
+# Copyright (C) 2022-2024 Ismael Gata Dorado.
+
+#### LIST
+authenticated.claim.list.title = Claim list
+authenticated.claim.list.label.code = Code
+authenticated.claim.list.label.instantiationMoment = Instatiation moment
+authenticated.claim.list.label.heading = Heading
+authenticated.claim.list.label.description = Description
+authenticated.claim.list.label.department = Department
+authenticated.claim.list.label.emailAddress = Email
+authenticated.claim.list.label.link = Link
+
+#### FORM
+authenticated.claim.form.title = Claim list
+authenticated.claim.form.label.code = Code
+authenticated.claim.form.label.instantiationMoment = Instatiation moment
+authenticated.claim.form.label.heading = Heading
+authenticated.claim.form.label.description = Description
+authenticated.claim.form.label.department = Department
+authenticated.claim.form.label.emailAddress = Email
+authenticated.claim.form.label.link = Link
+authenticated.claim.form.label.confirmation = Confirm that the claim is correct
+
+#### BUTTONS
+authenticated.claim.form.button.create = Publish
+authenticated.claim.list.button.create = New claim
+
+##### ERRORS
+authenticated.claim.form.error.duplicated = Claim exists with same code
+authenticated.claim.form.error.future = Instantation moment must be in the past
+authenticated.claim.form.error.confirmation = You must confirm the claim

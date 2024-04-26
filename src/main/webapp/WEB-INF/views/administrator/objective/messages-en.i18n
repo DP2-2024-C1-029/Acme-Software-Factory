@@ -1,0 +1,16 @@
+administrator.objective.form.title = Objective form
+
+administrator.objective.form.label.title = Title
+administrator.objective.form.label.description = Description
+administrator.objective.form.label.instantiation-moment = Instantiation moment
+administrator.objective.form.label.priority = Priority
+administrator.objective.form.label.is-critial = Is critical?
+administrator.objective.form.label.initial-execution-period = Initial Period
+administrator.objective.form.label.ending-execution-period = Final Period
+administrator.objective.form.label.link = Link
+administrator.objective.form.label.confirmation = Are you sure you want to create the objective? You won't be able to update neither delete it later.
+
+administrator.objective.form.button.create = Create
+
+administrator.objective.form.error.too-close = The final period must be at least 1 hour after the initial period
+administrator.objective.form.error.not-after = The initial period must start after the start moment

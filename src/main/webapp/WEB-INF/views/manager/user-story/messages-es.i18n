@@ -1,0 +1,36 @@
+# messages-es.i18n
+#
+# Copyright (C) 2022-2024 Ismael Gata Dorado.
+
+#### LIST
+manager.user-story.list.title = Lista de historias de usuario
+manager.userstory.list.label.title = Titulo
+manager.userstory.list.label.description = Descripcion
+manager.userstory.list.label.estimatedCost = Coste estimado
+manager.userstory.list.label.acceptanceCriteria = Criteria de aceptación
+manager.userstory.list.label.priority = Prioridad
+manager.userstory.list.label.link = Link
+manager.userstory.list.label.draftMode = Publicado
+
+#### FORM
+manager.user-story.form.title = Detalles de historia de usuario
+manager.userstory.form.label.title = Titulo
+manager.userstory.form.label.description = Descripcion
+manager.userstory.form.label.estimatedCost = Coste estimado
+manager.userstory.form.label.acceptanceCriteria = Criteria de aceptación
+manager.userstory.form.label.priority = Prioridad
+manager.userstory.form.label.link = Link
+manager.userstory.form.label.draftMode = Publicado
+manager.userstory.form.label.published = Historia de usuario publicada
+
+#### BUTTONS
+manager.userstory.form.button.update = Actualizar
+manager.userstory.form.button.delete = Borrar
+manager.userstory.form.button.create = Crear
+manager.userstory.list.button.create = Crear
+
+#### ERRORS
+manager.userstory.form.error.negative-estimatedCost = El coste estimado debe ser positivo.
+manager.userstory.form.error.published = No puedes actualizar la historia de usuario, ya ha sido publicada
+manager.userstory.form.error.detele.published = No puedes borrar la historia de usuario, ya ha sido publicada
+manager.userstory.form.error.detele.project = No puedes borrar la historia de usuario, esta asignada a un proyecto

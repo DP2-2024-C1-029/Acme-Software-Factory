@@ -1,0 +1,11 @@
+administrator.configuration.form.title = Formulario de Configuración
+
+administrator.configuration.form.label.currency = Moneda Predeterminada
+administrator.configuration.form.label.acceptedCurrencies = Lista de monedas permitidas en el sistema
+administrator.configuration.form.label.currentCurrencies = Lista de monedas actuales en el sistema
+administrator.configuration.form.label.currenciesFromAPI = Lista de monedas aceptadas que puedes elegir
+
+administrator.configuration.form.error.currency-not-in-accepted = La moneda predeterminada debe encontrarse entre las monedas aceptadas
+administrator.configuration.form.error.duplicated-currency = No puedes tener dos monedas iguales al mismo tiempo
+administrator.configuration.form.error.not-accepted-by-api = Hay monedas seleccionadas que no están en la lista de aceptadas
+administrator.configuration.form.error.not-all-of-the-system = Debes incluir todas las monedas que ya están en el sistema

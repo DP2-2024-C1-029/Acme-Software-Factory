@@ -1,0 +1,16 @@
+administrator.objective.form.title = Formulario de Objetivo
+
+administrator.objective.form.label.title = Título
+administrator.objective.form.label.description = Descripción
+administrator.objective.form.label.instantiation-moment = Momento de Instanciación
+administrator.objective.form.label.priority = Prioridad
+administrator.objective.form.label.is-critical = ¿Es Crítico?
+administrator.objective.form.label.initial-execution-period = Periodo Inicial
+administrator.objective.form.label.ending-execution-period = Periodo Final
+administrator.objective.form.label.link = Enlace
+administrator.objective.form.label.confirmation = ¿Estás seguro de crear el objetivo? No se podrá eliminar ni actualizar luego.
+
+administrator.objective.form.button.create = Crear
+
+administrator.objective.form.error.not-after = El periodo inicial debe comenzar después de la fecha de inicio
+administrator.objective.form.error.too-close = El periodo final debe ser al menos 1 hora después del periodo inicial

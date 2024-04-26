@@ -1,0 +1,34 @@
+# messages-en.i18n
+
+auditor.code-audit.form.title = Detalles de auditorias de código
+auditor.code-audit.list.title = Listado de auditorias de código
+
+auditor.codeAudit.form.label.code = Código
+auditor.codeAudit.form.label.executionDate = Fecha de ejecución
+auditor.codeAudit.form.label.type = Tipo
+auditor.codeAudit.form.label.correctiveActions = Acciones correctivas
+auditor.codeAudit.form.label.link = Enlace
+auditor.codeAudit.form.label.mark = Nota
+auditor.codeAudit.form.label.project = Proyecto
+auditor.codeAudit.form.label.draftMode = Modo borrador
+
+auditor.codeAudit.form.button.auditRecords = Registros de la auditoría
+auditor.codeAudit.form.button.update = Actualizar
+auditor.codeAudit.form.button.delete = Borrar
+auditor.codeAudit.form.button.publish = Publicar
+auditor.codeAudit.form.button.create = Crear
+
+auditor.codeAutit.form.error.duplicated = Código duplicado
+auditor.codeAudit.form.error.too-close = La fecha de ejecución no es pasada
+auditor.codeaudit.form.error.low-mark = La nota debe ser al menos "C" para publicar
+auditor.codeaudit.form.error.not-all-records-published = Todos los reportes de esta auditoría deben estar publicados
+auditor.CodeAudit.form.error.drafted-project = El proyecto asociado deber estar publicado
+auditor.codeaudit.form.error.not-published-records = No puedes borrar una auditoria con registros publicados
+ 
+
+auditor.codeAudit.list.button.create = Crear
+
+auditor.codeAudit.list.label.code = Código
+auditor.codeAudit.list.label.executionDate = Fecha de ejecución
+auditor.codeAudit.list.label.type = Tipo
+auditor.codeAudit.list.label.published = Publicado

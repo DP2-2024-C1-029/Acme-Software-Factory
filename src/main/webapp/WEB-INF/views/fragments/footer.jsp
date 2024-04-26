@@ -32,10 +32,17 @@
 	<acme:footer-subpanel code="master.footer.title.languages">
 		<acme:footer-option icon="fa fa-language" code="master.footer.label.english" action="/?locale=en"/>
 		<acme:footer-option icon="fa fa-language" code="master.footer.label.spanish" action="/?locale=es"/>
-		<acme:footer-option icon="fa fa-language" code="master.footer.label.german" action="/?locale=de"/>
 	</acme:footer-subpanel>
 
 	<acme:footer-logo logo="images/logo.png" alt="master.company.name">
 		<acme:footer-copyright code="master.company.name"/>
 	</acme:footer-logo>
 </acme:footer-panel>
+
+<jstl:if test="${banner != null}">
+	<div class="panel-body" style="margin: 1em 0em 1em 0em; text-align: center;">	
+		<a href="${banner.link}" target="_blank">
+			<img src="${banner.picture}" alt="${banner.slogan}" class="img-fluid rounded" style="border-style: solid;"/>
+		</a>
+	</div>
+</jstl:if>
