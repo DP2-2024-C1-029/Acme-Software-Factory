@@ -23,18 +23,19 @@ public class ClientProgressLogsPublishService extends AbstractService<Client, Pr
 
 	@Override
 	public void authorise() {
-		boolean status;
+
 		int progressLogId;
 		ProgressLogs progressLog;
-		Client Client;
+		int clientId;
+		boolean isValid;
 
 		progressLogId = super.getRequest().getData("id", int.class);
 		progressLog = this.repository.findProgressLogById(progressLogId);
-		Client = progressLog == null ? null : progressLog.getContract().getClient();
+		clientId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		status = progressLog != null && progressLog.isDraftMode() && super.getRequest().getPrincipal().hasRole(Client);
+		isValid = clientId == progressLog.getContract().getClient().getId() && progressLog.isDraftMode() == true;
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(isValid);
 	}
 
 	@Override
@@ -60,8 +61,10 @@ public class ClientProgressLogsPublishService extends AbstractService<Client, Pr
 		if (!super.getBuffer().getErrors().hasErrors("publishedContract")) {
 			Integer contractId;
 			Contract contract;
+			int progressLogId;
 
-			contractId = super.getRequest().getData("contractId", int.class);
+			progressLogId = super.getRequest().getData("id", int.class);
+			contractId = this.repository.findProgressLogById(progressLogId).getContract().getId();
 			contract = this.repository.findContractById(contractId);
 
 			super.state(contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");

@@ -26,6 +26,7 @@ public class ClientProgressLogsShowService extends AbstractService<Client, Progr
 
 	@Override
 	public void authorise() {
+
 		boolean status;
 		int id;
 		int clientId;

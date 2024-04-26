@@ -23,19 +23,19 @@ public class ClientProgressLogsDeleteService extends AbstractService<Client, Pro
 
 	@Override
 	public void authorise() {
-
-		boolean status;
-		int progressLogId;
-		ProgressLogs progressLog;
-		Client Client;
-
-		progressLogId = super.getRequest().getData("id", int.class);
-		progressLog = this.repository.findProgressLogById(progressLogId);
-		Client = progressLog == null ? null : progressLog.getContract().getClient();
-
-		status = progressLog != null && progressLog.isDraftMode() && super.getRequest().getPrincipal().hasRole(Client);
-
-		super.getResponse().setAuthorised(status);
+		/*
+		 * boolean status;
+		 * int progressLogId;
+		 * ProgressLogs progressLog;
+		 * Client Client;
+		 * 
+		 * progressLogId = super.getRequest().getData("id", int.class);
+		 * progressLog = this.repository.findProgressLogById(progressLogId);
+		 * Client = progressLog == null ? null : progressLog.getContract().getClient();
+		 * 
+		 * status = progressLog != null && progressLog.isDraftMode() && super.getRequest().getPrincipal().hasRole(Client);
+		 */
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -63,8 +63,10 @@ public class ClientProgressLogsDeleteService extends AbstractService<Client, Pro
 		if (!super.getBuffer().getErrors().hasErrors("publishedContract")) {
 			Integer contractId;
 			Contract contract;
+			int progressLogId;
 
-			contractId = super.getRequest().getData("contractId", int.class);
+			progressLogId = super.getRequest().getData("id", int.class);
+			contractId = this.repository.findProgressLogById(progressLogId).getContract().getId();
 			contract = this.repository.findContractById(contractId);
 
 			super.state(contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");

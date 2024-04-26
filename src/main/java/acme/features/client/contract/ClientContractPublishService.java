@@ -29,8 +29,6 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	@Override
 	public void authorise() {
 
-		// ojear
-
 		boolean status;
 		int Id;
 		Contract Contract;
