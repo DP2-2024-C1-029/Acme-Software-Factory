@@ -30,15 +30,15 @@ public class Dashboard extends AbstractForm {
 
 	private Double				deviationAuditRecords;
 
-	private int					minimunAuditRecords;
+	private Integer				minimunAuditRecords;
 
-	private int					maximunAuditRecords;
+	private Integer				maximunAuditRecords;
 
 	private Double				averageDurationAuditRecords;
 
 	private Double				deviationDurationAuditRecords;
 
-	private double				minimunDurationAuditRecords;
+	private Double				minimunDurationAuditRecords;
 
-	private double				maximunDurationAuditRecords;
+	private Double				maximunDurationAuditRecords;
 }
