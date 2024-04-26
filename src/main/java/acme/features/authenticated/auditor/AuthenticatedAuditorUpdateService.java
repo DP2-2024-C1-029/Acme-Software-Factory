@@ -35,7 +35,11 @@ public class AuthenticatedAuditorUpdateService extends AbstractService<Authentic
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Auditor.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -77,6 +81,7 @@ public class AuthenticatedAuditorUpdateService extends AbstractService<Authentic
 		Dataset dataset;
 
 		dataset = super.unbind(object, "firm", "professionalId", "certifications", "link");
+
 		super.getResponse().addData(dataset);
 	}
 

@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.auditor.form.title = auditor form
+authenticated.auditor.form.title = Auditor form
 
 authenticated.auditor.form.label.firm = Firm
 authenticated.auditor.form.label.professionalId = Professional Indentificator
