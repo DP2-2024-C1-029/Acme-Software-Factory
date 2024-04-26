@@ -13,14 +13,7 @@
 			<acme:message code="developer.dashboard.form.label.total-training-module-with-update-moment"/>
 		</th>
 		<td>
-			<jstl:choose>
-			    <jstl:when test="${totalTrainingModuleWithUpdateMoment == 0}">
-			        <acme:print value="N/A"/>
-			    </jstl:when>
-			    <jstl:otherwise>
-			        <acme:print value="${totalTrainingModuleWithUpdateMoment}"/>
-			    </jstl:otherwise>
-			</jstl:choose>
+			 <acme:print value="${totalTrainingModuleWithUpdateMoment}"/>
 		</td>
 	</tr>
 	<tr>
@@ -28,14 +21,7 @@
 			<acme:message code="developer.dashboard.form.label.total-training-session-with-link"/>
 		</th>
 		<td>
-			<jstl:choose>
-			    <jstl:when test="${totalNumberOfTrainingSessionsWithLink == 0}">
-			        <acme:print value="N/A"/>
-			    </jstl:when>
-			    <jstl:otherwise>
-			        <acme:print value="${totalNumberOfTrainingSessionsWithLink}"/>
-			    </jstl:otherwise>
-			</jstl:choose>
+			<acme:print value="${totalNumberOfTrainingSessionsWithLink}"/>
 		</td>
 	</tr>
 	<tr>

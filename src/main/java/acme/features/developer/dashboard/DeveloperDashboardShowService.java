@@ -55,10 +55,8 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, Da
 
 		dashboard = new Dashboard();
 
-		if (totalTrainingModuleWithUpdateMoment != null && totalTrainingModuleWithUpdateMoment != 0)
 			dashboard.setTotalTrainingModuleWithUpdateMoment(totalTrainingModuleWithUpdateMoment);
 
-		if (totalNumberOfTrainingSessionsWithLink != null && totalNumberOfTrainingSessionsWithLink != 0)
 			dashboard.setTotalNumberOfTrainingSessionsWithLink(totalNumberOfTrainingSessionsWithLink);
 
 		if (!Double.isNaN(averageTrainingModuleTime))
