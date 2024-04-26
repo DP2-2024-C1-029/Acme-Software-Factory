@@ -48,7 +48,8 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
 
-		super.state(object.getUserStory().isDraftMode() && object.getProject().isDraftMode(), "*", "manager.project-user-story.form.error.detele.published");
+		if (!object.getUserStory().isDraftMode() && !object.getProject().isDraftMode())
+			super.state(object.getUserStory().isDraftMode() && object.getProject().isDraftMode(), "*", "manager.project-user-story.form.error.detele.published");
 	}
 
 	@Override
@@ -62,7 +63,13 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	public void unbind(final ProjectUserStory object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "code", "title", "abstractText", "indication", "cost", "link");
+		Dataset dataset = super.unbind(object, "project.code", "userStory.title");
+		dataset.put("published", !object.getUserStory().isDraftMode() && !object.getProject().isDraftMode());
+		if (object.getId() == 0) {
+			dataset.put("addUH", true);
+			dataset.put("projectId", object.getProject().getId());
+			dataset.put("userStoryId", object.getUserStory().getId());
+		}
 
 		super.getResponse().addData(dataset);
 	}

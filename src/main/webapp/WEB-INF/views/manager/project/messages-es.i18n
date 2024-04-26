@@ -39,3 +39,4 @@ manager.project.form.error.published = No puedes actualizar el proyecto, ya ha s
 manager.project.form.error.detele.published = No puedes borrar el proyecto, ya ha sido publicado
 manager.project.form.error.published.without_userStory = El proyecto debe tener al menos una historia de usuario y que este publicada
 manager.project.form.error.published.fatal_error = El proyecto no puede contener ningun error
+manager.project.form.error.cost.currency = La divisa no es aceptada
