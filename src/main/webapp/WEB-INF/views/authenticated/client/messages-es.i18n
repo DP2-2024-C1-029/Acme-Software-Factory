@@ -1,0 +1,12 @@
+authenticated.client.form.title = Detalles de cliente
+
+authenticated.client.form.label.identification = Código de identificación
+authenticated.client.form.label.companyName = Nombre de la compañia
+authenticated.client.form.label.companyType = Tipo de compañia
+authenticated.client.form.label.email = Correo eletrónico
+authenticated.client.form.label.link = Enlace (opcional)
+
+authenticated.client.form.button.create = Crear
+authenticated.client.form.button.update = Actualizar
+
+authenticated.client.form.error.identification = Este código de identificación ya esta en uso

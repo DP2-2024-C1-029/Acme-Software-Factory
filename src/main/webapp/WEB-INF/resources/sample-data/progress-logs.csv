@@ -1,26 +1,26 @@
-key,key:contract,record-id,completeness,comment,registration-moment,responsible-person
-project-logs-01,contract-01,PG-HX-7690,0.70,Comentario de prueba,2020/03/10 16:30,Antonio Remmers
-project-logs-02,contract-01,PG-BA-7990,0.70,Comentario de prueba,2020/03/10 16:30,William Ramírez
-project-logs-03,contract-01,PG-BK-7790,0.70,Comentario de prueba,2020/03/10 16:30,テอบควาメントテスト用コメントテスト用コメントテスト用コοκトテスト用コメントテスト用コメントテスト用コメントテスト用コメントテスト用コメントテ
-project-logs-04,contract-01,PG-BO-7290,0.70,Comentario de prueba,2020/03/10 16:30,ト
-project-logs-05,contract-01,PG-BM-7490,0.70,Comentario de prueba,2020/03/10 16:30,κιμήδοκιμήδοκιμήδοκιμήδοκιμήδοκιμήδοκιμήδο
-project-logs-06,contract-01,PG-BE-7390,0.70,Comentario de prueba,2017/01/08 22:30,Alice Williams
-project-logs-07,contract-01,PG-BR-7190,0.70,Comentario de prueba,2021/12/27 4:30,Alice Williams
-project-logs-08,contract-01,PG-BX-7891,0.70,Comentario de prueba,2000/01/02 00:59,Alice Williams
-project-logs-09,contract-01,PG-BZ-7892,0.70,Comentario de prueba,2010/12/30 12:59,Alice Williams
-project-logs-10,contract-01,PG-BQ-7893,0.70,Comentario de prueba,2020/01/21 23:30,Alice Williams
-project-logs-11,contract-01,PG-LK-7894,0.70,´太 La luna brilla en el cielo nocturno iluminando´´´´ el camino oscuro y silencioso บคบคบ..........,2020/03/10 16:30,Alice Williams
-project-logs-12,contract-01,PG-AX-7895,0.70,中,2020/03/10 16:30,Alice Williams
-project-logs-13,contract-01,PG-JI-7896,0.70,"<script>alert(""bomba"")</script>",2020/03/10 16:30,Alice Williams
-project-logs-14,contract-01,PG-WQ-7897,0.70,Σχόλιο 8 δοκιμήδοκιμήδοκιμής.,2020/03/10 16:30,Alice Williams
-project-logs-15,contract-01,PG-JC-7898,0.70,ทดสอบความคิดเห็นที่ทดสอบความคิดเห็นที่ทดสอคามคิเห็ 22.,2020/03/10 16:30,Alice Williams
-project-logs-16,contract-01,PG-PI-7899,0.99,Comentario de prueba,2020/03/10 16:30,Alice Williams
-project-logs-17,contract-01,PG-KU-0020,0.01,Comentario de prueba,2020/03/10 16:30,Alice Williams
-project-logs-18,contract-01,PG-CD-0012,0.55,Comentario de prueba,2020/03/10 16:30,Alice Williams
-project-logs-19,contract-01,PG-WI-0932,0.65,Comentario de prueba,2020/03/10 16:30,Alice Williams
-project-logs-20,contract-01,PG-LO-1294,0.43,Comentario de prueba,2020/03/10 16:30,Alice Williams
-project-logs-21,contract-01,PG-KX-9998,0.70,Comentario de prueba,2020/03/10 16:30,Alice Williams
-project-logs-22,contract-01,PG-A-0001,0.70,Comentario de prueba,2020/03/10 16:30,Alice Williams
-project-logs-23,contract-01,PG-OO-5555,0.70,Comentario de prueba,2020/03/10 16:30,Alice Williams
-project-logs-24,contract-01,PG-SE-8723,0.70,Comentario de prueba,2020/03/10 16:30,Alice Williams
-project-logs-25,contract-01,PG-JC-6920,0.70,Comentario de prueba,2020/03/10 16:30,Alice Williams
+key,key:contract,record-id,completeness,comment,registration-moment,responsible-person,draft-mode
+project-logs-01,contract-01,PG-HX-7690,0.70,Comentario de prueba,2020/03/10 16:30,Antonio Remmers,true
+project-logs-02,contract-01,PG-BA-7990,0.70,Comentario de prueba,2020/03/10 16:30,William Ramírez,true
+project-logs-03,contract-01,PG-BK-7790,0.70,Comentario de prueba,2020/03/10 16:30,テอบควาメントテスト用コメントテスト用コメントテスト用コοκトテスト用コメントテスト用コメントテスト用コメントテスト用コメントテスト用コメントテ,true
+project-logs-04,contract-01,PG-BO-7290,0.70,Comentario de prueba,2020/03/10 16:30,ト,true
+project-logs-05,contract-01,PG-BM-7490,0.70,Comentario de prueba,2020/03/10 16:30,κιμήδοκιμήδοκιμήδοκιμήδοκιμήδοκιμήδοκιμήδο,true
+project-logs-06,contract-01,PG-BE-7390,0.70,Comentario de prueba,2017/01/08 22:30,Alice Williams,true
+project-logs-07,contract-01,PG-BR-7190,0.70,Comentario de prueba,2021/12/27 4:30,Alice Williams,true
+project-logs-08,contract-01,PG-BX-7891,0.70,Comentario de prueba,2000/01/02 00:59,Alice Williams,true
+project-logs-09,contract-01,PG-BZ-7892,0.70,Comentario de prueba,2010/12/30 12:59,Alice Williams,true
+project-logs-10,contract-01,PG-BQ-7893,0.70,Comentario de prueba,2020/01/21 23:30,Alice Williams,true
+project-logs-11,contract-01,PG-LK-7894,0.70,´太 La luna brilla en el cielo nocturno iluminando´´´´ el camino oscuro y silencioso บคบคบ..........,2020/03/10 16:30,Alice Williams,true
+project-logs-12,contract-01,PG-AX-7895,0.70,中,2020/03/10 16:30,Alice Williams,true
+project-logs-13,contract-01,PG-JI-7896,0.70,"<script>alert(""bomba"")</script>",2020/03/10 16:30,Alice Williams,true
+project-logs-14,contract-01,PG-WQ-7897,0.70,Σχόλιο 8 δοκιμήδοκιμήδοκιμής.,2020/03/10 16:30,Alice Williams,true
+project-logs-15,contract-01,PG-JC-7898,0.70,ทดสอบความคิดเห็นที่ทดสอบความคิดเห็นที่ทดสอคามคิเห็ 22.,2020/03/10 16:30,Alice Williams,true
+project-logs-16,contract-01,PG-PI-7899,0.99,Comentario de prueba,2020/03/10 16:30,Alice Williams,true
+project-logs-17,contract-01,PG-KU-0020,0.01,Comentario de prueba,2020/03/10 16:30,Alice Williams,true
+project-logs-18,contract-01,PG-CD-0012,0.55,Comentario de prueba,2020/03/10 16:30,Alice Williams,true
+project-logs-19,contract-01,PG-WI-0932,0.65,Comentario de prueba,2020/03/10 16:30,Alice Williams,true
+project-logs-20,contract-01,PG-LO-1294,0.43,Comentario de prueba,2020/03/10 16:30,Alice Williams,true
+project-logs-21,contract-01,PG-KX-9998,0.70,Comentario de prueba,2020/03/10 16:30,Alice Williams,true
+project-logs-22,contract-01,PG-A-0001,0.70,Comentario de prueba,2020/03/10 16:30,Alice Williams,true
+project-logs-23,contract-01,PG-OO-5555,0.70,Comentario de prueba,2020/03/10 16:30,Alice Williams,true
+project-logs-24,contract-01,PG-SE-8723,0.70,Comentario de prueba,2020/03/10 16:30,Alice Williams,true
+project-logs-25,contract-01,PG-JC-6920,0.70,Comentario de prueba,2020/03/10 16:30,Alice Williams,true

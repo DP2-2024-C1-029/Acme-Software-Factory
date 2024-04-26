@@ -1,0 +1,12 @@
+authenticated.client.form.title = Client Details
+
+authenticated.client.form.label.identification = Identification code
+authenticated.client.form.label.companyName = Company name
+authenticated.client.form.label.companyType = Company type
+authenticated.client.form.label.email = Email
+authenticated.client.form.label.link = Link (optional)
+
+authenticated.client.form.button.create = Create
+authenticated.client.form.button.update = Update
+
+authenticated.client.form.error.identification = This identification code is already in use

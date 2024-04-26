@@ -1,0 +1,29 @@
+client.progress-logs.list.title = Registros de progreso
+client.progress-logs.list.label.recordId= Identificador
+client.progress-logs.list.label.completeness = Porcentaje de completitud
+client.progress-logs.list.label.comment = Comentario
+client.progress-logs.list.label.registrationMoment = Momento del registro
+client.progress-logs.list.label.responsiblePerson = Responsable
+client.progress-logs.list.label.contract = Contrato
+client.progress-logs.list.label.draftMode = Modo borrador
+
+
+
+client.progress-logs.form.title = Datos del Registro de progreso
+client.progress-logs.form.label.contract = Contrato
+client.progress-logs.form.label.recordId = Identificador
+client.progress-logs.form.label.completeness = Porcentaje de completitud
+client.progress-logs.form.label.comment = Comentario
+client.progress-logs.form.label.registrationMoment = Momento del registro
+client.progress-logs.form.label.responsiblePerson = Responsable
+client.progress-logs.form.button.update = Actualizar
+client.progress-logs.form.button.delete = Borrar
+client.progress-logs.form.button.create = Crear
+client.progress-logs.form.button.progressLogs = Registros de progreso
+client.progress-logs.form.button.publish = Publicar
+
+
+client.progress-log.form.error.published-progress-log = El registro de progreso está publicado
+client.progress-log.form.error.duplicated-record-id = El identificador esta duplicado
+client.progress-log.form.error.registration-moment-must-be-later = La fecha de registro debe ser posterior
+client.progress-log.form.error.published-contract = El contracto esta publicado

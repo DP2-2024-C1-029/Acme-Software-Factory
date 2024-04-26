@@ -1,0 +1,9 @@
+client.client-dashboard.form.title = Panel de cliente
+
+client.dashboard.form.title.budget-factors = metricas relacionadas a los presupuestos
+client.dashboard.form.title.logs-rate = grafico de completitud de indicadores de registro
+
+client.dashboard.form.label.min-budget =  presupuesto mas bajo detectado en tus contratos(en USD)
+client.dashboard.form.label.max-budget =  presupuesto mas alto detectado en tus contratos (en USD)
+client.dashboard.form.label.average = media de los presupuestos de tus contratos (en USD)
+client.dashboard.form.label.deviation = desviación de los presupuestos de tus contratos (en USD)

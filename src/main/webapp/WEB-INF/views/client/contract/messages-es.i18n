@@ -1,0 +1,35 @@
+client.contract.list.title = Tus Contratos
+client.contract.list.label.code = Código
+client.contract.list.label.instantiationMoment = Momento de creación
+client.contract.list.label.providerName = Nombre del Proveedor
+client.contract.list.label.customerName = Nombre del cliente
+client.contract.list.label.goals = Objetivos
+client.contract.list.label.budget = Presupuesto
+client.contract.list.label.draftMode = Modo borrador
+client.contract.list.label.project = Nombre del proyecto
+
+client.contract.form.title = Datos del contrato
+client.contract.form.label.code = Código
+client.contract.form.label.instantiationMoment = Momento de creación
+client.contract.form.label.providerName = Nombre del Proveedor
+client.contract.form.label.customerName = Nombre del cliente
+client.contract.form.label.goals = Objetivos
+client.contract.form.label.budget = Presupuesto
+client.contract.form.label.draftMode = Modo borrador
+client.contract.form.label.project = Nombre del proyecto
+client.contract.form.button.update = Actualizar
+client.contract.form.button.delete = Borrar
+client.contract.form.button.create = Crear
+client.contract.form.button.publish = Publicar
+client.contract.form.button.progress-logs = Registros de progreso
+
+
+client.contract.form.error.duplicatedCode = Código duplicado
+client.contract.form.error.budget = El presupuesto es mayor al coste asociado al proyecto
+client.contract.form.error.publishError = El presupuesto total no debe sobrepasar el coste del proyecto
+client.contract.form.error.not-all-progress-logs-published = Todos los registros de progreso deben ser publicados
+client.contract.form.error.published-progress-logs-found = No se puede eliminar un contrato con registros de progreso publicados
+client.contract.form.error.negative-budget = El budged no debe ser negativo
+client.contract.form.error.acceptedCurrency = Moneda no válida
+client.contract.form.error.project-not-published = El proyecto asociado debe estar publicado
+client.contract.form.error.instantiation-moment = El momento de creacion debe ser anterior al momento de registro mas antiguo de los registros de progreso
