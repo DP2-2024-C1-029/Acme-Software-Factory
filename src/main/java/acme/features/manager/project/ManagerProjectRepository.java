@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.codeaudits.AuditRecord;
 import acme.entities.codeaudits.CodeAudit;
+import acme.entities.configuration.Configuration;
 import acme.entities.contracts.Contract;
 import acme.entities.progressLogs.ProgressLogs;
 import acme.entities.projects.Project;
@@ -68,4 +69,7 @@ public interface ManagerProjectRepository extends AbstractRepository {
 
 	@Query("select ts from TrainingSession ts where ts.trainingModule.id IN :trainingModulesId")
 	Collection<TrainingSession> findTrainingSessionByTrainingModulesId(final List<Integer> trainingModulesId);
+
+	@Query("select sc from Configuration sc")
+	Configuration findCurrencyConfiguration();
 }

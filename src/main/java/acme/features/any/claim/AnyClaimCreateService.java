@@ -1,7 +1,7 @@
 
 package acme.features.any.claim;
 
-import java.util.Date;
+import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +30,7 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 	@Override
 	public void load() {
 		Claim object = new Claim();
+		object.setInstantiationMoment(MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.MILLIS));
 		super.getBuffer().addData(object);
 	}
 
@@ -37,7 +38,7 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 	public void bind(final Claim object) {
 		assert object != null;
 
-		super.bind(object, "code", "instantiationMoment", "heading", "description", "department", "emailAddress", "link");
+		super.bind(object, "code", "heading", "description", "department", "emailAddress", "link");
 	}
 
 	@Override
@@ -47,11 +48,6 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Claim existing = this.repository.findOneClaimByCode(object.getCode());
 			super.state(existing == null, "code", "authenticated.claim.form.error.duplicated");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("instantiationMoment")) {
-			Date now = MomentHelper.getCurrentMoment();
-			super.state(MomentHelper.isBefore(object.getInstantiationMoment(), now), "instantiationMoment", "authenticated.claim.form.error.future");
 		}
 
 		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
@@ -71,7 +67,7 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "heading", "description", "department", "emailAddress", "link");
+		dataset = super.unbind(object, "code", "heading", "description", "department", "emailAddress", "link");
 		super.getResponse().addData(dataset);
 	}
 }

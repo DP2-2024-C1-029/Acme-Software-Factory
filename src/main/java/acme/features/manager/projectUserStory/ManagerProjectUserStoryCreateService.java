@@ -64,6 +64,9 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		ProjectUserStory projectUserStory = this.repository.findByProjectAndUserStory(super.getRequest().getPrincipal().getActiveRoleId(), object.getProject().getId(), object.getUserStory().getId());
 		super.state(projectUserStory == null, "*", "manager.project-user-story.form.error.exist");
 
+		if (!object.getUserStory().isDraftMode() && !object.getProject().isDraftMode())
+			super.state(object.getUserStory().isDraftMode() && object.getProject().isDraftMode(), "*", "manager.project-user-story.form.error.detele.published");
+
 	}
 
 	@Override

@@ -11,7 +11,6 @@
 
 <acme:form>
 	<acme:input-textbox code="authenticated.claim.form.label.code" path="code"/>
-	<acme:input-moment code="authenticated.claim.form.label.instantiationMoment" path="instantiationMoment" />
 	<acme:input-textbox code="authenticated.claim.form.label.heading" path="heading"/>
 	<acme:input-textarea code="authenticated.claim.form.label.description" path="description"/>
 	<acme:input-textbox code="authenticated.claim.form.label.department" path="department"/>
