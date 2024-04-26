@@ -1,9 +1,13 @@
 
 package acme.features.manager.project;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
@@ -53,8 +57,13 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 			super.state(existing == null, "code", "manager.project.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("cost"))
-			super.state(object.getCost().getAmount() >= 0, "salary", "manager.project.form.error.negative-cost");
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			final Money rP = object.getCost();
+			final List<String> acceptedCurrency = Arrays.asList(this.repository.findCurrencyConfiguration().getAcceptedCurrencies().split(";"));
+			super.state(acceptedCurrency.contains(rP.getCurrency()), "cost", "manager.project.form.error.cost.currency");
+			super.state(object.getCost().getAmount() >= 0, "cost", "manager.project.form.error.negative-cost");
+		}
+
 	}
 
 	@Override

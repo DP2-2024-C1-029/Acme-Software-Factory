@@ -32,7 +32,6 @@
 	<acme:footer-subpanel code="master.footer.title.languages">
 		<acme:footer-option icon="fa fa-language" code="master.footer.label.english" action="/?locale=en"/>
 		<acme:footer-option icon="fa fa-language" code="master.footer.label.spanish" action="/?locale=es"/>
-		<acme:footer-option icon="fa fa-language" code="master.footer.label.german" action="/?locale=de"/>
 	</acme:footer-subpanel>
 
 	<acme:footer-logo logo="images/logo.png" alt="master.company.name">

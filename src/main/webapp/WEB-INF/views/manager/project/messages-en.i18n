@@ -39,3 +39,4 @@ manager.project.form.error.published = Can't update project, it has already been
 manager.project.form.error.detele.published = Can't delete project, it has already been published
 manager.project.form.error.published.without_userStory = The project must have at least one user story and that this published
 manager.project.form.error.published.fatal_error = The project must not contain any errors
+manager.project.form.error.cost.currency = Currency is not accepted
