@@ -51,7 +51,7 @@ public class AuthenticatedNoticeCreateService extends AbstractService<Authentica
 		Date moment = MomentHelper.getCurrentMoment();
 		Date creationMoment = new Date(moment.getTime() - 600000); // Le restamos 9 min para asegurar que esta en el pasado
 
-		super.bind(object, "title", "instantiationMoment", "author", "message", "email", "link");
+		super.bind(object, "title", "message", "email", "link");
 
 		object.setInstantiationMoment(creationMoment);
 	}

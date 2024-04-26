@@ -43,7 +43,7 @@ public class Notice extends AbstractEntity {
 	@NotBlank
 	@NotNull
 	@Length(max = 75)
-	@Pattern(regexp = "(\\w+) - (\\w+), (\\w+)")
+	@Pattern(regexp = "(.*) - (.*), (.*)")
 	private String				author;
 
 	@NotBlank

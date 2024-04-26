@@ -65,7 +65,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		Date moment = MomentHelper.getCurrentMoment();
 		Date creationMoment = new Date(moment.getTime() - 600000); // Le restamos 9 min para asegurar que esta en el pasado
 
-		super.bind(object, "creationMoment", "details", "code", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
+		super.bind(object, "details", "code", "difficultyLevel", "link", "estimatedTotalTime");
 		object.setDeveloper(developer);
 		object.setProject(project);
 		object.setCreationMoment(creationMoment);

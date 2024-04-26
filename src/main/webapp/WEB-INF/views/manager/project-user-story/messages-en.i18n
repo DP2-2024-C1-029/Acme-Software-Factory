@@ -3,7 +3,7 @@
 # Copyright (C) 2022-2024 Ismael Gata Dorado.
 
 #### LIST
-manager.project-user-story.form.title = User stories assigned/to be assigned
+manager.project-user-story.list.title = User stories assigned/to be assigned
 manager.project-user-story.list.label.title = Title
 manager.project-user-story.list.label.description = Description
 manager.project-user-story.list.label.estimatedCost = Estimated cost
