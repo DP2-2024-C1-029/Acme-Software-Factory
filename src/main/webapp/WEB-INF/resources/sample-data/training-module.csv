@@ -1,11 +1,11 @@
-key,creationMoment,details,code,difficultyLevel,updateMoment,link,estimatedTotalTime,key:project,key:developer
-trainingModule-01,2022/01/15 10:00,Detalles de la tarea A,ABC-123,BASIC,2022/01/29 10:00,https://example.com/taskA,60,project-02,developer-01
-trainingModule-02,2021/03/05 10:00,Detalles de la tarea B,XYZ-456,INTERMEDIATE,2021/03/10 10:00,https://example.com/taskB,120,project-01,developer-02
-trainingModule-03,2020/02/10 10:00,Detalles de la tarea C,DEF-789,ADVANCED,2020/02/15 10:00,https://example.com/taskC,180,project-10,developer-01
-trainingModule-04,2020/02/10 10:20,ლორემ იფსუმ,DEF-729,ADVANCED,2020/02/15 12:00,null,300,project-10,developer-01
-trainingModule-05,2021/12/12 13:20,щaнgЬ₴оёpvf$añlя,AAA-000,INTERMEDIATE,2021/12/12 13:21,https://exampletextdefault123testdefault.com/task,23,project-03,developer-01
-trainingModule-06,2022/07/29 23:59,ويل النص العربي اللبناني إلى كلام بأصوات الذكاء الاصطن,BBB-111,INTERMEDIATE,2021/12/12 23:24,null,0,project-04,developer-02
-trainingModule-07,2022/07/30 00:00,ABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRST123123123123,CCC-666,ADVANCED,1971/12/12 15:23,https://examplewebpage.net/task,0,project-06,developer-01
-trainingModule-08,2000/11/11 23:23,色到艾丝伊艾勒艾,ZZZ-999,BASIC,2000/11/11 23:27,https://es.es/,56,project-05,developer-02
-trainingModule-09,2010/06/18 01:20,zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz,XSA-463,ADVANCED,2010/06/18 03:20,https://A.com/,153,project-08,developer-02
-trainingModule-10,2000/01/01 00:01,A,GHA-469,BASIC,2015/04/04 13:29,http://unaURLnaproximadade255cas@amosaprobarquefuncioneestacadenadetasfasfasfasgsagasgasgasgagssaggasgasgagasgagsasgagasgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaxww.com,56,project-09,developer-02
+key,creationMoment,details,code,difficultyLevel,updateMoment,link,estimatedTotalTime,draftMode,key:project,key:developer
+trainingModule-01,2022/01/15 10:00,Detalles de la tarea A,ABC-123,BASIC,2022/01/29 10:00,https://example.com/taskA,60,false,project-01,developer-01
+trainingModule-02,2021/03/05 10:00,Detalles de la tarea B,XYZ-456,INTERMEDIATE,2021/03/10 10:00,https://example.com/taskB,120,false,project-11,developer-02
+trainingModule-03,2020/02/10 10:00,Detalles de la tarea C,DEF-789,ADVANCED,2020/02/15 10:00,https://example.com/taskC,180,false,project-12,developer-01
+trainingModule-04,2020/02/10 10:20,ლორემ იფსუმ,DEF-729,ADVANCED,2020/02/15 12:00,null,300,false,project-04,developer-01
+trainingModule-05,2021/12/12 13:20,щaнgЬ₴оёpvf$añlя,AAA-000,INTERMEDIATE,2021/12/12 13:21,https://exampletextdefault123testdefault.com/task,23,true,project-01,developer-01
+trainingModule-06,2022/07/29 23:59,ويل النص العربي اللبناني إلى كلام بأصوات الذكاء الاصطن,BBB-111,INTERMEDIATE,2021/12/12 23:24,null,8,true,project-12,developer-02
+trainingModule-07,2022/07/30 00:00,ABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRST123123123123,CCC-666,ADVANCED,1971/12/12 15:23,https://examplewebpage.net/task,1,false,project-13,developer-01
+trainingModule-08,2015/11/11 23:23,色到艾丝伊艾勒艾,ZZZ-999,BASIC,2000/11/11 23:27,https://es.es/,56,true,project-13,developer-02
+trainingModule-09,2010/06/18 01:20,zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz,XSA-463,ADVANCED,2010/06/18 03:20,https://A.com/,153,true,project-14,developer-02
+trainingModule-10,2018/01/01 00:01,A,GHA-469,BASIC,2015/04/04 13:29,http://unaURLnaproximadade255cas@amosaprobarquefuncioneestacadenadetasfasfasfasgsagasgasgasgagssaggasgasgagasgagsasgagasgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaxww.com,56,false,project-15,developer-02

@@ -1,0 +1,15 @@
+# messages-en.i18n
+
+authenticated.notice.form.title = Notice Details
+authenticated.notice.list.title = Notices List
+
+authenticated.notice.form.label.title = Title
+authenticated.notice.form.label.author = Author
+authenticated.notice.form.label.message = Message
+authenticated.notice.form.label.email = Email
+authenticated.notice.form.label.link = Link
+authenticated.notice.form.label.instantiationMoment = Instantiation Moment
+
+authenticated.notice.form.button.create = Create
+authenticated.notice.form.label.confirmation = Confirm that the notice is correct
+authenticated.notice.list.button.create = New notice

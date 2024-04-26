@@ -52,7 +52,6 @@ public class AdministratorObjectiveCreateService extends AbstractService<Adminis
 	public void validate(final Objective object) {
 		assert object != null;
 
-		// TODO - Preguntar si es una validación válida
 		if (!super.getBuffer().getErrors().hasErrors("endingExecutionPeriod") && !super.getBuffer().getErrors().hasErrors("initialExecutionPeriod")) {
 			Date minimumDeadline;
 

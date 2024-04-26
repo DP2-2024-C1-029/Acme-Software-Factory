@@ -15,11 +15,17 @@ master.menu.anonymous.davgodfer = 20094441P: Godoy Fernández, David
 master.menu.anonymous.favourite-juagombor: 49105638V: Gómez Borrallo, Juan José
 master.menu.anonymous.jaivarcac = 80228784T: Varas Cáceres, Jaime
 
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Authentifiziert
+master.menu.authenticated.list-risks = Risiken auflisten
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
 master.menu.administrator.dashboard = Leistungsübersicht
 master.menu.administrator.user-accounts = Benutzerkonten
+master.menu.administrator.list-risks = Risiken auflisten
 master.menu.administrator.populate-initial = Datenbank initialisieren
 master.menu.administrator.populate-sample = Datenbank mit Beispielen befüllen
 master.menu.administrator.shut-down = System herunterfahren

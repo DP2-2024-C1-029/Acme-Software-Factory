@@ -33,3 +33,4 @@ manager.userstory.list.button.create = Crear
 manager.userstory.form.error.negative-estimatedCost = El coste estimado debe ser positivo.
 manager.userstory.form.error.published = No puedes actualizar la historia de usuario, ya ha sido publicada
 manager.userstory.form.error.detele.published = No puedes borrar la historia de usuario, ya ha sido publicada
+manager.userstory.form.error.detele.project = No puedes borrar la historia de usuario, esta asignada a un proyecto

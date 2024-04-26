@@ -16,6 +16,7 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -34,6 +35,7 @@ public class TrainingModule extends AbstractEntity {
 
 	// Attributes
 	@NotBlank
+	@NotNull
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
@@ -43,6 +45,7 @@ public class TrainingModule extends AbstractEntity {
 	private Date				creationMoment;
 
 	@NotBlank
+	@NotNull
 	@Length(max = 100)
 	private String				details;
 
@@ -58,9 +61,14 @@ public class TrainingModule extends AbstractEntity {
 	private String				link;
 
 	@NotNull
+	@Range(min = 1, max = 999)
 	private Integer				estimatedTotalTime;
 
+	@NotNull
+	private boolean				draftMode;
+
 	// Relationships
+
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)

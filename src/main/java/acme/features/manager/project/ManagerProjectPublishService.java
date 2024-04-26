@@ -27,7 +27,8 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		int projectId = super.getRequest().getData("id", int.class);
 		Project project = this.repository.findOneProjectById(projectId);
 		Manager manager = project == null ? null : project.getManager();
-		boolean status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == manager.getId();
+		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		boolean status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -45,7 +46,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		assert object != null;
 
 		super.bind(object, "code", "title", "abstractText", "indication", "cost", "link");
-		object.setDraftMode(false);
+
 	}
 
 	@Override
@@ -70,7 +71,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
-
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 

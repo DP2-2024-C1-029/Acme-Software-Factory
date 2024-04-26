@@ -1,0 +1,31 @@
+# messages-en.i18n
+
+auditor.audit-record.form.title = Audit Record Details
+auditor.audit-record.list.title = Audit Record List
+
+auditor.auditRecord.form.label.code = Code
+auditor.auditRecord.form.label.startPeriod = Period start date
+auditor.auditRecord.form.label.endPeriod = Period end date
+auditor.auditRecord.form.label.link = Link
+auditor.auditRecord.form.label.mark = Mark
+auditor.auditRecord.form.label.codeAudit = Code audit
+auditor.auditRecord.form.label.draftMode = DraftMode
+
+auditor.auditRecord.form.button.update = Update
+auditor.auditRecord.form.button.delete = Delete
+auditor.auditRecord.form.button.publish = Publish
+auditor.auditRecord.form.button.create = Create
+
+auditor.auditRecord.form.error.duplicated = Duplicated code
+auditor.auditRecord.form.error.too-close = Execution date is not in the past
+auditor.auditRecord.form.error.low-mark = Mark must be at least "C" to publish
+auditor.auditRecord.form.error.too-short = The period must be at least 1 hour long
+auditor.auditRecord.form.error.end-after-start = The end date must be after the start
+
+auditor.auditRecord.list.button.create = Create
+
+auditor.auditRecord.list.label.code = Code
+auditor.auditRecord.list.label.mark = Mark
+auditor.auditRecord.list.label.startPeriod = Start date
+auditor.auditRecord.list.label.endPeriod = End date
+auditor.auditRecord.list.label.published = Published
