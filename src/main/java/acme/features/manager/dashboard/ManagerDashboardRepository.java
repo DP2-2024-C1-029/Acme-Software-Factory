@@ -12,9 +12,12 @@
 
 package acme.features.manager.dashboard;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.client.data.datatypes.Money;
 import acme.client.repositories.AbstractRepository;
 import acme.roles.Manager;
 
@@ -24,39 +27,21 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	@Query("select m from Manager m where m.id = :id")
 	Manager findOneManagerById(int id);
 
-	@Query("select count(u) from UserStory u where u.manager.id = :managerId and u.priority = 0")
+	@Query("select count(u) from UserStory u where u.manager.id = :managerId and u.priority = acme.entities.userstories.Priority.MUST and u.draftMode = false")
 	int totalUserStoryMust(int managerId);
 
-	@Query("select count(u) from UserStory u where u.manager.id = :managerId and u.priority = 1")
+	@Query("select count(u) from UserStory u where u.manager.id = :managerId and u.priority = acme.entities.userstories.Priority.SHOULD and u.draftMode = false")
 	int totalUserStoryShould(int managerId);
 
-	@Query("select count(u) from UserStory u where u.manager.id = :managerId and u.priority = 2")
+	@Query("select count(u) from UserStory u where u.manager.id = :managerId and u.priority = acme.entities.userstories.Priority.COULD and u.draftMode = false")
 	int totalUserStoryCould(int managerId);
 
-	@Query("select count(u) from UserStory u where u.manager.id = :managerId and u.priority = 3")
+	@Query("select count(u) from UserStory u where u.manager.id = :managerId and u.priority = acme.entities.userstories.Priority.WONT and u.draftMode = false")
 	int totalUserStoryWont(int managerId);
 
-	@Query("select avg(u.estimatedCost) from UserStory u where u.manager.id = :managerId")
-	Double averageEstimatedCost(int managerId);
+	@Query("select p.cost from Project p where p.manager.id=:managerId and p.draftMode = false")
+	Collection<Money> getAllMoneyProjectCost(final int managerId);
 
-	@Query("select sqrt((sum(u.estimatedCost * u.estimatedCost) / count(u) - avg(u.estimatedCost) * avg(u.estimatedCost))) from UserStory u where u.manager.id = :managerId")
-	Double deviationEstimatedCost(int managerId);
-
-	@Query("select min(u.estimatedCost) from UserStory u where u.manager.id = :managerId")
-	double minimumEstimatedCost(int managerId);
-
-	@Query("select max(u.estimatedCost) from UserStory u where u.manager.id = :managerId")
-	double maximumEstimatedCost(int managerId);
-
-	@Query("select avg(p.cost.amount) from Project p where p.manager.id = :managerId")
-	Double averageCostProject(int managerId);
-
-	@Query("select sqrt((sum(p.cost.amount * p.cost.amount) / count(p) - avg(p.cost.amount) * avg(p.cost.amount))) from Project p where p.manager.id = :managerId")
-	Double deviationCostProject(int managerId);
-
-	@Query("select min(p.cost.amount) from Project p where p.manager.id = :managerId")
-	double minimumCostProject(int managerId);
-
-	@Query("select max(p.cost.amount) from Project p where p.manager.id = :managerId")
-	double maximumCostProject(int managerId);
+	@Query("select u.estimatedCost from UserStory u where u.manager.id = :managerId and u.draftMode = false")
+	Collection<Double> findAllEstimatedCost(int managerId);
 }

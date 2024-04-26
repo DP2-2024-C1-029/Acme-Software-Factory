@@ -62,7 +62,6 @@ public class AuthenticatedClaimCreateService extends AbstractService<Authenticat
 	@Override
 	public void perform(final Claim object) {
 		assert object != null;
-
 		this.repository.save(object);
 	}
 
