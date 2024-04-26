@@ -3,7 +3,7 @@
 # Copyright (C) 2024-2024 Ismael Gata Dorado.
 
 #### LIST
-manager.project-user-story.list.title = Lista de historias de usuario del proyecto
+manager.project-user-story.list.title = Historias de usuarios asignadas/por asignar
 manager.project-user-story.list.label.title = Titulo
 manager.project-user-story.list.label.description = Descripcion
 manager.project-user-story.list.label.estimatedCost = Coste estimado
@@ -15,9 +15,10 @@ manager.project-user-story.list.label.check = Seleccionar
 manager.project-user-story.list.label.codeProject = Código del proyecto
 
 #### FROM
+manager.project-user-story.form.title = Proyecto - Historia de Usuario 
 manager.project-user-story.form.label.codeProject = Código del proyecto
 manager.project-user-story.form.label.titleUserStory = Titulo HU
-manager.project-user-story.form.title = Añadir historia de usuario al proyecto
+
 
 #### BUTTON
 manager.project-user-story.form.button.add = Añadir historia de usuario
