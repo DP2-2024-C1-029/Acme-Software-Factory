@@ -12,5 +12,5 @@ administrator.objective.form.label.confirmation = Are you sure you want to creat
 
 administrator.objective.form.button.create = Create
 
-administrator.objective.form.error.too-close = The final period must be at least 1 hour after the initial period.
-administrator.objective.form.error.not-after = The initial period must start after the start moment.
+administrator.objective.form.error.too-close = The final period must be at least 1 hour after the initial period
+administrator.objective.form.error.not-after = The initial period must start after the start moment

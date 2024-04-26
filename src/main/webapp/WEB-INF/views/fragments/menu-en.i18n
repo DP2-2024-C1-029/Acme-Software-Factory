@@ -38,6 +38,7 @@ master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.list-risks = List risks
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
+master.menu.administrator.configuration.show = System configuration
 master.menu.administrator.shut-down = Shut down
 
 # master.menu.provider ########################################################
@@ -58,7 +59,7 @@ master.menu.auditor.dashboard = Audits dashboard
 
 # master.menu.sponsor #########################################################
 
-master.menu.sponsorship = Sponsorship
+master.menu.sponsorship = Sponsor
 master.menu.sponsor.sponsorship.list-mine = List My Sponsorships
 master.menu.sponsor.sponsorship.list-all = List All Sponsorships
 master.menu.sponsor.dashboard.show = Sponsor dashboard

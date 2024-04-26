@@ -16,9 +16,9 @@ public class Dashboard extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	private int					totalInvoicesWithTaxLowerTo21;
+	private Integer				totalInvoicesWithTaxLowerTo21;
 
-	private int					totalSponsorshipsWithLink;
+	private Integer				totalSponsorshipsWithLink;
 
 	private Money				averageAmountSponsorships;
 
