@@ -1,21 +1,21 @@
 
-package acme.features.manager.project;
+package acme.features.authenticated.project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
-import acme.roles.Manager;
 
 @Service
-public class ManagerProjectShowService extends AbstractService<Manager, Project> {
+public class AuthenticatedProjectShowService extends AbstractService<Authenticated, Project> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private AuthenticatedProjectRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -25,13 +25,10 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		boolean status;
 		int projectId;
 		Project project;
-		Manager manager;
 
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		manager = project == null ? null : project.getManager();
-		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-		status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
+		status = super.getRequest().getPrincipal().isAuthenticated() && project != null && !project.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -42,7 +39,7 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneProjectById(id);
+		object = this.repository.findOneProjectByIdAndPublished(id);
 
 		super.getBuffer().addData(object);
 	}

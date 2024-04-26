@@ -62,7 +62,6 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 	@Override
 	public void perform(final Claim object) {
 		assert object != null;
-
 		this.repository.save(object);
 	}
 

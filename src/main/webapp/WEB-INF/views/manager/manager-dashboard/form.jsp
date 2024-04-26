@@ -53,7 +53,14 @@
 			<acme:message code="manager.dashboard.form.label.average-estimated-cost"/>
 		</th>
 		<td>
-			<acme:print value="${averageEstimatedCost}"/>
+			<jstl:choose>
+				<jstl:when test="${averageEstimatedCost != null}">
+					<acme:print value="${averageEstimatedCost}"/>
+				</jstl:when>
+				<jstl:when test="${averageEstimatedCost == null}">
+					<acme:print value="-"/>
+				</jstl:when>
+			</jstl:choose>
 		</td>
 	</tr>		
 	<tr>
@@ -61,7 +68,14 @@
 			<acme:message code="manager.dashboard.form.label.deviation-estimated-cost"/>
 		</th>
 		<td>
-			<acme:print value="${deviationEstimatedCost}"/>
+			<jstl:choose>
+				<jstl:when test="${deviationEstimatedCost != null}">
+					<acme:print value="${deviationEstimatedCost}"/>
+				</jstl:when>
+				<jstl:when test="${deviationEstimatedCost == null}">
+					<acme:print value="-"/>
+				</jstl:when>
+			</jstl:choose>
 		</td>
 	</tr>	
 	<tr>
@@ -85,7 +99,14 @@
 			<acme:message code="manager.dashboard.form.label.average-cost-project"/>
 		</th>
 		<td>
-			<acme:print value="${averageCostProject}"/>
+			<jstl:choose>
+				<jstl:when test="${averageCostProject != null}">
+					<acme:print value="${averageCostProject}"/>
+				</jstl:when>
+				<jstl:when test="${averageCostProject == null}">
+					<acme:print value="-"/>
+				</jstl:when>
+			</jstl:choose>	
 		</td>
 	</tr>	
 	<tr>
@@ -93,7 +114,14 @@
 			<acme:message code="manager.dashboard.form.label.deviation-cost-project"/>
 		</th>
 		<td>
-			<acme:print value="${deviationCostProject}"/>
+			<jstl:choose>
+				<jstl:when test="${deviationCostProject != null}">
+					<acme:print value="${deviationCostProject}"/>
+				</jstl:when>
+				<jstl:when test="${deviationCostProject == null}">
+					<acme:print value="-"/>
+				</jstl:when>
+			</jstl:choose>			
 		</td>
 	</tr>	
 	<tr>

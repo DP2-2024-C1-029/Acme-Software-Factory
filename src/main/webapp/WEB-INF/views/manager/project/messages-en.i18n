@@ -21,6 +21,7 @@ manager.project.form.label.cost = Cost
 manager.project.form.label.link = Link
 manager.project.form.label.draftMode = Published
 manager.project.form.title = Project details
+manager.project-user-story.list.label.userStories = Select User story to add
 
 #### BUTTONS
 manager.project.form.button.update = Update
@@ -29,6 +30,7 @@ manager.project.form.button.create = Create
 manager.project.list.button.create = Create
 manager.project.form.button.showUserStory = Show user stories
 manager.project.form.button.publish = Publish
+manager.project.form.button.showUserStoryToAdd = Show User Stories to add
 
 ##### ERRORS
 manager.project.form.error.duplicated = Project exists with same code

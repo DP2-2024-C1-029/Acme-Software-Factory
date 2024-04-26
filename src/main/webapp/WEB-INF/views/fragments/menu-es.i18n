@@ -85,6 +85,8 @@ master.menu.user-account.become-auditor = Hazte auditor
 
 master.menu.user-account.sponsor = Datos del patrocinador
 master.menu.user-account.become-sponsor = Hazte patrocinador
+master.menu.user-account.manager = Datos del manager
+master.menu.user-account.become-manager = Hazte gestor
 
 # master.menu.manager ########################################################
 master.menu.manager = Gestor
@@ -95,3 +97,5 @@ master.menu.manager.dashboard = Panel de indicadores
 # master.menu.authenticated ########################################################
 master.menu.authenticated = Datos
 master.menu.authenticated.claim = Ver reclamaciones
+master.menu.authenticated.project.published.list = Ver proyectos publicados
+
