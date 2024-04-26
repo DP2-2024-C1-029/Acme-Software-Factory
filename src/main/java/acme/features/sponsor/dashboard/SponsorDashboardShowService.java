@@ -50,33 +50,36 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Dashbo
 		Double minimumQuantityInvoices;
 		Double maximumQuantityInvoices;
 		Map<String, Double> allChanges;
-		int sizeSponsorships;
-		int sizeInvoices;
 		Collection<Money> allAmountsSponsorships;
 		Collection<Money> allQuantitiesInvoices;
 
 		sponsorId = this.getRequest().getPrincipal().getActiveRoleId();
 
-		totalInvoicesWithTaxLowerTo21 = this.repository.totalInvoicesWithTaxLowerTo21(sponsorId);
-		totalSponsorshipsWithLink = this.repository.totalSponsorshipsWithLink(sponsorId);
-
 		allChanges = this.exchangeService.getChanges();
 		allAmountsSponsorships = this.changeCurrency(this.repository.findAllAmountsOfSponsorships(sponsorId), allChanges);
 		allQuantitiesInvoices = this.changeCurrency(this.repository.findAllQuantitiesOfInvoices(sponsorId), allChanges);
-		sizeSponsorships = allAmountsSponsorships.size();
-		sizeInvoices = allQuantitiesInvoices.size();
+
+		if (allQuantitiesInvoices.isEmpty())
+			totalInvoicesWithTaxLowerTo21 = null;
+		else
+			totalInvoicesWithTaxLowerTo21 = this.repository.totalInvoicesWithTaxLowerTo21(sponsorId);
+
+		if (allAmountsSponsorships.isEmpty())
+			totalSponsorshipsWithLink = null;
+		else
+			totalSponsorshipsWithLink = this.repository.totalSponsorshipsWithLink(sponsorId);
 
 		// Average, deviation, minimum and maximum amounts of sponsorships
-		averageAmountSponsorships = allAmountsSponsorships.stream().mapToDouble(Money::getAmount).average().orElse(0);
-		deviationAmountSponsorships = this.deviation(allAmountsSponsorships, averageAmountSponsorships, sizeSponsorships);
-		minimumAmountSponsorships = allAmountsSponsorships.stream().mapToDouble(Money::getAmount).min().orElse(0);
-		maximumAmountSponsorships = allAmountsSponsorships.stream().mapToDouble(Money::getAmount).max().orElse(0);
+		averageAmountSponsorships = allAmountsSponsorships.stream().mapToDouble(Money::getAmount).average().orElse(Double.NaN);
+		deviationAmountSponsorships = this.deviation(allAmountsSponsorships, averageAmountSponsorships);
+		minimumAmountSponsorships = allAmountsSponsorships.stream().mapToDouble(Money::getAmount).min().orElse(Double.NaN);
+		maximumAmountSponsorships = allAmountsSponsorships.stream().mapToDouble(Money::getAmount).max().orElse(Double.NaN);
 
 		// Average, deviation, minimum and maximum quantities of invoices
-		averageQuantityInvoices = allQuantitiesInvoices.stream().mapToDouble(Money::getAmount).average().orElse(0);
-		deviationQuantityInvoices = this.deviation(allQuantitiesInvoices, averageQuantityInvoices, sizeInvoices);
-		minimumQuantityInvoices = allQuantitiesInvoices.stream().mapToDouble(Money::getAmount).min().orElse(0);
-		maximumQuantityInvoices = allQuantitiesInvoices.stream().mapToDouble(Money::getAmount).max().orElse(0);
+		averageQuantityInvoices = allQuantitiesInvoices.stream().mapToDouble(Money::getAmount).average().orElse(Double.NaN);
+		deviationQuantityInvoices = this.deviation(allQuantitiesInvoices, averageQuantityInvoices);
+		minimumQuantityInvoices = allQuantitiesInvoices.stream().mapToDouble(Money::getAmount).min().orElse(Double.NaN);
+		maximumQuantityInvoices = allQuantitiesInvoices.stream().mapToDouble(Money::getAmount).max().orElse(Double.NaN);
 
 		dashboard = new Dashboard();
 		dashboard.setTotalInvoicesWithTaxLowerTo21(totalInvoicesWithTaxLowerTo21);
@@ -99,18 +102,21 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Dashbo
 			.collect(Collectors.toList());
 	}
 
-	public double deviation(final Collection<Money> cl, final double average, final int size) {
-		return cl.isEmpty() ? 0
+	public Double deviation(final Collection<Money> cl, final double average) {
+		return cl.isEmpty() ? null
 			: Math.sqrt(cl.stream()//
-				.mapToDouble(m -> Math.pow(m.getAmount() - average, 2)).sum() / size);
+				.mapToDouble(m -> Math.pow(m.getAmount() - average, 2)).sum() / cl.size());
 	}
 
 	public Money moneyOfAmount(final Double amount) {
 		Money res;
 
-		res = new Money();
-		res.setAmount(amount);
-		res.setCurrency(super.getRequest().getGlobal("$locale", String.class).equals("es") ? "EUR" : "USD");
+		if (amount != null && !amount.equals(Double.NaN)) {
+			res = new Money();
+			res.setAmount(amount);
+			res.setCurrency(super.getRequest().getGlobal("$locale", String.class).equals("es") ? "EUR" : "USD");
+		} else
+			res = null;
 
 		return res;
 	}
