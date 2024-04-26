@@ -34,13 +34,14 @@ developer.trainingModule.form.error.trainingSession-draft = No puedes publicar t
 developer.trainingModule.form.error.trainingSession-Nodraft = No puedes borrar el training module porque existe un training session publicado
 developer.trainingModule.form.error.trainingSession-empty = Debes tener al menos un Training Session para publicar el Training Module
 developer.trainingmodule.list.label.draftMode = Modo borrador
+developer.trainingModule.form.error.trainingModule-empty = El training Module no existe
 
 
 master.menu.developer.all-trainingsession = Mostrar todos los Training Session
 master.menu.developer = Developer
 master.menu.developer.all-trainingmodule = Mostrar Training Module
 master.menu.user-account.become-developer = Convertirse en developer
-master.menu.user-account.developer = Developer
+master.menu.user-account.developer = Developer perfil
 master.menu.authenticated.notice-list = Listar noticias
 master.menu.authenticated.notice-show = Mostrar noticias
 master.menu.developer.dashboard.show = Mostrar dashboard training module

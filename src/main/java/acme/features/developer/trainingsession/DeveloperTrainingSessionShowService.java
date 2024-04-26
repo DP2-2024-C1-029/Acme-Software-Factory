@@ -53,7 +53,6 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 		assert object != null;
 
 		int developerId;
-		SelectChoices choices;
 		Dataset dataset;
 
 		Collection<TrainingModule> trainingModules;

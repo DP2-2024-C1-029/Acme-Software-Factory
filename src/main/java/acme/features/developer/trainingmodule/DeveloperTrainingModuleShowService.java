@@ -53,14 +53,12 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 	public void unbind(final TrainingModule object) {
 		assert object != null;
 
-		int developerId;
 		SelectChoices choices;
 		Dataset dataset;
 
 		Collection<Project> projects;
 		SelectChoices choicesProject;
 
-		developerId = super.getRequest().getPrincipal().getActiveRoleId();
 		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());

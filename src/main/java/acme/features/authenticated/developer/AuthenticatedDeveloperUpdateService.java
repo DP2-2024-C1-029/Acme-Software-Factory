@@ -9,7 +9,6 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.roles.Developer;
-import acme.roles.Sponsor;
 
 @Service
 public class AuthenticatedDeveloperUpdateService extends AbstractService<Authenticated, Developer> {
@@ -26,7 +25,7 @@ public class AuthenticatedDeveloperUpdateService extends AbstractService<Authent
 	public void authorise() {
 		boolean status;
 
-		status = this.getRequest().getPrincipal().hasRole(Sponsor.class);
+		status = this.getRequest().getPrincipal().hasRole(Developer.class);
 
 		super.getResponse().setAuthorised(status);
 	}

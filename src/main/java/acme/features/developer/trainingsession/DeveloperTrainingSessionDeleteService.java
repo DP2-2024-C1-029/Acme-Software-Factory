@@ -17,8 +17,6 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 	@Autowired
 	public DeveloperTrainingSessionRepository repository;
 
-	// AbstractService interface ----------------------------------------------{
-
 	// AbstractService interface ----------------------------------------------
 
 

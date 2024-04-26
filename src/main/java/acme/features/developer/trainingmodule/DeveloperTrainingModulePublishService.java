@@ -90,12 +90,10 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");
 
-		/*
-		 * int trainingModuleId = super.getRequest().getData("id", int.class);
-		 * Collection<TrainingModule> trainingModules = this.repository.findAllTrainingModules();
-		 * boolean someTrainingModule = trainingModules.stream().anyMatch(Module -> Module.getId() == trainingModuleId);
-		 * super.state(!someTrainingModule, "*", "developer.trainingModule.form.error.trainingModule-empty");
-		 */
+		int trainingModuleId = super.getRequest().getData("id", int.class);
+		Collection<TrainingModule> trainingModules = this.repository.findAllTrainingModules();
+		boolean someTrainingModule = trainingModules.stream().anyMatch(Module -> Module.getId() == trainingModuleId);
+		super.state(someTrainingModule, "*", "developer.trainingModule.form.error.trainingModule-empty");
 	}
 
 	@Override
@@ -112,9 +110,6 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		assert object != null;
 		SelectChoices choicesProject;
 		Collection<Project> projects;
-		int developerId;
-
-		developerId = super.getRequest().getPrincipal().getActiveRoleId();
 
 		SelectChoices choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 
