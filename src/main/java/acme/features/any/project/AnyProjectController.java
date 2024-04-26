@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.project;
+package acme.features.any.project;
 
 import javax.annotation.PostConstruct;
 
@@ -7,18 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.client.data.accounts.Authenticated;
+import acme.client.data.accounts.Any;
 import acme.entities.projects.Project;
 
 @Controller
-public class AuthenticatedProjectController extends AbstractController<Authenticated, Project> {
+public class AnyProjectController extends AbstractController<Any, Project> {
 
 	// Internal state ---------------------------------------------------------
 	@Autowired
-	private AuthenticatedProjectPublishService	authenticatedProjectPublishService;
+	private AnyProjectPublishService	authenticatedProjectPublishService;
 
 	@Autowired
-	private AuthenticatedProjectShowService		authenticatedProjectShowService;
+	private AnyProjectShowService		authenticatedProjectShowService;
 
 	// Constructors -----------------------------------------------------------
 
