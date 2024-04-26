@@ -33,6 +33,9 @@
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.configuration.show" action="/administrator/configuration/show"/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
 
@@ -51,8 +54,7 @@
 		</acme:menu-option>
   
     	<acme:menu-option code="master.menu.sponsorship">
-			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-all" action="/any/sponsorship/list" access="isAnonymous() || !hasRole('Sponsor')"/>
-			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-all" action="/any/sponsorship/list" access="hasRole('Sponsor')"/>
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-all" action="/any/sponsorship/list"/>
 			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-mine" action="/sponsor/sponsorship/list-mine" access="hasRole('Sponsor')"/>
 			<acme:menu-suboption code="master.menu.sponsor.dashboard.show" action="/sponsor/dashboard/show" access="hasRole('Sponsor')"/>
 		</acme:menu-option>
@@ -60,7 +62,6 @@
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.claim" action="/authenticated/claim/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>
-			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list" access="hasRole('Administrator')"/>
 		</acme:menu-option>
 	</acme:menu-left>
 	

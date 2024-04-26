@@ -52,9 +52,14 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		assert object != null;
 
 		Dataset dataset;
+		String trueValue;
+		String falseValue;
+
+		trueValue = super.getRequest().getLocale().toString().equals("es") ? "Sí" : "No";
+		falseValue = super.getRequest().getLocale().toString().equals("en") ? "Yes" : "No";
 
 		dataset = super.unbind(object, "code", "dueDate");
-		dataset.put("isPublished", object.isPublished() ? "✔️" : "❌");
+		dataset.put("isPublished", object.isPublished() ? trueValue : falseValue);
 		dataset.put("totalAmount", object.totalAmount());
 
 		super.getResponse().addData(dataset);

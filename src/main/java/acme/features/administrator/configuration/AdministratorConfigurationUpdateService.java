@@ -73,7 +73,7 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 			allCurrenciesOfAPI = this.repository.findCurrenciesFromAPI();
 			allCurrenciesInSystem = this.repository.findAllCurrentCurrencies();
 			super.state(allCurrenciesOfAPI.containsAll(objectCurrencies), "*", "administrator.configuration.form.error.not-accepted-by-api");
-			super.state(allCurrenciesInSystem.containsAll(objectCurrencies), "*", "administrator.configuration.form.error.not-all-of-the-system");
+			super.state(objectCurrencies.containsAll(allCurrenciesInSystem), "*", "administrator.configuration.form.error.not-all-of-the-system");
 		}
 	}
 
