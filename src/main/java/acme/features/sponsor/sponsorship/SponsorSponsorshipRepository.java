@@ -30,10 +30,6 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 	@Query("select p from Project p where p.id = :id")
 	Project findOneProjectById(int id);
 
-	// TODO - Preguntar si vale o no hacerlo así para la validación del publish del Task6-Student 4
-	//	@Query("select sum(i.amount.amount * (1 + i.tax)) from Invoice i where i.sponsorship.id = :id")
-	//	Double computeTotalAmountInvoicesBySponsorshipId(int id);
-
 	@Query("select s from Sponsorship s where s.isPublished = true")
 	Collection<Sponsorship> findManySponsorshipsPublished();
 
