@@ -9,7 +9,6 @@ import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
-import acme.features.authenticated.sponsor.AuthenticatedSponsorRepository;
 import acme.roles.Developer;
 
 @Service
@@ -18,7 +17,7 @@ public class AuthenticatedDeveloperCreateService extends AbstractService<Authent
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedSponsorRepository repository;
+	private AuthenticatedDeveloperRepository repository;
 
 	// AbstractService inteface -----------------------------------------------
 

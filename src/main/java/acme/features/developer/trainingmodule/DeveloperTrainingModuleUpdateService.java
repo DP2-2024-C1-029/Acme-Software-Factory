@@ -105,13 +105,11 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 	public void unbind(final TrainingModule object) {
 		assert object != null;
 
-		int developerId;
 		SelectChoices choicesProject;
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
 
-		developerId = super.getRequest().getPrincipal().getActiveRoleId();
 		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());

@@ -40,6 +40,7 @@ developer.trainingmodule.list.button.create = Create Training Module
 developer.trainingmodule.form.button.delete = Delete Training Module
 developer.trainingmodule.form.button.update = Update Training Module
 developer.trainingmodule.list.label.draftMode = Draft Mode
+developer.trainingModule.form.error.trainingModule-empty = Training Module doest not exist
 
 master.menu.developer.all-trainingsession = List Training Sessions associated
 master.menu.developer = Developer
@@ -47,7 +48,7 @@ master.menu.developer.all-trainingmodule = List Training Module
 master.menu.authenticated.notice-list = List Notices
 master.menu.authenticated.notice-show = Show Notices
 master.menu.user-account.become-developer = Become developer
-master.menu.user-account.developer = Developer
+master.menu.user-account.developer = Developer profile
 master.menu.developer.dashboard.show = Show training module dashboard
 
 developer.training-session.list.title = All Training Session
