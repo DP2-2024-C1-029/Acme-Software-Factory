@@ -30,7 +30,6 @@ public class Exchange extends AbstractEntity {
 	@NotNull
 	private Date				expireDate;
 
-	@NotNull
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{3}")

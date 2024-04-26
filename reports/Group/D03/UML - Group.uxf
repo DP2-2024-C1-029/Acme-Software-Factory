@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>376</x>
+      <y>352</y>
+      <w>312</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AdministratorDashboard
+--
++ totalNumberOfPrincipalsWithAdministrator: int
++ totalNumberOfPrincipalsWithManager: int
++ totalNumberOfPrincipalsWithDeveloper: int
++ totalNumberOfPrincipalsWithSponsor: int
++ totalNumberOfPrincipalsWithAuditor: int
++ totalNumberOfPrincipalsWithClient: int
+- ratioOfNoticesWithEmailAndLink: Double
+- ratioOfCriticalObjectives: Double
+- ratioOfNonCriticalObjectives: Double
+- averageValueInTheRisks: Double
++ minValueInTheRisks: double
++ maxValueInTheRisks: double
+- deviationValueInTheRisks: Double
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>712</x>
+      <y>512</y>
+      <w>368</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Risk
+--
++ reference: String {NotBlank, Unique, Pattern(R-[0-9]{3})}
++ identificationDate: Date {Past, NotNull, Temporal(TIMESTAMP)}
++ impact: double {Digits(3,2), Range(1,100)}
++ probability: double {Digits(1,2), Range(0,1)}
++ description: String {NotBlank, Length(1,100)}
+- link: String {URL, Length(0,255)}
++ / value: Double {Transient}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>712</x>
+      <y>240</y>
+      <w>368</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Claim
+--
++ code: String {NotBlank, Unique, Pattern(C-[0-9]{4})}
++ instantiationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
++ heading: String {NotBlank, Length(1,75)}
++ description: String {NotBlank, Length(1,100)}
++ department: String {NotBlank, Length(1,100)}
+- emailAddress: String {Email, Length(0,255)}
+- link: String {URL, Length(0,255)}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>712</x>
+      <y>384</y>
+      <w>368</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Notice
+--
++ instantiationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
++ title: String {NotBlank, Length(1,75)}
++ author: String {NotBlank, Length(1,75)}
++ message: String {NotBlank, Length(1,100)}
+- email: String {Email, Length(0,255)}
+- link: String {URL, Length(0,255)}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>712</x>
+      <y>656</y>
+      <w>368</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Banner
+--
++ instantiationMoment: Date {Past, NotNull}
++ displayStartMoment: Date {Past, NotNull}
++ displayEndMoment: Date {Past, NotNull}
++ picture: String {URL, NotBlank, Length(1,255)}
++ slogan: String {NotBlank, Length(1,75)}
++ link: String {URL, NotBlank, Length(1,255)}
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1240</x>
+      <y>504</y>
+      <w>128</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+ObjectivePriority
+--
+LOW
+MEDIUM
+HIGH
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1128</x>
+      <y>304</y>
+      <w>360</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Objective
+--
++ instantiationMoment: Date {Past,NotNull}
++ title: String {NotBlank, Length(1,75)}
++ description: String {NotBlank, Length(1,100)}
++ priority: ObjectivePriority {NotNull}
++ isCritical: boolean {NotNull}
++ initialExecutionPeriod: Date {NotNull}
++ endingExecutionPeriod: Date {NotNull}
+- link: String {URL, Length(0,255)}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>328</x>
+      <y>200</y>
+      <w>360</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Confiuration
+--
++ currency: String {NotBlank, Pattern([A-Z]{3})}
++ acceptedCurrencies: String {NotBlank, Pattern(([A-Z]{3};)*[A-Z]{3})}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>328</x>
+      <y>104</y>
+      <w>360</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Exchange
+--
++ expireDate: Date {NotNull}
++ currency: String {NotBlank, Unique, Pattern([A-Z]{3})}
++ amount: double {Range(0,1000000)}</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
