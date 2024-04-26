@@ -73,7 +73,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.list-risks" action="/authenticated/risk/list" access="!hasRole('Administrator')"/>
 			<acme:menu-suboption code="master.menu.administrator.list-risks" action="/administrator/risk/list" access="hasRole('Administrator')"/>
 			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list" access="hasRole('Administrator')"/>
-			            <acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
+			<acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
