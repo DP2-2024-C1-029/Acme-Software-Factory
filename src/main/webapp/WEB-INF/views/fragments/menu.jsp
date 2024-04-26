@@ -25,9 +25,10 @@
 			<acme:menu-suboption code="master.menu.anonymous.davgodfer" action="https://www.youtube.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-juagombor" action="https://www.informatica.us.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.jaivarcac" action="https://planefinder.net/"/>
-      <acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
+      		<acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
 			<acme:menu-suboption code="master.menu.authenticated.claim" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.developer.all-trainingmodule" action="/any/training-module/list"/>
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-all" action="/any/sponsorship/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -60,7 +61,6 @@
 		</acme:menu-option>
   
     	<acme:menu-option code="master.menu.sponsorship" access="hasRole('Sponsor')">
-			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-all" action="/sponsor/sponsorship/list"/>
 			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-mine" action="/sponsor/sponsorship/list-mine"/>
 			<acme:menu-suboption code="master.menu.sponsor.dashboard.show" action="/sponsor/dashboard/show"/>
 		</acme:menu-option>
@@ -106,4 +106,3 @@
 		<acme:menu-option code="master.menu.sign-out" action="/authenticated/system/sign-out" access="isAuthenticated()"/>
 	</acme:menu-right>
 </acme:menu-bar>
-

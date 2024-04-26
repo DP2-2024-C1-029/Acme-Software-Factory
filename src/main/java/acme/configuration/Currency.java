@@ -14,7 +14,7 @@ public class Currency extends AbstractEntity {
 	private CurrencyType		currency;
 
 
-	private Currency() {
+	public Currency() {
 		this.currency = CurrencyType.EUR;
 	}
 
