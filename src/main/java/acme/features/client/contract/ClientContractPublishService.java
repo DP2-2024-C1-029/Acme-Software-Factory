@@ -2,6 +2,7 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -79,8 +80,19 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			numProgressLogsPublished = this.repository.findManyProgressLogsNotPublishedByContractId(object.getId());
 			super.state(numProgressLogsPublished.isEmpty(), "*", "client.contract.form.error.not-all-progress-logs-published");
 		}
-	}
 
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment")) {
+			ProgressLogs fetchedPl;
+			fetchedPl = this.repository.findProgressLogEarliestRegistrationMomentByContractId(object.getId());
+			Date registrationMoment;
+			if (fetchedPl == null)
+				registrationMoment = null;
+			else
+				registrationMoment = fetchedPl.getRegistrationMoment();
+			if (registrationMoment != null)
+				super.state(object.getInstantiationMoment().before(this.repository.findProgressLogEarliestRegistrationMomentByContractId(object.getId()).getRegistrationMoment()), "instantiationMoment", "client.contract.form.error.instantiation-moment");
+		}
+	}
 	@Override
 	public void load() {
 		Contract Contract;

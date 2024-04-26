@@ -15,6 +15,7 @@
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true }">
 		<acme:input-textbox code="client.contract.form.label.draftMode" path="draftMode" readonly="true"/>
+		<acme:input-textbox code="client.contract.form.label.instantiationMoment" path="instantiationMoment" readonly="true"/>
 			<acme:submit code="client.contract.form.button.update" action="/client/contract/update" />
 			<acme:submit code="client.contract.form.button.delete" action="/client/contract/delete" />
 			<acme:submit code="client.contract.form.button.publish" action="/client/contract/publish" />

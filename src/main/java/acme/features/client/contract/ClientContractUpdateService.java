@@ -102,6 +102,10 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "client.contract.form.error.project-not-published");
+
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
+			super.state(object.getInstantiationMoment().before(this.repository.findProgressLogEarliestRegistrationMomentByContractId(object.getId()).getRegistrationMoment()), "instantiationMoment", "client.contract.form.error.instantiation-moment");
+
 	}
 
 	@Override

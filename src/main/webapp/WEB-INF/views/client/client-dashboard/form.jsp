@@ -13,7 +13,7 @@
 			<acme:message code="client.dashboard.form.label.min-budget"/>
 		</th>
 		<td>
-			<acme:print value="${minimunBudgetOfContracts}"/>
+			<acme:print value="${minimunBudget}"/>
 		</td>
 	</tr>
 	<tr>
@@ -21,7 +21,7 @@
 			<acme:message code="client.dashboard.form.label.max-budget"/>
 		</th>
 		<td>
-			<acme:print value="${maximunBudgetOfContracts}"/>
+			<acme:print value="${maximunBudget}"/>
 		</td>
 	</tr>
 	
@@ -30,7 +30,7 @@
 			<acme:message code="client.dashboard.form.label.average"/>
 		</th>
 		<td>
-			<acme:print value="${averageBudgetOfContracts}"/>
+			<acme:print value="${averageBudget}"/>
 		</td>
 	</tr>
 	<tr>
@@ -38,7 +38,7 @@
 			<acme:message code="client.dashboard.form.label.deviation"/>
 		</th>
 		<td>
-			<acme:print value="${deviationOfContractBudgets}"/>
+			<acme:print value="${deviationBudgets}"/>
 		</td>
 	</tr>
 </table>
@@ -60,10 +60,10 @@
 			datasets : [
 				{
 					data : [
-						<jstl:out value="${totalLogsWithCompletenessBelow25}"/>, 
-						<jstl:out value="${totalLogsWithCompletenessBetween25And50}"/>, 
-						<jstl:out value="${totalLogsWithCompletenessBetween50And75}"/>,
-						<jstl:out value="${totalLogsWithCompletenessAbove75}"/>
+						<jstl:out value="${numberLogsWithCompletenessBelow25}"/>, 
+						<jstl:out value="${numberLogsWithCompletenessBetween25And50}"/>, 
+						<jstl:out value="${numberLogsWithCompletenessBetween50And75}"/>,
+						<jstl:out value="${numberLogsWithCompletenessAbove75}"/>
 					]
 				}
 			]

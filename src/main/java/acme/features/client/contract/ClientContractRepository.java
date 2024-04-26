@@ -50,6 +50,9 @@ public interface ClientContractRepository extends AbstractRepository {
 	@Query("select sc from SystemConfiguration sc")
 	SystemConfiguration findSystemConfiguration();
 
+	@Query("SELECT pl FROM ProgressLogs pl WHERE pl.contract.id = :id AND pl.registrationMoment = (SELECT MIN(pl2.registrationMoment) FROM ProgressLogs pl2 WHERE pl2.contract.id = :id)")
+	ProgressLogs findProgressLogEarliestRegistrationMomentByContractId(int id);
+
 	default double currencyTransformerUsd(final Money initial) {
 		double res = initial.getAmount();
 

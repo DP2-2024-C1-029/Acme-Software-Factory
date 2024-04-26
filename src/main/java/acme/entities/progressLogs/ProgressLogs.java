@@ -42,7 +42,7 @@ public class ProgressLogs extends AbstractEntity {
 
 	@DecimalMin(value = "0.00")
 	@DecimalMax(value = "100.00")
-	private float				completeness;
+	private double				completeness;
 
 	@NotBlank
 	@Length(max = 100)

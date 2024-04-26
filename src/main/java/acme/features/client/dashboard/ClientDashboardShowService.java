@@ -31,36 +31,51 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 	@Override
 	public void load() {
 		ClientDashboard dashboard;
-		int numberLogsWithCompletenessBelow25;
-		int numberLogsWithCompletenessBetween25And50;
-		int numberLogsWithCompletenessBetween50And75;
-		int numberLogsWithCompletenessAbove75;
+		int totalLogsWithCompletenessBelow25;
+		int totalLogsWithCompletenessBetween25And50;
+		int totalLogsWithCompletenessBetween50And75;
+		int totalLogsWithCompletenessAbove75;
 		int clientId;
 
+		Double AverageBudgetOfContracts;
+		Double MinimunBudgetOfContracts;
+		Double MaximunBudgetOfContracts;
+
 		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		float percentaje25 = 25.0f;
-		float percentaje50 = 50.0f;
-		float percentaje75 = 75.0f;
-		numberLogsWithCompletenessBelow25 = this.repository.logsBelowCompletenessValue(clientId, percentaje25);
-		numberLogsWithCompletenessBetween25And50 = this.repository.logsBetweenCompletenessValuesForClient(clientId, percentaje25, percentaje50);
-		numberLogsWithCompletenessBetween50And75 = this.repository.logsBetweenCompletenessValuesForClient(clientId, percentaje50, percentaje75);
-		numberLogsWithCompletenessAbove75 = this.repository.logsAboveCompletenessValue(clientId, percentaje75);
+		double percentaje25 = 25.0;
+		double percentaje50 = 50.0;
+		double percentaje75 = 75.0;
 
-		dashboard = new ClientDashboard();
-
-		// Progress Logs
-		dashboard.setNumberLogsWithCompletenessBelow25(numberLogsWithCompletenessBelow25);
-		dashboard.setNumberLogsWithCompletenessBetween25And50(numberLogsWithCompletenessBetween25And50);
-		dashboard.setNumberLogsWithCompletenessBetween50And75(numberLogsWithCompletenessBetween50And75);
-		dashboard.setNumberLogsWithCompletenessAbove75(numberLogsWithCompletenessAbove75);
+		totalLogsWithCompletenessBelow25 = this.repository.logsBelowCompletenessValue(clientId, percentaje25);
+		totalLogsWithCompletenessBetween25And50 = this.repository.logsBetweenCompletenessValuesForClient(clientId, percentaje25, percentaje50);
+		totalLogsWithCompletenessBetween50And75 = this.repository.logsBetweenCompletenessValuesForClient(clientId, percentaje50, percentaje75);
+		totalLogsWithCompletenessAbove75 = this.repository.logsAboveCompletenessValue(clientId, percentaje75);
 
 		//Contracts
 		Collection<Money> contractBudgets = this.repository.findAllBudgetsFromClient(clientId);
 
-		dashboard.setAverageBudget(contractBudgets.stream().mapToDouble(u -> this.repository.currencyTransformerUsd(u)).average().getAsDouble());
+		if (!contractBudgets.isEmpty()) {
+			AverageBudgetOfContracts = contractBudgets.stream().mapToDouble(u -> this.repository.currencyTransformerUsd(u)).average().orElse(0.0);
+			MinimunBudgetOfContracts = contractBudgets.stream().mapToDouble(u -> this.repository.currencyTransformerUsd(u)).min().orElse(0.0);
+			MaximunBudgetOfContracts = contractBudgets.stream().mapToDouble(u -> this.repository.currencyTransformerUsd(u)).max().orElse(0.0);
+		} else {
+
+			AverageBudgetOfContracts = null;
+			MinimunBudgetOfContracts = null;
+			MaximunBudgetOfContracts = null;
+		}
+		dashboard = new ClientDashboard();
+
+		// Progress Logs
+		dashboard.setNumberLogsWithCompletenessBelow25(totalLogsWithCompletenessBelow25);
+		dashboard.setNumberLogsWithCompletenessBetween25And50(totalLogsWithCompletenessBetween25And50);
+		dashboard.setNumberLogsWithCompletenessBetween50And75(totalLogsWithCompletenessBetween50And75);
+		dashboard.setNumberLogsWithCompletenessAbove75(totalLogsWithCompletenessAbove75);
+
+		dashboard.setAverageBudget(AverageBudgetOfContracts);
+		dashboard.setMinimunBudget(MinimunBudgetOfContracts);
+		dashboard.setMaximunBudget(MaximunBudgetOfContracts);
 		dashboard.setDeviationBudgets(this.invoicesDeviationQuantity(contractBudgets));
-		dashboard.setMinimunBudget(contractBudgets.stream().mapToDouble(u -> this.repository.currencyTransformerUsd(u)).min().getAsDouble());
-		dashboard.setMaximunBudget(contractBudgets.stream().mapToDouble(u -> this.repository.currencyTransformerUsd(u)).max().getAsDouble());
 
 		super.getBuffer().addData(dashboard);
 	}
