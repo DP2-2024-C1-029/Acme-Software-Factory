@@ -106,10 +106,9 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		assert object != null;
 
 		Dataset dataset;
+		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink", "draftMode");
 
-		dataset = super.unbind(object, "draftMode", "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink");
 		dataset.put("masterId", object.getTrainingModule().getId());
-
 		super.getResponse().addData(dataset);
 	}
 

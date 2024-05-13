@@ -48,7 +48,6 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	@Override
 	public void bind(final TrainingSession object) {
 		assert object != null;
-
 		super.bind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink");
 	}
 
@@ -70,7 +69,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 			Date startTime = MomentHelper.deltaFromMoment(object.getStartTime(), 1, ChronoUnit.WEEKS);
 
 			// Comprobamos que sea una semana
-			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingSession.form.error.update-moment-less-than-week");
+			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingsession.form.error.end-date-less-than-week");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("startTime")) {
@@ -84,8 +83,12 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 			super.state(endBeforeCreation, "endTime", "developer.trainingSession.form.error.end-before-creation");
 		}
 
-	}
+		int masterId = super.getRequest().getData("id", int.class);
+		TrainingSession trainingSession = this.repository.findOneTrainingSessionById(masterId);
+		boolean noDraftTrainingSession = trainingSession.isDraftMode();
+		super.state(noDraftTrainingSession, "*", "developer.trainingSession.form.error.training-module-no-draft");
 
+	}
 	@Override
 	public void perform(final TrainingSession object) {
 		assert object != null;
