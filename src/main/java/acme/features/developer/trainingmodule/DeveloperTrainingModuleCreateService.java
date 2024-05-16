@@ -88,8 +88,6 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		if (!super.getBuffer().getErrors().hasErrors("estimatedTotalTime"))
 			super.state(object.getEstimatedTotalTime() > 0, "estimatedTotalTime", "developer.trainingModule.form.error.negative-estimated-total-time");
 
-		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");
 	}
 
 	@Override
