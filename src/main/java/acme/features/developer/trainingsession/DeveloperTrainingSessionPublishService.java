@@ -48,7 +48,6 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	@Override
 	public void bind(final TrainingSession object) {
 		assert object != null;
-
 		super.bind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink");
 	}
 
@@ -70,12 +69,12 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 			Date startTime = MomentHelper.deltaFromMoment(object.getStartTime(), 1, ChronoUnit.WEEKS);
 
 			// Comprobamos que sea una semana
-			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingSession.form.error.update-moment-less-than-week");
+			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingsession.form.error.end-date-less-than-week");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("startTime")) {
 			Date startTime = MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 1, ChronoUnit.WEEKS);
-			super.state(MomentHelper.isAfter(object.getStartTime(), startTime), "endTime", "developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week");
+			super.state(MomentHelper.isAfter(object.getStartTime(), startTime), "startTime", "developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week");
 
 		}
 
@@ -84,8 +83,12 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 			super.state(endBeforeCreation, "endTime", "developer.trainingSession.form.error.end-before-creation");
 		}
 
-	}
+		int masterId = super.getRequest().getData("id", int.class);
+		TrainingSession trainingSession = this.repository.findOneTrainingSessionById(masterId);
+		boolean noDraftTrainingSession = trainingSession.isDraftMode();
+		super.state(noDraftTrainingSession, "*", "developer.trainingSession.form.error.training-module-no-draft");
 
+	}
 	@Override
 	public void perform(final TrainingSession object) {
 		assert object != null;
@@ -99,10 +102,10 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	public void unbind(final TrainingSession object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink", "draftMode");
+		Dataset dataset;
+		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink", "draftMode");
 
 		dataset.put("masterId", object.getTrainingModule().getId());
-		dataset.put("isPublished", object.getTrainingModule().isDraftMode());
 		super.getResponse().addData(dataset);
 	}
 
