@@ -116,7 +116,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
-		Dataset dataset = super.unbind(object, "creationMoment", "details", "code", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "project");
+		Dataset dataset = super.unbind(object, "creationMoment", "details", "code", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "project", "draftMode");
 
 		dataset.put("difficultyLevel", choices.getSelected().getKey());
 		dataset.put("difficultyLevels", choices);

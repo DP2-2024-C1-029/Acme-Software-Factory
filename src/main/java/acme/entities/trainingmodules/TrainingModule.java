@@ -57,11 +57,10 @@ public class TrainingModule extends AbstractEntity {
 	private Date				updateMoment;
 
 	@URL
-	@Length(max = 255)
 	private String				link;
 
 	@NotNull
-	@Range(min = 1, max = 999)
+	@Range(min = 1)
 	private Integer				estimatedTotalTime;
 
 	@NotNull

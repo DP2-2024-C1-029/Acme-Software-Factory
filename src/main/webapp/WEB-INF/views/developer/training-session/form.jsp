@@ -16,10 +16,10 @@
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="developer.trainingsession.form.button.create" action="/developer/training-session/create?masterId=${masterId}"/>
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')&& draftMode == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')&& draftMode == true}">
 			<acme:submit code="developer.trainingsession.form.button.delete" action="/developer/training-session/delete"/>
 			<acme:submit code="developer.trainingsession.form.button.update" action="/developer/training-session/update"/>
-			<acme:submit code="developer.trainingsession.form.button.publish" action="/developer/training-session/publish?masterId=${id}"/>
+			<acme:submit code="developer.trainingsession.form.button.publish" action="/developer/training-session/publish?masterId=${masterId}"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>
