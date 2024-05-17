@@ -53,6 +53,9 @@ public interface ClientContractRepository extends AbstractRepository {
 	@Query("SELECT pl FROM ProgressLogs pl WHERE pl.contract.id = :id AND pl.id = (SELECT MIN(pl2.id) FROM ProgressLogs pl2 WHERE pl2.registrationMoment = (SELECT MIN(pl3.registrationMoment) FROM ProgressLogs pl3 WHERE pl3.contract.id = :id))")
 	ProgressLogs findProgressLogEarliestRegistrationMomentByContractId(int id);
 
+	@Query("SELECT c.acceptedCurrencies from Configuration c")
+	String findAcceptedCurrencies();
+
 	default double currencyTransformerUsd(final Money initial) {
 		double res = initial.getAmount();
 

@@ -3,6 +3,7 @@ package acme.features.client.contract;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,18 +87,32 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			super.state(existing == null, "code", "client.contract.form.error.duplicatedCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
-			super.state(this.repository.currencyTransformerUsd(object.getProject().getCost()) >= this.repository.currencyTransformerUsd(object.getBudget()), "budget", "client.contract.form.error.budget");
-
 		if (!super.getBuffer().getErrors().hasErrors("budget"))
 			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-budget");
 
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			super.state(this.isCurrencyAccepted(object.getBudget()), "budget", "client.contract.form.error.acceptedCurrency");
+		/*
+		 * if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
+		 * super.state(this.repository.currencyTransformerUsd(object.getProject().getCost()) >= this.repository.currencyTransformerUsd(object.getBudget()), "budget", "client.contract.form.error.budget");
+		 * 
+		 * if (!super.getBuffer().getErrors().hasErrors("budget"))
+		 * super.state(this.isCurrencyAccepted(object.getBudget()), "budget", "client.contract.form.error.acceptedCurrency");
+		 */
+
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");
+			super.state(Stream.of(acceptedCurrencies).anyMatch(c -> c.equals(object.getBudget().getCurrency())), //
+				"budget", "client.contract.form.error.acceptedCurrency");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "client.contract.form.error.project-not-published");
 
+		/*
+		 * if (!super.getBuffer().getErrors().hasErrors("budget") && this.sysConfigRepository.existsCurrency(object.getBudget().getCurrency())) {
+		 * boolean validBudget = object.getBudget().getAmount() >= 0. && this.sysConfigRepository.convertToUsd(object.getBudget()).getAmount() <= 1000000.0;
+		 * super.state(validBudget, "budget", "client.contract.form.error.budget-negative");
+		 * }
+		 */
 	}
 
 	@Override

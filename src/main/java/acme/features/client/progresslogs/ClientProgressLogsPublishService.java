@@ -33,7 +33,7 @@ public class ClientProgressLogsPublishService extends AbstractService<Client, Pr
 		progressLog = this.repository.findProgressLogById(progressLogId);
 		clientId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		isValid = clientId == progressLog.getContract().getClient().getId() && progressLog.isDraftMode() == true;
+		isValid = clientId == progressLog.getContract().getClient().getId() && progressLog.isDraftMode();
 
 		super.getResponse().setAuthorised(isValid);
 	}
@@ -67,8 +67,9 @@ public class ClientProgressLogsPublishService extends AbstractService<Client, Pr
 			contractId = this.repository.findProgressLogById(progressLogId).getContract().getId();
 			contract = this.repository.findContractById(contractId);
 
-			super.state(contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");
+			super.state(!contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");
 		}
+
 	}
 
 	@Override

@@ -79,12 +79,9 @@ public class ClientProgressLogsUpdateService extends AbstractService<Client, Pro
 			progressLogId = super.getRequest().getData("id", int.class);
 			contractId = this.repository.findProgressLogById(progressLogId).getContract().getId();
 			contract = this.repository.findContractById(contractId);
-
-			super.state(contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");
+			super.state(!contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("publishedProgressLog"))
-			super.state(object.isDraftMode(), "*", "client.progress-log.form.error.published-progress-log");
 	}
 
 	@Override

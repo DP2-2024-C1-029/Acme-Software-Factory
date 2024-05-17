@@ -2,7 +2,6 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -79,17 +78,12 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			super.state(numProgressLogsPublished.isEmpty(), "*", "client.contract.form.error.not-all-progress-logs-published");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("creationMoment")) {
-			ProgressLogs fetchedPl;
-			fetchedPl = this.repository.findProgressLogEarliestRegistrationMomentByContractId(object.getId());
-			Date registrationMoment;
-			if (fetchedPl == null)
-				registrationMoment = null;
-			else
-				registrationMoment = fetchedPl.getRegistrationMoment();
-			if (registrationMoment != null)
-				super.state(object.getInstantiationMoment().before(this.repository.findProgressLogEarliestRegistrationMomentByContractId(object.getId()).getRegistrationMoment()), "instantiationMoment", "client.contract.form.error.instantiation-moment");
-		}
+		/*
+		 * if (!super.getBuffer().getErrors().hasErrors("budget") && this.sysConfigRepository.existsCurrency(object.getBudget().getCurrency())) {
+		 * boolean validBudget = object.getBudget().getAmount() >= 0. && this.sysConfigRepository.convertToUsd(object.getBudget()).getAmount() <= 1000000.0;
+		 * super.state(validBudget, "budget", "client.contract.form.error.budget-negative");
+		 * }
+		 */
 	}
 	@Override
 	public void load() {

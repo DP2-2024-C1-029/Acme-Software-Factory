@@ -26,4 +26,4 @@ client.progress-logs.form.button.publish = Publicar
 client.progress-log.form.error.published-progress-log = El registro de progreso está publicado
 client.progress-log.form.error.duplicated-record-id = El identificador esta duplicado
 client.progress-log.form.error.registration-moment-must-be-later = La fecha de registro debe ser posterior
-client.progress-log.form.error.published-contract = El contracto esta publicado
+client.progress-log.form.error.published-contract = El contracto no esta publicado
