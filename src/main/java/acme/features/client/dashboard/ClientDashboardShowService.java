@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.features.authenticated.exchange.AuthenticatedExchangeService;
 import acme.forms.ClientDashboard;
 import acme.roles.Client;
 
@@ -18,7 +19,10 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientDashboardRepository repository;
+	private ClientDashboardRepository		repository;
+
+	@Autowired
+	private AuthenticatedExchangeService	exchangeService;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -42,9 +46,9 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		Double MaximunBudgetOfContracts;
 
 		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		double percentaje25 = 25.0;
-		double percentaje50 = 50.0;
-		double percentaje75 = 75.0;
+		double percentaje25 = 0.25;
+		double percentaje50 = 0.50;
+		double percentaje75 = 0.75;
 
 		totalLogsWithCompletenessBelow25 = this.repository.logsBelowCompletenessValue(clientId, percentaje25);
 		totalLogsWithCompletenessBetween25And50 = this.repository.logsBetweenCompletenessValuesForClient(clientId, percentaje25, percentaje50);

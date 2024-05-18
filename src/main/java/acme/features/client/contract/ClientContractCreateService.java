@@ -14,6 +14,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
 import acme.entities.projects.Project;
+import acme.features.authenticated.exchange.AuthenticatedExchangeService;
 import acme.roles.Client;
 
 @Service
@@ -22,7 +23,10 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractRepository repository;
+	private ClientContractRepository		repository;
+
+	@Autowired
+	private AuthenticatedExchangeService	exchangeService;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -74,7 +78,12 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
-			super.state(this.repository.currencyTransformerUsd(object.getProject().getCost()) >= this.repository.currencyTransformerUsd(object.getBudget()), "budget", "client.contract.form.error.budget");
+			super.state(this.exchangeService.changeForCurrencyToCurrency(object.getProject().getCost().getAmount(), object.getProject().getCost().getCurrency(), // 
+				super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount() >= this.exchangeService
+					.changeForCurrencyToCurrency(object.getBudget().getAmount(), object.getBudget().getCurrency(), //
+						super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges())
+					.getAmount(),
+				"budget", "client.contract.form.error.budget");
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");

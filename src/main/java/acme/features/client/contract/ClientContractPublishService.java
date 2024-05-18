@@ -12,6 +12,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
 import acme.entities.projects.Project;
+import acme.features.authenticated.exchange.AuthenticatedExchangeService;
 import acme.roles.Client;
 
 @Service
@@ -20,7 +21,10 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	public ClientContractRepository repository;
+	public ClientContractRepository			repository;
+
+	@Autowired
+	private AuthenticatedExchangeService	exchangeService;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -63,11 +67,21 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project")) {
 			int projectId = object.getProject().getId();
 			Collection<Contract> contracts = this.repository.findContractsByProjectId(projectId);
-			Double totalBudgetUsd = contracts.stream().mapToDouble(u -> this.repository.currencyTransformerUsd(u.getBudget())).sum();
-			Double projectCostUsd = this.repository.currencyTransformerUsd(object.getProject().getCost());
+			Double totalBudgetUsd = contracts.stream().mapToDouble(u -> this.exchangeService.changeForCurrencyToCurrency(u.getBudget().getAmount(), //
+				u.getBudget().getCurrency(), super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount()).sum();
+			Double projectCostUsd = this.exchangeService.changeForCurrencyToCurrency(object.getProject().getCost().getAmount(), object.getProject().getCost().getCurrency(), // 
+				super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount();
 
 			super.state(totalBudgetUsd <= projectCostUsd, "*", "client.contract.form.error.publishError");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
+			super.state(this.exchangeService.changeForCurrencyToCurrency(object.getProject().getCost().getAmount(), object.getProject().getCost().getCurrency(), // 
+				super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount() >= this.exchangeService
+					.changeForCurrencyToCurrency(object.getBudget().getAmount(), object.getBudget().getCurrency(), //
+						super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges())
+					.getAmount(),
+				"budget", "client.contract.form.error.budget");
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");

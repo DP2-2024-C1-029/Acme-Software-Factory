@@ -12,6 +12,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
 import acme.entities.projects.Project;
+import acme.features.authenticated.exchange.AuthenticatedExchangeService;
 import acme.roles.Client;
 
 @Service
@@ -20,7 +21,10 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	public ClientContractRepository repository;
+	public ClientContractRepository			repository;
+
+	@Autowired
+	private AuthenticatedExchangeService	exchangeService;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -75,11 +79,13 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 				super.state(existing.getId() == object.getId(), "code", "client.contract.form.error.duplicatedCode");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project")) {
-			Project referencedProject = object.getProject();
-			super.state(this.repository.currencyTransformerUsd(referencedProject.getCost()) >= //
-				this.repository.currencyTransformerUsd(object.getBudget()), "budget", "client.contract.form.error.budget");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
+			super.state(this.exchangeService.changeForCurrencyToCurrency(object.getProject().getCost().getAmount(), object.getProject().getCost().getCurrency(), // 
+				super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount() >= this.exchangeService
+					.changeForCurrencyToCurrency(object.getBudget().getAmount(), object.getBudget().getCurrency(), //
+						super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges())
+					.getAmount(),
+				"budget", "client.contract.form.error.budget");
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");
