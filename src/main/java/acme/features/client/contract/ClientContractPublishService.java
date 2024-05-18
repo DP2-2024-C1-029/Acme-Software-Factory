@@ -2,6 +2,7 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,6 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
-import acme.entities.progressLogs.ProgressLogs;
 import acme.entities.projects.Project;
 import acme.roles.Client;
 
@@ -69,21 +69,20 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			super.state(totalBudgetUsd <= projectCostUsd, "*", "client.contract.form.error.publishError");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");
+			super.state(Stream.of(acceptedCurrencies).anyMatch(c -> c.equals(object.getBudget().getCurrency())), //
+				"budget", "client.contract.form.error.acceptedCurrency");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "client.contract.form.error.project-not-published");
 
-		{
-			Collection<ProgressLogs> numProgressLogsPublished;
-			numProgressLogsPublished = this.repository.findManyProgressLogsNotPublishedByContractId(object.getId());
-			super.state(numProgressLogsPublished.isEmpty(), "*", "client.contract.form.error.not-all-progress-logs-published");
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			boolean validBudget = object.getBudget().getAmount() >= 0 && object.getBudget().getAmount() <= 1000000.0;
+			super.state(validBudget, "budget", "client.contract.form.error.maximum-negative-budget");
 		}
 
-		/*
-		 * if (!super.getBuffer().getErrors().hasErrors("budget") && this.sysConfigRepository.existsCurrency(object.getBudget().getCurrency())) {
-		 * boolean validBudget = object.getBudget().getAmount() >= 0. && this.sysConfigRepository.convertToUsd(object.getBudget()).getAmount() <= 1000000.0;
-		 * super.state(validBudget, "budget", "client.contract.form.error.budget-negative");
-		 * }
-		 */
 	}
 	@Override
 	public void load() {

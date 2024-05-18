@@ -29,6 +29,6 @@ client.contract.form.error.budget= The budget is greater than the cost associate
 client.contract.form.error.publishError = The total budget must not exceed the cost of the project
 client.contract.form.error.not-all-progress-logs-published = All the progressLogs must be published before
 client.contract.form.error.published-progress-logs-found = Cannot delete contract with published progress logs
-client.contract.form.error.negative-budget = The budget cannot be negative
 client.contract.form.error.acceptedCurrency = Currency not valid
 client.contract.form.error.project-not-published = The associated project must be published
+client.contract.form.error.maximum-negative-budget = The budget cant be more than 1000000.0 USD and must be positive

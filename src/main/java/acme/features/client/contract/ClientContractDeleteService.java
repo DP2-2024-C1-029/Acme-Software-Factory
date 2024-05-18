@@ -70,12 +70,6 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	public void validate(final Contract object) {
 		assert object != null;
 
-		{
-			Collection<ProgressLogs> progressLogsNotPublished;
-			progressLogsNotPublished = this.repository.findManyProgressLogsNotPublishedByContractId(object.getId());
-			super.state(progressLogsNotPublished.isEmpty(), "*", "client.contract.form.error.published-progress-logs-found");
-		}
-
 	}
 
 	@Override

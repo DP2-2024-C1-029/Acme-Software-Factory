@@ -1,6 +1,8 @@
 
 package acme.features.client.progresslogs;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,6 +70,21 @@ public class ClientProgressLogsPublishService extends AbstractService<Client, Pr
 			contract = this.repository.findContractById(contractId);
 
 			super.state(!contract.isDraftMode(), "*", "client.progress-log.form.error.published-contract");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("completeness")) {
+
+			Double maxCompleteness = this.repository.findMaxCompletnessProgressLog(object.getContract().getId());
+
+			if (maxCompleteness != null)
+				super.state(maxCompleteness < object.getCompleteness(), "completeness", "client.progress-log.form.error.completeness");
+
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("registrationMoment")) {
+
+			Collection<ProgressLogs> sameDate = this.repository.findProgressLogsByContractIdDate(object.getContract().getId(), object.getId(), object.getRegistrationMoment());
+			super.state(sameDate.isEmpty(), "registrationMoment", "client.progress-log.form.error.same-moment");
 		}
 
 	}

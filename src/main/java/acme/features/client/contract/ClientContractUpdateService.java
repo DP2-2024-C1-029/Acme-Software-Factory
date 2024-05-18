@@ -7,13 +7,11 @@ import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contracts.Contract;
 import acme.entities.projects.Project;
-import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.roles.Client;
 
 @Service
@@ -65,18 +63,6 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		super.bind(contract, "code", "project", "providerName", "customerName", "instantiationMoment", "budget", "goals");
 	}
 
-	public boolean isCurrencyAccepted(final Money moneda) {
-		SystemConfiguration moneys;
-		moneys = this.repository.findSystemConfiguration();
-
-		String[] listaMonedas = moneys.getAcceptedCurrencies().split(",");
-		for (String divisa : listaMonedas)
-			if (moneda.getCurrency().equals(divisa))
-				return true;
-
-		return false;
-	}
-
 	@Override
 	public void validate(final Contract object) {
 		assert object != null;
@@ -90,19 +76,10 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project")) {
-
 			Project referencedProject = object.getProject();
-			super.state(this.repository.currencyTransformerUsd(referencedProject.getCost()) >= this.repository.currencyTransformerUsd(object.getBudget()), "budget", "client.contract.form.error.budget");
+			super.state(this.repository.currencyTransformerUsd(referencedProject.getCost()) >= //
+				this.repository.currencyTransformerUsd(object.getBudget()), "budget", "client.contract.form.error.budget");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("budget"))
-			super.state(object.getBudget().getAmount() > 0, "budget", "client.contract.form.error.negative-budget");
-
-		/*
-		 * 
-		 * if (!super.getBuffer().getErrors().hasErrors("budget"))
-		 * super.state(this.isCurrencyAccepted(object.getBudget()), "budget", "client.contract.form.error.acceptedCurrency");
-		 */
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");
@@ -113,12 +90,10 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "client.contract.form.error.project-not-published");
 
-		/*
-		 * if (!super.getBuffer().getErrors().hasErrors("budget") && this.sysConfigRepository.existsCurrency(object.getBudget().getCurrency())) {
-		 * boolean validBudget = object.getBudget().getAmount() >= 0. && this.sysConfigRepository.convertToUsd(object.getBudget()).getAmount() <= 1000000.0;
-		 * super.state(validBudget, "budget", "client.contract.form.error.budget-negative");
-		 * }
-		 */
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			boolean validBudget = object.getBudget().getAmount() >= 0 && object.getBudget().getAmount() <= 1000000.0;
+			super.state(validBudget, "budget", "client.contract.form.error.maximum-negative-budget");
+		}
 	}
 
 	@Override
