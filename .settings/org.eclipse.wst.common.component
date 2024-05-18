@@ -298,7 +298,8 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/acme-framework-24.4.0"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/acme-framework-24-4.0"/>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
         
         

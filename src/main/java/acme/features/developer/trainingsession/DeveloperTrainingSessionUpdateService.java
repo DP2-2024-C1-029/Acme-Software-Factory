@@ -79,7 +79,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		if (!super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("startTime")) {
 			Date startTime = MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 1, ChronoUnit.WEEKS);
-			super.state(MomentHelper.isAfter(object.getStartTime(), startTime), "endTime", "developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week");
+			super.state(MomentHelper.isAfter(object.getStartTime(), startTime), "startTime", "developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week");
 
 		}
 
@@ -106,10 +106,9 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		assert object != null;
 
 		Dataset dataset;
-
 		dataset = super.unbind(object, "code", "startTime", "endTime", "location", "instructor", "contactEmail", "furtherInformationLink", "draftMode");
-		dataset.put("masterId", object.getTrainingModule().getId());
 
+		dataset.put("masterId", object.getTrainingModule().getId());
 		super.getResponse().addData(dataset);
 	}
 
