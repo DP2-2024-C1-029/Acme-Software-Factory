@@ -16,15 +16,15 @@ contract-14,A-010,2001/01/01 0:00,मलाका प्रणालीहरू
 contract-15,A-011,2001/01/01 0:00,órgão gestor da pesca e da caça do governo brasileiro,Joaquín,reparar deuda,EUR 1000.00,project-04,client-02,true
 contract-16,A-012,2001/01/01 0:00,MEDION,Joaquín,reparar deuda,EUR 1000.00,project-01,client-02,true
 contract-17,A-013,2001/01/01 0:00,MEDION,"Uvuvwevwevwe Onyetenyevwe Ugwemuhwem Osas ugaarsade jaguar, tam",reparar deuda,EUR 1000.00,project-04,client-01,true
-contract-18,A-014,2001/01/01 0:00,MEDION,asociación española por el deporte y salud mental,reparar deuda,EUR 1000.00,project-06,client-01,true
+contract-18,A-014,2001/01/01 0:00,MEDION,asociación española por el deporte y salud mental,reparar deuda,EUR 1000.00,project-14,client-01,true
 contract-19,A-015,2001/01/01 0:00,MEDION,Brhadaranyakopanishadvivekachudaman@ Erreh,reparar deuda,GBP 1000.00,project-01,client-01,true
-contract-20,A-016,2001/01/01 0:00,MEDION,asociacion de conducta de entidades del gran banco de españa nuestra nacion,reparar deuda,EUR 1000.00,project-06,client-01,true
-contract-21,A-017,2001/01/01 0:00,MEDION,Joaquín,reparar deuda,EUR 1000.00,project-06,client-01,false
-contract-22,A-018,2001/01/01 0:00,MEDION,Joaquín,"mejorar las ventas, acceder a mejor software, aumentar la calidad en el desarrollo, prosperar.",EUR 1000.00,project-06,client-02,true
-contract-23,A-019,2001/01/01 0:00,MEDION,Joaquín,"desarrollar tecnología necesaria , aumentar ventas",EUR 1000.00,project-06,client-02,false
-contract-24,A-020,2001/01/01 0:00,MEDION,Joaquín,ser mejor persona,EUR 1000.00,project-06,client-01,true
+contract-20,A-016,2001/01/01 0:00,MEDION,asociacion de conducta de entidades del gran banco de españa nuestra nacion,reparar deuda,EUR 1000.00,project-14,client-01,true
+contract-21,A-017,2001/01/01 0:00,MEDION,Joaquín,reparar deuda,EUR 1000.00,project-14,client-01,false
+contract-22,A-018,2001/01/01 0:00,MEDION,Joaquín,"mejorar las ventas, acceder a mejor software, aumentar la calidad en el desarrollo, prosperar.",EUR 1000.00,project-14,client-02,true
+contract-23,A-019,2001/01/01 0:00,MEDION,Joaquín,"desarrollar tecnología necesaria , aumentar ventas",EUR 1000.00,project-14,client-02,false
+contract-24,A-020,2001/01/01 0:00,MEDION,Joaquín,ser mejor persona,EUR 1000.00,project-14,client-01,true
 contract-25,A-021,2001/01/01 0:00,MEDION,Joaquín,"encabezar la competencia tecnológica, contratar más emplead@s.",USD 1000.00,project-01,client-02,true
-contract-26,A-022,2001/01/01 0:00,MEDION,Joaquín,reparar deuda,EUR 1000.00,project-06,client-01,true
+contract-26,A-022,2001/01/01 0:00,MEDION,Joaquín,reparar deuda,EUR 1000.00,project-14,client-01,true
 contract-27,A-023,2001/01/01 0:00,MEDION,Joaquín,reparar deuda,EUR 1000000.00,project-02,client-01,false
 contract-28,A-024,2001/01/01 0:00,MEDION,Joaquín,reparar deuda,EUR 500000.00,project-02,client-02,true
 contract-29,A-025,2001/01/01 0:00,MEDION,Joaquín,reparar deuda,EUR 35555.55,project-02,client-02,true
