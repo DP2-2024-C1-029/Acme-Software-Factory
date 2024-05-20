@@ -83,6 +83,9 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 		dataset.put("mark", marks.getSelected().getKey());
 		dataset.put("marks", marks);
 
+		dataset.put("masterId", object.getCodeAudit().getId());
+		dataset.put("draftMode", object.getCodeAudit().isDraftMode());
+
 		super.getResponse().addData(dataset);
 	}
 
