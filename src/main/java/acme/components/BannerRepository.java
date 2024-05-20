@@ -53,6 +53,6 @@ public interface BannerRepository extends AbstractRepository {
 			result = list.isEmpty() ? null : list.get(0);
 		}
 
-		return null;
+		return result;
 	}
 }

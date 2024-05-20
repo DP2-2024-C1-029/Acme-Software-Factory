@@ -58,10 +58,8 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Contract existing;
-
 			existing = this.repository.findContractByCode(object.getCode());
-			if (existing != null)
-				super.state(existing.getId() == object.getId(), "code", "client.contract.form.error.duplicatedCode");
+			super.state(existing == null || existing.equals(object), "code", "client.contract.form.error.duplicatedCode");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
@@ -88,7 +86,8 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 
 		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project")) {
 			int projectId = object.getProject().getId();
-			Collection<Contract> contracts = this.repository.findContractsByProjectId(projectId);
+			Collection<Contract> contracts = this.repository.findContractsByProjectIdExceptThis(projectId, object.getId());
+			contracts.add(object);
 			Double totalBudgetUsd = contracts.stream().mapToDouble(u -> this.exchangeService.changeForCurrencyToCurrency(u.getBudget().getAmount(), //
 				u.getBudget().getCurrency(), super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount()).sum();
 			Double projectCostUsd = this.exchangeService.changeForCurrencyToCurrency(object.getProject().getCost().getAmount(), object.getProject().getCost().getCurrency(), // 
