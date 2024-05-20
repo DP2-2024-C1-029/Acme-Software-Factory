@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
+import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
@@ -61,13 +62,11 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			int id;
-			boolean existingCode;
+			TrainingModule existingCode;
 
-			id = super.getRequest().getData("id", int.class);
-			existingCode = this.repository.findAllTrainingSessions().stream().filter(e -> e.getId() != id).anyMatch(e -> e.getCode().equals(object.getCode()));
+			existingCode = this.repository.findTrainingSessionByCode(object.getCode());
 
-			super.state(!existingCode, "code", "developer.trainingsession.form.error.duplicated-code");
+			super.state(existingCode == null, "code", "developer.trainingsession.form.error.duplicated");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("startTime") && !super.getBuffer().getErrors().hasErrors("endTime")) {

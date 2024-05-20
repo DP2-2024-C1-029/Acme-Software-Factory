@@ -68,23 +68,16 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			int id;
-			boolean existingCode;
+			TrainingModule existingCode;
 
-			id = super.getRequest().getData("id", int.class);
-			existingCode = this.repository.findAllTrainingModules().stream().filter(e -> e.getId() != id).anyMatch(e -> e.getCode().equals(object.getCode()));
+			existingCode = this.repository.findTrainingModuleByCode(object.getCode());
 
-			super.state(!existingCode, "code", "developer.trainingModule.form.error.duplicated-code");
+			super.state(existingCode == null, "code", "developer.trainingModule.form.error.duplicated-code");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("estimatedTotalTime"))
-			super.state(object.getEstimatedTotalTime() > 0, "estimatedTotalTime", "developer.trainingModule.form.error.negative-estimated-total-time");
 
 		int masterId = super.getRequest().getData("id", int.class);
 		List<TrainingSession> ls = this.repository.findManyTrainingSessionsByTrainingModuleId(masterId).stream().toList();
 		boolean someDraftTrainingSession = ls.stream().anyMatch(Session -> Session.isDraftMode());
-		boolean noSession = ls.isEmpty();
-		super.state(!noSession, "*", "developer.trainingModule.form.error.trainingSession-empty");
 		super.state(!someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
