@@ -77,14 +77,14 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		int masterId = super.getRequest().getData("id", int.class);
 		boolean someDraftTrainingSession = this.repository.findManyTrainingSessionsByTrainingModuleIdAndDraftMode(masterId).isEmpty();
-		super.state(!someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
+		super.state(someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");
 
 		int trainingModuleId = super.getRequest().getData("id", int.class);
 		TrainingModule someTrainingModule = this.repository.findOneTrainingModuleById(trainingModuleId);
-		super.state(someTrainingModule == null, "*", "developer.trainingModule.form.error.trainingModule-empty");
+		super.state(someTrainingModule != null, "*", "developer.trainingModule.form.error.trainingModule-empty");
 	}
 
 	@Override
