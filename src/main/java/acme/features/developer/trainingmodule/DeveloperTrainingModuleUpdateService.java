@@ -76,10 +76,12 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingModule existingCode;
+			int objectId = object.getId();
 
 			existingCode = this.repository.findTrainingModuleByCode(object.getCode());
 
-			super.state(existingCode == null, "code", "developer.trainingModule.form.error.duplicated-code");
+			boolean isDuplicatedCode = existingCode != null && existingCode.getId() != objectId;
+			super.state(!isDuplicatedCode, "code", "developer.trainingModule.form.error.duplicated-code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))

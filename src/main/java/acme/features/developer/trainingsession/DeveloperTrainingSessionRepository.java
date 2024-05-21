@@ -35,5 +35,5 @@ public interface DeveloperTrainingSessionRepository extends AbstractRepository {
 	Collection<TrainingSession> findAllTrainingSessions();
 
 	@Query("SELECT t FROM TrainingSession t where t.code = :code")
-	TrainingModule findTrainingSessionByCode(String code);
+	TrainingSession findTrainingSessionByCode(String code);
 }

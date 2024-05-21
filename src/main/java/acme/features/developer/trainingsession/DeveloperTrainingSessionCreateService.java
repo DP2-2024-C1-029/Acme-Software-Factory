@@ -69,7 +69,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			TrainingModule existingCode;
+			TrainingSession existingCode;
 
 			existingCode = this.repository.findTrainingSessionByCode(object.getCode());
 

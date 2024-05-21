@@ -67,10 +67,12 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingModule existingCode;
+			int objectId = object.getId();
 
 			existingCode = this.repository.findTrainingModuleByCode(object.getCode());
 
-			super.state(existingCode == null, "code", "developer.trainingModule.form.error.duplicated-code");
+			boolean isDuplicatedCode = existingCode != null && existingCode.getId() != objectId;
+			super.state(!isDuplicatedCode, "code", "developer.trainingModule.form.error.duplicated-code");
 		}
 
 		int masterId = super.getRequest().getData("id", int.class);

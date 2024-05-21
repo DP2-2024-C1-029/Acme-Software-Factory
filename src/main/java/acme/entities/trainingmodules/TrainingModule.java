@@ -46,7 +46,7 @@ public class TrainingModule extends AbstractEntity {
 
 	@NotBlank
 	@NotNull
-	@Length(max = 100)
+	@Length(min = 1, max = 100)
 	private String				details;
 
 	@NotNull
@@ -57,6 +57,7 @@ public class TrainingModule extends AbstractEntity {
 	private Date				updateMoment;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	@NotNull
