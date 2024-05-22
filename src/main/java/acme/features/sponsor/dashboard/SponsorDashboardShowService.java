@@ -3,7 +3,6 @@ package acme.features.sponsor.dashboard;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Service;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.configuration.Configuration;
+import acme.features.administrator.configuration.AdministratorConfigurationRepository;
 import acme.features.authenticated.exchange.AuthenticatedExchangeService;
 import acme.forms.sponsor.Dashboard;
 import acme.roles.Sponsor;
@@ -22,10 +23,13 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Dashbo
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	public SponsorDashboardRepository	repository;
+	public SponsorDashboardRepository			repository;
 
 	@Autowired
-	public AuthenticatedExchangeService	exchangeService;
+	public AuthenticatedExchangeService			exchangeService;
+
+	@Autowired
+	public AdministratorConfigurationRepository	administratorConfigurationRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -49,15 +53,16 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Dashbo
 		Double deviationQuantityInvoices;
 		Double minimumQuantityInvoices;
 		Double maximumQuantityInvoices;
-		Map<String, Double> allChanges;
 		Collection<Money> allAmountsSponsorships;
 		Collection<Money> allQuantitiesInvoices;
 
 		sponsorId = this.getRequest().getPrincipal().getActiveRoleId();
 
-		allChanges = this.exchangeService.getChanges();
-		allAmountsSponsorships = this.changeCurrency(this.repository.findAllAmountsOfSponsorships(sponsorId), allChanges);
-		allQuantitiesInvoices = this.changeCurrency(this.repository.findAllQuantitiesOfInvoices(sponsorId), allChanges);
+		Configuration configuration = this.administratorConfigurationRepository.findConfigurationOfSystem();
+		String systemCurrency = configuration.getCurrency();
+
+		allAmountsSponsorships = this.changeCurrency(this.repository.findAllAmountsOfSponsorships(sponsorId));
+		allQuantitiesInvoices = this.changeCurrency(this.repository.findAllQuantitiesOfInvoices(sponsorId));
 
 		if (allQuantitiesInvoices.isEmpty())
 			totalInvoicesWithTaxLowerTo21 = null;
@@ -84,21 +89,21 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Dashbo
 		dashboard = new Dashboard();
 		dashboard.setTotalInvoicesWithTaxLowerTo21(totalInvoicesWithTaxLowerTo21);
 		dashboard.setTotalSponsorshipsWithLink(totalSponsorshipsWithLink);
-		dashboard.setAverageAmountSponsorships(this.moneyOfAmount(averageAmountSponsorships));
-		dashboard.setDeviationAmountSponsorships(this.moneyOfAmount(deviationAmountSponsorships));
-		dashboard.setMinimumAmountSponsorships(this.moneyOfAmount(minimumAmountSponsorships));
-		dashboard.setMaximumAmountSponsorships(this.moneyOfAmount(maximumAmountSponsorships));
-		dashboard.setAverageQuantityInvoices(this.moneyOfAmount(averageQuantityInvoices));
-		dashboard.setDeviationQuantityInvoices(this.moneyOfAmount(deviationQuantityInvoices));
-		dashboard.setMinimumQuantityInvoices(this.moneyOfAmount(minimumQuantityInvoices));
-		dashboard.setMaximumQuantityInvoices(this.moneyOfAmount(maximumQuantityInvoices));
+		dashboard.setAverageAmountSponsorships(this.moneyOfAmount(averageAmountSponsorships, systemCurrency));
+		dashboard.setDeviationAmountSponsorships(this.moneyOfAmount(deviationAmountSponsorships, systemCurrency));
+		dashboard.setMinimumAmountSponsorships(this.moneyOfAmount(minimumAmountSponsorships, systemCurrency));
+		dashboard.setMaximumAmountSponsorships(this.moneyOfAmount(maximumAmountSponsorships, systemCurrency));
+		dashboard.setAverageQuantityInvoices(this.moneyOfAmount(averageQuantityInvoices, systemCurrency));
+		dashboard.setDeviationQuantityInvoices(this.moneyOfAmount(deviationQuantityInvoices, systemCurrency));
+		dashboard.setMinimumQuantityInvoices(this.moneyOfAmount(minimumQuantityInvoices, systemCurrency));
+		dashboard.setMaximumQuantityInvoices(this.moneyOfAmount(maximumQuantityInvoices, systemCurrency));
 
 		super.getBuffer().addData(dashboard);
 	}
 
-	public List<Money> changeCurrency(final Collection<Money> ls, final Map<String, Double> changes) {
+	public List<Money> changeCurrency(final Collection<Money> ls) {
 		return ls.stream()//
-			.map(m -> this.exchangeService.changeForCurrencyToCurrency(m.getAmount(), m.getCurrency(), super.getRequest().getGlobal("$locale", String.class), changes))//
+			.map(m -> this.exchangeService.changeSourceToTarget(m))//
 			.collect(Collectors.toList());
 	}
 
@@ -108,13 +113,13 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Dashbo
 				.mapToDouble(m -> Math.pow(m.getAmount() - average, 2)).sum() / cl.size());
 	}
 
-	public Money moneyOfAmount(final Double amount) {
+	public Money moneyOfAmount(final Double amount, final String systemCurrency) {
 		Money res;
 
 		if (amount != null && !amount.equals(Double.NaN)) {
 			res = new Money();
 			res.setAmount(amount);
-			res.setCurrency(super.getRequest().getGlobal("$locale", String.class).equals("es") ? "EUR" : "USD");
+			res.setCurrency(systemCurrency);
 		} else
 			res = null;
 
