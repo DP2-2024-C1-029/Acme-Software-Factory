@@ -17,7 +17,7 @@ TrainingModule
 - details: String {NotBlank, NotNull, Length(1,100)}
 + difficultyLevel: DifficultyLevel {NotNull}
 - updateMoment: Date {Temporal(TIMESTAMP)}
-- link: String {URL}
+- link: String {URL, Length(0,255)}
 + estimatedTotalTime: Integer {NotNull}
 + draftMode: boolean {NotNull}
 bg=green</panel_attributes>
@@ -58,7 +58,7 @@ TrainingSession
 + location: String {NotBlank, NotNull, Length(1,75)}
 + instruction: String {NotBlank,NotNull, Length(1,75)}
 + contacEmail: String {Email, NotNull, NotBlank}
-+ link: furtherInformationLink {URL}
++ link: furtherInformationLink {URL, Length(0,255)}
 + estimatedTotalTime: Integer {NotNull}
 + draftMode: boolean {NotNull}
 bg=green
