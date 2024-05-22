@@ -18,8 +18,10 @@ manager.project.form.label.title = Title
 manager.project.form.label.abstractText = Text
 manager.project.form.label.indication = Indication
 manager.project.form.label.cost = Cost
+manager.project.form.label.internationalised-cost = Cost in system currency
 manager.project.form.label.link = Link
 manager.project.form.label.draftMode = Published
+manager.project.form.label.published = Project published
 manager.project.form.title = Project details
 manager.project-user-story.list.label.userStories = Select User story to add
 

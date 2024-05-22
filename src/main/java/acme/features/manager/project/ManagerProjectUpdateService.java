@@ -54,6 +54,13 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void validate(final Project object) {
 		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Project existing = this.repository.findOneProjectByCode(object.getCode());
+			int projectId = super.getRequest().getData("id", int.class);
+			if (existing != null && existing.getId() != projectId)
+				super.state(existing == null, "code", "manager.project.form.error.duplicated");
+		}
+
 		int id = super.getRequest().getData("id", int.class);
 		Project projectPreSave = this.repository.findOneProjectById(id);
 		if (!super.getBuffer().getErrors().hasErrors("published"))

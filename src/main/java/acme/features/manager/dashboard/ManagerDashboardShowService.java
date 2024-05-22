@@ -14,7 +14,6 @@ package acme.features.manager.dashboard;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,8 @@ import org.springframework.stereotype.Service;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.configuration.Configuration;
+import acme.features.administrator.configuration.AdministratorConfigurationRepository;
 import acme.features.authenticated.exchange.AuthenticatedExchangeService;
 import acme.forms.ManagerDashboard;
 import acme.roles.Manager;
@@ -33,10 +34,13 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerDashboardRepository	repository;
+	private ManagerDashboardRepository			repository;
 
 	@Autowired
-	public AuthenticatedExchangeService	exchangeService;
+	public AuthenticatedExchangeService			exchangeService;
+
+	@Autowired
+	public AdministratorConfigurationRepository	administratorConfigurationRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -72,10 +76,9 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 			deviationEstimatedCost = Math.sqrt(allEstimatedCost.stream().mapToDouble(m -> Math.pow(m - average, 2)).sum() / allEstimatedCost.size());
 		}
 
-		Map<String, Double> allChanges = this.exchangeService.getChanges();
 		Collection<Money> allMoneyCost = this.repository.getAllMoneyProjectCost(manager.getId());
 		if (allMoneyCost != null && !allMoneyCost.isEmpty()) {
-			Collection<Money> allMoneyCostInOneCurrency = this.changeCurrency(allMoneyCost, allChanges);
+			Collection<Money> allMoneyCostInOneCurrency = this.changeCurrency(allMoneyCost);
 			averageCostProject = allMoneyCostInOneCurrency.stream().mapToDouble(Money::getAmount).average().orElse(0);
 			deviationCostProject = this.deviation(allMoneyCostInOneCurrency, averageCostProject);
 			minimumCostProject = allMoneyCostInOneCurrency.stream().mapToDouble(Money::getAmount).min().orElse(0);
@@ -108,12 +111,18 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 			"totalUserStoryCould", "totalUserStoryWont", //
 			"averageEstimatedCost", "deviationEstimatedCost", "minimumEstimatedCost", "maximumEstimatedCost", "averageCostProject", "deviationCostProject", "minimumCostProject", "maximumCostProject");
 
+		Configuration configuration = this.administratorConfigurationRepository.findConfigurationOfSystem();
+		String[] currencySystem = new String[1];
+		currencySystem[0] = configuration.getCurrency();
+
+		dataset.put("currencySystem", currencySystem);
+
 		super.getResponse().addData(dataset);
 	}
 
-	private List<Money> changeCurrency(final Collection<Money> ls, final Map<String, Double> changes) {
+	private List<Money> changeCurrency(final Collection<Money> ls) {
 		return ls.stream()//
-			.map(m -> this.exchangeService.changeForCurrencyToCurrency(m.getAmount(), m.getCurrency(), super.getRequest().getGlobal("$locale", String.class), changes))//
+			.map(m -> this.exchangeService.changeSourceToTarget(m))//
 			.collect(Collectors.toList());
 	}
 

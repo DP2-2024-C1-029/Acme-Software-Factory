@@ -16,6 +16,7 @@ manager.dashboard.form.label.average-cost-project = Media del coste del los proy
 manager.dashboard.form.label.deviation-cost-project = Desviacion del coste de los proyectos
 manager.dashboard.form.label.minimum-cost-project = Minimo coste de los proyectos
 manager.dashboard.form.label.maximum-cost-project = Maximo coste de los proyectos
+manager.dashboard.form.label.information = Los costes y calculos del los proyectos se mostraran en base a la moneda por defecto del sistema {0}.
 
 
 

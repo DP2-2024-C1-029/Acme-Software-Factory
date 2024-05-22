@@ -15,6 +15,10 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
+<div style="color: green; text-align: center; text-decoration: blink;">
+	<acme:message code="manager.dashboard.form.label.information" arguments="${currencySystem}"/>
+</div>
+
 <table class="table table-sm">
 	<tr>
 		<th scope="row">
@@ -101,7 +105,7 @@
 		<td>
 			<jstl:choose>
 				<jstl:when test="${averageCostProject != null}">
-					<acme:print value="${averageCostProject}"/>
+					<acme:print value="${averageCostProject}"/>  <acme:print value="${currencySystem[0]}"/>
 				</jstl:when>
 				<jstl:when test="${averageCostProject == null}">
 					<acme:print value="-"/>
@@ -116,7 +120,7 @@
 		<td>
 			<jstl:choose>
 				<jstl:when test="${deviationCostProject != null}">
-					<acme:print value="${deviationCostProject}"/>
+					<acme:print value="${deviationCostProject}"/> <acme:print value="${currencySystem[0]}"/>
 				</jstl:when>
 				<jstl:when test="${deviationCostProject == null}">
 					<acme:print value="-"/>
@@ -129,7 +133,7 @@
 			<acme:message code="manager.dashboard.form.label.minimum-cost-project"/>
 		</th>
 		<td>
-			<acme:print value="${minimumCostProject}"/>
+			<acme:print value="${minimumCostProject} ${currencySystem[0]}"/>
 		</td>
 	</tr>	
 	<tr>
@@ -137,7 +141,7 @@
 			<acme:message code="manager.dashboard.form.label.maximum-cost-project"/>
 		</th>
 		<td>
-			<acme:print value="${maximumCostProject}"/>
+			<acme:print value="${maximumCostProject} ${currencySystem[0]}"/>
 		</td>
 	</tr>	
 </table>
