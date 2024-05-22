@@ -36,6 +36,7 @@ developer.trainingModule.form.error.trainingSession-Nodraft = No puedes borrar e
 developer.trainingModule.form.error.trainingSession-empty = Debes tener al menos un Training Session para publicar el Training Module
 developer.trainingmodule.list.label.draftMode = Modo borrador
 developer.trainingModule.form.error.trainingModule-empty = El training Module no existe
+developer.trainingModule.form.error.update-moment-null = La hora de actualización debe ser nula
 
 
 master.menu.developer.all-trainingsession = Mostrar todos los Training Session

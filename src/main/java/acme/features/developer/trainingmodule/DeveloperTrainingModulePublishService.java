@@ -2,7 +2,6 @@
 package acme.features.developer.trainingmodule;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,6 @@ import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
 import acme.entities.trainingmodules.DifficultyLevel;
 import acme.entities.trainingmodules.TrainingModule;
-import acme.entities.trainingsessions.TrainingSession;
 import acme.roles.Developer;
 
 @Service
@@ -68,32 +66,25 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			int id;
-			boolean existingCode;
+			TrainingModule existingCode;
+			int objectId = object.getId();
 
-			id = super.getRequest().getData("id", int.class);
-			existingCode = this.repository.findAllTrainingModules().stream().filter(e -> e.getId() != id).anyMatch(e -> e.getCode().equals(object.getCode()));
+			existingCode = this.repository.findTrainingModuleByCode(object.getCode());
 
-			super.state(!existingCode, "code", "developer.trainingModule.form.error.duplicated-code");
+			boolean isDuplicatedCode = existingCode != null && existingCode.getId() != objectId;
+			super.state(!isDuplicatedCode, "code", "developer.trainingModule.form.error.duplicated-code");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("estimatedTotalTime"))
-			super.state(object.getEstimatedTotalTime() > 0, "estimatedTotalTime", "developer.trainingModule.form.error.negative-estimated-total-time");
-
 		int masterId = super.getRequest().getData("id", int.class);
-		List<TrainingSession> ls = this.repository.findManyTrainingSessionsByTrainingModuleId(masterId).stream().toList();
-		boolean someDraftTrainingSession = ls.stream().anyMatch(Session -> Session.isDraftMode());
-		boolean noSession = ls.isEmpty();
-		super.state(!noSession, "*", "developer.trainingModule.form.error.trainingSession-empty");
-		super.state(!someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
+		boolean someDraftTrainingSession = this.repository.findManyTrainingSessionsByTrainingModuleIdAndDraftMode(masterId).isEmpty();
+		super.state(someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");
 
 		int trainingModuleId = super.getRequest().getData("id", int.class);
-		Collection<TrainingModule> trainingModules = this.repository.findAllTrainingModules();
-		boolean someTrainingModule = trainingModules.stream().anyMatch(Module -> Module.getId() == trainingModuleId);
-		super.state(someTrainingModule, "*", "developer.trainingModule.form.error.trainingModule-empty");
+		TrainingModule someTrainingModule = this.repository.findOneTrainingModuleById(trainingModuleId);
+		super.state(someTrainingModule != null, "*", "developer.trainingModule.form.error.trainingModule-empty");
 	}
 
 	@Override

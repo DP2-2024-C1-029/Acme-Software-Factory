@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -28,6 +30,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "id"), @Index(columnList = "code"), @Index(columnList = "developer_id"), @Index(columnList = "draftMode")
+})
 public class TrainingModule extends AbstractEntity {
 
 	// Serialisation identifier
@@ -46,7 +51,7 @@ public class TrainingModule extends AbstractEntity {
 
 	@NotBlank
 	@NotNull
-	@Length(max = 100)
+	@Length(min = 1, max = 100)
 	private String				details;
 
 	@NotNull
@@ -57,6 +62,7 @@ public class TrainingModule extends AbstractEntity {
 	private Date				updateMoment;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	@NotNull
