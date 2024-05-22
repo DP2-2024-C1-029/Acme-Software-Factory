@@ -27,14 +27,20 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 	@Query("select distinct p from Project p where p.draftMode = false")
 	Collection<Project> findManyProjects();
 
-	@Query("select p from Project p where p.id = :id")
+	@Query("select p from Project p where p.id = :id and p.draftMode = false")
 	Project findOneProjectById(int id);
+
+	@Query("select t from TrainingSession t where t.trainingModule.id = :id and t.draftMode = true")
+	Collection<TrainingSession> findManyTrainingSessionsByTrainingModuleIdAndDraftMode(int id);
 
 	@Query("select t from TrainingSession t where t.trainingModule.id = :id")
 	Collection<TrainingSession> findManyTrainingSessionsByTrainingModuleId(int id);
 
 	@Query("SELECT t FROM TrainingModule t")
 	Collection<TrainingModule> findAllTrainingModules();
+
+	@Query("SELECT t FROM TrainingModule t where t.code = :code")
+	TrainingModule findTrainingModuleByCode(String code);
 
 	@Query("select t from TrainingModule t where t.draftMode = false")
 	Collection<TrainingModule> findManyTrainingModulePublished();

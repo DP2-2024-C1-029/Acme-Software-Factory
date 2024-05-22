@@ -42,6 +42,7 @@ developer.trainingmodule.form.button.delete = Delete Training Module
 developer.trainingmodule.form.button.update = Update Training Module
 developer.trainingmodule.list.label.draftMode = Draft Mode
 developer.trainingModule.form.error.trainingModule-empty = Training Module doest not exist
+developer.trainingModule.form.error.update-moment-null = Update moment must be null
 
 master.menu.developer.all-trainingsession = List Training Sessions associated
 master.menu.developer = Developer
