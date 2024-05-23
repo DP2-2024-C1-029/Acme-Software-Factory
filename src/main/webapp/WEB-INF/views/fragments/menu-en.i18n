@@ -70,6 +70,15 @@ master.menu.others = Listing other entities
 master.menu.authenticated.objective.list = Listing objectives
 master.menu.administrator.banner.list = Listing banners
 
+# master.menu.client ##########################################################
+
+master.menu.client = Client
+master.menu.client.contract.list = Contracts list
+master.menu.client.dashboard = Your client dashboard
+master.menu.user-account.client = Client data
+master.menu.user-account.become-client = Become a Client
+
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -86,6 +95,7 @@ master.menu.user-account.become-auditor = Become an auditor
 
 master.menu.user-account.sponsor = Sponsor data
 master.menu.user-account.become-sponsor = Become a sponsor
+
 master.menu.user-account.manager = Manager data
 master.menu.user-account.become-manager = Become manager
 
@@ -97,7 +107,8 @@ master.menu.manager.my-user-stories = List my user stories
 master.menu.manager.dashboard = Dashboard
 
 # master.menu.authenticated ########################################################
-master.menu.authenticated = Authenticated
+
 master.menu.authenticated.claim = List claims
+master.menu.authenticated = Authenticated
 master.menu.authenticated.project.published.list = List project published
 
