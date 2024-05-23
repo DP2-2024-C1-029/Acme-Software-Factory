@@ -5,7 +5,7 @@ client.progress-logs.list.label.comment = Comment
 client.progress-logs.list.label.registrationMoment = Registration moment
 client.progress-logs.list.label.responsiblePerson = Responsible person
 client.progress-logs.list.label.contract = Contract
-client.progress-logs.list.label.draftMode = Published
+client.progress-logs.list.label.draftMode = Draft mode
 
 client.progress-logs.form.title = Progress logs data
 client.progress-logs.form.label.recordId = record Id
@@ -16,10 +16,13 @@ client.progress-logs.form.label.responsiblePerson = Responsible person
 client.progress-logs.form.button.update = Update
 client.progress-logs.form.button.delete = Delete
 client.progress-logs.form.button.create = Create
+client.progress-logs.form.button.publish = Publish
 client.progress-logs.form.label.contract = Contract
 client.progress-logs.form.label.publish = Draft mode
 
 client.progress-log.form.error.published-progress-log = The progress log is published
 client.progress-log.form.error.duplicated-record-id = The record id is duplicated
 client.progress-log.form.error.registration-moment-must-be-later = The registration moment must be later
-client.progress-log.form.error.published-contract = The contract is published
+client.progress-log.form.error.published-contract = The contract is not published
+client.progress-log.form.error.same-moment = Registration moment duplicated
+client.progress-log.form.error.completeness = The percentage must be greater than the maximum published percentage
