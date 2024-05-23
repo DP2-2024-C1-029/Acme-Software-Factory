@@ -6,12 +6,10 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.client.data.datatypes.Money;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.contracts.Contract;
 import acme.entities.progressLogs.ProgressLogs;
 import acme.entities.projects.Project;
-import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.roles.Client;
 
 @Repository
@@ -47,25 +45,13 @@ public interface ClientContractRepository extends AbstractRepository {
 	@Query("select c from Contract c where c.project.id = :projectId")
 	Collection<Contract> findContractsByProjectId(int projectId);
 
-	@Query("select sc from SystemConfiguration sc")
-	SystemConfiguration findSystemConfiguration();
-
 	@Query("SELECT pl FROM ProgressLogs pl WHERE pl.contract.id = :id AND pl.id = (SELECT MIN(pl2.id) FROM ProgressLogs pl2 WHERE pl2.registrationMoment = (SELECT MIN(pl3.registrationMoment) FROM ProgressLogs pl3 WHERE pl3.contract.id = :id))")
 	ProgressLogs findProgressLogEarliestRegistrationMomentByContractId(int id);
 
-	default double currencyTransformerUsd(final Money initial) {
-		double res = initial.getAmount();
+	@Query("SELECT c.acceptedCurrencies from Configuration c")
+	String findAcceptedCurrencies();
 
-		if (initial.getCurrency().equals("USD"))
-			res = initial.getAmount();
-
-		else if (initial.getCurrency().equals("EUR"))
-			res = initial.getAmount() * 1.07;
-
-		else
-			res = initial.getAmount() * 1.25;
-
-		return res;
-	}
+	@Query("select c from Contract c where c.project.id = :projectId and c.id <> :id")
+	Collection<Contract> findContractsByProjectIdExceptThis(int projectId, int id);
 
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.features.authenticated.exchange.AuthenticatedExchangeService;
 import acme.forms.ClientDashboard;
 import acme.roles.Client;
 
@@ -18,7 +19,10 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientDashboardRepository repository;
+	private ClientDashboardRepository		repository;
+
+	@Autowired
+	private AuthenticatedExchangeService	exchangeService;
 
 	// AbstractService interface ----------------------------------------------
 

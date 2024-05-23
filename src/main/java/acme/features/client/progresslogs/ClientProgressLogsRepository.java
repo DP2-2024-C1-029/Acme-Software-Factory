@@ -2,6 +2,7 @@
 package acme.features.client.progresslogs;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -35,4 +36,9 @@ public interface ClientProgressLogsRepository extends AbstractRepository {
 	@Query("select p from ProgressLogs p where p.recordId = :recordId")
 	ProgressLogs findProgressLogByRecordId(String recordId);
 
+	@Query("select p from ProgressLogs p where p.contract.id = :id and p.registrationMoment = :date and p.id != :id2")
+	Collection<ProgressLogs> findProgressLogsByContractIdDate(int id, int id2, Date date);
+
+	@Query("select max(p.completeness) from ProgressLogs p where p.contract.id = :id and p.draftMode = false")
+	Double findMaxCompletnessProgressLog(int id);
 }
