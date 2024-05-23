@@ -25,4 +25,8 @@ public interface AuthenticatedExchangeRepository extends AbstractRepository {
 
 	@Query("SELECT CASE WHEN COUNT(e) > 0 THEN TRUE ELSE FALSE END FROM Exchange e WHERE e.currency IN :currencies")
 	Boolean existsExchanges(List<String> currencies);
+
+	@Query("select e.currency from Exchange e")
+	List<String> findAllCurrencies();
+
 }

@@ -26,7 +26,9 @@ public class AuthenticatedExchangeService {
 
 	// Internal state ---------------------------------------------------------
 
-	private final String						API_URL			= "https://openexchangerates.org/api/latest.json?app_id={0}&base={1}&symbols={2}";
+	private final String						API_URL			= "https://openexchangerates.org/api/latest.json?app_id={0}&base={1}";
+
+	private final String						SYMBOLS			= "&symbols={2}";
 
 	private final String						API_KEY			= "ea2faffa03404c2cb0a30c299c0f5a97";
 
@@ -41,49 +43,70 @@ public class AuthenticatedExchangeService {
 	public AdministratorConfigurationRepository	administratorConfigurationRepository;
 
 
+	public List<String> getAllCurrenciesFromApi() {
+
+		List<String> currencies = this.repository.findAllCurrencies();
+		List<String> result = new ArrayList<>();
+		if (currencies == null || currencies.isEmpty()) {
+			List<Exchange> exhanges = this.getFromApi(null);
+			for (Exchange c : exhanges)
+				result.add(c.getCurrency());
+		} else
+			result.addAll(currencies);
+
+		return result;
+	}
+
 	// Methods for changing the Exchange --------------------------------------
-	public Money changeSourceToTarget(final Money money) {
-		Money result = new Money();
+	public List<Money> changeSourceToTarget(final Money money, final boolean allAcepptedCurrencies) {
+		List<Money> result = new ArrayList<>();
 		StringBuilder symbols = new StringBuilder();
 		String currencySource = money.getCurrency();
 
 		Configuration configuration = this.administratorConfigurationRepository.findConfigurationOfSystem();
-		String currencyTarget = configuration.getCurrency();
-
 		String currenciesSystem = configuration.getAcceptedCurrencies().replace(";", ",");
 		List<String> allCurrenciesSystem = Lists.newArrayList(currenciesSystem.split(","));
 		//La primera vez que llamemos, obtenemos de la api todas las permitidas
 		if (Boolean.FALSE.equals(this.repository.existsExchanges(allCurrenciesSystem)))
-			this.getFromApi(symbols.append(currenciesSystem));
+			this.getAllCurrenciesFromApi();
 
-		if (!currencySource.equals(currencyTarget)) {
-			List<Exchange> changes = this.repository.findExchangeByCurrencySourceAndTarget(MomentHelper.getCurrentMoment(), currencySource, currencyTarget);
-
-			if (changes != null && !changes.isEmpty()) {
-				if (changes.size() == 2)
-					this.calculateTargetMoney(result, changes, currencyTarget, money.getAmount());
-				else if (changes.size() == 1) {
-					String existingCurrency = changes.get(0).getCurrency();
-					String foundCurrency;
-					if (existingCurrency.equals(currencySource))
-						foundCurrency = currencyTarget;
-					else
-						foundCurrency = currencySource;
-
-					symbols.append(foundCurrency);
-					changes.addAll(this.getFromApi(symbols));
-					this.calculateTargetMoney(result, changes, currencyTarget, money.getAmount());
-				}
-			} else {
-				symbols.append(currencySource).append(",").append(currencyTarget);
-				changes = this.getFromApi(symbols);
-				this.calculateTargetMoney(result, changes, currencyTarget, money.getAmount());
-			}
-		} else {
-			result.setAmount(money.getAmount());
-			result.setCurrency(money.getCurrency());
+		if (!allAcepptedCurrencies) {
+			allCurrenciesSystem = Lists.newArrayList();
+			allCurrenciesSystem.add(configuration.getCurrency());
 		}
 
+		for (String target : allCurrenciesSystem) {
+			Money moneyResult = new Money();
+			if (!currencySource.equals(target)) {
+				List<Exchange> changes = this.repository.findExchangeByCurrencySourceAndTarget(MomentHelper.getCurrentMoment(), currencySource, target);
+
+				if (changes != null && !changes.isEmpty()) {
+					if (changes.size() == 2)
+						this.calculateTargetMoney(moneyResult, changes, target, money.getAmount());
+					else if (changes.size() == 1) {
+						String existingCurrency = changes.get(0).getCurrency();
+						String foundCurrency;
+						if (existingCurrency.equals(currencySource))
+							foundCurrency = target;
+						else
+							foundCurrency = currencySource;
+
+						symbols.append(foundCurrency);
+						changes.addAll(this.getFromApi(symbols));
+						this.calculateTargetMoney(moneyResult, changes, target, money.getAmount());
+					}
+				} else {
+					symbols.append(currencySource).append(",").append(target);
+					changes = this.getFromApi(symbols);
+					this.calculateTargetMoney(moneyResult, changes, target, money.getAmount());
+				}
+			} else {
+				moneyResult.setAmount(money.getAmount());
+				moneyResult.setCurrency(money.getCurrency());
+			}
+
+			result.add(moneyResult);
+		}
 		return result;
 	}
 
@@ -108,11 +131,18 @@ public class AuthenticatedExchangeService {
 
 	private List<Exchange> getFromApi(final StringBuilder symbols) {
 		RestTemplate restTemplate = new RestTemplate();
-		ExchangeRate data = restTemplate.getForObject(this.API_URL, //
-			ExchangeRate.class, //
-			this.API_KEY, //
-			this.CURRENCY_BASE, //
-			symbols.toString());
+		ExchangeRate data;
+		if (symbols != null)
+			data = restTemplate.getForObject(this.API_URL, //
+				ExchangeRate.class, //
+				this.API_KEY, //
+				this.CURRENCY_BASE, //
+				symbols.toString());
+		else
+			data = restTemplate.getForObject(this.API_URL, //
+				ExchangeRate.class, //
+				this.API_KEY, //
+				this.CURRENCY_BASE);
 
 		assert data != null;
 

@@ -103,7 +103,7 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Dashbo
 
 	public List<Money> changeCurrency(final Collection<Money> ls) {
 		return ls.stream()//
-			.map(m -> this.exchangeService.changeSourceToTarget(m))//
+			.map(m -> this.exchangeService.changeSourceToTarget(m, false).get(0))//
 			.collect(Collectors.toList());
 	}
 

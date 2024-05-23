@@ -10,7 +10,6 @@ import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.configuration.Configuration;
-import acme.features.administrator.currency.AdministratorCurrencyService;
 import acme.features.authenticated.exchange.AuthenticatedExchangeService;
 
 @Service
@@ -23,9 +22,6 @@ public class AdministratorConfigurationShowService extends AbstractService<Admin
 
 	@Autowired
 	public AuthenticatedExchangeService			exchangeService;
-
-	@Autowired
-	public AdministratorCurrencyService			administratorCurrencyService;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -57,7 +53,7 @@ public class AdministratorConfigurationShowService extends AbstractService<Admin
 		Dataset dataset;
 
 		allCurrentCurrencies = this.repository.findAllCurrentCurrencies().stream().collect(Collectors.joining(";"));
-		allAcceptedByAPI = String.join(";", this.administratorCurrencyService.getAllCurrenciesFromApi());
+		allAcceptedByAPI = String.join(";", this.exchangeService.getAllCurrenciesFromApi());
 
 		dataset = super.unbind(object, "currency", "acceptedCurrencies");
 		dataset.put("currentCurrencies", allCurrentCurrencies);

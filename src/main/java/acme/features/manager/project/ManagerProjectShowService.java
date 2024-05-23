@@ -1,6 +1,8 @@
 
 package acme.features.manager.project;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,8 +61,8 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		Dataset dataset = super.unbind(object, "code", "title", "abstractText", "indication", "cost", "link");
 		dataset.put("published", !object.isDraftMode());
 
-		Money systemMoney = this.exchangeService.changeSourceToTarget(object.getCost());
-		dataset.put("internationalisedCost", systemMoney);
+		List<Money> systemMoney = this.exchangeService.changeSourceToTarget(object.getCost(), false);
+		dataset.put("internationalisedCost", systemMoney.get(0));
 
 		super.getResponse().addData(dataset);
 	}
