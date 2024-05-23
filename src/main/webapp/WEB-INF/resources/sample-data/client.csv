@@ -1,3 +1,4 @@
 key,key:user-account,identification,company-name,Companytype,email,link
 client-01,user-account-client-01,CLI-0012,Riot Games,company,Leagueoflegends@acme.com,https://www.leagueoflegends.com/
 client-02,user-account-client-02,CLI-9999,Davgodfer,individual,davgodfer@acme.com,
+client-03,user-account-client-03,CLI-0013,CD Projekt,company,cdprojektred@acme.com,https://www.cdprojektred.com/en

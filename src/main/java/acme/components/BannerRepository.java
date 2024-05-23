@@ -45,6 +45,7 @@ public interface BannerRepository extends AbstractRepository {
 		if (count == 0)
 			result = null;
 		else {
+
 			index = RandomHelper.nextInt(0, count);
 
 			page = PageRequest.of(index, 1, Sort.by(Direction.ASC, "id"));
@@ -54,5 +55,4 @@ public interface BannerRepository extends AbstractRepository {
 
 		return result;
 	}
-
 }
