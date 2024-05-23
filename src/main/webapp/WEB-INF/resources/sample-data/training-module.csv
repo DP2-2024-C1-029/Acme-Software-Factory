@@ -27,3 +27,6 @@ trainingModule-25,2001/01/01 20:00,Detalles de la URL 3,JJK-012,INTERMEDIATE,nul
 trainingModule-26,2002/01/01 20:00,Detalles de la URL 4,JJK-013,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,34345,false,project-04,developer-01
 trainingModule-27,2002/02/01 20:00,<h1>!</h1>,JJK-014,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,444,false,project-04,developer-01
 trainingModule-28,2002/02/21 20:00,'' or 'A'='A,JJK-015,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,2,false,project-04,developer-01
+trainingModule-29,2022/07/29 23:59,Detalles de la URL 4,JJK-016,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,34345,false,project-04,developer-01
+trainingModule-30,1900/01/01 00:00,<script>alert('hola')</script>,JJK-017,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,2,false,project-04,developer-02
+trainingModule-31,2022/07/30 00:00,test,JJK-018,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,2,false,project-04,developer-02
