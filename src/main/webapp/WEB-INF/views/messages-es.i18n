@@ -37,6 +37,7 @@ developer.trainingModule.form.error.trainingSession-empty = Debes tener al menos
 developer.trainingmodule.list.label.draftMode = Modo borrador
 developer.trainingModule.form.error.trainingModule-empty = El módulo de entrenamiento no existe
 developer.trainingModule.form.error.update-moment-null = La hora de actualización debe ser nula
+developer.trainingmodule.form.button.publish = Publicar módulo de entrenamiento
 
 
 master.menu.developer.all-trainingsession = Mostrar todas las sesiones de entramiento
