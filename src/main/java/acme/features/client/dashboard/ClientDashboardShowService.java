@@ -46,9 +46,9 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		Double MaximunBudgetOfContracts;
 
 		clientId = super.getRequest().getPrincipal().getActiveRoleId();
-		double percentaje25 = 0.25;
-		double percentaje50 = 0.50;
-		double percentaje75 = 0.75;
+		double percentaje25 = 25.0;
+		double percentaje50 = 50.0;
+		double percentaje75 = 75.0;
 
 		totalLogsWithCompletenessBelow25 = this.repository.logsBelowCompletenessValue(clientId, percentaje25);
 		totalLogsWithCompletenessBetween25And50 = this.repository.logsBetweenCompletenessValuesForClient(clientId, percentaje25, percentaje50);
