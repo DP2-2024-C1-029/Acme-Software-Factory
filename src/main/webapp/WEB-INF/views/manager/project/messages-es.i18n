@@ -19,8 +19,10 @@ manager.project.form.label.title = Titulo
 manager.project.form.label.abstractText = Texto
 manager.project.form.label.indication = Indicación
 manager.project.form.label.cost = Coste
+manager.project.form.label.internationalised-cost = Coste en la moneda del sistema
 manager.project.form.label.link = Link
 manager.project.form.label.draftMode = Publicado
+manager.project.form.label.published = Proyecto publicado
 manager.project-user-story.list.label.userStories = Selecciona la historia de usuario a añadir
 
 #### BOTONES

@@ -15,6 +15,15 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
+<div style="color: green; text-align: center; text-decoration: blink;">
+	<acme:message code="manager.dashboard.form.label.information" arguments="${currencySystem}"/>
+</div>
+
+
+<div style="color: green; text-align: center; text-decoration: blink;">
+	<acme:message code="Estadisticas de historias de usuario"/>
+</div>
+
 <table class="table table-sm">
 	<tr>
 		<th scope="row">
@@ -93,54 +102,64 @@
 		<td>
 			<acme:print value="${maximumEstimatedCost}"/>
 		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.average-cost-project"/>
-		</th>
-		<td>
-			<jstl:choose>
-				<jstl:when test="${averageCostProject != null}">
-					<acme:print value="${averageCostProject}"/>
-				</jstl:when>
-				<jstl:when test="${averageCostProject == null}">
-					<acme:print value="-"/>
-				</jstl:when>
-			</jstl:choose>	
-		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.deviation-cost-project"/>
-		</th>
-		<td>
-			<jstl:choose>
-				<jstl:when test="${deviationCostProject != null}">
-					<acme:print value="${deviationCostProject}"/>
-				</jstl:when>
-				<jstl:when test="${deviationCostProject == null}">
-					<acme:print value="-"/>
-				</jstl:when>
-			</jstl:choose>			
-		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.minimum-cost-project"/>
-		</th>
-		<td>
-			<acme:print value="${minimumCostProject}"/>
-		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.maximum-cost-project"/>
-		</th>
-		<td>
-			<acme:print value="${maximumCostProject}"/>
-		</td>
-	</tr>	
+	</tr>
 </table>
+
+<jstl:forEach var="currency" items="${acceptedCurrency}">
+
+	<div style="color: green; text-align: center; text-decoration: blink;">
+		<acme:message code="Estadisticas de proyectos en ${currency}"/>
+	</div>
+	
+    <table class="table table-sm">
+        <tr>
+            <th scope="row">
+                <acme:message code="manager.dashboard.form.label.average-cost-project"/>
+            </th>
+            <td>
+            	<jstl:choose>
+					<jstl:when test="${averageCostProject[currency] != null}">
+						<acme:print value="${averageCostProject[currency]}"/>  <acme:print value="${currency}"/>
+					</jstl:when>
+					<jstl:when test="${averageCostProject[currency] == null}">
+						<acme:print value="-"/>
+					</jstl:when>
+				</jstl:choose>	
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <acme:message code="manager.dashboard.form.label.deviation-cost-project"/>
+            </th>
+            <td>
+            	<jstl:choose>
+					<jstl:when test="${deviationCostProject[currency] != null}">
+						<acme:print value="${deviationCostProject[currency]}"/>  <acme:print value="${currency}"/>
+					</jstl:when>
+					<jstl:when test="${deviationCostProject[currency] == null}">
+						<acme:print value="-"/>
+					</jstl:when>
+				</jstl:choose>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <acme:message code="manager.dashboard.form.label.minimum-cost-project"/>
+            </th>
+            <td>
+                <acme:print value="${minimumCostProject[currency]}"/> <acme:print value="${currency}"/>
+            </td>
+        </tr>   
+        <tr>
+            <th scope="row">
+                <acme:message code="manager.dashboard.form.label.maximum-cost-project"/>
+            </th>
+            <td>
+                <acme:print value="${maximumCostProject[currency]}"/> <acme:print value="${currency}"/>
+            </td>
+        </tr>
+    </table>
+</jstl:forEach>
 
 <acme:return/>
 

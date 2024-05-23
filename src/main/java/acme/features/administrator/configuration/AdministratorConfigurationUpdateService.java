@@ -12,6 +12,7 @@ import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.configuration.Configuration;
+import acme.features.authenticated.exchange.AuthenticatedExchangeService;
 
 @Service
 public class AdministratorConfigurationUpdateService extends AbstractService<Administrator, Configuration> {
@@ -19,7 +20,10 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	public AdministratorConfigurationRepository repository;
+	public AdministratorConfigurationRepository	repository;
+
+	@Autowired
+	public AuthenticatedExchangeService			exchangeService;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -70,7 +74,7 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 			super.state(sizeAcceptedObject == sizeDistinctAccepted, "acceptedCurrencies", "administrator.configuration.form.error.duplicated-currency");
 
 			objectCurrencies = Stream.of(object.getAcceptedCurrencies().split(";")).toList();
-			allCurrenciesOfAPI = this.repository.findCurrenciesFromAPI();
+			allCurrenciesOfAPI = this.exchangeService.getAllCurrenciesFromApi();
 			allCurrenciesInSystem = this.repository.findAllCurrentCurrencies();
 			super.state(allCurrenciesOfAPI.containsAll(objectCurrencies), "*", "administrator.configuration.form.error.not-accepted-by-api");
 			super.state(objectCurrencies.containsAll(allCurrenciesInSystem), "*", "administrator.configuration.form.error.not-all-of-the-system");
@@ -93,7 +97,7 @@ public class AdministratorConfigurationUpdateService extends AbstractService<Adm
 		Dataset dataset;
 
 		allCurrentCurrencies = this.repository.findAllCurrentCurrencies().stream().collect(Collectors.joining(";"));
-		allAcceptedByAPI = this.repository.findCurrenciesFromAPI().stream().collect(Collectors.joining(";"));
+		allAcceptedByAPI = String.join(";", this.exchangeService.getAllCurrenciesFromApi());
 
 		dataset = super.unbind(object, "currency", "acceptedCurrencies");
 		dataset.put("currentCurrencies", allCurrentCurrencies);

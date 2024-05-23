@@ -24,7 +24,6 @@
 	<name>Acme-SF</name>
 	<description>This is Acme Software Factory project </description>
 	
-	<groupId>Acme</groupId>
 	<artifactId>Acme-SF</artifactId>
 	<version>D04</version>
 	<packaging>war</packaging>
@@ -35,6 +34,5 @@
 		<version>24.4.0</version>
 		<relativePath>../../pom-24.4.0.xml</relativePath>
 	</parent>
-
 	
 </project>

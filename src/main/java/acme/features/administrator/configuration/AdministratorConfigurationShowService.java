@@ -40,13 +40,7 @@ public class AdministratorConfigurationShowService extends AbstractService<Admin
 	@Override
 	public void load() {
 		Configuration object;
-
-		// Método para cargar los datos de la api en la base de datos
-		if (this.repository.findCurrenciesFromAPI().isEmpty())
-			this.exchangeService.getChanges();
-
 		object = this.repository.findConfigurationOfSystem();
-
 		super.getBuffer().addData(object);
 	}
 
@@ -59,7 +53,7 @@ public class AdministratorConfigurationShowService extends AbstractService<Admin
 		Dataset dataset;
 
 		allCurrentCurrencies = this.repository.findAllCurrentCurrencies().stream().collect(Collectors.joining(";"));
-		allAcceptedByAPI = this.repository.findCurrenciesFromAPI().stream().collect(Collectors.joining(";"));
+		allAcceptedByAPI = String.join(";", this.exchangeService.getAllCurrenciesFromApi());
 
 		dataset = super.unbind(object, "currency", "acceptedCurrencies");
 		dataset.put("currentCurrencies", allCurrentCurrencies);

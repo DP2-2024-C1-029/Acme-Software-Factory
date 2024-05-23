@@ -55,17 +55,12 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		int id = super.getRequest().getData("id", int.class);
 		Project projectPreSave = this.repository.findOneProjectById(id);
-		if (!super.getBuffer().getErrors().hasErrors("published"))
-			super.state(projectPreSave.isDraftMode(), "published", "manager.project.form.error.published");
-
 		Collection<ProjectUserStory> listProjectUserStory = this.repository.findUserStoryByProjectPublished(id);
-
-		if (!super.getBuffer().getErrors().hasErrors("published"))
+		if (!super.getBuffer().getErrors().hasErrors("published")) {
+			super.state(projectPreSave.isDraftMode(), "published", "manager.project.form.error.published");
 			super.state(!listProjectUserStory.isEmpty(), "published", "manager.project.form.error.published.without_userStory");
-
-		if (!super.getBuffer().getErrors().hasErrors("published"))
 			super.state(!projectPreSave.isIndication(), "published", "manager.project.form.error.published.fatal_error");
-
+		}
 	}
 
 	@Override

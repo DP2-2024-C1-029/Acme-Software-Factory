@@ -2,14 +2,12 @@
 package acme.features.administrator.configuration;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.configuration.Configuration;
-import acme.entities.exchange.Exchange;
 
 @Repository
 public interface AdministratorConfigurationRepository extends AbstractRepository {
@@ -41,9 +39,4 @@ public interface AdministratorConfigurationRepository extends AbstractRepository
 		return res.stream().distinct().toList();
 	}
 
-	@Query("select e.currency from Exchange e")
-	Collection<String> findCurrenciesFromAPI();
-
-	@Query("select e from Exchange e where e.expireDate >= :now")
-	Collection<Exchange> findExchangeByCurrency(Date now);
 }
