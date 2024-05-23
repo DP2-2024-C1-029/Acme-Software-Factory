@@ -83,9 +83,6 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			super.state(existingCode == null, "code", "developer.trainingModule.form.error.duplicated-code");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(object.getUpdateMoment() == null, "updateMoment", "developer.trainingModule.form.error.update-moment-null");
-
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");
 	}
