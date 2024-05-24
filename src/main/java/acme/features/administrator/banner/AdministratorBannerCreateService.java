@@ -34,7 +34,7 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 		Banner object;
 
 		object = new Banner();
-		object.setInstantiationMoment(MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.MILLIS));
+		object.setInstantiationMoment(MomentHelper.deltaFromCurrentMoment(-5, ChronoUnit.MINUTES));
 
 		super.getBuffer().addData(object);
 	}
