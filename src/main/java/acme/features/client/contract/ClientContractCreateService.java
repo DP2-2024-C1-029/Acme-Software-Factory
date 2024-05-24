@@ -90,18 +90,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 			boolean validBudget = object.getBudget().getAmount() >= 0 && object.getBudget().getAmount() <= 1000000.0;
 			super.state(validBudget, "budget", "client.contract.form.error.maximum-negative-budget");
 		}
-		/*
-		 * if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
-		 * super.state(this.exchangeService.changeForCurrencyToCurrency(object.getProject().getCost().getAmount(), //
-		 * object.getProject().getCost().getCurrency(), //
-		 * super.getRequest().getGlobal("$locale", String.class), //
-		 * this.exchangeService.getChanges()).getAmount() >= this.exchangeService
-		 * .changeForCurrencyToCurrency(object.getBudget().getAmount(), object.getBudget().getCurrency(), //
-		 * super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges())
-		 * .getAmount(),
-		 * "budget", "client.contract.form.error.budget");
-		 * 
-		 */
+
+		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
+			super.state(this.exchangeService.changeSourceToTarget(object.getProject().getCost(), false).get(0).getAmount()//
+				>= this.exchangeService.changeSourceToTarget(object.getBudget(), false).get(0).getAmount(), "budget", "client.contract.form.error.budget");
+
 	}
 
 	@Override
