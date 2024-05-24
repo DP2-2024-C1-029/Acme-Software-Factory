@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -28,6 +30,12 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+
+@Table(indexes = {
+
+	@Index(columnList = "code"), @Index(columnList = "developer_id"), @Index(columnList = "draftMode")
+})
+
 public class TrainingModule extends AbstractEntity {
 
 	// Serialisation identifier
@@ -74,7 +82,6 @@ public class TrainingModule extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Project				project;
 
-	//La asociación don el rol developer se pide para el entregable D03, por lo que se terminará de desarrollar en el D03
 	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
