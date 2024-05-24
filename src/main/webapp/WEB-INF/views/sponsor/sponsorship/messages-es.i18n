@@ -35,3 +35,4 @@ sponsor.sponsorship.form.error.too-close = El periodo final debe ser al menos 1 
 sponsor.sponsorship.form.error.negative-amount = El importe debe ser positivo
 sponsor.sponsorship.form.error.not-total-amount-invoices = El patrocinio no se puede publicar porque la suma de los importes de sus facturas no coincide con el importe del patrocinio
 sponsor.sponsorship.form.error.not-all-invoices-published = No todas las facturas están publicadas
+sponsor.sponsorship.form.error.currency-not-valid = Este tipo de moneda no está entre las aceptadas del sistema

@@ -39,6 +39,8 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard-adm" action="/administrator/administrator-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.administrator.configuration.show" action="/administrator/configuration/show"/>
+			<acme:menu-suboption code="master.menu.administrator.list-risks" action="/administrator/risk/list"/>
+			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list"/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
 
@@ -72,9 +74,8 @@
 			<acme:menu-suboption code="master.menu.authenticated.objective.list" action="/authenticated/objective/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.claim" action="/any/claim/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.list-risks" action="/authenticated/risk/list" access="!hasRole('Administrator')"/>
-			<acme:menu-suboption code="master.menu.administrator.list-risks" action="/administrator/risk/list" access="hasRole('Administrator')"/>
-			<acme:menu-suboption code="master.menu.administrator.banner.list" action="/administrator/banner/list" access="hasRole('Administrator')"/>
 			<acme:menu-suboption code="master.menu.authenticated.project.published.list" action="/any/project/list-published"/>
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-all" action="/any/sponsorship/list"/>
 		</acme:menu-option>
 
 

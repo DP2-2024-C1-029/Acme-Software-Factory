@@ -55,6 +55,7 @@ public class Sponsorship extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endingExecutionPeriod;
 
+	@Valid
 	@NotNull
 	private Money				amount;
 
