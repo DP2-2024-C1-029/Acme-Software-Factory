@@ -67,22 +67,30 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 
 		totalNoticesWithEmailAndLink = this.repository.findTotalNoticesWithEmailAndLink();
 		totalNotices = this.repository.findTotalNotices();
-		ratioOfNoticesWithEmailAndLink = totalNoticesWithEmailAndLink / totalNotices * 100;
+		if (totalNoticesWithEmailAndLink == null || totalNotices == null || totalNotices == 0)
+			ratioOfNoticesWithEmailAndLink = 0.0;
+		else
+			ratioOfNoticesWithEmailAndLink = totalNoticesWithEmailAndLink / totalNotices * 100;
 
 		totalCriticalObjectives = this.repository.findTotalCriticalObjectives();
 		totalNonCriticalObjectives = this.repository.findTotalNonCriticalObjectives();
 		totalObjectives = this.repository.findTotalObjectives();
-
-		ratioOfCriticalObjectives = totalCriticalObjectives / totalObjectives * 100;
-		ratioOfNonCriticalObjectives = totalNonCriticalObjectives / totalObjectives * 100;
+		if (totalCriticalObjectives == null || totalObjectives == null || totalObjectives == 0)
+			ratioOfCriticalObjectives = 0.0;
+		else
+			ratioOfCriticalObjectives = totalCriticalObjectives / totalObjectives * 100;
+		if (totalNonCriticalObjectives == null || totalObjectives == null || totalObjectives == 0)
+			ratioOfNonCriticalObjectives = 0.0;
+		else
+			ratioOfNonCriticalObjectives = totalNonCriticalObjectives / totalObjectives * 100;
 
 		allValueRisk = this.repository.findAllValueOfRisk();
 		sizeValueRisk = allValueRisk.size();
 
-		averageValueInTheRisks = allValueRisk.isEmpty() ? Double.NaN : allValueRisk.stream().mapToDouble(Double::doubleValue).average().orElse(Double.NaN);
-		deviationValueInTheRisks = allValueRisk.isEmpty() ? Double.NaN : this.deviation(allValueRisk, averageValueInTheRisks, sizeValueRisk);
-		minValueInTheRisks = allValueRisk.isEmpty() ? Double.NaN : allValueRisk.stream().mapToDouble(Double::doubleValue).min().orElse(Double.NaN);
-		maxValueInTheRisks = allValueRisk.isEmpty() ? Double.NaN : allValueRisk.stream().mapToDouble(Double::doubleValue).max().orElse(Double.NaN);
+		averageValueInTheRisks = allValueRisk.stream().mapToDouble(Double::doubleValue).average().orElse(Double.NaN);
+		deviationValueInTheRisks = this.deviation(allValueRisk, averageValueInTheRisks, sizeValueRisk);
+		minValueInTheRisks = allValueRisk.stream().mapToDouble(Double::doubleValue).min().orElse(Double.NaN);
+		maxValueInTheRisks = allValueRisk.stream().mapToDouble(Double::doubleValue).max().orElse(Double.NaN);
 
 		dashboard = new AdministratorDashboard();
 
@@ -100,13 +108,13 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 			dashboard.setMaxValueInTheRisks(maxValueInTheRisks);
 		}
 
-		if (!(totalCriticalObjectives == 0 || totalObjectives == 0))
+		if (!(totalCriticalObjectives == null || totalObjectives == null))
 			dashboard.setRatioOfNoticesWithEmailAndLink(ratioOfNoticesWithEmailAndLink);
 
-		if (!(totalNonCriticalObjectives == 0 || totalObjectives == 0))
+		if (!(totalNonCriticalObjectives == null || totalObjectives == null))
 			dashboard.setRatioOfNonCriticalObjectives(ratioOfNonCriticalObjectives);
 
-		if (!(totalNoticesWithEmailAndLink == 0 || totalNotices == 0))
+		if (!(totalNoticesWithEmailAndLink == null || totalNotices == null))
 			dashboard.setRatioOfCriticalObjectives(ratioOfCriticalObjectives);
 
 		super.getBuffer().addData(dashboard);

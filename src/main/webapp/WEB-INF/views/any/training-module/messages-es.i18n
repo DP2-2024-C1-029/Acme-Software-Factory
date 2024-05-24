@@ -81,3 +81,8 @@ developer.trainingsession.form.error.date-between-creation-startDate-must-be-one
 developer.trainingModule.form.error.negative-estimated-total-time = El tiempo total estimado debe ser positivo
 developer.trainingsession.form.error.end-date-less-than-week = El tiempo de fin debe estar una semana por delante.
 developer.trainingSession.form.error.training-module-no-draft = No puedes publicar el Training Session, porque su Training Module ya ha sido publicado
+
+any.training-module.form.title = Detalles del módulo entrenamiento
+any.training-module.list.title = Lista de módulo entrenamiento
+any.claim.list.title = Lista de reclamaciones
+any.claim.form.title = Detalles de la reclamación

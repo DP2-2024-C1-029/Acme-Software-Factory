@@ -1,7 +1,9 @@
 
 package acme.features.developer.trainingmodule;
 
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,9 +77,21 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 			super.state(!isDuplicatedCode, "code", "developer.trainingModule.form.error.duplicated-code");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment")) {
+			Date creationMoment = object.getCreationMoment();
+			Calendar limitCalendar = Calendar.getInstance();
+			limitCalendar.set(1999, Calendar.DECEMBER, 31, 23, 59, 59);
+			Date limitDate = limitCalendar.getTime();
+
+			super.state(creationMoment.after(limitDate), "creationMoment", "developer.trainingModule.form.error.creationMoment");
+		}
 		int masterId = super.getRequest().getData("id", int.class);
 		boolean someDraftTrainingSession = this.repository.findManyTrainingSessionsByTrainingModuleIdAndDraftMode(masterId).isEmpty();
 		super.state(someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
+
+		int id = object.getId();
+		boolean hasPublishedTrainingSession = !this.repository.findTrainingSessionsPublishedByTrainingModuleId(id).isEmpty();
+		super.state(hasPublishedTrainingSession, "*", "developer.trainingModule.form.error.no-published-training-session");
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");
