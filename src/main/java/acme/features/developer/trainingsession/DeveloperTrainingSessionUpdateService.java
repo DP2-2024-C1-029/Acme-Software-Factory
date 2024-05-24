@@ -2,7 +2,6 @@
 package acme.features.developer.trainingsession;
 
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,15 +81,6 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 			Date startTime = MomentHelper.deltaFromMoment(object.getTrainingModule().getCreationMoment(), 1, ChronoUnit.WEEKS);
 			super.state(MomentHelper.isAfter(object.getStartTime(), startTime), "startTime", "developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week");
 
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("startTime")) {
-			Date creationMoment = object.getStartTime();
-			Calendar limitCalendar = Calendar.getInstance();
-			limitCalendar.set(1999, Calendar.DECEMBER, 31, 23, 59, 59);
-			Date limitDate = limitCalendar.getTime();
-
-			super.state(creationMoment.after(limitDate), "startTime", "developer.trainingSession.form.error.startDate");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("endTime")) {
