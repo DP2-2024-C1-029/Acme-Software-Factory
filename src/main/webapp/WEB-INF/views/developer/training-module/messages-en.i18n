@@ -1,0 +1,29 @@
+# messages-en.i18n
+
+developer.training-module.list.title = List of all Training Module
+developer.training-module.form.title = Training Module
+developer.trainingmodule.list.label.creationMoment = Creation Moment
+developer.trainingmodule.list.label.details = Details
+developer.trainingmodule.list.label.code = Code
+developer.trainingmodule.list.label.difficultyLevels = Difficulty Level
+developer.trainingmodule.list.label.updateMoment = Update Moment
+developer.trainingmodule.list.label.estimatedTotalTime = Estimated Total Time
+developer.trainingmodule.list.label.link = Link
+developer.trainingmodule.list.label.projects = Select a project
+developer.trainingmodule.list.label.draftMode = Draft Mode
+developer.trainingmodule.form.button.publish = Publish
+developer.trainingmodule.form.error.duplicated-code = The code already exists
+developer.trainingModule.form.error.duplicated-code = The code already exists
+developer.trainingModule.form.error.trainingSession-draft = You cannot publish because the existing training session is in draftmode
+developer.trainingModule.form.error.drafted-project = Project draftmode must be false
+developer.trainingModule.form.error.trainingSession-Nodraft = You cannot delete because exists a training Session with draftmode false
+developer.trainingModule.form.error.trainingSession-empty = You must have at least one Training Session to publish the Training Module
+developer.trainingModule.form.error.negative-estimated-total-time = Estimated Total Time must be positive
+developer.trainingmodule.form.button.create = Create Training Module
+developer.trainingmodule.list.button.create = Create Training Module
+developer.trainingmodule.form.button.delete = Delete Training Module
+developer.trainingmodule.form.button.update = Update Training Module
+developer.trainingmodule.list.label.draftMode = Draft Mode
+developer.trainingModule.form.error.trainingModule-empty = Training Module doest not exist
+developer.trainingModule.form.error.update-moment-null = Update moment must be null
+developer.trainingModule.form.error.no-published-training-session = To publish the Training Module, a Training session published must exists

@@ -8,7 +8,7 @@ trainingModule-06,2022/07/28 23:59,ويل النص العربي اللبناني
 trainingModule-07,2022/07/30 00:00,ABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRSTABCDEFGHIJKLMNÑOPQRST123123123123,CCC-666,ADVANCED,1971/12/12 15:23,https://examplewebpage.net/task,1,true,project-01,developer-01
 trainingModule-08,2015/11/11 23:23,色到艾丝伊艾勒艾,ZZZ-999,BASIC,2000/11/11 23:27,https://es.es/,56,true,project-01,developer-02
 trainingModule-09,2010/06/18 01:20,zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz,XSA-463,ADVANCED,2010/06/18 03:20,https://A.com/,153,true,project-01,developer-02
-trainingModule-10,2018/01/01 00:01,A,GHA-469,BASIC,2019/04/04 13:29,http://unaURLnaproximadade255cas@amosaprobarquefuncioneestacadenadetasfasfasfasgsagasgasgasgagssaggasgasgagasgagsasgagasgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaxww.com,56,false,project-01,developer-02
+trainingModule-10,2018/01/01 00:01,A,GHA-469,BASIC,2019/04/04 13:29,http://unaURLnaproximadade255cas@amosaprobarquefuncioneestacadenadetasfasfasfasgsagasgasgasgagssaggasgasgagasgagsasgagasgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggaxww.com,56,true,project-01,developer-02
 trainingModule-11,2001/01/01 10:00,Módulo de entrenamiento 11,GSA-143,BASIC,2001/01/29 10:00,https://modulo-once.com,60,true,project-01,developer-01
 trainingModule-12,2004/01/01 10:00,Módulo de entrenamiento 12,GSF-343,BASIC,2004/01/29 10:00,https://modulo-DOCE.com,6000,true,project-01,developer-01
 trainingModule-13,2010/01/01 10:00,Módulo de entrenamiento 13,XXF-343,ADVANCED,2010/01/29 10:00,https://modulo-trece.com,24400,true,project-01,developer-01
@@ -22,11 +22,11 @@ trainingModule-20,1996/02/20 15:23,Detalles de update moment,JJK-007,BASIC,1996/
 trainingModule-21,1997/11/11 23:25,Detalles de update moment 2,JJK-008,BASIC,null,http://ejemplodeurl.com/7,5556555,false,project-01,developer-02
 trainingModule-22,1998/05/24 11:24,Detalles de update moment 3,JJK-009,ADVANCED,2022/05/05 05:05,http://ejemplodeurl.com/8,3,false,project-04,developer-02
 trainingModule-23,1999/01/09 01:26,Detalles de la URL,JJK-010,INTERMEDIATE,null,ftp://,1,false,project-01,developer-02
-trainingModule-24,2000/01/01 20:00,Detalles de la URL 2,JJK-011,INTERMEDIATE,2022/05/05 05:05,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",222222222,false,project-04,developer-02
-trainingModule-25,2001/01/01 20:00,Detalles de la URL 3,JJK-012,INTERMEDIATE,null,http://www.lorem-ipsum.org/dolor/sit/amet/consectetur/adipiscing/elit/sssed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X,444444444,false,project-04,developer-02
-trainingModule-26,2002/01/01 20:00,Detalles de la URL 4,JJK-013,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,34345,false,project-04,developer-01
-trainingModule-27,2002/02/01 20:00,<h1>!</h1>,JJK-014,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,444,false,project-04,developer-01
-trainingModule-28,2002/02/21 20:00,'' or 'A'='A,JJK-015,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,2,false,project-04,developer-01
-trainingModule-29,2022/07/29 23:59,Detalles de la URL 4,JJK-016,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,34345,false,project-04,developer-01
-trainingModule-30,1900/01/01 00:00,<script>alert('hola')</script>,JJK-017,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,2,false,project-04,developer-02
-trainingModule-31,2022/07/30 00:00,test,JJK-018,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,2,false,project-04,developer-02
+trainingModule-24,2000/01/01 20:00,Detalles de la URL 2,JJK-011,INTERMEDIATE,2022/05/05 05:05,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",222222222,true,project-04,developer-02
+trainingModule-25,2001/01/01 20:00,Detalles de la URL 3,JJK-012,INTERMEDIATE,null,http://www.lorem-ipsum.org/dolor/sit/amet/consectetur/adipiscing/elit/sssed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X,444444444,true,project-04,developer-02
+trainingModule-26,2002/01/01 20:00,Detalles de la URL 4,JJK-013,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,34345,true,project-04,developer-01
+trainingModule-27,2002/02/01 20:00,<h1>!</h1>,JJK-014,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,444,true,project-04,developer-01
+trainingModule-28,2002/02/21 20:00,'' or 'A'='A,JJK-015,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,2,true,project-04,developer-01
+trainingModule-29,2022/07/29 23:59,Detalles de la URL 4,JJK-016,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,34345,true,project-04,developer-01
+trainingModule-30,1900/01/01 00:00,<script>alert('hola')</script>,JJK-017,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,2,true,project-04,developer-02
+trainingModule-31,2022/07/30 00:00,test,JJK-018,INTERMEDIATE,2022/05/05 05:05,http://ejemplo.com,2,true,project-04,developer-02
