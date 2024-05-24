@@ -55,7 +55,7 @@
 	$(document).ready(function() {
 		var data = {
 			labels : [
-					"BELOW 25%", "BETWEEN 25% AND 50%", "BETWEEN 50% AND 75%", "ABOVE 75%"
+					"[0:25)%", "[25:50)%", "[50:75)%", "[0:100]%"
 			],
 			datasets : [
 				{

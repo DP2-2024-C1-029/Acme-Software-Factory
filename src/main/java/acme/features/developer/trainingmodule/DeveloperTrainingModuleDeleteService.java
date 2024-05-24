@@ -2,7 +2,6 @@
 package acme.features.developer.trainingmodule;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,9 +70,8 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		assert object != null;
 
 		int masterId = super.getRequest().getData("id", int.class);
-		List<TrainingSession> ls = this.repository.findManyTrainingSessionsByTrainingModuleId(masterId).stream().toList();
-		final boolean someDraftTrainingSession = ls.stream().allMatch(Session -> Session.isDraftMode());
-		super.state(someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-Nodraft");
+		boolean someDraftTrainingSession = this.repository.findManyTrainingSessionsByTrainingModuleIdAndDraftMode(masterId).isEmpty();
+		super.state(!someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
 	}
 
 	@Override

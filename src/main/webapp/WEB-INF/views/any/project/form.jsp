@@ -15,6 +15,9 @@
 	<acme:input-textarea code="any.project.form.label.abstractText" path="abstractText" readonly="${published == true}"/>
 	<acme:input-checkbox code="any.project.form.label.indication" path="indication" readonly="${published == true}"/>
 	<acme:input-money code="any.project.form.label.cost" path="cost" readonly="${published == true}"/>
+	<jstl:if test="${acme:anyOf(_command, 'show')}">
+		<acme:input-money code="any.project.form.label.internationalised-cost" path="internationalisedCost" readonly="true"/>
+	</jstl:if>
 	<acme:input-url code="any.project.form.label.link" path="link" readonly="${published == true}"/>
 
 </acme:form>

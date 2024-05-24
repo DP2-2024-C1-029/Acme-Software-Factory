@@ -24,7 +24,7 @@ manager.userstory.form.label.draftMode = Published
 manager.userstory.form.label.published = User story published
 
 #### BUTTONS
-manager.user-story.form.button.update = Update
+manager.userstory.form.button.update = Update
 manager.userstory.form.button.delete = Delete
 manager.userstory.form.button.create = Create
 manager.userstory.list.button.create = Create

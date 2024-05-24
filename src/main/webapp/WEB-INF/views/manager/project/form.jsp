@@ -12,7 +12,7 @@
 <acme:form>
 	<jstl:if test="${published != null && published == true}">
 		<div style="color: green; text-align: center; text-decoration: blink;">
-			<acme:message code="manager.userstory.form.label.published"/>
+			<acme:message code="manager.project.form.label.published"/>
 		</div>
 	</jstl:if> 
 	
@@ -21,6 +21,11 @@
 	<acme:input-textarea code="manager.project.form.label.abstractText" path="abstractText" readonly="${published == true}"/>
 	<acme:input-checkbox code="manager.project.form.label.indication" path="indication" readonly="${published == true}"/>
 	<acme:input-money code="manager.project.form.label.cost" path="cost" readonly="${published == true}"/>
+	
+	<jstl:if test="${acme:anyOf(_command, 'show')}">
+		<acme:input-money code="manager.project.form.label.internationalised-cost" path="internationalisedCost" readonly="true"/>
+	</jstl:if>
+	
 	<acme:input-url code="manager.project.form.label.link" path="link" readonly="${published == true}"/>
 	
 	<jstl:if test="${published != null}">

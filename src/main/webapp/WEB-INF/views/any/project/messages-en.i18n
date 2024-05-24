@@ -20,3 +20,4 @@ any.project.form.label.cost = Cost
 any.project.form.label.link = Link
 any.project.form.label.draftMode = Published
 any.project.form.title = Project details
+any.project.form.label.internationalised-cost = Cost in system currency

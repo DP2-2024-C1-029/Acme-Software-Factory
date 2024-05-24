@@ -80,7 +80,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "title", "abstractText", "indication", "cost", "link");
-		dataset.put("published", !object.isDraftMode());
+		dataset.put("published", false);
 		super.getResponse().addData(dataset);
 	}
 }
