@@ -92,13 +92,15 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 			super.state(validBudget, "budget", "client.contract.form.error.maximum-negative-budget");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
-			super.state(this.exchangeService.changeForCurrencyToCurrency(object.getProject().getCost().getAmount(), object.getProject().getCost().getCurrency(), // 
-				super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount() >= this.exchangeService
-					.changeForCurrencyToCurrency(object.getBudget().getAmount(), object.getBudget().getCurrency(), //
-						super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges())
-					.getAmount(),
-				"budget", "client.contract.form.error.budget");
+		/*
+		 * if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
+		 * super.state(this.exchangeService.changeForCurrencyToCurrency(object.getProject().getCost().getAmount(), object.getProject().getCost().getCurrency(), //
+		 * super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount() >= this.exchangeService
+		 * .changeForCurrencyToCurrency(object.getBudget().getAmount(), object.getBudget().getCurrency(), //
+		 * super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges())
+		 * .getAmount(),
+		 * "budget", "client.contract.form.error.budget");
+		 */
 	}
 
 	@Override
