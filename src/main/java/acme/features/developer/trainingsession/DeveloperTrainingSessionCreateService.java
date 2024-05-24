@@ -2,6 +2,7 @@
 package acme.features.developer.trainingsession;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,15 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 			// Comprobamos que sea una semana
 			super.state(MomentHelper.isAfter(object.getEndTime(), startTime), "endTime", "developer.trainingsession.form.error.end-date-less-than-week");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("startTime")) {
+			Date creationMoment = object.getStartTime();
+			Calendar limitCalendar = Calendar.getInstance();
+			limitCalendar.set(1999, Calendar.DECEMBER, 31, 23, 59, 59);
+			Date limitDate = limitCalendar.getTime();
+
+			super.state(creationMoment.after(limitDate), "startTime", "developer.trainingSession.form.error.startDate");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("creationMoment") && !super.getBuffer().getErrors().hasErrors("startTime")) {

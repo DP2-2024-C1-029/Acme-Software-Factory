@@ -29,3 +29,4 @@ developer.trainingModule.form.error.update-moment-null = La hora de actualizaci�
 developer.trainingmodule.form.button.publish = Publicar m처dulo de entrenamiento
 developer.trainingModule.form.error.no-published-training-session = Para publicar un m처dulo de entrenamiento debe haber al menos una sesi처n publicada.
 developer.trainingModule.form.error.trainingSession-published = No puedes eliminar el m처dulo de entrenamiento porque existe una sesi처n publicada
+developer.trainingModule.form.error.creationMoment = El momento de creaci처n debe ser posterior a 31/12/1999 23:59
