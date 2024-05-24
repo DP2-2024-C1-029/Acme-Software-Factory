@@ -28,3 +28,4 @@ developer.trainingModule.form.error.trainingModule-empty = El módulo de entrena
 developer.trainingModule.form.error.update-moment-null = La hora de actualización debe ser nula
 developer.trainingmodule.form.button.publish = Publicar módulo de entrenamiento
 developer.trainingModule.form.error.no-published-training-session = Para publicar un módulo de entrenamiento debe haber al menos una sesión publicada.
+developer.trainingModule.form.error.trainingSession-published = No puedes eliminar el módulo de entrenamiento porque existe una sesión publicada

@@ -27,3 +27,4 @@ developer.trainingmodule.list.label.draftMode = Draft Mode
 developer.trainingModule.form.error.trainingModule-empty = Training Module doest not exist
 developer.trainingModule.form.error.update-moment-null = Update moment must be null
 developer.trainingModule.form.error.no-published-training-session = To publish the Training Module, a Training session published must exists
+developer.trainingModule.form.error.trainingSession-published = It's not possible to delete because exists a training session published
