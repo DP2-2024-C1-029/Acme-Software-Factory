@@ -79,6 +79,10 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		boolean someDraftTrainingSession = this.repository.findManyTrainingSessionsByTrainingModuleIdAndDraftMode(masterId).isEmpty();
 		super.state(someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
 
+		int id = object.getId();
+		boolean hasPublishedTrainingSession = !this.repository.findTrainingSessionsPublishedByTrainingModuleId(id).isEmpty();
+		super.state(hasPublishedTrainingSession, "*", "developer.trainingModule.form.error.no-published-training-session");
+
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");
 

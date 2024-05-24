@@ -1,0 +1,9 @@
+# messages-en.i18n
+developer.dashboard.form.title = Dashboard
+developer.dashboard.form.title.general-indicators = Data
+developer.dashboard.form.label.total-training-module-with-update-moment	= Total training module with update moment
+developer.dashboard.form.label.total-training-session-with-link	= Total training session with link
+developer.dashboard.form.label.average-time-training-module	= Avg time training module
+developer.dashboard.form.label.deviation-time-training-module = Deviation time training module
+developer.dashboard.form.label.minimum-time-training-module	= Min time training module
+developer.dashboard.form.label.maximum-time-training-module = Max time training module

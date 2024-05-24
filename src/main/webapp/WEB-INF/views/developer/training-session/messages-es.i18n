@@ -1,0 +1,26 @@
+# messages-es.i18n
+
+developer.trainingSession.form.error.end-before-creation = El tiempo final debe ser posterior al tiempo inicial
+developer.training-session.form.title = Sesión de entrenamiento
+developer.training-session.list.title = Lista de todos las sesiones de entrenamiento
+developer.trainingsession.list.label.code = Código
+developer.trainingsession.list.label.startTime = Fecha de inicio
+developer.trainingsession.list.label.endTime = Fecha de Fin
+developer.trainingsession.list.label.location = Localización
+developer.trainingsession.list.label.instructor = Nombre del instructor
+developer.trainingsession.list.label.contactEmail = Email de contacto
+developer.trainingsession.list.label.project.contactEmail = Email de contacto
+developer.trainingsession.list.label.furtherInformationLink = Link de información
+developer.trainingsession.form.button.create = Crear Sesión de entrenamiento
+developer.trainingsession.list.button.create = Crear Sesión de entrenamiento
+developer.trainingsession.form.button.delete = Borrar Sesión de entrenamiento
+developer.trainingsession.form.button.update = Actualizar Sesión de entrenamiento
+developer.trainingsession.form.error.duplicated-code = El código ya existe
+developer.trainingsession.list.label.draftMode = Modo borrador
+developer.trainingsession.form.button.publish = Publicar
+developer.trainingSession.form.error.update-moment-less-than-week = El tiempo de fin debe estar una semana por delante.
+developer.trainingsession.form.error.duplicated = El código ya existe
+developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week = La fecha de inicio de la Sesión de entrenamiento debe estar una semana por delante de la fecha de creación del módulo de entrenamiento
+developer.trainingsession.form.error.end-date-less-than-week = El tiempo de fin debe estar una semana por delante.
+developer.trainingSession.form.error.training-module-no-draft = No puedes publicar la Sesión de entrenamiento, porque su módulo de entrenamiento ya ha sido publicado
+developer.trainingsession.form.error.start-date-after-end-date = El periodo de inicio debe ser anterior al periodo de fin

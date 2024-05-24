@@ -1,0 +1,31 @@
+# messages-es.i18n
+
+developer.training-module.list.title = Lista de todos los Módulos de entrenamiento
+developer.training-module.form.title = Módulo de entrenamiento
+developer.trainingmodule.list.label.creationMoment  = Momento de creación
+developer.trainingmodule.list.label.details = Detalles
+developer.trainingmodule.list.label.code = Código
+developer.trainingmodule.list.label.difficultyLevels = Dificultad
+developer.trainingmodule.list.label.updateMoment = Momento de actualización
+developer.trainingmodule.list.label.estimatedTotalTime = Tiempo total estimado
+developer.trainingmodule.list.label.link = Link
+developer.trainingmodule.list.label.projects = Selecciona un proyecto
+developer.trainingmodule.form.button.create = Crear Módulo de entrenamiento
+developer.trainingmodule.list.button.create = Crear Módulo de entrenamiento
+developer.trainingmodule.form.button.delete = Borrar Módulo de entrenamiento
+developer.trainingmodule.form.button.update = Actualizar Módulo de entrenamiento
+developer.trainingModule.list.label.draftMode = Modo borrador
+developer.trainingModule.form.button.publish = Publicar
+developer.trainingModule.form.error.negative-estimated-total-time = El tiempo total estimado debe ser positivo
+developer.trainingmodule.form.error.duplicated-code = El código ya existe
+developer.trainingModule.form.error.duplicated-code = El código ya existe
+developer.trainingModule.form.error.drafted-project = Modo borrador del proyecto debe estar en falso
+developer.trainingModule.form.error.trainingSession-draft = No puedes publicar módulo de entrenamiento porque tienes una sesión de entranmiento y no está publicado
+developer.trainingModule.form.error.trainingSession-Nodraft = No puedes borrar el módulo de entrenamiento porque existe una sesión de entranmiento publicado
+developer.trainingModule.form.error.trainingSession-empty = Debes tener al menos una sesión de entranmiento para publicar el módulo de entrenamiento
+developer.trainingmodule.list.label.draftMode = Modo borrador
+developer.trainingModule.form.error.trainingModule-empty = El módulo de entrenamiento no existe
+developer.trainingModule.form.error.update-moment-null = La hora de actualización debe ser nula
+developer.trainingmodule.form.button.publish = Publicar módulo de entrenamiento
+developer.trainingModule.form.error.no-published-training-session = Para publicar un módulo de entrenamiento debe haber al menos una sesión publicada.
+developer.trainingModule.form.error.trainingSession-published = No puedes eliminar el módulo de entrenamiento porque existe una sesión publicada

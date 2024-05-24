@@ -1,0 +1,9 @@
+# messages-es.i18n
+developer.dashboard.form.title = Panel
+developer.dashboard.form.title.general-indicators = Datos
+developer.dashboard.form.label.total-training-module-with-update-moment	= Total módulo entrenamiento actualizados
+developer.dashboard.form.label.total-training-session-with-link	= Total Sesión de entrenamiento con link
+developer.dashboard.form.label.average-time-training-module	= Tiempo medio módulo entrenamiento
+developer.dashboard.form.label.deviation-time-training-module = Desviación del tiempo en Training Module
+developer.dashboard.form.label.minimum-time-training-module	= Tiempo mínimo módulo entrenamiento
+developer.dashboard.form.label.maximum-time-training-module = Tiempo máximo módulo entrenamiento
