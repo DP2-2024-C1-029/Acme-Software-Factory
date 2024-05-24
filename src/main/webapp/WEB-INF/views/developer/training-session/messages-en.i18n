@@ -1,0 +1,26 @@
+# messages-en.i18n
+
+developer.training-session.list.title = All Training Session
+developer.training-session.form.title = Training Session
+developer.trainingsession.list.label.code = Code
+developer.trainingsession.list.label.startTime = Start Time
+developer.trainingsession.list.label.endTime = End Time
+developer.trainingsession.list.label.location = Location
+developer.trainingsession.list.label.instructor = Instructor
+developer.trainingsession.list.label.contactEmail = Contact Email
+developer.trainingsession.list.label.project.contactEmail = Contact Email
+developer.trainingsession.list.label.furtherInformationLink = Information Link
+developer.trainingsession.form.button.create = Create Training Session
+developer.trainingsession.list.button.create = Create Training Session
+developer.trainingsession.form.button.delete = Delete Training Session
+developer.trainingsession.form.button.update = Update Training Session
+developer.trainingSession.form.error.end-before-creation = End Time must be later than start Time
+developer.trainingsession.form.error.date-between-creation-startDate-must-be-one-week = Start Time Must be one week ahead Training Module Creation Moment
+developer.trainingsession.form.error.end-date-less-than-week = End Time must be one week ahead start Date
+developer.trainingSession.form.error.update-moment-less-than-week = End Time must be one week ahead start Date
+developer.trainingsession.form.error.duplicated-code = The code already exists
+developer.trainingSession.form.error.training-module-no-draft = You can't publish a new Training Session because the Training Module is published
+developer.trainingsession.list.label.draftMode = Draft Mode
+developer.trainingsession.form.button.publish = Publish
+developer.trainingsession.form.error.duplicated = The code already exists
+developer.trainingsession.form.error.start-date-after-end-date = Start time must be prior to end time

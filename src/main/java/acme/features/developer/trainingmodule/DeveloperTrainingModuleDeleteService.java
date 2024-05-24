@@ -69,9 +69,12 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	public void validate(final TrainingModule object) {
 		assert object != null;
 
-		int masterId = super.getRequest().getData("id", int.class);
-		boolean someDraftTrainingSession = this.repository.findManyTrainingSessionsByTrainingModuleIdAndDraftMode(masterId).isEmpty();
-		super.state(!someDraftTrainingSession, "*", "developer.trainingModule.form.error.trainingSession-draft");
+		int masterId = object.getId();
+		// Obtener las sesiones de entrenamiento en modo borrador asociadas al módulo de entrenamiento
+		boolean hasDraftTrainingSessions = !this.repository.findManyTrainingSessionsByTrainingModuleIdAndDraftMode(masterId).isEmpty();
+
+		// Si no hay sesiones en modo borrador, es seguro eliminar el módulo de entrenamiento
+		super.state(!hasDraftTrainingSessions, "*", "developer.trainingModule.form.error.trainingSession-published");
 	}
 
 	@Override
