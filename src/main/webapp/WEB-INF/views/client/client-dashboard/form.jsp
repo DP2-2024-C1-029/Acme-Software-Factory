@@ -7,13 +7,15 @@
 	<acme:message code="client.dashboard.form.title.budget-factors"/>
 </h2>
 
+<jstl:forEach var="currency" items="${acceptedCurrency}">
+
 <table class="table table-sm">
 	<tr>
 		<th scope="row">
 			<acme:message code="client.dashboard.form.label.min-budget"/>
 		</th>
 		<td>
-			<acme:print value="${minimunBudget}"/>
+			<acme:print value="${minimumBudget[currency]}"/> <acme:print value="${currency}"/>
 		</td>
 	</tr>
 	<tr>
@@ -21,7 +23,7 @@
 			<acme:message code="client.dashboard.form.label.max-budget"/>
 		</th>
 		<td>
-			<acme:print value="${maximunBudget}"/>
+			<acme:print value="${maximumBudget[currency]}"/> <acme:print value="${currency}"/>
 		</td>
 	</tr>
 	
@@ -30,18 +32,34 @@
 			<acme:message code="client.dashboard.form.label.average"/>
 		</th>
 		<td>
-			<acme:print value="${averageBudget}"/>
-		</td>
+            <jstl:choose>
+				<jstl:when test="${averageBudget[currency] != null}">
+					<acme:print value="${averageBudget[currency]}"/>  <acme:print value="${currency}"/>
+				</jstl:when>
+				<jstl:when test="${averageBudget[currency] == null}">
+					<acme:print value="-"/>
+				</jstl:when>
+			</jstl:choose>	
+       </td>
 	</tr>
 	<tr>
 		<th scope="row">
 			<acme:message code="client.dashboard.form.label.deviation"/>
 		</th>
 		<td>
-			<acme:print value="${deviationBudgets}"/>
-		</td>
+            <jstl:choose>
+				<jstl:when test="${deviationBudget[currency] != null}">
+					<acme:print value="${deviationBudget[currency]}"/>  <acme:print value="${currency}"/>
+				</jstl:when>
+				<jstl:when test="${deviationBudget[currency] == null}">
+					<acme:print value="-"/>
+				</jstl:when>
+			</jstl:choose>
+      </td>
 	</tr>
 </table>
+</jstl:forEach>
+
 
 <h2>
 	<acme:message code="client.dashboard.form.title.logs-rate"/>
