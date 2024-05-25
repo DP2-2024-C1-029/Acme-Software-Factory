@@ -16,5 +16,6 @@ manager.dashboard.form.label.average-cost-project = Average cost of projects
 manager.dashboard.form.label.deviation-cost-project = Deviation of the cost of the projects
 manager.dashboard.form.label.minimum-cost-project = Minimum cost of projects
 manager.dashboard.form.label.maximum-cost-project = Maximum cost of projects
-manager.dashboard.form.label.information = Project costs and calculations will be displayed based on the default currency of the system {0}.
+manager.dashboard.form.label.hu.statistics = Statistics of the user stories published
+manager.dashboard.form.label.project.statistics = Statistics of published projects in
 

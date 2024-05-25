@@ -15,13 +15,8 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<div style="color: green; text-align: center; text-decoration: blink;">
-	<acme:message code="manager.dashboard.form.label.information" arguments="${currencySystem}"/>
-</div>
-
-
-<div style="color: green; text-align: center; text-decoration: blink;">
-	<acme:message code="Estadisticas de historias de usuario"/>
+<div style="text-align: center; font-weight: bold; font-size: 18px;">
+	<acme:message code="manager.dashboard.form.label.hu.statistics"/>
 </div>
 
 <table class="table table-sm">
@@ -107,8 +102,8 @@
 
 <jstl:forEach var="currency" items="${acceptedCurrency}">
 
-	<div style="color: green; text-align: center; text-decoration: blink;">
-		<acme:message code="Estadisticas de proyectos en ${currency}"/>
+	<div style="text-align: center; font-weight: bold; font-size: 18px;">
+		<acme:message code="manager.dashboard.form.label.project.statistics"/> ${currency}	
 	</div>
 	
     <table class="table table-sm">
