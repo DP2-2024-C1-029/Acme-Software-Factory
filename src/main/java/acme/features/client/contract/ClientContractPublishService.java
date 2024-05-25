@@ -85,7 +85,7 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			Collection<Contract> contracts = this.repository.findContractsByProjectIdExceptThis(projectId, object.getId());
 			contracts.add(object);
 			Double totalBudgetUsd = contracts.stream().mapToDouble(u -> this.exchangeService.changeSourceToTarget(u.getBudget(), false).get(0).getAmount()).sum();
-			Double projectCostUsd = this.exchangeService.changeSourceToTarget(object.getBudget(), false).get(0).getAmount();
+			Double projectCostUsd = this.exchangeService.changeSourceToTarget(object.getProject().getCost(), false).get(0).getAmount();
 			super.state(totalBudgetUsd <= projectCostUsd, "*", "client.contract.form.error.publishError");
 		}
 

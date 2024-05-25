@@ -61,6 +61,7 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		double percentaje25 = 25.0;
 		double percentaje50 = 50.0;
 		double percentaje75 = 75.0;
+		this.mapAllCurrecies = new HashMap<>();
 
 		totalLogsWithCompletenessBelow25 = this.repository.logsBelowCompletenessValue(clientId, percentaje25);
 		totalLogsWithCompletenessBetween25And50 = this.repository.logsBetweenCompletenessValuesForClient(clientId, percentaje25, percentaje50);
@@ -71,7 +72,6 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 		Collection<Money> allMoneyBudget = this.repository.getAllMoneyContractBudget(clientId);
 		if (allMoneyBudget != null && !allMoneyBudget.isEmpty()) {
 			Map<String, List<Money>> allMoneyBudgetInOneCurrency = this.changeCurrency(allMoneyBudget, false);
-
 			for (Map.Entry<String, List<Money>> entry : allMoneyBudgetInOneCurrency.entrySet()) {
 				this.mapAllCurrecies = this.changeCurrency(entry.getValue(), true);
 
@@ -161,25 +161,36 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 	}
 
 	private double minimum(final List<Money> list) {
-		double minimum = Double.MAX_VALUE;
+		double minimum = 0.;
 
+		boolean firstTime = true;
 		for (Money money : list) {
 			double amount = money.getAmount();
+			if (firstTime) {
+				minimum = amount;
+				firstTime = false;
+			}
+
 			if (amount < minimum)
 				minimum = amount;
 		}
-		return Math.min(minimum, 0);
+		return minimum;
 	}
 
 	private double maximum(final List<Money> list) {
-		double maximum = Double.MIN_VALUE;
+		double maximum = 0.;
 
+		boolean firstTime = true;
 		for (Money money : list) {
 			double amount = money.getAmount();
+			if (firstTime) {
+				maximum = amount;
+				firstTime = false;
+			}
 			if (amount > maximum)
 				maximum = amount;
 		}
-		return Math.max(maximum, 0);
+		return maximum;
 	}
 
 	private Map<String, List<Money>> changeCurrency(final Collection<Money> listMoney, final boolean allAcceptanceCurrency) {

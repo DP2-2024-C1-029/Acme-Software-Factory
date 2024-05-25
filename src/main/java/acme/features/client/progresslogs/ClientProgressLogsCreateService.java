@@ -86,6 +86,7 @@ public class ClientProgressLogsCreateService extends AbstractService<Client, Pro
 	@Override
 	public void perform(final ProgressLogs object) {
 		assert object != null;
+		object.setId(0);
 		this.repository.save(object);
 	}
 
