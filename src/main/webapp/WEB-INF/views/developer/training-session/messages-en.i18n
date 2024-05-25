@@ -24,3 +24,4 @@ developer.trainingsession.list.label.draftMode = Draft Mode
 developer.trainingsession.form.button.publish = Publish
 developer.trainingsession.form.error.duplicated = The code already exists
 developer.trainingsession.form.error.start-date-after-end-date = Start time must be prior to end time
+developer.trainingSession.form.error.startDate = Startdate must be after 31/12/1999 23:59

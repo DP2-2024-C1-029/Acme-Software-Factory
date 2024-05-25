@@ -24,3 +24,4 @@ developer.trainingsession.form.error.date-between-creation-startDate-must-be-one
 developer.trainingsession.form.error.end-date-less-than-week = El tiempo de fin debe estar una semana por delante.
 developer.trainingSession.form.error.training-module-no-draft = No puedes publicar la Sesión de entrenamiento, porque su módulo de entrenamiento ya ha sido publicado
 developer.trainingsession.form.error.start-date-after-end-date = El periodo de inicio debe ser anterior al periodo de fin
+developer.trainingSession.form.error.startDate = La fecha inicio debe ser posterior a 31/12/1999 23:59

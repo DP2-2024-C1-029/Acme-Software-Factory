@@ -28,3 +28,4 @@ developer.trainingModule.form.error.trainingModule-empty = Training Module doest
 developer.trainingModule.form.error.update-moment-null = Update moment must be null
 developer.trainingModule.form.error.no-published-training-session = To publish the Training Module, a Training session published must exists
 developer.trainingModule.form.error.trainingSession-published = It's not possible to delete because exists a training session published
+developer.trainingModule.form.error.creationMoment = Creation moment must be after 31/12/1999 23:59

@@ -1,6 +1,7 @@
 
 package acme.features.developer.trainingmodule;
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
@@ -85,6 +86,15 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
 			super.state(!object.getProject().isDraftMode(), "project", "developer.trainingModule.form.error.drafted-project");
+
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment")) {
+			Date creationMoment = object.getCreationMoment();
+			Calendar limitCalendar = Calendar.getInstance();
+			limitCalendar.set(1999, Calendar.DECEMBER, 31, 23, 59, 59);
+			Date limitDate = limitCalendar.getTime();
+
+			super.state(creationMoment.after(limitDate), "creationMoment", "developer.trainingModule.form.error.creationMoment");
+		}
 	}
 
 	@Override
