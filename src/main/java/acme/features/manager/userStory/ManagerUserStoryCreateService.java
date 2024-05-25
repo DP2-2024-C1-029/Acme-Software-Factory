@@ -58,6 +58,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	public void perform(final UserStory object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

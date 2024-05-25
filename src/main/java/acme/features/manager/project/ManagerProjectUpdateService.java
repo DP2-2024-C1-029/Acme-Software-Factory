@@ -27,7 +27,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	@Override
 	public void authorise() {
 		int projectId = super.getRequest().getData("id", int.class);
-		Project project = this.repository.findOneProjectById(projectId);
+		Project project = this.repository.findOneProjectByIdAndNotPublished(projectId);
 		Manager manager = project == null ? null : project.getManager();
 		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		boolean status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
@@ -39,7 +39,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void load() {
 
 		int id = super.getRequest().getData("id", int.class);
-		Project object = this.repository.findOneProjectById(id);
+		Project object = this.repository.findOneProjectByIdAndNotPublished(id);
 		super.getBuffer().addData(object);
 	}
 
@@ -61,11 +61,6 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 				super.state(existing == null, "code", "manager.project.form.error.duplicated");
 		}
 
-		int id = super.getRequest().getData("id", int.class);
-		Project projectPreSave = this.repository.findOneProjectById(id);
-		if (!super.getBuffer().getErrors().hasErrors("published"))
-			super.state(projectPreSave.isDraftMode(), "published", "manager.project.form.error.published");
-
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			final Money rP = object.getCost();
 			final List<String> acceptedCurrency = Arrays.asList(this.repository.findCurrencyConfiguration().getAcceptedCurrencies().split(";"));
@@ -86,7 +81,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		Dataset dataset = super.unbind(object, "code", "title", "abstractText", "indication", "cost", "link");
-		dataset.put("published", !object.isDraftMode());
+		dataset.put("published", false);
 
 		super.getResponse().addData(dataset);
 	}

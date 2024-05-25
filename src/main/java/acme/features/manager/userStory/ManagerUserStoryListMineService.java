@@ -45,7 +45,7 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+		dataset = super.unbind(object, "title", "estimatedCost", "priority");
 		if (super.getRequest().getLocale().getLanguage().equals("es"))
 			dataset.put("published", object.isDraftMode() ? "No" : "Si");
 		else if (super.getRequest().getLocale().getLanguage().equals("en"))

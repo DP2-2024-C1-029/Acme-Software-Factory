@@ -70,6 +70,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	public void perform(final Project object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

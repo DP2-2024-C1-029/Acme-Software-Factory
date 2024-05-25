@@ -72,7 +72,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	@Override
 	public void perform(final ProjectUserStory object) {
 		assert object != null;
-
+		object.setId(0);
 		this.repository.save(object);
 	}
 

@@ -25,10 +25,10 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Override
 	public void authorise() {
 		int projectId = super.getRequest().getData("id", int.class);
-		Project project = this.repository.findOneProjectById(projectId);
+		Project project = this.repository.findOneProjectByIdAndNotPublished(projectId);
 		Manager manager = project == null ? null : project.getManager();
 		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-		boolean status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
+		boolean status = manager != null && super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -37,7 +37,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void load() {
 
 		int id = super.getRequest().getData("id", int.class);
-		Project object = this.repository.findOneProjectById(id);
+		Project object = this.repository.findOneProjectByIdAndNotPublished(id);
 		super.getBuffer().addData(object);
 	}
 
@@ -54,13 +54,14 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		assert object != null;
 
 		int id = super.getRequest().getData("id", int.class);
-		Project projectPreSave = this.repository.findOneProjectById(id);
+		Project projectPreSave = this.repository.findOneProjectByIdAndNotPublished(id);
 		Collection<ProjectUserStory> listProjectUserStory = this.repository.findUserStoryByProjectPublished(id);
 		if (!super.getBuffer().getErrors().hasErrors("published")) {
 			super.state(projectPreSave.isDraftMode(), "published", "manager.project.form.error.published");
 			super.state(!listProjectUserStory.isEmpty(), "published", "manager.project.form.error.published.without_userStory");
 			super.state(!projectPreSave.isIndication(), "published", "manager.project.form.error.published.fatal_error");
 		}
+
 	}
 
 	@Override

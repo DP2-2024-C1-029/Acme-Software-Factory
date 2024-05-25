@@ -34,6 +34,9 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select p from Project p where p.id = :projectId")
 	Project findOneProjectById(final int projectId);
 
+	@Query("select p from Project p where p.id = :projectId and p.draftMode = true")
+	Project findOneProjectByIdAndNotPublished(final int projectId);
+
 	@Query("select p from Project p where p.code = :code")
 	Project findOneProjectByCode(final String code);
 

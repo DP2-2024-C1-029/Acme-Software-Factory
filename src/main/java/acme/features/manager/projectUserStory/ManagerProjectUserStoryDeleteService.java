@@ -24,7 +24,7 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	public void authorise() {
 		int projectUserStoryId = super.getRequest().getData("id", int.class);
 		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-		ProjectUserStory projectUserStory = this.repository.findProjectUserStoryById(projectUserStoryId);
+		ProjectUserStory projectUserStory = this.repository.findProjectUserStoryByIdAndNotPublished(projectUserStoryId);
 		boolean status = projectUserStory != null && projectUserStory.getProject().getManager().getId() == principal.getId() && projectUserStory.getUserStory().getManager().getId() == principal.getId();
 
 		super.getResponse().setAuthorised(status);
@@ -33,7 +33,7 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	@Override
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
-		ProjectUserStory projectUserStory = this.repository.findProjectUserStoryById(id);
+		ProjectUserStory projectUserStory = this.repository.findProjectUserStoryByIdAndNotPublished(id);
 		super.getBuffer().addData(projectUserStory);
 	}
 
