@@ -10,9 +10,7 @@
 	<acme:input-textarea code="auditor.codeAudit.form.label.correctiveActions" path="correctiveActions"/>
 	<acme:input-url code="auditor.codeAudit.form.label.link" path="link"/>
 		<acme:input-select code="auditor.codeAudit.form.label.project" path="project" choices="${projects}"/>
-	<acme:input-textbox code="auditor.codeAudit.form.label.mark" path="mark" readonly="true" placeholder="---"/>
-	<acme:input-checkbox code="auditor.codeAudit.form.label.draftMode" path="draftMode" readonly="true"/>
-	
+	<acme:input-textbox code="auditor.codeAudit.form.label.mark" path="mark" readonly="true" placeholder="---"/>	
 	
 	<jstl:choose>	 
 		<jstl:when test="${draftMode == false}">

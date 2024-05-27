@@ -21,6 +21,8 @@ auditor.auditRecord.form.error.too-close = Execution date is not in the past
 auditor.auditRecord.form.error.low-mark = Mark must be at least "C" to publish
 auditor.auditRecord.form.error.too-short = The period must be at least 1 hour long
 auditor.auditRecord.form.error.end-after-start = The end date must be after the start
+auditor.auditRecord.form.error.too-early = Date must not be before year 2000
+auditor.auditRecord.form.error.before-audit = The audit record cannot start before its code audit
 
 auditor.auditRecord.list.button.create = Create
 

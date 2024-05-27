@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -55,12 +55,12 @@ public class AuditRecord extends AbstractEntity {
 
 	// the	period during which the subject was audited (in the past, at least one hour long)
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@PastOrPresent
 	@NotNull
 	private Date				startPeriod;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@PastOrPresent
 	@NotNull
 	private Date				endPeriod;
 

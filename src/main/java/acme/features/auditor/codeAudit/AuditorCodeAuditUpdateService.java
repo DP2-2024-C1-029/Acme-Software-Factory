@@ -2,6 +2,7 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -76,14 +77,18 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 			CodeAudit existing;
 
 			existing = this.repository.findOneCodeAuditByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "auditor.codeAutit.form.error.duplicated");
+			super.state(existing == null || existing.equals(object), "code", "auditor.codeAudit.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
+		if (!super.getBuffer().getErrors().hasErrors("executionDate")) {
+			Date minimunMoment = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
+
 			super.state(MomentHelper.isPresentOrPast(object.getExecutionDate()), "executionDate", "auditor.codeAudit.form.error.too-close");
+			super.state(MomentHelper.isAfterOrEqual(object.getExecutionDate(), minimunMoment), "executionDate", "auditor.codeAudit.form.error.too-early");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(!object.getProject().isDraftMode(), "project", "auditor.CodeAudit.form.error.drafted-project");
+			super.state(!object.getProject().isDraftMode(), "project", "auditor.codeAudit.form.error.drafted-project");
 	}
 
 	@Override

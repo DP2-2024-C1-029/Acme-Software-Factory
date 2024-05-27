@@ -7,9 +7,7 @@
 	<acme:input-textbox code="auditor.auditRecord.form.label.code" path="code"/>
 	<acme:input-moment code="auditor.auditRecord.form.label.startPeriod" path="startPeriod"/>
 	<acme:input-moment code="auditor.auditRecord.form.label.endPeriod" path="endPeriod"/>
-	<acme:input-select code="auditor.auditRecord.form.label.mark" path="mark" choices="${marks}"/>
-	<acme:input-checkbox code="auditor.auditRecord.form.label.draftMode" path="draftMode" readonly="true"/>
-	
+	<acme:input-select code="auditor.auditRecord.form.label.mark" path="mark" choices="${marks}"/>	
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">

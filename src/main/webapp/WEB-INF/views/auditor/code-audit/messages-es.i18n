@@ -18,13 +18,13 @@ auditor.codeAudit.form.button.delete = Borrar
 auditor.codeAudit.form.button.publish = Publicar
 auditor.codeAudit.form.button.create = Crear
 
-auditor.codeAutit.form.error.duplicated = Código duplicado
+auditor.codeAudit.form.error.duplicated = Código duplicado
 auditor.codeAudit.form.error.too-close = La fecha de ejecución no es pasada
-auditor.codeaudit.form.error.low-mark = La nota debe ser al menos "C" para publicar
-auditor.codeaudit.form.error.not-all-records-published = Todos los reportes de esta auditoría deben estar publicados
+auditor.codeAudit.form.error.low-mark = La nota debe ser al menos "C" para publicar
+auditor.codeAudit.form.error.not-all-records-published = Todos los reportes de esta auditoría deben estar publicados
 auditor.CodeAudit.form.error.drafted-project = El proyecto asociado deber estar publicado
-auditor.codeaudit.form.error.not-published-records = No puedes borrar una auditoria con registros publicados
- 
+auditor.codeAudit.form.error.not-published-records = No puedes borrar una auditoria con registros publicados
+auditor.CodeAudit.form.error.too-early = La fecha de ejecución no puede ser anterior al año 2000
 
 auditor.codeAudit.list.button.create = Crear
 

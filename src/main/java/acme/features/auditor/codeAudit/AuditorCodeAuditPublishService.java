@@ -2,6 +2,7 @@
 package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -75,11 +76,15 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 			CodeAudit existing;
 
 			existing = this.repository.findOneCodeAuditByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "auditor.codeAutit.form.error.duplicated");
+			super.state(existing == null || existing.equals(object), "code", "auditor.codeAudit.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("executionDate"))
-			super.state(MomentHelper.isPast(object.getExecutionDate()), "executionDate", "Auditor.CodeAudit.form.error.too-close");
+		if (!super.getBuffer().getErrors().hasErrors("executionDate")) {
+			Date minimunMoment = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
+
+			super.state(MomentHelper.isPresentOrPast(object.getExecutionDate()), "executionDate", "auditor.codeAudit.form.error.too-close");
+			super.state(MomentHelper.isAfterOrEqual(object.getExecutionDate(), minimunMoment), "executionDate", "auditor.codeAudit.form.error.too-early");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("mark")) {
 			Collection<AuditRecord> auditRecords;
@@ -103,15 +108,15 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 					mode = entry.getKey();
 				}
 
-			super.state(mode != null && mode.ordinal() <= 3, "mark", "auditor.codeaudit.form.error.low-mark");
+			super.state(mode != null && mode.ordinal() <= 3, "mark", "auditor.codeAudit.form.error.low-mark");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("project"))
-			super.state(!object.getProject().isDraftMode(), "project", "auditor.CodeAudit.form.error.drafted-project");
+			super.state(!object.getProject().isDraftMode(), "project", "auditor.codeAudit.form.error.drafted-project");
 		{
 			boolean allRecordsPublished;
 
 			allRecordsPublished = this.repository.findManyAuditRecordsByCodeAuditIdNotPublished(object.getId()).isEmpty();
-			super.state(allRecordsPublished, "*", "auditor.codeaudit.form.error.not-all-records-published");
+			super.state(allRecordsPublished, "*", "auditor.codeAudit.form.error.not-all-records-published");
 		}
 	}
 
