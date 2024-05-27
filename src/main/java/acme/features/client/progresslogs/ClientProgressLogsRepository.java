@@ -39,6 +39,6 @@ public interface ClientProgressLogsRepository extends AbstractRepository {
 	@Query("select p from ProgressLogs p where p.contract.id = :id and p.registrationMoment = :date and p.id != :id2")
 	Collection<ProgressLogs> findProgressLogsByContractIdDate(int id, int id2, Date date);
 
-	@Query("select max(p.completeness) from ProgressLogs p where p.contract.id = :id and p.draftMode = false")
-	Double findMaxCompletnessProgressLog(int id);
+	@Query("select p2 from ProgressLogs p2 where p2.draftMode = false and p2.contract.id = :id and p2.completeness = (select max(p.completeness) from ProgressLogs p where p.contract.id = :id and p.draftMode = false)")
+	ProgressLogs findMaxCompletnessProgressLog(int id);
 }

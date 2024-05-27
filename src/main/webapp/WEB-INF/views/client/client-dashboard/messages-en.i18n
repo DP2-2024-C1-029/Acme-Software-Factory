@@ -1,9 +1,9 @@
 client.client-dashboard.form.title = Client dashboard
 
-client.dashboard.form.title.budget-factors = budget related metrics
-client.dashboard.form.title.logs-rate = logs completeness rate chart
+client.dashboard.form.title.budget-factors = Budget related metrics
+client.dashboard.form.title.logs-rate = Logs completeness rate chart
 
-client.dashboard.form.label.min-budget =  lowest budget registererd for your contracts (in USD)
-client.dashboard.form.label.max-budget =  highest budget registered for your contracts (in USD)
-client.dashboard.form.label.average = average of the budgets of of your contracts (in USD)
-client.dashboard.form.label.deviation = deviation of the budgets of your contracts (in USD)
+client.dashboard.form.label.min-budget =  Lowest budget registererd for your contracts
+client.dashboard.form.label.max-budget =  Highest budget registered for your contracts
+client.dashboard.form.label.average = Average of the budgets of of your contracts
+client.dashboard.form.label.deviation = Deviation of the budgets of your contracts
