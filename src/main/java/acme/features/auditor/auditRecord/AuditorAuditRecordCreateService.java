@@ -2,6 +2,7 @@
 package acme.features.auditor.auditRecord;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,11 +75,20 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 			super.state(existing == null, "code", "auditor.auditRecord.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("startPeriod"))
-			super.state(MomentHelper.isPresentOrPast(object.getStartPeriod()), "startPeriod", "auditor.auditRecord.form.error.not-past");
+		if (!super.getBuffer().getErrors().hasErrors("startPeriod")) {
+			Date minimunMoment = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
 
-		if (!super.getBuffer().getErrors().hasErrors("endPeriod"))
+			super.state(MomentHelper.isPresentOrPast(object.getStartPeriod()), "startPeriod", "auditor.auditRecord.form.error.not-past");
+			super.state(MomentHelper.isAfterOrEqual(object.getStartPeriod(), minimunMoment), "startPeriod", "auditor.auditRecord.form.error.too-early");
+			super.state(MomentHelper.isAfterOrEqual(object.getStartPeriod(), object.getCodeAudit().getExecutionDate()), "startPeriod", "auditor.auditRecord.form.error.before-audit");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("endPeriod")) {
+			Date minimunMoment = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
+
 			super.state(MomentHelper.isPresentOrPast(object.getEndPeriod()), "endPeriod", "auditor.auditRecord.form.error.not-past");
+			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), minimunMoment), "endPeriod", "auditor.auditRecord.form.error.too-early");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && !super.getBuffer().getErrors().hasErrors("endPeriod"))
 			super.state(MomentHelper.isAfter(object.getEndPeriod(), object.getStartPeriod()), "endPeriod", "auditor.auditRecord.form.error.end-after-start");
@@ -92,6 +102,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	public void perform(final AuditRecord object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

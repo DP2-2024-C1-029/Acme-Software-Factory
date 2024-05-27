@@ -16,12 +16,13 @@ auditor.auditRecord.form.button.delete = Borrar
 auditor.auditRecord.form.button.publish = Publicar
 auditor.auditRecord.form.button.create = Crear
 
-auditor.codeAutit.form.error.duplicated = Código duplicado
+auditor.auditRecord.form.error.duplicated = Código duplicado
 auditor.auditRecord.form.error.too-close = La fecha de ejecución no es pasada
 auditor.auditRecord.form.error.low-mark = La nota debe ser al menos "C" para publicar
 auditor.auditRecord.form.error.too-short = El periodo debe durar al menos 1 hora
 auditor.auditRecord.form.error.end-after-start = La fecha de fin debe ser posterior a la de inicio
- 
+auditor.auditRecord.form.error.too-early = La fecha no puede ser anterior al año 2000
+auditor.auditRecord.form.error.before-audit = El registro no puede empezar antes de su auditoría
 
 auditor.auditRecord.list.button.create = Crear
 
