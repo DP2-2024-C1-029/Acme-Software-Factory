@@ -1,8 +1,6 @@
 
 package acme.features.client.progresslogs;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -74,17 +72,18 @@ public class ClientProgressLogsPublishService extends AbstractService<Client, Pr
 
 		if (!super.getBuffer().getErrors().hasErrors("completeness")) {
 
-			Double maxCompleteness = this.repository.findMaxCompletnessProgressLog(object.getContract().getId());
-
+			ProgressLogs maxCompleteness = this.repository.findMaxCompletnessProgressLog(object.getContract().getId());
 			if (maxCompleteness != null)
-				super.state(maxCompleteness < object.getCompleteness(), "completeness", "client.progress-log.form.error.completeness");
+				super.state(maxCompleteness.getCompleteness() < object.getCompleteness(), "completeness", "client.progress-log.form.error.completeness");
 
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("registrationMoment")) {
 
-			Collection<ProgressLogs> sameDate = this.repository.findProgressLogsByContractIdDate(object.getContract().getId(), object.getId(), object.getRegistrationMoment());
-			super.state(sameDate.isEmpty(), "registrationMoment", "client.progress-log.form.error.same-moment");
+			ProgressLogs maxResgistrationMoment = this.repository.findMaxCompletnessProgressLog(object.getContract().getId());
+			if (maxResgistrationMoment != null)
+				super.state(object.getRegistrationMoment().after(maxResgistrationMoment.getRegistrationMoment()), "registrationMoment", "client.progress-log.form.error.registration-moment-must-be-later-the-published-max-completness");
+
 		}
 
 	}

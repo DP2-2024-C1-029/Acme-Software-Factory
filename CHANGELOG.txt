@@ -10,13 +10,22 @@
 
 ** Year 2024
 
-D01	Inicializacion de la configuracion y customizacion del proyecto Acme Software Factory
+Repositorio : https://github.com/DP2-2024-C1-029/Acme-Software-Factory
 
+** 16/02/2024
 
-** 2024/03/
+D01	Inicializacion de la configuracion y customizacion del proyecto Acme Software Factory.
 
-D02 - Group:  Creacion de las entidades referentes a los requisitos grupal y datos de pruebas.
+** 08/03/2024
 
-D02 - Student #1: Creacion de las entidades referentes a los requisitos del student 1 y datos de pruebas.
+D02 - Creacion de las entidades referentes a los requisitos grupal y datos de pruebas.
+
+** 26/04/2024
+
+D03 - Desarrollo de la logica de negocio para el funcionamiento de la aplicacion referente a los requisitos especificados para cada estudiante y grupal.
+
+** 27/05/2024
+
+D04 - Testing de la logica implementada y correccion de errores.
 
 
