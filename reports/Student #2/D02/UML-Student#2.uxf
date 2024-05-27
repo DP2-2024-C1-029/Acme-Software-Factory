@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>70</y>
-      <w>220</w>
-      <h>60</h>
+      <x>440</x>
+      <y>112</y>
+      <w>176</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Project
@@ -19,9 +19,9 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>290</y>
-      <w>370</w>
-      <h>190</h>
+      <y>288</y>
+      <w>296</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 ProgressLogs
@@ -33,6 +33,7 @@ NotBlank, Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")}
 +registrationMoment: Date{Past, NotNull
 Temporal(TemporalType.TIMESTAMP)}
 +responsiblePerson: String{NotBlank, Length(max = 75)}
++draftMode: Boolean{NotNull}
 --
 +contract: Contract{Valid, NotNull}
 bg=green
@@ -42,10 +43,10 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1060</x>
-      <y>300</y>
-      <w>340</w>
-      <h>160</h>
+      <x>848</x>
+      <y>296</y>
+      <w>272</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Client
@@ -65,10 +66,10 @@ bg=orange
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
+      <x>440</x>
       <y>280</y>
-      <w>350</w>
-      <h>230</h>
+      <w>280</w>
+      <h>184</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Contract
@@ -81,6 +82,7 @@ Temporal(TemporalType.TIMESTAMP)}
 +customerName: String{Length(max = 75),NotBlank}
 +goals: String{Length(max = 100), NotBlank}
 +budget: Money{NotNull}
++draftMode: Boolean{NotNull}
 --
 +project: Project{Valid, NotNull}
 +client: Client{Valid, NotNull}
@@ -91,10 +93,10 @@ bg=green
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>120</y>
-      <w>90</w>
-      <h>180</h>
+      <x>520</x>
+      <y>152</y>
+      <w>72</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 m1=1
@@ -105,10 +107,10 @@ belongs to</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>890</x>
-      <y>350</y>
-      <w>190</w>
-      <h>50</h>
+      <x>712</x>
+      <y>336</y>
+      <w>152</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 m1=1
@@ -119,10 +121,10 @@ made by</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>340</y>
-      <w>210</w>
-      <h>50</h>
+      <x>288</x>
+      <y>328</y>
+      <w>168</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 m1=1
@@ -133,10 +135,10 @@ belongs to</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>770</x>
-      <y>570</y>
-      <w>140</w>
-      <h>70</h>
+      <x>552</x>
+      <y>512</y>
+      <w>112</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>The budget must 
 be lower or equal
@@ -148,10 +150,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>560</x>
-      <y>570</y>
-      <w>140</w>
-      <h>70</h>
+      <x>424</x>
+      <y>512</y>
+      <w>112</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>The oldest date 
 must not be earlier
@@ -163,10 +165,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>920</x>
-      <y>80</y>
-      <w>220</w>
-      <h>80</h>
+      <x>736</x>
+      <y>120</y>
+      <w>176</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 CompanyType
@@ -182,10 +184,10 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
-      <y>500</y>
-      <w>60</w>
-      <h>90</h>
+      <x>576</x>
+      <y>456</y>
+      <w>48</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;70.0</additional_attributes>
@@ -193,25 +195,79 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>500</y>
-      <w>60</w>
-      <h>90</h>
+      <x>480</x>
+      <y>456</y>
+      <w>32</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>40.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>20.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>90</x>
-      <y>560</y>
-      <w>140</w>
-      <h>70</h>
+      <x>72</x>
+      <y>504</y>
+      <w>112</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>The oldest date 
 must not be earlier
 than 2000/01/01 
+00:01
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>120</x>
+      <y>432</y>
+      <w>24</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>680</x>
+      <y>512</y>
+      <w>112</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>The budget must 
+be more or equal 
+than 0.00 
+and less or equal 
+than 1,000,000.00
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>680</x>
+      <y>456</y>
+      <w>72</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>776</x>
+      <y>448</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>The currency in the
+form must be the
+accepted in the
+configuration
 00:00
 bg=yellow</panel_attributes>
     <additional_attributes/>
@@ -219,10 +275,38 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>150</x>
-      <y>470</y>
-      <w>30</w>
-      <h>110</h>
+      <x>712</x>
+      <y>408</y>
+      <w>80</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>192</x>
+      <y>504</y>
+      <w>112</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>The registration 
+moment must be 
+later than 
+the instantiation
+moment of the 
+associated contract
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>224</x>
+      <y>432</y>
+      <w>24</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
