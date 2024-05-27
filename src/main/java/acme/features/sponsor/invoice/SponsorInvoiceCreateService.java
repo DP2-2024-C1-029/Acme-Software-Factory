@@ -86,7 +86,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			super.state(Stream.of(acceptedCurrencies).anyMatch(c -> c.equals(object.getQuantity().getCurrency())), //
 				"quantity", "sponsor.invoice.form.error.quantity-not-valid");
 
-			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.negative-amount");
+			super.state(object.getQuantity().getAmount() > 0 && object.getQuantity().getAmount() <= 1000000, "quantity", "sponsor.invoice.form.error.negative-amount");
 		}
 	}
 
