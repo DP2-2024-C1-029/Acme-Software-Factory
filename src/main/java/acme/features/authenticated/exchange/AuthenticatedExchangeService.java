@@ -20,6 +20,7 @@ import acme.entities.configuration.Configuration;
 import acme.entities.exchange.Exchange;
 import acme.entities.exchange.ExchangeRate;
 import acme.features.administrator.configuration.AdministratorConfigurationRepository;
+import acme.helper.ExchangeHelper;
 
 @Service
 public class AuthenticatedExchangeService {
@@ -42,10 +43,13 @@ public class AuthenticatedExchangeService {
 	@Autowired
 	public AdministratorConfigurationRepository	administratorConfigurationRepository;
 
+	@Autowired
+	public ExchangeHelper						exchangeHelper;
+
 
 	public List<String> getAllCurrenciesFromApi() {
 
-		List<String> currencies = this.repository.findAllCurrencies();
+		List<String> currencies = this.exchangeHelper.getExchange().findAllCurrencies();
 		List<String> result = new ArrayList<>();
 		if (currencies == null || currencies.isEmpty()) {
 			List<Exchange> exhanges = this.getFromApi(null);
@@ -67,7 +71,7 @@ public class AuthenticatedExchangeService {
 		String currenciesSystem = configuration.getAcceptedCurrencies().replace(";", ",");
 		List<String> allCurrenciesSystem = Lists.newArrayList(currenciesSystem.split(","));
 		//La primera vez que llamemos, obtenemos de la api todas las permitidas
-		if (Boolean.FALSE.equals(this.repository.existsExchanges(allCurrenciesSystem)))
+		if (Boolean.FALSE.equals(this.exchangeHelper.getExchange().existsExchanges(allCurrenciesSystem)))
 			this.getAllCurrenciesFromApi();
 
 		if (!allAcepptedCurrencies) {
@@ -78,7 +82,7 @@ public class AuthenticatedExchangeService {
 		for (String target : allCurrenciesSystem) {
 			Money moneyResult = new Money();
 			if (!currencySource.equals(target)) {
-				List<Exchange> changes = this.repository.findExchangeByCurrencySourceAndTarget(MomentHelper.getCurrentMoment(), currencySource, target);
+				List<Exchange> changes = this.exchangeHelper.getExchange().findExchangeByCurrencySourceAndTarget(MomentHelper.getCurrentMoment(), currencySource, target);
 
 				if (changes != null && !changes.isEmpty()) {
 					if (changes.size() == 2)
@@ -159,7 +163,7 @@ public class AuthenticatedExchangeService {
 
 		Collection<Exchange> exchangesToSave = new ArrayList<>();
 		//Buscamos si ya existia la moneda porque haya expirado el tiempo, para no generar una nueva sino actualizarla
-		List<Exchange> existingCurrencies = this.repository.findExchangeByCurrency(currencies);
+		List<Exchange> existingCurrencies = this.exchangeHelper.getExchange().findExchangeByCurrency(currencies);
 		for (Exchange exchange : allExchanges) {
 			boolean found = false;
 			for (Exchange exchangeToUpdate : existingCurrencies)
@@ -173,6 +177,7 @@ public class AuthenticatedExchangeService {
 			if (!found)
 				exchangesToSave.add(exchange);
 		}
-		return this.repository.saveAll(exchangesToSave);
+		return this.exchangeHelper.getExchange().saveAll(exchangesToSave);
 	}
+
 }

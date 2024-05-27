@@ -1,15 +1,13 @@
 
 package acme.features.manager.project;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
-import acme.entities.projects.ProjectUserStory;
+import acme.features.authenticated.manager.AuthenticatedManagerRepository;
 import acme.roles.Manager;
 
 @Service
@@ -17,7 +15,10 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerProjectRepository		repository;
+
+	@Autowired
+	private AuthenticatedManagerRepository	authenticatedManagerRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -25,10 +26,10 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Override
 	public void authorise() {
 		int projectId = super.getRequest().getData("id", int.class);
-		Project project = this.repository.findOneProjectById(projectId);
+		Project project = this.repository.findOneProjectByIdAndNotPublished(projectId);
 		Manager manager = project == null ? null : project.getManager();
-		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-		boolean status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
+		Manager principal = this.authenticatedManagerRepository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		boolean status = manager != null && super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -37,7 +38,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void load() {
 
 		int id = super.getRequest().getData("id", int.class);
-		Project object = this.repository.findOneProjectById(id);
+		Project object = this.repository.findOneProjectByIdAndNotPublished(id);
 		super.getBuffer().addData(object);
 	}
 
@@ -54,13 +55,15 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		assert object != null;
 
 		int id = super.getRequest().getData("id", int.class);
-		Project projectPreSave = this.repository.findOneProjectById(id);
-		Collection<ProjectUserStory> listProjectUserStory = this.repository.findUserStoryByProjectPublished(id);
+		Project projectPreSave = this.repository.findOneProjectByIdAndNotPublished(id);
+		boolean containUserStoryNotPublished = this.repository.containUserStoryNotPublished(id);
+		boolean containUserStory = this.repository.containUserStory(id);
 		if (!super.getBuffer().getErrors().hasErrors("published")) {
-			super.state(projectPreSave.isDraftMode(), "published", "manager.project.form.error.published");
-			super.state(!listProjectUserStory.isEmpty(), "published", "manager.project.form.error.published.without_userStory");
+			super.state(!containUserStoryNotPublished, "published", "manager.project.form.error.published.without_userStory");
+			super.state(containUserStory, "published", "manager.project.form.error.published.without_userStory");
 			super.state(!projectPreSave.isIndication(), "published", "manager.project.form.error.published.fatal_error");
 		}
+
 	}
 
 	@Override

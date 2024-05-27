@@ -182,25 +182,36 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 	}
 
 	private double minimum(final List<Money> list) {
-		double minimum = Double.MAX_VALUE;
+		double minimum = 0.;
 
+		boolean firstTime = true;
 		for (Money money : list) {
 			double amount = money.getAmount();
+			if (firstTime) {
+				minimum = amount;
+				firstTime = false;
+			}
+
 			if (amount < minimum)
 				minimum = amount;
 		}
-		return Math.min(minimum, 0);
+		return minimum;
 	}
 
 	private double maximum(final List<Money> list) {
-		double maximum = Double.MIN_VALUE;
+		double maximum = 0.;
 
+		boolean firstTime = true;
 		for (Money money : list) {
 			double amount = money.getAmount();
+			if (firstTime) {
+				maximum = amount;
+				firstTime = false;
+			}
 			if (amount > maximum)
 				maximum = amount;
 		}
-		return Math.max(maximum, 0);
+		return maximum;
 	}
 
 	private Map<String, List<Money>> changeCurrency(final Collection<Money> listMoney, final boolean allAcceptanceCurrency) {

@@ -11,6 +11,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
 import acme.features.authenticated.exchange.AuthenticatedExchangeService;
+import acme.features.authenticated.manager.AuthenticatedManagerRepository;
 import acme.roles.Manager;
 
 @Service
@@ -19,10 +20,13 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository	repository;
+	private ManagerProjectRepository		repository;
 
 	@Autowired
-	public AuthenticatedExchangeService	exchangeService;
+	public AuthenticatedExchangeService		exchangeService;
+
+	@Autowired
+	private AuthenticatedManagerRepository	authenticatedManagerRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -37,7 +41,7 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.repository.findOneProjectById(projectId);
 		manager = project == null ? null : project.getManager();
-		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		Manager principal = this.authenticatedManagerRepository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
 
 		super.getResponse().setAuthorised(status);

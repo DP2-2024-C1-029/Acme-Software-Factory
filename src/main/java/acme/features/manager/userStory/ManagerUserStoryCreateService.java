@@ -9,6 +9,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.userstories.Priority;
 import acme.entities.userstories.UserStory;
+import acme.features.authenticated.manager.AuthenticatedManagerRepository;
 import acme.roles.Manager;
 
 @Service
@@ -16,7 +17,10 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository repository;
+	private ManagerUserStoryRepository		repository;
+
+	@Autowired
+	private AuthenticatedManagerRepository	authenticatedManagerRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -31,7 +35,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		UserStory object;
 		Manager manager;
 
-		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		manager = this.authenticatedManagerRepository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new UserStory();
 		object.setManager(manager);
 		object.setDraftMode(true);
@@ -58,6 +62,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	public void perform(final UserStory object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 

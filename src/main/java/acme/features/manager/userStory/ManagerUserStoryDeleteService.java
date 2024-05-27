@@ -1,14 +1,18 @@
 
 package acme.features.manager.userStory;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.projects.ProjectUserStory;
 import acme.entities.userstories.Priority;
 import acme.entities.userstories.UserStory;
+import acme.features.manager.projectUserStory.ManagerProjectUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
@@ -17,7 +21,10 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository repository;
+	private ManagerUserStoryRepository			repository;
+
+	@Autowired
+	private ManagerProjectUserStoryRepository	managerProjectUserStoryRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -25,9 +32,9 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	@Override
 	public void authorise() {
 		int userStoryId = super.getRequest().getData("id", int.class);
-		UserStory userStory = this.repository.findOneUserStoryById(userStoryId);
+		UserStory userStory = this.repository.findOneUserStoryByIdAndNotPublished(userStoryId);
 		Manager manager = userStory == null ? null : userStory.getManager();
-		boolean status = super.getRequest().getPrincipal().hasRole(manager) && userStory != null && userStory.getManager().getId() == manager.getId();
+		boolean status = manager != null && super.getRequest().getPrincipal().hasRole(manager) && userStory != null && userStory.getManager().getId() == manager.getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -35,7 +42,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	@Override
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
-		UserStory object = this.repository.findOneUserStoryById(id);
+		UserStory object = this.repository.findOneUserStoryByIdAndNotPublished(id);
 		super.getBuffer().addData(object);
 	}
 
@@ -52,6 +59,9 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 		if (!super.getBuffer().getErrors().hasErrors("published"))
 			super.state(object.isDraftMode(), "published", "manager.userstory.form.error.detele.published");
+
+		Collection<ProjectUserStory> projectUserStory = this.managerProjectUserStoryRepository.findProjectUserStoryByUserStoryId(object.getId());
+		super.state(projectUserStory == null || projectUserStory.isEmpty(), "*", "manager.userstory.form.error.detele.project");
 	}
 
 	@Override

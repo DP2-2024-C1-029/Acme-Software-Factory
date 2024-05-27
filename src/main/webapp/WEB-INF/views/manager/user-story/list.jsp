@@ -10,13 +10,10 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="manager.userstory.list.label.title" path="title" width="10%"/>
-	<acme:list-column code="manager.userstory.list.label.description" path="description" width="40%"/>
-	<acme:list-column code="manager.userstory.list.label.estimatedCost" path="estimatedCost" width="10%"/>
-	<acme:list-column code="manager.userstory.list.label.acceptanceCriteria" path="acceptanceCriteria" width="10%"/>
-	<acme:list-column code="manager.userstory.list.label.priority" path="priority" width="10%"/>
-	<acme:list-column code="manager.userstory.list.label.link" path="link" width="10%"/>
-	<acme:list-column code="manager.userstory.list.label.draftMode" path="published" width="10%"/>
+	<acme:list-column code="manager.userstory.list.label.title" path="title" width="20%"/>
+	<acme:list-column code="manager.userstory.list.label.estimatedCost" path="estimatedCost" width="20%"/>
+	<acme:list-column code="manager.userstory.list.label.priority" path="priority" width="20%"/>
+	<acme:list-column code="manager.userstory.list.label.draftMode" path="published" width="20%"/>
 </acme:list>
 
 <jstl:if test="${_command == 'list-mine'}">
