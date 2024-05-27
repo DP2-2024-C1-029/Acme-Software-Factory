@@ -6,15 +6,19 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 import acme.client.helpers.MomentHelper;
 import acme.entities.exchange.Exchange;
 import acme.features.authenticated.exchange.AuthenticatedExchangeRepository;
 
+@Component
+@Profile("development")
 public class RealExchange extends AbstractExchange {
 
 	@Autowired
-	AuthenticatedExchangeRepository authenticatedExchangeRepository;
+	public AuthenticatedExchangeRepository authenticatedExchangeRepository;
 
 
 	public RealExchange() {

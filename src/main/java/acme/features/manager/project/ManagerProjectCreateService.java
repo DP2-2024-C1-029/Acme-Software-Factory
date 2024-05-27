@@ -11,6 +11,8 @@ import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
+import acme.features.administrator.configuration.AdministratorConfigurationRepository;
+import acme.features.authenticated.manager.AuthenticatedManagerRepository;
 import acme.roles.Manager;
 
 @Service
@@ -18,7 +20,13 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerProjectRepository			repository;
+
+	@Autowired
+	public AdministratorConfigurationRepository	administratorConfigurationRepository;
+
+	@Autowired
+	private AuthenticatedManagerRepository		authenticatedManagerRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -33,7 +41,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		Project object;
 		Manager manager;
 
-		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		manager = this.authenticatedManagerRepository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Project();
 		object.setDraftMode(true);
 		object.setManager(manager);
@@ -59,7 +67,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			final Money rP = object.getCost();
-			final List<String> acceptedCurrency = Arrays.asList(this.repository.findCurrencyConfiguration().getAcceptedCurrencies().split(";"));
+			final List<String> acceptedCurrency = Arrays.asList(this.administratorConfigurationRepository.findConfigurationOfSystem().getAcceptedCurrencies().split(";"));
 			super.state(acceptedCurrency.contains(rP.getCurrency()), "cost", "manager.project.form.error.cost.currency");
 			super.state(object.getCost().getAmount() >= 0, "cost", "manager.project.form.error.negative-cost");
 		}

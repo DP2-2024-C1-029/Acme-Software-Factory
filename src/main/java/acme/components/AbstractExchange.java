@@ -5,8 +5,11 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import acme.entities.exchange.Exchange;
 
+@Service
 public abstract class AbstractExchange {
 
 	public abstract List<String> findAllCurrencies();

@@ -1,25 +1,19 @@
 
 package acme.helper;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import acme.components.AbstractExchange;
-import acme.components.DefaultExchangeProvider;
 
-public abstract class ExchangeHelper {
+@Component
+public class ExchangeHelper {
 
-	protected ExchangeHelper() {
-	}
-
-
-	static {
-		ExchangeHelper.exchange = (AbstractExchange) DefaultExchangeProvider.INSTANCE.getExchange();
-	}
-
-	// Internal state ---------------------------------------------------------
-
-	private static AbstractExchange exchange;
+	@Autowired
+	private AbstractExchange exchange;
 
 
-	public static AbstractExchange getExchange() {
-		return ExchangeHelper.exchange;
+	public AbstractExchange getExchange() {
+		return this.exchange;
 	}
 }

@@ -6,10 +6,15 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
 import com.google.common.collect.Lists;
 
 import acme.entities.exchange.Exchange;
 
+@Service
+@Profile("!development")
 public class SimulatedExchange extends AbstractExchange {
 
 	public SimulatedExchange() {
