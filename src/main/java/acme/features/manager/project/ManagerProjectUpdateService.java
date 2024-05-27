@@ -11,6 +11,8 @@ import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
+import acme.features.administrator.configuration.AdministratorConfigurationRepository;
+import acme.features.authenticated.manager.AuthenticatedManagerRepository;
 import acme.roles.Manager;
 
 @Service
@@ -19,7 +21,13 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerProjectRepository			repository;
+
+	@Autowired
+	public AdministratorConfigurationRepository	administratorConfigurationRepository;
+
+	@Autowired
+	private AuthenticatedManagerRepository		authenticatedManagerRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -27,9 +35,9 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	@Override
 	public void authorise() {
 		int projectId = super.getRequest().getData("id", int.class);
-		Project project = this.repository.findOneProjectById(projectId);
+		Project project = this.repository.findOneProjectByIdAndNotPublished(projectId);
 		Manager manager = project == null ? null : project.getManager();
-		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		Manager principal = this.authenticatedManagerRepository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		boolean status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
 
 		super.getResponse().setAuthorised(status);
@@ -39,7 +47,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void load() {
 
 		int id = super.getRequest().getData("id", int.class);
-		Project object = this.repository.findOneProjectById(id);
+		Project object = this.repository.findOneProjectByIdAndNotPublished(id);
 		super.getBuffer().addData(object);
 	}
 
@@ -61,14 +69,9 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 				super.state(existing == null, "code", "manager.project.form.error.duplicated");
 		}
 
-		int id = super.getRequest().getData("id", int.class);
-		Project projectPreSave = this.repository.findOneProjectById(id);
-		if (!super.getBuffer().getErrors().hasErrors("published"))
-			super.state(projectPreSave.isDraftMode(), "published", "manager.project.form.error.published");
-
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			final Money rP = object.getCost();
-			final List<String> acceptedCurrency = Arrays.asList(this.repository.findCurrencyConfiguration().getAcceptedCurrencies().split(";"));
+			final List<String> acceptedCurrency = Arrays.asList(this.administratorConfigurationRepository.findConfigurationOfSystem().getAcceptedCurrencies().split(";"));
 			super.state(acceptedCurrency.contains(rP.getCurrency()), "cost", "manager.project.form.error.cost.currency");
 			super.state(object.getCost().getAmount() >= 0, "cost", "manager.project.form.error.negative-cost");
 		}
@@ -86,7 +89,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		Dataset dataset = super.unbind(object, "code", "title", "abstractText", "indication", "cost", "link");
-		dataset.put("published", !object.isDraftMode());
+		dataset.put("published", false);
 
 		super.getResponse().addData(dataset);
 	}

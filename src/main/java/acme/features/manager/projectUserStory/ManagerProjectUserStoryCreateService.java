@@ -9,6 +9,8 @@ import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
 import acme.entities.userstories.UserStory;
+import acme.features.manager.project.ManagerProjectRepository;
+import acme.features.manager.userStory.ManagerUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
@@ -16,7 +18,13 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectUserStoryRepository repository;
+	private ManagerProjectUserStoryRepository	repository;
+
+	@Autowired
+	private ManagerUserStoryRepository			managerUserStoryRepository;
+
+	@Autowired
+	private ManagerProjectRepository			managerProjectRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -24,15 +32,12 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	@Override
 	public void authorise() {
 		int userStoryId = super.getRequest().getData("userStoryId", int.class);
-		UserStory userStory = this.repository.findOneUserStoryById(userStoryId);
-
 		int projectId = super.getRequest().getData("projectId", int.class);
-		Project project = this.repository.findProjectById(projectId);
-		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-		Manager managerUserStory = userStory == null ? null : userStory.getManager();
-		Manager managerProject = project == null ? null : project.getManager();
-		boolean status = super.getRequest().getPrincipal().hasRole(managerUserStory) && super.getRequest().getPrincipal().hasRole(managerProject) && userStory != null && project != null && userStory.getManager().getId() == principal.getId()
-			&& project.getManager().getId() == principal.getId();
+		int managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		UserStory userStory = this.managerUserStoryRepository.findOneUserStoryByIdAndManagerId(userStoryId, managerId);
+		Project project = this.managerProjectRepository.findOneProjectByIdAndManagerId(projectId, managerId);
+
+		boolean status = userStory != null && project != null;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -42,10 +47,10 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		ProjectUserStory object = new ProjectUserStory();
 
 		int userStoryId = super.getRequest().getData("userStoryId", int.class);
-		UserStory userStory = this.repository.findOneUserStoryById(userStoryId);
+		UserStory userStory = this.managerUserStoryRepository.findOneUserStoryById(userStoryId);
 
 		int projectId = super.getRequest().getData("projectId", int.class);
-		Project project = this.repository.findProjectById(projectId);
+		Project project = this.managerProjectRepository.findOneProjectById(projectId);
 		object.setProject(project);
 		object.setUserStory(userStory);
 
@@ -72,7 +77,7 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	@Override
 	public void perform(final ProjectUserStory object) {
 		assert object != null;
-
+		object.setId(0);
 		this.repository.save(object);
 	}
 

@@ -13,6 +13,8 @@ import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
 import acme.entities.userstories.UserStory;
+import acme.features.authenticated.manager.AuthenticatedManagerRepository;
+import acme.features.manager.project.ManagerProjectRepository;
 import acme.roles.Manager;
 
 @Service
@@ -21,7 +23,13 @@ public class ManagerProjectUserStoryListAddService extends AbstractService<Manag
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectUserStoryRepository repository;
+	private ManagerProjectUserStoryRepository	repository;
+
+	@Autowired
+	private ManagerProjectRepository			managerProjectRepository;
+
+	@Autowired
+	private AuthenticatedManagerRepository		authenticatedManagerRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -34,9 +42,9 @@ public class ManagerProjectUserStoryListAddService extends AbstractService<Manag
 		Manager manager;
 
 		projectId = super.getRequest().getData("id", int.class);
-		project = this.repository.findProjectById(projectId);
+		project = this.managerProjectRepository.findOneProjectByIdAndNotPublished(projectId);
 		manager = project == null ? null : project.getManager();
-		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		Manager principal = this.authenticatedManagerRepository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
 
 		super.getResponse().setAuthorised(status);
@@ -46,7 +54,7 @@ public class ManagerProjectUserStoryListAddService extends AbstractService<Manag
 	public void load() {
 		Principal principal = super.getRequest().getPrincipal();
 		int projectId = super.getRequest().getData("id", int.class);
-		Project project = this.repository.findProjectById(projectId);
+		Project project = this.managerProjectRepository.findOneProjectByIdAndNotPublished(projectId);
 		Collection<UserStory> objects = this.repository.findUserStoryToAdd(principal.getActiveRoleId(), projectId);
 
 		Collection<ProjectUserStory> listProjectUserStory = new ArrayList<>();

@@ -6,11 +6,12 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
 import acme.entities.projects.ProjectUserStory;
+import acme.features.authenticated.manager.AuthenticatedManagerRepository;
+import acme.features.manager.project.ManagerProjectRepository;
 import acme.roles.Manager;
 
 @Service
@@ -19,7 +20,13 @@ public class ManagerProjectUserStoryListService extends AbstractService<Manager,
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectUserStoryRepository repository;
+	private ManagerProjectUserStoryRepository	repository;
+
+	@Autowired
+	private ManagerProjectRepository			managerProjectRepository;
+
+	@Autowired
+	private AuthenticatedManagerRepository		authenticatedManagerRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -27,14 +34,12 @@ public class ManagerProjectUserStoryListService extends AbstractService<Manager,
 	@Override
 	public void authorise() {
 		boolean status;
-		int projectId;
-		Project project;
-		Manager manager;
 
+		int projectId = super.getRequest().getData("id", int.class);
 		projectId = super.getRequest().getData("id", int.class);
-		project = this.repository.findProjectById(projectId);
-		manager = project == null ? null : project.getManager();
-		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		Project project = this.managerProjectRepository.findOneProjectById(projectId);
+		Manager manager = project == null ? null : project.getManager();
+		Manager principal = this.authenticatedManagerRepository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		status = super.getRequest().getPrincipal().hasRole(manager) && project != null && project.getManager().getId() == principal.getId();
 
 		super.getResponse().setAuthorised(status);
@@ -42,9 +47,9 @@ public class ManagerProjectUserStoryListService extends AbstractService<Manager,
 
 	@Override
 	public void load() {
-		Principal principal = super.getRequest().getPrincipal();
+		int managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		int projectId = super.getRequest().getData("id", int.class);
-		Collection<ProjectUserStory> objects = this.repository.findAllByManagerAndProject(principal.getActiveRoleId(), projectId);
+		Collection<ProjectUserStory> objects = this.repository.findAllByManagerAndProject(managerId, projectId);
 
 		super.getBuffer().addData(objects);
 	}

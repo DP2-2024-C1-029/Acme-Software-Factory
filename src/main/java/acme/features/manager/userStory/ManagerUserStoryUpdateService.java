@@ -25,9 +25,9 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 	@Override
 	public void authorise() {
 		int userStoryId = super.getRequest().getData("id", int.class);
-		UserStory userStory = this.repository.findOneUserStoryById(userStoryId);
+		UserStory userStory = this.repository.findOneUserStoryByIdAndNotPublished(userStoryId);
 		Manager manager = userStory == null ? null : userStory.getManager();
-		boolean status = super.getRequest().getPrincipal().hasRole(manager) && userStory != null && userStory.getManager().getId() == manager.getId();
+		boolean status = manager != null && super.getRequest().getPrincipal().hasRole(manager) && userStory != null && userStory.getManager().getId() == manager.getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -36,7 +36,7 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 	public void load() {
 
 		int id = super.getRequest().getData("id", int.class);
-		UserStory object = this.repository.findOneUserStoryById(id);
+		UserStory object = this.repository.findOneUserStoryByIdAndNotPublished(id);
 		super.getBuffer().addData(object);
 	}
 
@@ -53,7 +53,7 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		assert object != null;
 
 		int id = super.getRequest().getData("id", int.class);
-		UserStory userStoryPreSave = this.repository.findOneUserStoryById(id);
+		UserStory userStoryPreSave = this.repository.findOneUserStoryByIdAndNotPublished(id);
 		if (!super.getBuffer().getErrors().hasErrors("published"))
 			super.state(userStoryPreSave.isDraftMode(), "published", "manager.userstory.form.error.published");
 	}
@@ -75,7 +75,7 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		choices = SelectChoices.from(Priority.class, object.getPriority());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put("published", !object.isDraftMode());
+		dataset.put("published", false);
 		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);

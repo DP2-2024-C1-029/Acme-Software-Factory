@@ -23,9 +23,9 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	@Override
 	public void authorise() {
 		int userStoryId = super.getRequest().getData("id", int.class);
-		UserStory userStory = this.repository.findOneUserStoryById(userStoryId);
+		UserStory userStory = this.repository.findOneUserStoryByIdAndNotPublished(userStoryId);
 		Manager manager = userStory == null ? null : userStory.getManager();
-		boolean status = super.getRequest().getPrincipal().hasRole(manager) && userStory != null && userStory.getManager().getId() == manager.getId();
+		boolean status = manager != null && super.getRequest().getPrincipal().hasRole(manager) && userStory != null && userStory.getManager().getId() == manager.getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -34,7 +34,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	public void load() {
 
 		int id = super.getRequest().getData("id", int.class);
-		UserStory object = this.repository.findOneUserStoryById(id);
+		UserStory object = this.repository.findOneUserStoryByIdAndNotPublished(id);
 		super.getBuffer().addData(object);
 	}
 
@@ -51,7 +51,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		assert object != null;
 
 		int id = super.getRequest().getData("id", int.class);
-		UserStory userStoryPreSave = this.repository.findOneUserStoryById(id);
+		UserStory userStoryPreSave = this.repository.findOneUserStoryByIdAndNotPublished(id);
 		if (!super.getBuffer().getErrors().hasErrors("published"))
 			super.state(userStoryPreSave.isDraftMode(), "published", "manager.userstory.form.error.published");
 	}
