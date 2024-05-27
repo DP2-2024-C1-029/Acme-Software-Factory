@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.ProjectUserStory;
+import acme.features.authenticated.manager.AuthenticatedManagerRepository;
 import acme.roles.Manager;
 
 @Service
@@ -15,7 +16,10 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectUserStoryRepository repository;
+	private ManagerProjectUserStoryRepository	repository;
+
+	@Autowired
+	private AuthenticatedManagerRepository		authenticatedManagerRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -23,7 +27,7 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	@Override
 	public void authorise() {
 		int projectUserStoryId = super.getRequest().getData("id", int.class);
-		Manager principal = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		Manager principal = this.authenticatedManagerRepository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		ProjectUserStory projectUserStory = this.repository.findProjectUserStoryByIdAndNotPublished(projectUserStoryId);
 		boolean status = projectUserStory != null && projectUserStory.getProject().getManager().getId() == principal.getId() && projectUserStory.getUserStory().getManager().getId() == principal.getId();
 

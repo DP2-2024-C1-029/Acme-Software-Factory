@@ -13,7 +13,6 @@ import acme.entities.codeaudits.CodeAudit;
 import acme.entities.contracts.Contract;
 import acme.entities.progressLogs.ProgressLogs;
 import acme.entities.projects.Project;
-import acme.entities.projects.ProjectUserStory;
 import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.trainingmodules.TrainingModule;
@@ -37,8 +36,11 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select p from Project p where p.code = :code")
 	Project findOneProjectByCode(final String code);
 
-	@Query("select pu from ProjectUserStory pu where pu.project.id = :projectId and pu.userStory.draftMode = false")
-	Collection<ProjectUserStory> findUserStoryByProjectPublished(final int projectId);
+	@Query("SELECT CASE WHEN COUNT(pu) > 0 THEN true ELSE false END FROM ProjectUserStory pu WHERE pu.project.id = :projectId AND pu.userStory.draftMode = true")
+	boolean containUserStoryNotPublished(final int projectId);
+
+	@Query("SELECT CASE WHEN COUNT(pu) > 0 THEN true ELSE false END FROM ProjectUserStory pu WHERE pu.project.id = :projectId")
+	boolean containUserStory(final int projectId);
 
 	@Query("select c from CodeAudit c where c.project.id = :projectId")
 	Collection<CodeAudit> findCodeAuditByProject(final int projectId);

@@ -1,15 +1,12 @@
 
 package acme.features.manager.project;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
-import acme.entities.projects.ProjectUserStory;
 import acme.features.authenticated.manager.AuthenticatedManagerRepository;
 import acme.roles.Manager;
 
@@ -59,10 +56,11 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		int id = super.getRequest().getData("id", int.class);
 		Project projectPreSave = this.repository.findOneProjectByIdAndNotPublished(id);
-		Collection<ProjectUserStory> listProjectUserStory = this.repository.findUserStoryByProjectPublished(id);
+		boolean containUserStoryNotPublished = this.repository.containUserStoryNotPublished(id);
+		boolean containUserStory = this.repository.containUserStory(id);
 		if (!super.getBuffer().getErrors().hasErrors("published")) {
-			super.state(projectPreSave.isDraftMode(), "published", "manager.project.form.error.published");
-			super.state(!listProjectUserStory.isEmpty(), "published", "manager.project.form.error.published.without_userStory");
+			super.state(!containUserStoryNotPublished, "published", "manager.project.form.error.published.without_userStory");
+			super.state(containUserStory, "published", "manager.project.form.error.published.without_userStory");
 			super.state(!projectPreSave.isIndication(), "published", "manager.project.form.error.published.fatal_error");
 		}
 

@@ -20,6 +20,7 @@ import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
 import acme.entities.trainingmodules.TrainingModule;
 import acme.entities.trainingsessions.TrainingSession;
+import acme.features.manager.projectUserStory.ManagerProjectUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
@@ -28,7 +29,10 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerProjectRepository			repository;
+
+	@Autowired
+	private ManagerProjectUserStoryRepository	managerProjectUserStoryRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -73,7 +77,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		Collection<Contract> contracts = this.repository.findContractByProject(object.getId());
 		Collection<Sponsorship> sponsorships = this.repository.findSponsorshipByProject(object.getId());
 		Collection<TrainingModule> trainingModules = this.repository.findTrainingModuleByProject(object.getId());
-		Collection<ProjectUserStory> projectUserStory = this.repository.findProjectUserStoryByProject(object.getId());
+		Collection<ProjectUserStory> projectUserStory = this.managerProjectUserStoryRepository.findProjectUserStoryByProjectId(object.getId());
 		if (codeAudits != null && !codeAudits.isEmpty()) {
 			List<Integer> codeAuditsId = new ArrayList<>();
 			for (CodeAudit ca : codeAudits)
