@@ -65,6 +65,7 @@ public class AdministratorBannerCreateService extends AbstractService<Administra
 	public void perform(final Banner object) {
 		assert object != null;
 
+		object.setId(0);
 		this.repository.save(object);
 	}
 
