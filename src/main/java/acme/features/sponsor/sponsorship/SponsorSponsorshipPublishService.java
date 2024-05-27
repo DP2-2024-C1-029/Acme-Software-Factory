@@ -68,7 +68,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "moment", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link", "isPublished");
+		super.bind(object, "code", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link");
 		object.setProject(project);
 	}
 
@@ -109,12 +109,12 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
 		}
 
-		{
+		if (!super.getBuffer().getErrors().hasErrors("amount")) {
 			Double sumTotalAmountsInvoices;
 
 			sumTotalAmountsInvoices = this.repository.findManyInvoicesBySponsorshipId(object.getId()).stream().map(Invoice::totalAmount).mapToDouble(Money::getAmount).sum();
 			sumTotalAmountsInvoices = Math.round(sumTotalAmountsInvoices * 100) / 100.0;
-			super.state(sumTotalAmountsInvoices != null && sumTotalAmountsInvoices.equals(object.getAmount().getAmount()), "*", "sponsor.sponsorship.form.error.not-total-amount-invoices");
+			super.state(sumTotalAmountsInvoices.equals(object.getAmount().getAmount()), "*", "sponsor.sponsorship.form.error.not-total-amount-invoices");
 		}
 
 		{
@@ -146,7 +146,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
 
-		dataset = super.unbind(object, "code", "moment", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link");
+		dataset = super.unbind(object, "code", "moment", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link", "isPublished");
 		dataset.put("type", choicesType.getSelected().getKey());
 		dataset.put("types", choicesType);
 		dataset.put("project", choicesProject.getSelected().getKey());
