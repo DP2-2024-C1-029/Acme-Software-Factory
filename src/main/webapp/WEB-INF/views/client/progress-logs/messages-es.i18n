@@ -29,3 +29,4 @@ client.progress-log.form.error.registration-moment-must-be-later = La fecha de r
 client.progress-log.form.error.published-contract = El contrato no esta publicado
 client.progress-log.form.error.same-moment = Momento de registro duplicado
 client.progress-log.form.error.completeness = El porcentaje debe ser mayor al máximo porcentaje publicado
+client.progress-log.form.error.registration-moment-must-be-later-the-published-max-completness = El momento de registro debe ser posterior al momento de registro del registro de progreso con mayor completitud

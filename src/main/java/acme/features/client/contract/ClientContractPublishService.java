@@ -75,30 +75,19 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			boolean validBudget = object.getBudget().getAmount() >= 0 && object.getBudget().getAmount() <= 1000000.0;
 			super.state(validBudget, "budget", "client.contract.form.error.maximum-negative-budget");
 		}
-		/*
-		 * if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
-		 * super.state(this.exchangeService.changeForCurrencyToCurrency(object.getProject().getCost().getAmount(), object.getProject().getCost().getCurrency(), //
-		 * super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount() >= this.exchangeService
-		 * .changeForCurrencyToCurrency(object.getBudget().getAmount(), object.getBudget().getCurrency(), //
-		 * super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges())
-		 * .getAmount(),
-		 * "budget", "client.contract.form.error.budget");
-		 * 
-		 */
 
-		/*
-		 * if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project")) {
-		 * int projectId = object.getProject().getId();
-		 * Collection<Contract> contracts = this.repository.findContractsByProjectIdExceptThis(projectId, object.getId());
-		 * contracts.add(object);
-		 * Double totalBudgetUsd = contracts.stream().mapToDouble(u -> this.exchangeService.changeForCurrencyToCurrency(u.getBudget().getAmount(), //
-		 * u.getBudget().getCurrency(), super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount()).sum();
-		 * Double projectCostUsd = this.exchangeService.changeForCurrencyToCurrency(object.getProject().getCost().getAmount(), object.getProject().getCost().getCurrency(), //
-		 * super.getRequest().getGlobal("$locale", String.class), this.exchangeService.getChanges()).getAmount();
-		 * 
-		 * super.state(totalBudgetUsd <= projectCostUsd, "*", "client.contract.form.error.publishError");
-		 * }
-		 */
+		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project"))
+			super.state(this.exchangeService.changeSourceToTarget(object.getProject().getCost(), false).get(0).getAmount()//
+				>= this.exchangeService.changeSourceToTarget(object.getBudget(), false).get(0).getAmount(), "budget", "client.contract.form.error.budget");
+
+		if (!super.getBuffer().getErrors().hasErrors("budget") && !super.getBuffer().getErrors().hasErrors("project")) {
+			int projectId = object.getProject().getId();
+			Collection<Contract> contracts = this.repository.findContractsByProjectIdExceptThis(projectId, object.getId());
+			contracts.add(object);
+			Double totalBudgetUsd = contracts.stream().mapToDouble(u -> this.exchangeService.changeSourceToTarget(u.getBudget(), false).get(0).getAmount()).sum();
+			Double projectCostUsd = this.exchangeService.changeSourceToTarget(object.getProject().getCost(), false).get(0).getAmount();
+			super.state(totalBudgetUsd <= projectCostUsd, "*", "client.contract.form.error.publishError");
+		}
 
 	}
 	@Override

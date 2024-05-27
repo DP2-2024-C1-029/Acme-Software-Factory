@@ -26,3 +26,4 @@ client.progress-log.form.error.registration-moment-must-be-later = The registrat
 client.progress-log.form.error.published-contract = The contract is not published
 client.progress-log.form.error.same-moment = Registration moment duplicated
 client.progress-log.form.error.completeness = The percentage must be greater than the maximum published percentage
+client.progress-log.form.error.registration-moment-must-be-later-the-published-max-completness = The registration moment must be later then the registration moment of the maximum completeness date
