@@ -16,7 +16,7 @@
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
-			<acme:button code="sponsor.sponsorship.form.button.invoices" action="/sponsor/invoice/list?masterId=${id}" test="${showInvoices == true}"/>
+			<acme:button code="sponsor.sponsorship.form.button.invoices" action="/sponsor/invoice/list?masterId=${id}"/>
 			<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete" test="${isPublished == false}"/>
 			<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish" test="${isPublished == false}"/>
 			<acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update" test="${isPublished == false}"/>

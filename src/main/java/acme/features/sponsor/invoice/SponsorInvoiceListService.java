@@ -31,7 +31,7 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(masterId);
-		status = sponsorship != null && (sponsorship.isPublished() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,8 +55,8 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		String trueValue;
 		String falseValue;
 
-		trueValue = super.getRequest().getLocale().toString().equals("es") ? "Sí" : "No";
-		falseValue = super.getRequest().getLocale().toString().equals("en") ? "Yes" : "No";
+		trueValue = super.getRequest().getLocale().toString().equals("es") ? "Sí" : "Yes";
+		falseValue = "No";
 
 		dataset = super.unbind(object, "code", "dueDate");
 		dataset.put("isPublished", object.isPublished() ? trueValue : falseValue);
@@ -71,13 +71,11 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 
 		int masterId;
 		Sponsorship sponsorship;
-		final boolean showCreate;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(masterId);
-		showCreate = !sponsorship.isPublished() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
 
 		super.getResponse().addGlobal("masterId", masterId);
-		super.getResponse().addGlobal("showCreate", showCreate);
+		super.getResponse().addGlobal("showCreate", !sponsorship.isPublished());
 	}
 }

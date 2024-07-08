@@ -3,7 +3,6 @@ package acme.features.sponsor.invoice;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,28 +27,34 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 	@Override
 	public void authorise() {
+		boolean hasIdInvoice;
 		boolean status;
 		int masterId;
 		Sponsorship sponsorship;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(masterId);
-		status = sponsorship != null && !sponsorship.isPublished() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
+		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()) && !sponsorship.isPublished();
+
+		// Prevenir errores de hacking por id
+		hasIdInvoice = super.getRequest().hasData("id", Integer.class);
+		status = status && (!hasIdInvoice || super.getRequest().getData("id", int.class).equals(0));
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
 		Invoice object;
 		int masterId;
-		Sponsorship sponsorship;
+		Sponsorship invoice;
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		sponsorship = this.repository.findOneSponsorshipById(masterId);
+		invoice = this.repository.findOneSponsorshipById(masterId);
 
 		object = new Invoice();
-		object.setSponsorship(sponsorship);
+		object.setSponsorship(invoice);
 		object.setPublished(false);
 		object.setRegistrationTime(MomentHelper.deltaFromCurrentMoment(-1, ChronoUnit.MILLIS));
 
@@ -60,31 +65,25 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		super.bind(object, "code", "dueDate", "quantity", "tax", "link");
 	}
 
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Invoice existing;
-
-			existing = this.repository.findOneInvoiceByCode(object.getCode());
-			super.state(existing == null, "code", "sponsor.invoice.form.error.duplicated");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			super.state(this.repository.notExistsDuplicatedCodeLike(object.getCode()), "code", "sponsor.invoice.form.error.duplicated");
 
 		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
 			Date minimumDeadline;
 
 			minimumDeadline = MomentHelper.deltaFromMoment(object.getRegistrationTime(), 1, ChronoUnit.MONTHS);
-			super.state(MomentHelper.isAfter(object.getDueDate(), minimumDeadline), "dueDate", "sponsor.invoice.form.error.too-close");
+			super.state(MomentHelper.isAfterOrEqual(object.getDueDate(), minimumDeadline), "dueDate", "sponsor.invoice.form.error.too-close");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
-			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");
-			super.state(Stream.of(acceptedCurrencies).anyMatch(c -> c.equals(object.getQuantity().getCurrency())), //
-				"quantity", "sponsor.invoice.form.error.quantity-not-valid");
+			super.state(this.repository.isAmongAcceptedCurrencies(object.getQuantity().getCurrency()), "quantity", "sponsor.invoice.form.error.quantity-not-valid");
 
 			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.negative-amount");
 		}
@@ -103,10 +102,9 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "isPublished");
 		dataset.put("totalAmount", object.totalAmount());
 		dataset.put("masterId", object.getSponsorship().getId());
-		dataset.put("isPublished", object.getSponsorship().isPublished());
 
 		super.getResponse().addData(dataset);
 	}

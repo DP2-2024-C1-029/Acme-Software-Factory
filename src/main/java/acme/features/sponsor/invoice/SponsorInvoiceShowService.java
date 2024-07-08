@@ -24,12 +24,12 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 	@Override
 	public void authorise() {
 		boolean status;
-		int sponsorshipId;
+		int invoiceId;
 		Sponsorship sponsorship;
 
-		sponsorshipId = super.getRequest().getData("id", int.class);
-		sponsorship = this.repository.findOneSponsorshipByInvoiceId(sponsorshipId);
-		status = sponsorship != null && (sponsorship.isPublished() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+		invoiceId = super.getRequest().getData("id", int.class);
+		sponsorship = this.repository.findOneSponsorshipByInvoiceId(invoiceId);
+		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -26,3 +26,7 @@ sponsor.invoice.list.button.create = Crear
 sponsor.invoice.form.error.duplicated = Este código ya está en uso
 sponsor.invoice.form.error.too-close = La fecha de vencimiento debe ser al menos 1 mes posterior al momento de registro
 sponsor.invoice.form.error.negative-amount = La cantidad debe ser positiva, no cero
+sponsor.invoice.form.error.more-than-sponsorship = La cantidad debe ser menor o igual a la restante del patrocinio
+sponsor.invoice.form.error.currency-diferent-from-sponsorship = La moneda debe ser igual que la del patrocinio
+sponsor.invoice.form.error.currency-diferent-from-published-invoices = La moneda debe ser igual que la de las invoices publicadas
+sponsor.invoice.form.error.quantity-not-valid = La moneda debe estar entre las aceptadas del sistema

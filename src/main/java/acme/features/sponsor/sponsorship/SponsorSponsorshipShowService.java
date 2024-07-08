@@ -53,13 +53,11 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choicesType;
 		SelectChoices choicesProject;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		choicesType = SelectChoices.from(SponsorType.class, object.getType());
 		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
@@ -69,7 +67,6 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 		dataset.put("types", choicesType);
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
-		dataset.put("showInvoices", sponsorId == object.getSponsor().getId());
 
 		super.getResponse().addData(dataset);
 	}

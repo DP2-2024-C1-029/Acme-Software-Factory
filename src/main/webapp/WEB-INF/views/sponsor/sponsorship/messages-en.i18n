@@ -29,10 +29,12 @@ sponsor.sponsorship.form.button.delete = Delete
 sponsor.sponsorship.form.button.publish = Publish
 
 sponsor.sponsorship.form.error.duplicated = This code is already used
-sponsor.sponsorship.form.error.not-exists = This project is not yours, so you cannot use it
+sponsor.sponsorship.form.error.not-exists = This project is not published or does not exists. You will not hack the web page in this way
 sponsor.sponsorship.form.error.not-after = The initial period must start after the start moment
 sponsor.sponsorship.form.error.too-close = The final period must be at least 1 month after the initial period
 sponsor.sponsorship.form.error.negative-amount = The amount must be positive
 sponsor.sponsorship.form.error.not-total-amount-invoices = The sponsorship cannot be published because the sum of amounts of its invoices is not equal to the amount of the sponsorship
 sponsor.sponsorship.form.error.not-all-invoices-published = Not all the invoices are published
 sponsor.sponsorship.form.error.currency-not-valid = This currency is not among the accepted in the system
+sponsor.sponsorship.form.error.none-invoices-asociated = There are none invoices for this sponsorship. Please create its invoices and publish them before publishing the sponsorship
+sponsor.sponsorship.form.error.cannot-change-currency = There are invoices published. So you cannot change the currency now

@@ -18,11 +18,11 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 	@Query("select s from Sponsorship s where s.id = :id")
 	Sponsorship findOneSponsorshipById(int id);
 
-	@Query("select s from Sponsorship s where s.code = :code")
-	Sponsorship findOneSponsorshipByCode(String code);
+	@Query("select count(s) = 0 from Sponsorship s where s.code = :code")
+	boolean notExistsDuplicatedCodeLike(String code);
 
-	@Query("select s from Sponsorship s where s.code = :code and s.id <> :id")
-	Sponsorship findOneSponsorshipByCodeExceptThisById(String code, int id);
+	@Query("select count(s) = 0 from Sponsorship s where s.code = :code and s.id <> :id")
+	boolean notExistsDuplicatedCodeExceptThisByIdLike(String code, int id);
 
 	@Query("select s from Sponsor s where s.id = :id")
 	Sponsor findOneSponsorById(int id);
@@ -30,18 +30,36 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 	@Query("select p from Project p where p.id = :id")
 	Project findOneProjectById(int id);
 
-	@Query("select s from Sponsorship s where s.isPublished = true")
-	Collection<Sponsorship> findManySponsorshipsPublished();
-
 	@Query("select s from Sponsorship s where s.sponsor.id = :id")
 	Collection<Sponsorship> findManySponsorshipsBySponsorId(int id);
 
 	@Query("select distinct p from Project p where p.draftMode = false")
 	Collection<Project> findManyProjects();
 
+	@Query("select count(p) > 0 from Project p where p.draftMode = false and p.id = :id")
+	boolean existsValidProject(int id);
+
 	@Query("select i from Invoice i where i.sponsorship.id = :id")
 	Collection<Invoice> findManyInvoicesBySponsorshipId(int id);
 
-	@Query("select c.acceptedCurrencies from Configuration c")
-	String findAcceptedCurrencies();
+	@Query("select count(i) > 0 from Invoice i where i.sponsorship.id = :id")
+	boolean existsInvoicesOfSponsorship(int id);
+
+	@Query("select count(i) > 0 from Invoice i where i.sponsorship.id = :id and i.isPublished = true")
+	boolean existsInvoicesPublishedOfSponsorship(int id);
+
+	@Query("select count(i) = 0 from Invoice i where i.sponsorship.id = :id and i.isPublished = false")
+	boolean notAllInvoicesArePublishedOfSponsorship(int id);
+
+	@Query("select s.amount.currency = :currency from Sponsorship s where s.id = :id")
+	Boolean existsSponsorshipByIdWithItsCurrencyLike(int id, String currency);
+
+	@Query("select count(c) > 0 from Configuration c where c.acceptedCurrencies like concat('%',:currency,'%') ")
+	boolean isAmongAcceptedCurrencies(String currency);
+
+	@Query("select round(sum(i.quantity.amount * (100.0 + i.tax) / 100), 2) from Invoice i where i.sponsorship.id = :id and i.isPublished = true")
+	Double sumQuantityOfInvoicesBySponsorshipId(int id);
+
+	@Query("select distinct i.quantity.currency from Invoice i where i.sponsorship.id = :id")
+	String findCurrencyOfInvoicesBySponsorshipId(int id);
 }

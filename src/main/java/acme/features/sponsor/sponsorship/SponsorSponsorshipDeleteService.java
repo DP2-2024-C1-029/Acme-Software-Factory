@@ -31,13 +31,11 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		boolean status;
 		int masterId;
 		Sponsorship sponsorship;
-		Sponsor sponsor;
 
 		masterId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(masterId);
-		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
 
-		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsor) && !sponsorship.isPublished();
+		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()) && !sponsorship.isPublished();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -63,7 +61,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "moment", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link");
+		super.bind(object, "code", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link");
 		object.setProject(project);
 	}
 

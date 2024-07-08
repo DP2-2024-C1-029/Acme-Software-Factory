@@ -4,7 +4,6 @@ package acme.features.sponsor.sponsorship;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +30,11 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean hasIdSponsorship;
+
+		hasIdSponsorship = super.getRequest().hasData("id", Integer.class);
+
+		super.getResponse().setAuthorised(!hasIdSponsorship || super.getRequest().getData("id", int.class).equals(0));
 	}
 
 	@Override
@@ -58,7 +61,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "moment", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link", "isPublished");
+		super.bind(object, "code", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link");
 		object.setProject(project);
 	}
 
@@ -66,34 +69,29 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Sponsorship existing;
-
-			existing = this.repository.findOneSponsorshipByCode(object.getCode());
-			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicated");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			super.state(this.repository.notExistsDuplicatedCodeLike(object.getCode()), "code", "sponsor.sponsorship.form.error.duplicated");
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
-			Collection<Project> myProjects;
+			boolean myProject;
 
-			myProjects = this.repository.findManyProjects();
-			super.state(myProjects.contains(object.getProject()), "project", "sponsor.sponsorship.form.error.not-exists");
+			myProject = this.repository.existsValidProject(object.getProject().getId());
+			super.state(myProject, "project", "sponsor.sponsorship.form.error.not-exists");
+			//			super.state(object.getProject().isDraftMode(), "project", "sponsor.sponsorship.form.error.not-exists");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("endingExecutionPeriod") && !super.getBuffer().getErrors().hasErrors("initialExecutionPeriod")) {
 			Date minimumDeadline;
 
 			minimumDeadline = MomentHelper.deltaFromMoment(object.getInitialExecutionPeriod(), 1, ChronoUnit.MONTHS);
-			super.state(MomentHelper.isAfter(object.getEndingExecutionPeriod(), minimumDeadline), "endingExecutionPeriod", "sponsor.sponsorship.form.error.too-close");
+			super.state(MomentHelper.isAfterOrEqual(object.getEndingExecutionPeriod(), minimumDeadline), "endingExecutionPeriod", "sponsor.sponsorship.form.error.too-close");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("initialExecutionPeriod"))
 			super.state(MomentHelper.isAfter(object.getInitialExecutionPeriod(), object.getMoment()), "initialExecutionPeriod", "sponsor.sponsorship.form.error.not-after");
 
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {
-			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");
-			super.state(Stream.of(acceptedCurrencies).anyMatch(c -> c.equals(object.getAmount().getCurrency())), //
-				"amount", "sponsor.sponsorship.form.error.currency-not-valid");
+			super.state(this.repository.isAmongAcceptedCurrencies(object.getAmount().getCurrency()), "amount", "sponsor.sponsorship.form.error.currency-not-valid");
 
 			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
 		}
@@ -118,6 +116,10 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		choicesType = SelectChoices.from(SponsorType.class, object.getType());
 		projects = this.repository.findManyProjects();
 		choicesProject = SelectChoices.from(projects, "title", object.getProject());
+		//		if (projects.contains(object.getProject()))
+		//			choicesProject = SelectChoices.from(projects, "title", object.getProject());
+		//		else
+		//			choicesProject = SelectChoices.from(projects, "title", null);
 
 		dataset = super.unbind(object, "code", "moment", "initialExecutionPeriod", "endingExecutionPeriod", "amount", "type", "email", "link", "isPublished");
 		dataset.put("type", choicesType.getSelected().getKey());

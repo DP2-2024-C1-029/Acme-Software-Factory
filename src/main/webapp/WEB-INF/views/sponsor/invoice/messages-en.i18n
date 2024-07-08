@@ -26,3 +26,7 @@ sponsor.invoice.list.button.create = Create
 sponsor.invoice.form.error.duplicated = This code is already in use
 sponsor.invoice.form.error.too-close = The due date must be at least 1 month later to the registration time
 sponsor.invoice.form.error.negative-amount = The quantity must be positive not nought
+sponsor.invoice.form.error.more-than-sponsorship = The quantity must be less than the remaining in the sponsorship
+sponsor.invoice.form.error.currency-diferent-from-sponsorship = The currency must be the same that the one of the sponsorship
+sponsor.invoice.form.error.currency-diferent-from-published-invoices = The currency must be the same that the one of the other invoices published
+sponsor.invoice.form.error.quantity-not-valid = The currency must be among the accepted in the system

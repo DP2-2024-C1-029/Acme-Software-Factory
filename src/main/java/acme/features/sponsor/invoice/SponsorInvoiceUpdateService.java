@@ -3,7 +3,6 @@ package acme.features.sponsor.invoice;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,11 +28,11 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void authorise() {
 		boolean status;
 		int masterId;
-		Invoice sponsorship;
+		Invoice invoice;
 
 		masterId = super.getRequest().getData("id", int.class);
-		sponsorship = this.repository.findOneInvoiceById(masterId);
-		status = sponsorship != null && !sponsorship.isPublished() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsorship().getSponsor());
+		invoice = this.repository.findOneInvoiceById(masterId);
+		status = invoice != null && super.getRequest().getPrincipal().hasRole(invoice.getSponsorship().getSponsor()) && !invoice.isPublished();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,19 +52,15 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "isPublished");
+		super.bind(object, "code", "dueDate", "quantity", "tax", "link");
 	}
 
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Invoice existing;
-
-			existing = this.repository.findOneInvoiceByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "sponsor.invoice.form.error.duplicated");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			super.state(this.repository.notExistsDuplicatedCodeExceptThisIdLike(object.getCode(), object.getId()), "code", "sponsor.invoice.form.error.duplicated");
 
 		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
 			Date minimumDeadline;
@@ -75,9 +70,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
-			String[] acceptedCurrencies = this.repository.findAcceptedCurrencies().split(";");
-			super.state(Stream.of(acceptedCurrencies).anyMatch(c -> c.equals(object.getQuantity().getCurrency())), //
-				"quantity", "sponsor.invoice.form.error.quantity-not-valid");
+			super.state(this.repository.isAmongAcceptedCurrencies(object.getQuantity().getCurrency()), "quantity", "sponsor.invoice.form.error.quantity-not-valid");
 
 			super.state(object.getQuantity().getAmount() > 0, "quantity", "sponsor.invoice.form.error.negative-amount");
 		}
@@ -96,10 +89,9 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "isPublished");
 		dataset.put("totalAmount", object.totalAmount());
 		dataset.put("masterId", object.getSponsorship().getId());
-		dataset.put("isPublished", object.getSponsorship().isPublished());
 
 		super.getResponse().addData(dataset);
 	}

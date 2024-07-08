@@ -10,7 +10,6 @@ import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorships.Sponsorship;
-import acme.features.sponsor.sponsorship.SponsorSponsorshipRepository;
 
 @Service
 public class AnySponsorshipListAllService extends AbstractService<Any, Sponsorship> {
@@ -18,7 +17,7 @@ public class AnySponsorshipListAllService extends AbstractService<Any, Sponsorsh
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	public SponsorSponsorshipRepository repository;
+	public AnySponsorshipRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
