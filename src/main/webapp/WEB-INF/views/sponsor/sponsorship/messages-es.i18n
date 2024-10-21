@@ -38,3 +38,4 @@ sponsor.sponsorship.form.error.not-all-invoices-published = No todas las factura
 sponsor.sponsorship.form.error.currency-not-valid = Este tipo de moneda no está entre las aceptadas del sistema
 sponsor.sponsorship.form.error.none-invoices-asociated = No hay ningúna factura para este patrocinio. Por favor crea y publica las facturas antes de publicar el patrocinio
 sponsor.sponsorship.form.error.cannot-change-currency = Hay facturas publicadas. Por lo que ya no se puede cambiar la moneda
+sponsor.sponsorship.form.error.invoices-published = No puedes eliminar un patrocinio si tienes facturas publicadas

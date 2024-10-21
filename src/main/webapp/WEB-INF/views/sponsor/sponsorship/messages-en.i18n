@@ -38,3 +38,4 @@ sponsor.sponsorship.form.error.not-all-invoices-published = Not all the invoices
 sponsor.sponsorship.form.error.currency-not-valid = This currency is not among the accepted in the system
 sponsor.sponsorship.form.error.none-invoices-asociated = There are none invoices for this sponsorship. Please create its invoices and publish them before publishing the sponsorship
 sponsor.sponsorship.form.error.cannot-change-currency = There are invoices published. So you cannot change the currency now
+sponsor.sponsorship.form.error.invoices-published = You cannot delete a sponsorship if you have invoices published
